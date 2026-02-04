@@ -472,7 +472,7 @@ export default function Home() {
           </div>
 
           <div className="border-t border-slate-800 pt-8 text-center text-gray-500 text-sm">
-            <p>&copy; 2025 西安极紫星智慧科技有限公司. All rights reserved.</p>
+            <p>&copy; 2025 极紫星智慧科技有限公司. All rights reserved.</p>
           </div>
         </div>
       </footer>
