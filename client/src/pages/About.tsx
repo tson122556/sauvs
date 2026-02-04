@@ -485,7 +485,7 @@ export default function About() {
               <h4 className="text-white font-bold mb-4">联系</h4>
               <ul className="space-y-2 text-sm text-gray-400">
                 <li>邮箱：info@jizixing.com</li>
-                <li>电话：+86 15193876647</li>
+                <li>电话：1519387647</li>
                 <li>地址：陕西省西安市雁塔区二环南路</li>
               </ul>
             </div>
