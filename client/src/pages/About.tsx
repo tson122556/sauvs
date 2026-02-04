@@ -578,10 +578,16 @@ export default function About() {
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/TnCkjSPwUqsBNKEK.png" alt="Jizixing" className="h-12 w-auto" />
+                <motion.img 
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/uAJQYgErxzlvdMug.png" 
+                  alt="Jizixing" 
+                  className="h-12 w-auto" 
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                />
               </div>
               <p className="text-gray-400 text-sm">
-                专注于人工智能、智能机器人和物联网技术创新
+                专注于人工智能、智能机器人、物联网技术创新和时空同步飞行器的研发和应用
               </p>
             </div>
 
@@ -601,6 +607,11 @@ export default function About() {
                 <li>
                   <a href="/#products" className="text-gray-400 hover:text-white transition">
                     物联网解决方案
+                  </a>
+                </li>
+                <li>
+                  <a href="/#products" className="text-gray-400 hover:text-white transition">
+                    时空同步飞行器
                   </a>
                 </li>
               </ul>

@@ -400,13 +400,17 @@ export default function Home() {
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">极</span>
-                </div>
+                <motion.img 
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/uAJQYgErxzlvdMug.png" 
+                  alt="Jizixing" 
+                  className="h-12 w-auto" 
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                />
                 <span className="text-lg font-bold text-white">极紫星</span>
               </div>
               <p className="text-gray-400 text-sm">
-                专注于人工智能、智能机器人和物联网技术创新
+                专注于人工智能、智能机器人、物联网技术创新和时空同步飞行器的研发和应用
               </p>
             </div>
 

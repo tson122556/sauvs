@@ -239,6 +239,89 @@ export default function Contact() {
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="bg-slate-950/80 border-t border-slate-800 py-12 relative z-10">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <motion.img 
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/uAJQYgErxzlvdMug.png" 
+                  alt="Jizixing" 
+                  className="h-12 w-auto" 
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                />
+                <span className="text-lg font-bold text-white">极紫星</span>
+              </div>
+              <p className="text-gray-400 text-sm">
+                专注于人工智能、智能机器人、物联网技术创新和时空同步飞行器的研发和应用
+              </p>
+            </div>
+
+            <div>
+              <h4 className="text-white font-bold mb-4">产品</h4>
+              <ul className="space-y-2">
+                <li>
+                  <a href="/#products" className="text-gray-400 hover:text-white transition">
+                    AI应用软件
+                  </a>
+                </li>
+                <li>
+                  <a href="/#products" className="text-gray-400 hover:text-white transition">
+                    智能机器人
+                  </a>
+                </li>
+                <li>
+                  <a href="/#products" className="text-gray-400 hover:text-white transition">
+                    物联网解决方案
+                  </a>
+                </li>
+                <li>
+                  <a href="/#products" className="text-gray-400 hover:text-white transition">
+                    时空同步飞行器
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-white font-bold mb-4">服务</h4>
+              <ul className="space-y-2">
+                <li>
+                  <a href="/#solutions" className="text-gray-400 hover:text-white transition">
+                    技术咨询
+                  </a>
+                </li>
+                <li>
+                  <a href="/#solutions" className="text-gray-400 hover:text-white transition">
+                    系统集成
+                  </a>
+                </li>
+                <li>
+                  <a href="/#solutions" className="text-gray-400 hover:text-white transition">
+                    技术支持
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-white font-bold mb-4">联系</h4>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li>邮箱：satifuxie@gmail.com</li>
+                <li>电话：(+86)1519387647</li>
+                <li>地址：陕西省西安市雁塔区二环南路</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="border-t border-slate-800 pt-8 text-center text-gray-500 text-sm">
+            <p>&copy; 2025 西安极紫星智慧科技有限公司. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
