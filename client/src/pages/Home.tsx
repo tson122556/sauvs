@@ -46,10 +46,7 @@ export default function Home() {
             animate={{ opacity: 1, x: 0 }}
             className="flex items-center gap-2"
           >
-            <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">极</span>
-            </div>
-            <span className="text-lg font-bold text-white">极紫星</span>
+            <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/uDXJaVGdJKcDvfHt.png" alt="Jizixing" className="h-10 w-auto" />
           </motion.div>
 
           <motion.div
