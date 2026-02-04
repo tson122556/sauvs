@@ -172,7 +172,7 @@ export default function About() {
           </motion.div>
 
           <motion.div
-            className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto"
+            className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto"
             variants={staggerContainer}
             initial="initial"
             whileInView="animate"
@@ -227,36 +227,6 @@ export default function About() {
                     <div>
                       <p className="text-white font-semibold">质量保证</p>
                       <p className="text-gray-400 text-sm">完善的质量管理体系</p>
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            </motion.div>
-
-            {/* Spacetech Aircraft */}
-            <motion.div variants={fadeInUp}>
-              <Card className="bg-gradient-to-br from-purple-900/40 to-purple-900/20 border-purple-500/30 p-8 h-full">
-                <h3 className="text-2xl font-bold text-white mb-6">时空同步飞行器</h3>
-                <div className="space-y-4">
-                  <div className="flex gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-purple-400 flex-shrink-0 mt-1" />
-                    <div>
-                      <p className="text-white font-semibold">前沿技术</p>
-                      <p className="text-gray-400 text-sm">时空同步飞行技术研发</p>
-                    </div>
-                  </div>
-                  <div className="flex gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-purple-400 flex-shrink-0 mt-1" />
-                    <div>
-                      <p className="text-white font-semibold">创新应用</p>
-                      <p className="text-gray-400 text-sm">多领域应用解决方案</p>
-                    </div>
-                  </div>
-                  <div className="flex gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-purple-400 flex-shrink-0 mt-1" />
-                    <div>
-                      <p className="text-white font-semibold">卓越性能</p>
-                      <p className="text-gray-400 text-sm">业界领先的技术指标</p>
                     </div>
                   </div>
                 </div>

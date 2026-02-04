@@ -210,7 +210,7 @@ export default function Home() {
           </motion.div>
 
           <motion.div
-            className="grid md:grid-cols-3 gap-8"
+            className="grid md:grid-cols-4 gap-8"
             variants={staggerContainer}
             initial="initial"
             whileInView="animate"
@@ -274,6 +274,27 @@ export default function Home() {
                   <h3 className="text-xl font-bold text-white mb-3">物联网技术</h3>
                   <p className="text-gray-400">
                     提供物联网技术服务和研发，实现设备互联和智能控制。
+                  </p>
+                </div>
+              </Card>
+            </motion.div>
+
+            {/* Spacetech Aircraft */}
+            <motion.div variants={fadeInUp}>
+              <Card className="bg-gradient-to-br from-blue-900/40 to-blue-900/20 border-blue-500/30 hover:border-blue-500/60 transition p-8 h-full group cursor-pointer relative overflow-hidden">
+                {/* Background Image */}
+                <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition duration-300" style={{
+                  backgroundImage: 'url(https://private-us-east-1.manuscdn.com/sessionFile/fhgIRoGEBsYWRa81s985hf/sandbox/UtQ5v7fS4XbOELdZSlIP1Q-img-3_1770192011000_na1fn_aW90LWJn.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80)',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center'
+                }} />
+                <div className="relative z-10">
+                  <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg mb-4 group-hover:scale-110 transition">
+                    <Zap className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-3">时空同步飞行器</h3>
+                  <p className="text-gray-400">
+                    前沿的时空同步飞行技术研发与应用，提供创新的飞行解决方案。
                   </p>
                 </div>
               </Card>
