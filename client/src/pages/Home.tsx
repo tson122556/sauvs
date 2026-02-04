@@ -430,6 +430,11 @@ export default function Home() {
                     物联网解决方案
                   </a>
                 </li>
+                <li>
+                  <a href="#" className="text-gray-400 hover:text-white transition">
+                    时空同步飞行器
+                  </a>
+                </li>
               </ul>
             </div>
 
