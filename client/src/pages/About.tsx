@@ -54,12 +54,10 @@ export default function About() {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="flex items-center gap-2 cursor-pointer"
+            className="flex items-center gap-3 cursor-pointer"
             onClick={() => setLocation("/")}
           >
-            <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">极</span>
-            </div>
+            <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/HkYABfbCUJbFZIwP.png" alt="Jizixing" className="h-12 w-auto" />
             <span className="text-lg font-bold text-white">极紫星</span>
           </motion.div>
 
