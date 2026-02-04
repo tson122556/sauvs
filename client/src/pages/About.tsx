@@ -495,6 +495,9 @@ export default function About() {
                 <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/YeIiHvfBGGRiPwZO.png" alt="中国科学技术大学" className="h-16 w-auto" />
                 </div>
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/fEWQWlBMKSloJZVX.gif" alt="Samsung" className="h-16 w-auto" />
+                </div>
               </div>
 
               {/* Seventh Row */}
@@ -531,6 +534,9 @@ export default function About() {
                 </div>
                 <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/EubAdlXGUnXOyzal.png" alt="ASML" className="h-16 w-auto" />
+                </div>
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/mqEjQzJmZqKORmvH.jpg" alt="Apple" className="h-16 w-auto" />
                 </div>
               </div>
             </div>
