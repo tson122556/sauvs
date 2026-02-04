@@ -132,7 +132,7 @@ export default function About() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
-              西安极紫星智慧科技有限公司是一家专注于人工智能、智能机器人和物联网技术的创新企业，致力于为全球客户提供先进的智慧解决方案。
+              专注于人工智能应用、智能机器人研发和物联网技术创新。我们致力于为企业和个人提供极致的东方智慧解决方案，推动企业和个人向未来产业数字化转型。
             </motion.p>
 
             <motion.div
