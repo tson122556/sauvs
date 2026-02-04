@@ -124,8 +124,8 @@ export default function Contact() {
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">电话</h3>
                 <p className="text-gray-400">
-                  <a href="tel:+8629-XXXX-XXXX" className="hover:text-white transition">
-                    +86 (29) XXXX-XXXX
+                  <a href="tel:+8615193876647" className="hover:text-white transition">
+                    +86 15193876647
                   </a>
                 </p>
               </Card>
