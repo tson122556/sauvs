@@ -359,8 +359,8 @@ export default function About() {
                 <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/vdIfFIxMkZeYECcU.jpg" alt="Meta" className="h-16 w-auto" />
                 </div>
-                <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/InAcQhVzYfiEppjO.png" alt="Boston Dynamics" className="h-20 w-auto" />
+                <div className="flex items-center justify-center h-24 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/InAcQhVzYfiEppjO.png" alt="Boston Dynamics" className="h-24 w-auto" />
                 </div>
               </div>
 
@@ -368,48 +368,58 @@ export default function About() {
 
               {/* More Partner Logos */}
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center">
-                <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/DWRtZoVSLRrFtKOi.png" alt="Alibaba" className="h-16 w-auto" />
                 </div>
-                <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/xISTsJJSCDSZSqUV.png" alt="Baidu" className="h-16 w-auto" />
                 </div>
-                <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/UtngVcEqsPPIYCZN.png" alt="Xiaomi" className="h-16 w-auto" />
                 </div>
-                <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/RVxCRODMBYovFfdR.png" alt="JD" className="h-16 w-auto" />
                 </div>
-                <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/zHvKuhnitFEJhDie.png" alt="Tencent" className="h-16 w-auto" />
                 </div>
-                <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/oFMjzeGhLYEPeOda.jpg" alt="DJI" className="h-16 w-auto" />
                 </div>
               </div>
 
               {/* Third Row */}
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mt-6">
-                <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/paluIHNcpiCRrKVy.png" alt="DeepSeek" className="h-16 w-auto" />
                 </div>
-                <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/jkaIRdTWWMwcTFSA.png" alt="Unitree" className="h-16 w-auto" />
                 </div>
-                <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/tfxzXVIvOpmBrkoL.png" alt="Moore Threads" className="h-16 w-auto" />
                 </div>
-                <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/SDlWCGjYdrncvpId.jpg" alt="CATL" className="h-16 w-auto" />
                 </div>
-                <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/jQamhtrkiLjgucvQ.png" alt="BYD" className="h-16 w-auto" />
                 </div>
-                <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/vLvZfeAPVAXinGkF.png" alt="好设计" className="h-16 w-auto" />
                 </div>
-                <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/FaDsfepYmWleIWxI.png" alt="科创中国" className="h-16 w-auto" />
+                <div className="flex items-center justify-center h-24 rounded-lg hover:bg-slate-700/30 transition">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/FaDsfepYmWleIWxI.png" alt="科创中国" className="h-24 w-auto" />
+                </div>
+              </div>
+
+              {/* Fourth Row - Microsoft and Tsinghua */}
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mt-6">
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/qFvtRWRZNGCBFJEP.png" alt="Microsoft" className="h-16 w-auto" />
+                </div>
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/eEAEwpbLwUaRdiMe.png" alt="Tsinghua University" className="h-16 w-auto" />
                 </div>
               </div>
             </div>
