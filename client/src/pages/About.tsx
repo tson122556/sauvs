@@ -360,15 +360,7 @@ export default function About() {
                 </div>
               </div>
 
-              {/* Center Logo - Jizixing */}
-              <div className="flex justify-center mb-8">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-lg blur-lg opacity-50"></div>
-                  <div className="relative bg-slate-900 p-4 rounded-lg border border-purple-500/50">
-                    <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/HkYABfbCUJbFZIwP.png" alt="Jizixing" className="h-32 w-auto" />
-                  </div>
-                </div>
-              </div>
+
 
               {/* More Partner Logos */}
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center">
