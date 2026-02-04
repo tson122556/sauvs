@@ -112,8 +112,8 @@ export default function Contact() {
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">邮箱</h3>
                 <p className="text-gray-400">
-                  <a href="mailto:info@jizixing.com" className="hover:text-white transition">
-                    info@jizixing.com
+                  <a href="mailto:satifuxie@gmail.com" className="hover:text-white transition">
+                    satifuxie@gmail.com
                   </a>
                 </p>
               </Card>
