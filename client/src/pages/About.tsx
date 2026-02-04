@@ -505,27 +505,25 @@ export default function About() {
                 <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/lycimjpCbFokWvcp.png" alt="哈尔滨工业大学" className="h-16 w-auto" />
                 </div>
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/mTOKwDVGSfXusrZz.png" alt="Kingsoft" className="h-16 w-auto" />
+                </div>
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/lHvrAWgGIwIttVJL.webp" alt="TSMC" className="h-16 w-auto" />
+                </div>
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/DHvviZixJnqOQakV.svg" alt="Intel" className="h-16 w-auto" />
+                </div>
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/caoSOWjLZeDYsdut.webp" alt="IBM" className="h-16 w-auto" />
+                </div>
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/EubAdlXGUnXOyzal.png" alt="ASML" className="h-16 w-auto" />
+                </div>
               </div>
             </div>
 
-            {/* Row 8 - New Partners */}
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mt-6">
-              <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/mTOKwDVGSfXusrZz.png" alt="Kingsoft" className="h-16 w-auto" />
-              </div>
-              <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/lHvrAWgGIwIttVJL.webp" alt="TSMC" className="h-16 w-auto" />
-              </div>
-              <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/DHvviZixJnqOQakV.svg" alt="Intel" className="h-16 w-auto" />
-              </div>
-              <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/caoSOWjLZeDYsdut.webp" alt="IBM" className="h-16 w-auto" />
-              </div>
-              <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/cZVoCTyUDUnwjlcD.png" alt="ASML" className="h-16 w-auto" />
-              </div>
-            </div>
+
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
