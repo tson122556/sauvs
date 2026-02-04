@@ -46,7 +46,7 @@ export default function Home() {
             animate={{ opacity: 1, x: 0 }}
             className="flex items-center gap-2"
           >
-            <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/HkYABfbCUJbFZIwP.png" alt="Jizixing" className="h-10 w-auto" />
+            <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/HVEtZLzFMrtzAQbi.png" alt="Jizixing" className="h-10 w-auto" />
           </motion.div>
 
           <motion.div

@@ -61,10 +61,7 @@ export default function Contact() {
             className="flex items-center gap-2 cursor-pointer"
             onClick={() => setLocation("/")}
           >
-            <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">极</span>
-            </div>
-            <span className="text-lg font-bold text-white">极紫星</span>
+            <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/HVEtZLzFMrtzAQbi.png" alt="Jizixing" className="h-10 w-auto" />
           </div>
 
           <div className="hidden md:flex items-center gap-8">
