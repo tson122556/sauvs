@@ -447,6 +447,50 @@ export default function About() {
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/ocHRtQqRqBusZpQb.png" alt="麻省理工学院" className="h-16 w-auto" />
                 </div>
               </div>
+
+              {/* Sixth Row */}
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mt-6">
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/FbIBIASJDDwOjZdb.png" alt="北京大学" className="h-16 w-auto" />
+                </div>
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/rsaQvxvsSwwGxBOE.png" alt="复旦大学" className="h-16 w-auto" />
+                </div>
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/SlmERcDRcItGNNjx.png" alt="南京大学" className="h-16 w-auto" />
+                </div>
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/jadDqWhtBoxAXAvP.svg" alt="浙江大学" className="h-16 w-auto" />
+                </div>
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/YeIiHvfBGGRiPwZO.png" alt="中国科学技术大学" className="h-16 w-auto" />
+                </div>
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/IQHKmJqCeeTxcGPb.png" alt="哈尔滨工业大学" className="h-16 w-auto" />
+                </div>
+              </div>
+
+              {/* Seventh Row */}
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mt-6">
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/HffQiHOQqmqrIMNJ.png" alt="上海交通大学" className="h-16 w-auto" />
+                </div>
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/UohzNHucYHXIbIVK.png" alt="西安交通大学" className="h-16 w-auto" />
+                </div>
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/LegKpTgvKOdhDmNK.png" alt="天津大学" className="h-16 w-auto" />
+                </div>
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/QutnuHkFhDIqDaBU.svg" alt="浙江大学" className="h-16 w-auto" />
+                </div>
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/FcCWcofvRmQzoFnm.svg" alt="中国科学院" className="h-16 w-auto" />
+                </div>
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/lycimjpCbFokWvcp.png" alt="哈尔滨工业大学" className="h-16 w-auto" />
+                </div>
+              </div>
             </div>
 
             <motion.div
