@@ -226,9 +226,7 @@ export default function Home() {
                   backgroundPosition: 'center'
                 }} />
                 <div className="relative z-10">
-                  <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-lg mb-4 group-hover:scale-110 transition">
-                    <Cpu className="w-6 h-6 text-white" />
-                  </div>
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/lhdlfECBymEambQd.png" alt="AI应用" className="w-16 h-16 mb-4 group-hover:scale-110 transition" style={{backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}} />
                   <h3 className="text-xl font-bold text-white mb-3">人工智能应用</h3>
                   <p className="text-gray-400">
                     专业的AI应用软件开发，提供智能化解决方案，赋能企业数字化转型。
@@ -247,9 +245,7 @@ export default function Home() {
                   backgroundPosition: 'center'
                 }} />
                 <div className="relative z-10">
-                  <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-lg mb-4 group-hover:scale-110 transition">
-                    <Zap className="w-6 h-6 text-white" />
-                  </div>
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/lhdlfECBymEambQd.png" alt="智能机器人" className="w-16 h-16 mb-4 group-hover:scale-110 transition" style={{backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}} />
                   <h3 className="text-xl font-bold text-white mb-3">智能机器人</h3>
                   <p className="text-gray-400">
                     自主研发和销售智能机器人，提供工业和服务机器人解决方案。
@@ -268,9 +264,7 @@ export default function Home() {
                   backgroundPosition: 'center'
                 }} />
                 <div className="relative z-10">
-                  <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-500 rounded-lg mb-4 group-hover:scale-110 transition">
-                    <Network className="w-6 h-6 text-white" />
-                  </div>
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/lhdlfECBymEambQd.png" alt="物联网技术" className="w-16 h-16 mb-4 group-hover:scale-110 transition" style={{backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}} />
                   <h3 className="text-xl font-bold text-white mb-3">物联网技术</h3>
                   <p className="text-gray-400">
                     提供物联网技术服务和研发，实现设备互联和智能控制。
@@ -289,9 +283,7 @@ export default function Home() {
                   backgroundPosition: 'center'
                 }} />
                 <div className="relative z-10">
-                  <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg mb-4 group-hover:scale-110 transition">
-                    <Zap className="w-6 h-6 text-white" />
-                  </div>
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/lhdlfECBymEambQd.png" alt="时空同步飞行器" className="w-16 h-16 mb-4 group-hover:scale-110 transition" style={{backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}} />
                   <h3 className="text-xl font-bold text-white mb-3">时空同步飞行器</h3>
                   <p className="text-gray-400">
                     前沿的时空同步飞行技术研发与应用，提供创新的飞行解决方案。

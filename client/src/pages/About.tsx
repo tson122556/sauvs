@@ -389,7 +389,7 @@ export default function About() {
               </div>
 
               {/* Third Row */}
-              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 items-center justify-center mt-6">
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mt-6">
                 <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/paluIHNcpiCRrKVy.png" alt="DeepSeek" className="h-16 w-auto" />
                 </div>
@@ -404,6 +404,12 @@ export default function About() {
                 </div>
                 <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/jQamhtrkiLjgucvQ.png" alt="BYD" className="h-16 w-auto" />
+                </div>
+                <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/vLvZfeAPVAXinGkF.png" alt="好设计" className="h-16 w-auto" />
+                </div>
+                <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/FaDsfepYmWleIWxI.png" alt="科创中国" className="h-16 w-auto" />
                 </div>
               </div>
             </div>
