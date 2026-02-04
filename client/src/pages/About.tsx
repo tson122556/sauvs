@@ -61,7 +61,13 @@ export default function About() {
             className="flex items-center gap-3 cursor-pointer"
             onClick={() => setLocation("/")}
           >
-            <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/HVEtZLzFMrtzAQbi.png" alt="Jizixing" className="h-12 w-auto" />
+            <motion.img 
+              src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/HVEtZLzFMrtzAQbi.png" 
+              alt="Jizixing" 
+              className="h-16 w-auto" 
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            />
             <span className="text-lg font-bold text-white">极紫星</span>
           </motion.div>
 

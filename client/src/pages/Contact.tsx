@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -57,12 +58,18 @@ export default function Contact() {
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 backdrop-blur-md bg-slate-950/80 border-b border-purple-500/20">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div
+          <motion.div
             className="flex items-center gap-2 cursor-pointer"
             onClick={() => setLocation("/")}
           >
-            <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/HVEtZLzFMrtzAQbi.png" alt="Jizixing" className="h-10 w-auto" />
-          </div>
+            <motion.img 
+              src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/HVEtZLzFMrtzAQbi.png" 
+              alt="Jizixing" 
+              className="h-16 w-auto" 
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </motion.div>
 
           <div className="hidden md:flex items-center gap-8">
             <a href="/" className="text-gray-300 hover:text-white transition">

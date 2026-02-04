@@ -46,7 +46,13 @@ export default function Home() {
             animate={{ opacity: 1, x: 0 }}
             className="flex items-center gap-2"
           >
-            <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/HVEtZLzFMrtzAQbi.png" alt="Jizixing" className="h-10 w-auto" />
+            <motion.img 
+              src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/HVEtZLzFMrtzAQbi.png" 
+              alt="Jizixing" 
+              className="h-16 w-auto" 
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            />
           </motion.div>
 
           <motion.div
