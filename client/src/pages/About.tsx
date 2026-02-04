@@ -421,6 +421,22 @@ export default function About() {
                 <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/NoWmIdgPjiCuiszH.png" alt="新 Logo" className="h-16 w-auto" />
                 </div>
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/whgQezFxaTRPtMVQ.png" alt="中国电信" className="h-16 w-auto" />
+                </div>
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/pduUmnIayXBaRucN.png" alt="中国光华科技基金会" className="h-16 w-auto" />
+                </div>
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/BYQYwyFQgnIlMynj.png" alt="学联" className="h-16 w-auto" />
+                </div>
+              </div>
+
+              {/* Fifth Row */}
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mt-6">
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/OYahgRPyOzCRfQjU.png" alt="团会" className="h-16 w-auto" />
+                </div>
               </div>
             </div>
 
