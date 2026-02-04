@@ -458,6 +458,11 @@ export default function Home() {
                     技术支持
                   </a>
                 </li>
+                <li>
+                  <a href="#" className="text-gray-400 hover:text-white transition">
+                    金融科技
+                  </a>
+                </li>
               </ul>
             </div>
 
