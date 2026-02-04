@@ -67,7 +67,7 @@ export default function Home() {
             <a href="#services" className="text-gray-300 hover:text-white transition">
               技术服务
             </a>
-            <a href="#about" className="text-gray-300 hover:text-white transition">
+            <a href="/about" className="text-gray-300 hover:text-white transition">
               关于我们
             </a>
           </motion.div>
