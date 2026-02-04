@@ -366,7 +366,7 @@ export default function About() {
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/vdIfFIxMkZeYECcU.jpg" alt="Meta" className="h-16 w-auto" />
                 </div>
                 <div className="flex items-center justify-center h-24 rounded-lg transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/InAcQhVzYfiEppjO.png" alt="Boston Dynamics" className="h-24 w-auto" />
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/HbiZFhpLvHjJxlTC.png" alt="Boston Dynamics" className="h-24 w-auto" />
                 </div>
               </div>
 
