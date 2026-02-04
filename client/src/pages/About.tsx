@@ -229,6 +229,13 @@ export default function About() {
                       <p className="text-gray-400 text-sm">完善的质量管理体系</p>
                     </div>
                   </div>
+                  <div className="flex gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+                    <div>
+                      <p className="text-white font-semibold">时空同步飞行器</p>
+                      <p className="text-gray-400 text-sm">前沿的时空同步飞行技术研发与应用</p>
+                    </div>
+                  </div>
                 </div>
               </Card>
             </motion.div>
