@@ -350,22 +350,22 @@ export default function About() {
             <div className="mb-12">
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mb-8">
                 {/* Partner Logos */}
-                <div className="flex items-center justify-center h-20 rounded-lg transition">
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/eaJsCEVwYATkRPfo.jpg" alt="Google" className="h-16 w-auto" />
                 </div>
-                <div className="flex items-center justify-center h-20 rounded-lg transition">
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/wrqNyZUhOkIFdGRP.png" alt="Huawei" className="h-16 w-auto" />
                 </div>
-                <div className="flex items-center justify-center h-20 rounded-lg transition">
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/rZjYjnVugZVdMdMm.jpg" alt="NVIDIA" className="h-16 w-auto" />
                 </div>
-                <div className="flex items-center justify-center h-20 rounded-lg transition">
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/paQBRtEPVVDsKaUG.jpg" alt="Tesla" className="h-16 w-auto" />
                 </div>
-                <div className="flex items-center justify-center h-20 rounded-lg transition">
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/vdIfFIxMkZeYECcU.jpg" alt="Meta" className="h-16 w-auto" />
                 </div>
-                <div className="flex items-center justify-center h-24 rounded-lg transition">
+                <div className="flex items-center justify-center h-24 rounded-lg hover:bg-slate-700/30 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/hDujRGvBsJLoeiqd.png" alt="Boston Dynamics" className="h-24 w-auto" />
                 </div>
               </div>
