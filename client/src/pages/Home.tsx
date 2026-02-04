@@ -1,14 +1,15 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, Zap, Cpu, Network } from "lucide-react";
+import { ArrowRight, Zap, Cpu, Network, Play } from "lucide-react";
 import { useLocation } from "wouter";
 import { useAuth } from "@/_core/hooks/useAuth";
+import { useState } from "react";
 
 /**
  * 设计哲学：科技未来主义
  * - 深紫色 + 科技蓝配色
- * - 星空背景、流光线条、几何图形
+ * - 视频动态背景、流光线条、几何图形
  * - 平滑滚动动画、悬停效果
  * - 非对称布局，避免中心对齐
  */
@@ -19,6 +20,7 @@ export default function Home() {
   let { user, loading, error, isAuthenticated, logout } = useAuth();
 
   const [, setLocation] = useLocation();
+  const [isVideoPlaying, setIsVideoPlaying] = useState(true);
 
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
@@ -85,12 +87,28 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Hero Section */}
+      {/* Hero Section with Video Background */}
       <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-        {/* Background gradient and pattern */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-cyan-900/20" />
-        <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
+        {/* Video Background */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{
+            filter: "brightness(0.6) contrast(1.1)",
+          }}
+        >
+          <source
+            src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/OkLhbZTfqRdgJMqz.mp4"
+            type="video/mp4"
+          />
+        </video>
+
+        {/* Overlay gradient for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/70 via-slate-950/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-950/50" />
 
         {/* Hero content */}
         <div className="container mx-auto px-4 relative z-10">
@@ -114,7 +132,7 @@ export default function Home() {
             </motion.h1>
 
             <motion.p
-              className="text-xl text-gray-300 mb-8 leading-relaxed"
+              className="text-xl text-gray-200 mb-8 leading-relaxed"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.8 }}
@@ -130,14 +148,14 @@ export default function Home() {
             >
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white"
+                className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white shadow-lg shadow-purple-500/50"
               >
-                了解更多 <ArrowRight className="ml-2 w-4 h-4" />
+                了解更多<ArrowRight className="ml-2 w-4 h-4" />
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="border-purple-500/50 text-white hover:bg-purple-500/10"
+                className="border-purple-400/80 text-white hover:bg-purple-500/20 bg-slate-900/50"
               >
                 获取方案
               </Button>
@@ -145,19 +163,37 @@ export default function Home() {
           </motion.div>
         </div>
 
-        {/* Hero image placeholder */}
-        <motion.div
-          className="absolute right-0 top-1/2 -translate-y-1/2 w-1/2 h-full opacity-30 md:opacity-50"
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
-        >
-          <img
-            src="https://private-us-east-1.manuscdn.com/sessionFile/fhgIRoGEBsYWRa81s985hf/sandbox/nmWmzSTysKGXQI7Vji7b1n-img-1_1770183344000_na1fn_aGVyby1haS10ZWNo.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvZmhnSVJvR0VCc1lXUmE4MXM5ODVoZi9zYW5kYm94L25tV216U1R5c0tHWFFJN1ZqaTdiMW4taW1nLTFfMTc3MDE4MzM0NDAwMF9uYTFmbl9hR1Z5YnkxaGFTMTBaV05vLnBuZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSx3XzE5MjAsaF8xOTIwL2Zvcm1hdCx3ZWJwL3F1YWxpdHkscV84MCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=gUcPXqnlyynH5LdFBGIT7rAUF3dt3vBv34PqaTDfqYXz3N8mK46ws7rZtKbpAEP9PBsyHYC6u91ESQVKi0PZ46z7gatFDB~1mCUVsJud0Hw8wuGC7nvwaD2UZHhn-Vo-PVr~8nDxYwPndjXtn~sW0j-fLOvCXuNEdTaL8lIioXGNjdqtCwjmSghxhvemQH1ii6VOdOV9TUgtojQxeatw26Ux-6wqCzt~rintVDGe~WR0iRad-iPXAr9oxP1U4PxVU~5wn3VEBCN-WL5bdWMcxhPZDYbHPRlbqZoh5COI8nS22FcT~Ow5ubYvokfq3VgO4p6Ng8zY5~lkrTHfZL29Jg__"
-            alt="AI Technology"
-            className="w-full h-full object-cover"
+        {/* Floating particles effect */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <motion.div
+            className="absolute w-2 h-2 bg-purple-400 rounded-full opacity-60"
+            animate={{
+              y: [0, -100, 0],
+              x: [0, 50, 0],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              delay: 0,
+            }}
+            style={{ top: "20%", left: "10%" }}
           />
-        </motion.div>
+          <motion.div
+            className="absolute w-2 h-2 bg-cyan-400 rounded-full opacity-60"
+            animate={{
+              y: [0, 100, 0],
+              x: [0, -50, 0],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              delay: 1,
+            }}
+            style={{ bottom: "20%", right: "10%" }}
+          />
+        </div>
       </section>
 
       {/* Core Services Section */}
@@ -269,7 +305,7 @@ export default function Home() {
             ].map((item, idx) => (
               <motion.div key={idx} variants={fadeInUp}>
                 <Card className="bg-slate-800/50 border-slate-700/50 p-6 h-full">
-                  <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
+                  <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
                   <p className="text-gray-400">{item.description}</p>
                 </Card>
               </motion.div>
@@ -279,24 +315,26 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 relative">
-        <div className="container mx-auto px-4">
+      <section id="services" className="py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-900/20 via-transparent to-cyan-900/20" />
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
-            className="bg-gradient-to-r from-purple-900/40 to-cyan-900/40 border border-purple-500/30 rounded-2xl p-12 text-center"
+            className="text-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               准备好开启智慧未来了吗？
             </h2>
-            <p className="text-gray-300 mb-8 text-lg">
-              联系我们的专业团队，获取定制化的解决方案。
+            <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
+              联系我们的专业团队，获取定制化的解决方案
             </p>
             <Button
+              onClick={() => setLocation("/contact")}
               size="lg"
-              className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white"
+              className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white shadow-lg shadow-purple-500/50"
             >
               立即咨询 <ArrowRight className="ml-2 w-4 h-4" />
             </Button>
@@ -305,40 +343,75 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-purple-500/20 py-12 bg-slate-950/50">
+      <footer className="bg-slate-950/80 border-t border-slate-800 py-12 relative z-10">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
-              <h4 className="text-white font-bold mb-4">关于我们</h4>
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">极</span>
+                </div>
+                <span className="text-lg font-bold text-white">极紫星</span>
+              </div>
               <p className="text-gray-400 text-sm">
-                西安极紫星智慧科技有限公司，专注于AI、机器人和物联网技术。
+                专注于人工智能、智能机器人和物联网技术创新
               </p>
             </div>
+
             <div>
               <h4 className="text-white font-bold mb-4">产品</h4>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li><a href="#" className="hover:text-white transition">AI应用软件</a></li>
-                <li><a href="#" className="hover:text-white transition">智能机器人</a></li>
-                <li><a href="#" className="hover:text-white transition">物联网解决方案</a></li>
+              <ul className="space-y-2">
+                <li>
+                  <a href="#" className="text-gray-400 hover:text-white transition">
+                    AI应用软件
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-400 hover:text-white transition">
+                    智能机器人
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-400 hover:text-white transition">
+                    物联网解决方案
+                  </a>
+                </li>
               </ul>
             </div>
+
             <div>
               <h4 className="text-white font-bold mb-4">服务</h4>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li><a href="#" className="hover:text-white transition">技术咨询</a></li>
-                <li><a href="#" className="hover:text-white transition">系统集成</a></li>
-                <li><a href="#" className="hover:text-white transition">技术支持</a></li>
+              <ul className="space-y-2">
+                <li>
+                  <a href="#" className="text-gray-400 hover:text-white transition">
+                    技术咨询
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-400 hover:text-white transition">
+                    系统集成
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-400 hover:text-white transition">
+                    技术支持
+                  </a>
+                </li>
               </ul>
             </div>
+
             <div>
-              <h4 className="text-white font-bold mb-4">联系方式</h4>
-              <p className="text-gray-400 text-sm">
-                地址：陕西省西安市雁塔区二环南路100号金叶现代之窗
-              </p>
+              <h4 className="text-white font-bold mb-4">联系</h4>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li>邮箱：info@jizixing.com</li>
+                <li>电话：+86 (29) XXXX-XXXX</li>
+                <li>地址：陕西省西安市雁塔区二环南路</li>
+              </ul>
             </div>
           </div>
-          <div className="border-t border-purple-500/20 pt-8 text-center text-gray-400 text-sm">
-            <p>&copy; 2025 西安极紫星智慧科技有限公司. 保留所有权利。</p>
+
+          <div className="border-t border-slate-800 pt-8 text-center text-gray-500 text-sm">
+            <p>&copy; 2025 西安极紫星智慧科技有限公司. All rights reserved.</p>
           </div>
         </div>
       </footer>
