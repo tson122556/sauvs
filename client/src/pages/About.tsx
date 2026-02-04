@@ -334,9 +334,86 @@ export default function About() {
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               合作机会
             </h2>
-            <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
+            <p className="text-gray-400 text-lg mb-12 max-w-2xl mx-auto">
               我们期待与全球合作伙伴携手，共同推动智慧科技的发展和应用
             </p>
+
+            {/* Partners Logo Grid */}
+            <div className="mb-12">
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mb-8">
+                {/* Partner Logos */}
+                <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
+                  <span className="text-sm font-semibold text-gray-300">Google</span>
+                </div>
+                <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
+                  <span className="text-sm font-semibold text-gray-300">华为</span>
+                </div>
+                <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
+                  <span className="text-sm font-semibold text-gray-300">NVIDIA</span>
+                </div>
+                <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
+                  <span className="text-sm font-semibold text-gray-300">Tesla</span>
+                </div>
+                <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
+                  <span className="text-sm font-semibold text-gray-300">Meta</span>
+                </div>
+                <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
+                  <span className="text-sm font-semibold text-gray-300">Boston Dynamics</span>
+                </div>
+              </div>
+
+              {/* Center Logo - Jizixing */}
+              <div className="flex justify-center mb-8">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-lg blur-lg opacity-50"></div>
+                  <div className="relative bg-slate-900 p-4 rounded-lg border border-purple-500/50">
+                    <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/XGjgOhbOGgQOvSam.png" alt="Jizixing" className="h-32 w-auto" />
+                  </div>
+                </div>
+              </div>
+
+              {/* More Partner Logos */}
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center">
+                <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
+                  <span className="text-sm font-semibold text-gray-300">阿里</span>
+                </div>
+                <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
+                  <span className="text-sm font-semibold text-gray-300">百度</span>
+                </div>
+                <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
+                  <span className="text-sm font-semibold text-gray-300">小米</span>
+                </div>
+                <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
+                  <span className="text-sm font-semibold text-gray-300">京东</span>
+                </div>
+                <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
+                  <span className="text-sm font-semibold text-gray-300">腾讯</span>
+                </div>
+                <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
+                  <span className="text-sm font-semibold text-gray-300">大疆</span>
+                </div>
+              </div>
+
+              {/* Third Row */}
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 items-center justify-center mt-6">
+                <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
+                  <span className="text-sm font-semibold text-gray-300">DeepSeek</span>
+                </div>
+                <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
+                  <span className="text-sm font-semibold text-gray-300">宇树</span>
+                </div>
+                <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
+                  <span className="text-sm font-semibold text-gray-300">摩尔</span>
+                </div>
+                <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
+                  <span className="text-sm font-semibold text-gray-300">宁德</span>
+                </div>
+                <div className="flex items-center justify-center h-20 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition">
+                  <span className="text-sm font-semibold text-gray-300">比亚迪</span>
+                </div>
+              </div>
+            </div>
+
             <Button
               onClick={() => setLocation("/contact")}
               size="lg"
