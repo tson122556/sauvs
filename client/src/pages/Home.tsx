@@ -221,40 +221,64 @@ export default function Home() {
           >
             {/* AI Software */}
             <motion.div variants={fadeInUp}>
-              <Card className="bg-gradient-to-br from-purple-900/40 to-purple-900/20 border-purple-500/30 hover:border-purple-500/60 transition p-8 h-full group cursor-pointer">
-                <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-lg mb-4 group-hover:scale-110 transition">
-                  <Cpu className="w-6 h-6 text-white" />
+              <Card className="bg-gradient-to-br from-purple-900/40 to-purple-900/20 border-purple-500/30 hover:border-purple-500/60 transition p-8 h-full group cursor-pointer relative overflow-hidden">
+                {/* Background Image */}
+                <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition duration-300" style={{
+                  backgroundImage: 'url(https://private-us-east-1.manuscdn.com/sessionFile/fhgIRoGEBsYWRa81s985hf/sandbox/UtQ5v7fS4XbOELdZSlIP1Q-img-1_1770192013000_na1fn_YWktYXBwLWJn.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80)',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center'
+                }} />
+                <div className="relative z-10">
+                  <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-lg mb-4 group-hover:scale-110 transition">
+                    <Cpu className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-3">人工智能应用</h3>
+                  <p className="text-gray-400">
+                    专业的AI应用软件开发，提供智能化解决方案，赋能企业数字化转型。
+                  </p>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">人工智能应用</h3>
-                <p className="text-gray-400">
-                  专业的AI应用软件开发，提供智能化解决方案，赋能企业数字化转型。
-                </p>
               </Card>
             </motion.div>
 
             {/* Smart Robots */}
             <motion.div variants={fadeInUp}>
-              <Card className="bg-gradient-to-br from-cyan-900/40 to-cyan-900/20 border-cyan-500/30 hover:border-cyan-500/60 transition p-8 h-full group cursor-pointer">
-                <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-lg mb-4 group-hover:scale-110 transition">
-                  <Zap className="w-6 h-6 text-white" />
+              <Card className="bg-gradient-to-br from-cyan-900/40 to-cyan-900/20 border-cyan-500/30 hover:border-cyan-500/60 transition p-8 h-full group cursor-pointer relative overflow-hidden">
+                {/* Background Image */}
+                <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition duration-300" style={{
+                  backgroundImage: 'url(https://private-us-east-1.manuscdn.com/sessionFile/fhgIRoGEBsYWRa81s985hf/sandbox/UtQ5v7fS4XbOELdZSlIP1Q-img-2_1770192014000_na1fn_cm9ib3QtYmc.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80)',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center'
+                }} />
+                <div className="relative z-10">
+                  <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-lg mb-4 group-hover:scale-110 transition">
+                    <Zap className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-3">智能机器人</h3>
+                  <p className="text-gray-400">
+                    自主研发和销售智能机器人，提供工业和服务机器人解决方案。
+                  </p>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">智能机器人</h3>
-                <p className="text-gray-400">
-                  自主研发和销售智能机器人，提供工业和服务机器人解决方案。
-                </p>
               </Card>
             </motion.div>
 
             {/* IoT Solutions */}
             <motion.div variants={fadeInUp}>
-              <Card className="bg-gradient-to-br from-pink-900/40 to-pink-900/20 border-pink-500/30 hover:border-pink-500/60 transition p-8 h-full group cursor-pointer">
-                <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-500 rounded-lg mb-4 group-hover:scale-110 transition">
-                  <Network className="w-6 h-6 text-white" />
+              <Card className="bg-gradient-to-br from-pink-900/40 to-pink-900/20 border-pink-500/30 hover:border-pink-500/60 transition p-8 h-full group cursor-pointer relative overflow-hidden">
+                {/* Background Image */}
+                <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition duration-300" style={{
+                  backgroundImage: 'url(https://private-us-east-1.manuscdn.com/sessionFile/fhgIRoGEBsYWRa81s985hf/sandbox/UtQ5v7fS4XbOELdZSlIP1Q-img-3_1770192011000_na1fn_aW90LWJn.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80)',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center'
+                }} />
+                <div className="relative z-10">
+                  <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-500 rounded-lg mb-4 group-hover:scale-110 transition">
+                    <Network className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-3">物联网技术</h3>
+                  <p className="text-gray-400">
+                    提供物联网技术服务和研发，实现设备互联和智能控制。
+                  </p>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">物联网技术</h3>
-                <p className="text-gray-400">
-                  提供物联网技术服务和研发，实现设备互联和智能控制。
-                </p>
               </Card>
             </motion.div>
           </motion.div>
@@ -289,24 +313,36 @@ export default function Home() {
               {
                 title: "技术领先",
                 description: "拥有专业的研发团队，掌握最前沿的AI和物联网技术。",
+                bg: "https://private-us-east-1.manuscdn.com/sessionFile/fhgIRoGEBsYWRa81s985hf/sandbox/UtQ5v7fS4XbOELdZSlIP1Q-img-4_1770192016000_na1fn_dGVjaC1sZWFkZXJzaGlwLWJn.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80",
               },
               {
                 title: "方案定制",
                 description: "根据客户需求提供个性化的解决方案和服务。",
+                bg: "https://private-us-east-1.manuscdn.com/sessionFile/fhgIRoGEBsYWRa81s985hf/sandbox/UtQ5v7fS4XbOELdZSlIP1Q-img-5_1770192014000_na1fn_Y3VzdG9tLXNvbHV0aW9uLWJn.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80",
               },
               {
                 title: "全方位支持",
                 description: "提供从咨询、开发到维护的全生命周期技术支持。",
+                bg: "https://private-us-east-1.manuscdn.com/sessionFile/fhgIRoGEBsYWRa81s985hf/sandbox/UtQ5v7fS4XbOELdZSlIP1Q-img-4_1770192016000_na1fn_dGVjaC1sZWFkZXJzaGlwLWJn.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80",
               },
               {
                 title: "成熟体系",
                 description: "建立了完善的质量管理和项目管理体系。",
+                bg: "https://private-us-east-1.manuscdn.com/sessionFile/fhgIRoGEBsYWRa81s985hf/sandbox/UtQ5v7fS4XbOELdZSlIP1Q-img-5_1770192014000_na1fn_Y3VzdG9tLXNvbHV0aW9uLWJn.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80",
               },
             ].map((item, idx) => (
               <motion.div key={idx} variants={fadeInUp}>
-                <Card className="bg-slate-800/50 border-slate-700/50 p-6 h-full">
-                  <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
-                  <p className="text-gray-400">{item.description}</p>
+                <Card className="bg-slate-800/50 border-slate-700/50 p-6 h-full group relative overflow-hidden">
+                  {/* Background Image */}
+                  <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition duration-300" style={{
+                    backgroundImage: `url(${item.bg})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  }} />
+                  <div className="relative z-10">
+                    <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
+                    <p className="text-gray-400">{item.description}</p>
+                  </div>
                 </Card>
               </motion.div>
             ))}
