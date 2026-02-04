@@ -62,7 +62,7 @@ export default function About() {
             onClick={() => setLocation("/")}
           >
             <motion.img 
-              src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/HVEtZLzFMrtzAQbi.png" 
+              src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/uAJQYgErxzlvdMug.png" 
               alt="Jizixing" 
               className="h-16 w-auto" 
               animate={{ y: [0, -8, 0] }}
