@@ -412,6 +412,40 @@ export default function About() {
               </div>
             </div>
 
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="flex justify-center mt-12"
+            >
+              <Button
+                onClick={() => setLocation("/contact")}
+                size="lg"
+                className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white shadow-lg shadow-purple-500/50"
+              >
+                成为合作伙伴 <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 bg-gradient-to-r from-purple-900/20 to-cyan-900/20 border-t border-purple-500/20 relative z-10">
+        <div className="container mx-auto px-4 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              准备好与我们合作了吗？
+            </h2>
+            <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
+              联系我们的团队，了解如何将极致的东方智慧解决方案应用到您的业务中
+            </p>
             <Button
               onClick={() => setLocation("/contact")}
               size="lg"
