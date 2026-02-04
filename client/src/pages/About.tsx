@@ -447,7 +447,7 @@ export default function About() {
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/ocHRtQqRqBusZpQb.png" alt="麻省理工学院" className="h-16 w-auto" />
                 </div>
                 <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/MfOARHKMhoFbKtiz.png" alt="哈佛大学" className="h-16 w-auto" />
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/tUivsGlOeJcfNRsk.png" alt="哈佛大学" className="h-16 w-auto" />
                 </div>
                 <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/yRQJFSjiJMiWNswJ.png" alt="中国科学技术大学" className="h-16 w-auto" />
@@ -606,7 +606,7 @@ export default function About() {
               <h4 className="text-white font-bold mb-4">联系</h4>
               <ul className="space-y-2 text-sm text-gray-400">
                 <li>邮箱：info@jizixing.com</li>
-                <li>电话：1519387647</li>
+                <li>电话：(+86)1519387647</li>
                 <li>地址：陕西省西安市雁塔区二环南路</li>
               </ul>
             </div>
