@@ -1,0 +1,171 @@
+import { COOKIE_NAME } from "@shared/const";
+import { getSessionCookieOptions } from "./_core/cookies";
+import { systemRouter } from "./_core/systemRouter";
+import { publicProcedure, router, protectedProcedure } from "./_core/trpc";
+import { z } from "zod";
+import { createInquiry, getInquiries, updateInquiryStatus, createProduct, getProducts, getProductById, updateProduct, createNews, getNews, getNewsById, updateNews } from "./db";
+
+export const appRouter = router({
+  system: systemRouter,
+  auth: router({
+    me: publicProcedure.query(opts => opts.ctx.user),
+    logout: publicProcedure.mutation(({ ctx }) => {
+      const cookieOptions = getSessionCookieOptions(ctx.req);
+      ctx.res.clearCookie(COOKIE_NAME, { ...cookieOptions, maxAge: -1 });
+      return {
+        success: true,
+      } as const;
+    }),
+  }),
+
+  // 咨询相关 API
+  inquiries: router({
+    // 创建咨询（公开）
+    create: publicProcedure
+      .input(z.object({
+        name: z.string().min(1),
+        email: z.string().email(),
+        phone: z.string().optional(),
+        subject: z.string().min(1),
+        message: z.string().min(1),
+      }))
+      .mutation(async ({ input }) => {
+        await createInquiry(input);
+        return { success: true };
+      }),
+    // 获取所有咨询（仅管理员）
+    list: protectedProcedure
+      .input(z.object({
+        limit: z.number().default(50),
+        offset: z.number().default(0),
+      }))
+      .query(async ({ input, ctx }) => {
+        if (ctx.user?.role !== 'admin') {
+          throw new Error('Unauthorized');
+        }
+        return await getInquiries(input.limit, input.offset);
+      }),
+    // 更新咨询状态（仅管理员）
+    updateStatus: protectedProcedure
+      .input(z.object({
+        id: z.number(),
+        status: z.enum(['pending', 'processing', 'completed']),
+      }))
+      .mutation(async ({ input, ctx }) => {
+        if (ctx.user?.role !== 'admin') {
+          throw new Error('Unauthorized');
+        }
+        await updateInquiryStatus(input.id, input.status);
+        return { success: true };
+      }),
+  }),
+
+  // 产品相关 API
+  products: router({
+    // 创建产品（仅管理员）
+    create: protectedProcedure
+      .input(z.object({
+        name: z.string().min(1),
+        category: z.enum(['ai', 'robot', 'iot']),
+        description: z.string().optional(),
+        details: z.string().optional(),
+        imageUrl: z.string().optional(),
+        published: z.number().default(1),
+      }))
+      .mutation(async ({ input, ctx }) => {
+        if (ctx.user?.role !== 'admin') {
+          throw new Error('Unauthorized');
+        }
+        await createProduct(input);
+        return { success: true };
+      }),
+    // 获取所有产品（公开）
+    list: publicProcedure.query(async () => {
+      return await getProducts(true);
+    }),
+    // 获取产品详情（公开）
+    getById: publicProcedure
+      .input(z.object({ id: z.number() }))
+      .query(async ({ input }) => {
+        return await getProductById(input.id);
+      }),
+    // 更新产品（仅管理员）
+    update: protectedProcedure
+      .input(z.object({
+        id: z.number(),
+        name: z.string().optional(),
+        category: z.enum(['ai', 'robot', 'iot']).optional(),
+        description: z.string().optional(),
+        details: z.string().optional(),
+        imageUrl: z.string().optional(),
+        published: z.number().optional(),
+      }))
+      .mutation(async ({ input, ctx }) => {
+        if (ctx.user?.role !== 'admin') {
+          throw new Error('Unauthorized');
+        }
+        const { id, ...data } = input;
+        await updateProduct(id, data);
+        return { success: true };
+      }),
+  }),
+
+  // 新闻相关 API
+  news: router({
+    // 创建新闻（仅管理员）
+    create: protectedProcedure
+      .input(z.object({
+        title: z.string().min(1),
+        content: z.string().min(1),
+        summary: z.string().optional(),
+        imageUrl: z.string().optional(),
+        category: z.string().optional(),
+        published: z.number().default(1),
+        publishedAt: z.date().optional(),
+      }))
+      .mutation(async ({ input, ctx }) => {
+        if (ctx.user?.role !== 'admin') {
+          throw new Error('Unauthorized');
+        }
+        await createNews(input);
+        return { success: true };
+      }),
+    // 获取新闻列表（公开）
+    list: publicProcedure
+      .input(z.object({
+        limit: z.number().default(10),
+        offset: z.number().default(0),
+      }))
+      .query(async ({ input }) => {
+        return await getNews(input.limit, input.offset, true);
+      }),
+    // 获取新闻详情（公开）
+    getById: publicProcedure
+      .input(z.object({ id: z.number() }))
+      .query(async ({ input }) => {
+        return await getNewsById(input.id);
+      }),
+    // 更新新闻（仅管理员）
+    update: protectedProcedure
+      .input(z.object({
+        id: z.number(),
+        title: z.string().optional(),
+        content: z.string().optional(),
+        summary: z.string().optional(),
+        imageUrl: z.string().optional(),
+        category: z.string().optional(),
+        published: z.number().optional(),
+        publishedAt: z.date().optional(),
+      }))
+      .mutation(async ({ input, ctx }) => {
+        if (ctx.user?.role !== 'admin') {
+          throw new Error('Unauthorized');
+        }
+        const { id, ...data } = input;
+        await updateNews(id, data);
+        return { success: true };
+      }),
+  }),
+});
+
+export type AppRouter = typeof appRouter;
