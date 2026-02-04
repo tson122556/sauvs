@@ -367,7 +367,7 @@ export default function About() {
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-lg blur-lg opacity-50"></div>
                   <div className="relative bg-slate-900 p-4 rounded-lg border border-purple-500/50">
-                    <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/uDXJaVGdJKcDvfHt.png" alt="Jizixing" className="h-32 w-auto" />
+                    <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/HkYABfbCUJbFZIwP.png" alt="Jizixing" className="h-32 w-auto" />
                   </div>
                 </div>
               </div>
