@@ -1,25 +1,342 @@
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-import { Streamdown } from 'streamdown';
+import { Card } from "@/components/ui/card";
+import { ArrowRight, Zap, Cpu, Network } from "lucide-react";
+import { useLocation } from "wouter";
 
 /**
- * All content in this page are only for example, replace with your own feature implementation
- * When building pages, remember your instructions in Frontend Best Practices, Design Guide and Common Pitfalls
+ * 设计哲学：科技未来主义
+ * - 深紫色 + 科技蓝配色
+ * - 星空背景、流光线条、几何图形
+ * - 平滑滚动动画、悬停效果
+ * - 非对称布局，避免中心对齐
  */
+
 export default function Home() {
-  // If theme is switchable in App.tsx, we can implement theme toggling like this:
-  // const { theme, toggleTheme } = useTheme();
+  const [, setLocation] = useLocation();
+
+  const fadeInUp = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6 },
+  };
+
+  const staggerContainer = {
+    animate: {
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <main>
-        {/* Example: lucide-react for icons */}
-        <Loader2 className="animate-spin" />
-        Example Page
-        {/* Example: Streamdown for markdown rendering */}
-        <Streamdown>Any **markdown** content</Streamdown>
-        <Button variant="default">Example Button</Button>
-      </main>
+    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+      {/* Navigation */}
+      <nav className="fixed top-0 w-full z-50 backdrop-blur-md bg-slate-950/80 border-b border-purple-500/20">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="flex items-center gap-2"
+          >
+            <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-sm">极</span>
+            </div>
+            <span className="text-lg font-bold text-white">极紫星</span>
+          </motion.div>
+
+          <motion.div
+            className="hidden md:flex items-center gap-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+          >
+            <a href="#products" className="text-gray-300 hover:text-white transition">
+              产品中心
+            </a>
+            <a href="#solutions" className="text-gray-300 hover:text-white transition">
+              解决方案
+            </a>
+            <a href="#services" className="text-gray-300 hover:text-white transition">
+              技术服务
+            </a>
+            <a href="#about" className="text-gray-300 hover:text-white transition">
+              关于我们
+            </a>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3 }}
+          >
+            <Button
+              onClick={() => setLocation("/contact")}
+              className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white"
+            >
+              联系我们
+            </Button>
+          </motion.div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+        {/* Background gradient and pattern */}
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-cyan-900/20" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
+
+        {/* Hero content */}
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            className="max-w-3xl"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.h1
+              className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+            >
+              极紫星科技
+              <br />
+              <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
+                点亮智慧未来
+              </span>
+            </motion.h1>
+
+            <motion.p
+              className="text-xl text-gray-300 mb-8 leading-relaxed"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+            >
+              专注于人工智能应用、智能机器人研发和物联网技术创新。我们致力于为企业提供先进的智慧解决方案，推动数字化转型。
+            </motion.p>
+
+            <motion.div
+              className="flex gap-4 flex-wrap"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+            >
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white"
+              >
+                了解更多 <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-purple-500/50 text-white hover:bg-purple-500/10"
+              >
+                获取方案
+              </Button>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* Hero image placeholder */}
+        <motion.div
+          className="absolute right-0 top-1/2 -translate-y-1/2 w-1/2 h-full opacity-30 md:opacity-50"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
+        >
+          <img
+            src="https://private-us-east-1.manuscdn.com/sessionFile/fhgIRoGEBsYWRa81s985hf/sandbox/nmWmzSTysKGXQI7Vji7b1n-img-1_1770183344000_na1fn_aGVyby1haS10ZWNo.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvZmhnSVJvR0VCc1lXUmE4MXM5ODVoZi9zYW5kYm94L25tV216U1R5c0tHWFFJN1ZqaTdiMW4taW1nLTFfMTc3MDE4MzM0NDAwMF9uYTFmbl9hR1Z5YnkxaGFTMTBaV05vLnBuZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSx3XzE5MjAsaF8xOTIwL2Zvcm1hdCx3ZWJwL3F1YWxpdHkscV84MCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=gUcPXqnlyynH5LdFBGIT7rAUF3dt3vBv34PqaTDfqYXz3N8mK46ws7rZtKbpAEP9PBsyHYC6u91ESQVKi0PZ46z7gatFDB~1mCUVsJud0Hw8wuGC7nvwaD2UZHhn-Vo-PVr~8nDxYwPndjXtn~sW0j-fLOvCXuNEdTaL8lIioXGNjdqtCwjmSghxhvemQH1ii6VOdOV9TUgtojQxeatw26Ux-6wqCzt~rintVDGe~WR0iRad-iPXAr9oxP1U4PxVU~5wn3VEBCN-WL5bdWMcxhPZDYbHPRlbqZoh5COI8nS22FcT~Ow5ubYvokfq3VgO4p6Ng8zY5~lkrTHfZL29Jg__"
+            alt="AI Technology"
+            className="w-full h-full object-cover"
+          />
+        </motion.div>
+      </section>
+
+      {/* Core Services Section */}
+      <section id="products" className="py-20 relative">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">核心业务</h2>
+            <p className="text-gray-400 text-lg">
+              我们提供全方位的智慧科技解决方案
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="grid md:grid-cols-3 gap-8"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+          >
+            {/* AI Software */}
+            <motion.div variants={fadeInUp}>
+              <Card className="bg-gradient-to-br from-purple-900/40 to-purple-900/20 border-purple-500/30 hover:border-purple-500/60 transition p-8 h-full group cursor-pointer">
+                <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-lg mb-4 group-hover:scale-110 transition">
+                  <Cpu className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">人工智能应用</h3>
+                <p className="text-gray-400">
+                  专业的AI应用软件开发，提供智能化解决方案，赋能企业数字化转型。
+                </p>
+              </Card>
+            </motion.div>
+
+            {/* Smart Robots */}
+            <motion.div variants={fadeInUp}>
+              <Card className="bg-gradient-to-br from-cyan-900/40 to-cyan-900/20 border-cyan-500/30 hover:border-cyan-500/60 transition p-8 h-full group cursor-pointer">
+                <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-lg mb-4 group-hover:scale-110 transition">
+                  <Zap className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">智能机器人</h3>
+                <p className="text-gray-400">
+                  自主研发和销售智能机器人，提供工业和服务机器人解决方案。
+                </p>
+              </Card>
+            </motion.div>
+
+            {/* IoT Solutions */}
+            <motion.div variants={fadeInUp}>
+              <Card className="bg-gradient-to-br from-pink-900/40 to-pink-900/20 border-pink-500/30 hover:border-pink-500/60 transition p-8 h-full group cursor-pointer">
+                <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-500 rounded-lg mb-4 group-hover:scale-110 transition">
+                  <Network className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">物联网技术</h3>
+                <p className="text-gray-400">
+                  提供物联网技术服务和研发，实现设备互联和智能控制。
+                </p>
+              </Card>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section id="solutions" className="py-20 relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-900/10 via-transparent to-cyan-900/10" />
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">为什么选择我们</h2>
+            <p className="text-gray-400 text-lg">
+              专业的技术团队和领先的创新能力
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+          >
+            {[
+              {
+                title: "技术领先",
+                description: "拥有专业的研发团队，掌握最前沿的AI和物联网技术。",
+              },
+              {
+                title: "方案定制",
+                description: "根据客户需求提供个性化的解决方案和服务。",
+              },
+              {
+                title: "全方位支持",
+                description: "提供从咨询、开发到维护的全生命周期技术支持。",
+              },
+              {
+                title: "成熟体系",
+                description: "建立了完善的质量管理和项目管理体系。",
+              },
+            ].map((item, idx) => (
+              <motion.div key={idx} variants={fadeInUp}>
+                <Card className="bg-slate-800/50 border-slate-700/50 p-6 h-full">
+                  <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
+                  <p className="text-gray-400">{item.description}</p>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 relative">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="bg-gradient-to-r from-purple-900/40 to-cyan-900/40 border border-purple-500/30 rounded-2xl p-12 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              准备好开启智慧未来了吗？
+            </h2>
+            <p className="text-gray-300 mb-8 text-lg">
+              联系我们的专业团队，获取定制化的解决方案。
+            </p>
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white"
+            >
+              立即咨询 <ArrowRight className="ml-2 w-4 h-4" />
+            </Button>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-purple-500/20 py-12 bg-slate-950/50">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <h4 className="text-white font-bold mb-4">关于我们</h4>
+              <p className="text-gray-400 text-sm">
+                西安极紫星智慧科技有限公司，专注于AI、机器人和物联网技术。
+              </p>
+            </div>
+            <div>
+              <h4 className="text-white font-bold mb-4">产品</h4>
+              <ul className="space-y-2 text-gray-400 text-sm">
+                <li><a href="#" className="hover:text-white transition">AI应用软件</a></li>
+                <li><a href="#" className="hover:text-white transition">智能机器人</a></li>
+                <li><a href="#" className="hover:text-white transition">物联网解决方案</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-white font-bold mb-4">服务</h4>
+              <ul className="space-y-2 text-gray-400 text-sm">
+                <li><a href="#" className="hover:text-white transition">技术咨询</a></li>
+                <li><a href="#" className="hover:text-white transition">系统集成</a></li>
+                <li><a href="#" className="hover:text-white transition">技术支持</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-white font-bold mb-4">联系方式</h4>
+              <p className="text-gray-400 text-sm">
+                地址：陕西省西安市雁塔区二环南路100号金叶现代之窗
+              </p>
+            </div>
+          </div>
+          <div className="border-t border-purple-500/20 pt-8 text-center text-gray-400 text-sm">
+            <p>&copy; 2025 西安极紫星智慧科技有限公司. 保留所有权利。</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
