@@ -495,11 +495,65 @@ export default function AboutEn() {
               <a href="https://www.nju.edu.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
                 <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/SlmERcDRcItGNNjx.png" alt="Nanjing University" className="h-16 w-auto group-hover:scale-110 transition-transform" />
               </a>
-              <a href="https://www.whu.edu.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
-                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/SlmERcDRcItGNNjx.png" alt="Wuhan University" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              <a href="https://www.cam.ac.uk" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/wpqJltNezbnJCHFJ.svg" alt="Cambridge University" className="h-16 w-auto group-hover:scale-110 transition-transform" />
               </a>
-              <a href="https://www.sdu.edu.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
-                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/SlmERcDRcItGNNjx.png" alt="Shandong University" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              <a href="https://www.samsung.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/fEWQWlBMKSloJZVX.gif" alt="Samsung" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              </a>
+            </div>
+
+            {/* Eighth Row */}
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mt-6">
+              <a href="https://www.kingsoft.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/mTOKwDVGSfXusrZz.png" alt="Kingsoft" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              </a>
+              <a href="https://www.tsmc.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/lHvrAWgGIwIttVJL.webp" alt="TSMC" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              </a>
+              <a href="https://www.intel.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/DHvviZixJnqOQakV.svg" alt="Intel" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              </a>
+              <a href="https://www.ibm.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/caoSOWjLZeDYsdut.webp" alt="IBM" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              </a>
+              <a href="https://www.asml.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/EubAdlXGUnXOyzal.png" alt="ASML" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              </a>
+              <a href="https://www.apple.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/mqEjQzJmZqKORmvH.jpg" alt="Apple" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              </a>
+            </div>
+
+            {/* Ninth Row */}
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mt-6">
+              <a href="https://web.mit.edu/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/wpGBkzOqUqPyQAmp.png" alt="MIT" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              </a>
+              <a href="https://www.neu.edu.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/dJRuwOvQTpmcIcEx.png" alt="Northeastern University" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              </a>
+              <a href="https://openai.com/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/REhqcuvRNDVpvfkt.png" alt="OpenAI" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              </a>
+              <a href="https://www.bytedance.com/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/hLdutaNJIjvXTYZd.png" alt="ByteDance" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              </a>
+              <a href="https://www.iflytek.com/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/WtoCCbtnkCNRLTNj.png" alt="iFlytek" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              </a>
+              <a href="https://www.avicuas.com/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/wmfSaDvfmeZuAwfC.png" alt="AVIC UAS" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              </a>
+            </div>
+
+            {/* Tenth Row */}
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mt-6">
+              <a href="https://www.jouav.com/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/vibAZqbJpluzTkgi.svg" alt="JOUAV" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              </a>
+              <a href="https://www.parrot.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/rIgTYTVyfhyRUphq.svg" alt="Parrot" className="h-16 w-auto group-hover:scale-110 transition-transform" />
               </a>
             </div>
           </div>
