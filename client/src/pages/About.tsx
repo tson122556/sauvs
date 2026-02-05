@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Zap, Cpu, Network } from "lucide-react";
 import { useLocation } from "wouter";
 
 export default function About() {
@@ -21,35 +21,6 @@ export default function About() {
     },
   };
 
-  const generalProjects = [
-    "人工智能应用软件开发",
-    "人工智能公共服务平台技术咨询服务",
-    "技术服务、技术开发、技术咨询、技术交流、技术转让、技术推广",
-    "信息系统集成服务",
-    "智能控制系统集成",
-    "智能机器人的研发",
-    "智能机器人销售",
-    "无人机设计",
-    "无人机新型电机研发",
-    "无人机系统集成",
-    "无人机销售",
-    "人工智能硬件销售",
-    "计算机软硬件及辅助设备批发",
-    "计算机软硬件及辅助设备零售",
-    "数据处理和存储支持服务",
-    "物联网技术服务",
-    "物联网技术研发",
-    "储能技术服务",
-    "技术进出口",
-    "机械设备租赁",
-    "企业管理咨询",
-    "信息咨询服务（不含许可类信息咨询服务）",
-  ];
-
-  const licensedProjects = [
-    "互联网信息服务",
-  ];
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
       {/* Navigation */}
@@ -58,16 +29,11 @@ export default function About() {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="flex items-center gap-3 cursor-pointer"
-            onClick={() => setLocation("/")}
+            className="flex items-center gap-2"
           >
-            <motion.img 
-              src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/uAJQYgErxzlvdMug.png" 
-              alt="Jizixing" 
-              className="h-16 w-auto" 
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            />
+            <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-sm">极</span>
+            </div>
             <span className="text-lg font-bold text-white">极紫星</span>
           </motion.div>
 
@@ -77,17 +43,14 @@ export default function About() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            <a href="/#products" className="text-gray-300 hover:text-white transition">
-              产品中心
+            <a href="/" className="text-gray-300 hover:text-white transition">
+              首页
             </a>
-            <a href="/#solutions" className="text-gray-300 hover:text-white transition">
-              解决方案
-            </a>
-            <a href="/#services" className="text-gray-300 hover:text-white transition">
-              技术服务
-            </a>
-            <a href="/about" className="text-white font-semibold">
+            <a href="/about" className="text-white">
               关于我们
+            </a>
+            <a href="/contact" className="text-gray-300 hover:text-white transition">
+              联系我们
             </a>
           </motion.div>
 
@@ -98,7 +61,7 @@ export default function About() {
           >
             <Button
               onClick={() => setLocation("/contact")}
-              className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white"
+              className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700"
             >
               联系我们
             </Button>
@@ -107,249 +70,102 @@ export default function About() {
       </nav>
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-        {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-cyan-900/20" />
-        <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
-
-        {/* Hero content */}
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            className="max-w-3xl"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <motion.h1
-              className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-            >
-              关于
-              <br />
-              <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
-                极紫星科技
-              </span>
-            </motion.h1>
-
-            <motion.p
-              className="text-xl text-gray-300 mb-8 leading-relaxed"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-            >
-              专注于人工智能技术的开发与应用、智能机器人研发、物联网技术创新和时空同步飞行器的设计与研发。致力于为各社会组织、企业和个人提供极致的东方智慧解决方案，推动各社会组织、企业和个人向未来产业数字化转型。
-            </motion.p>
-
-            <motion.div
-              className="flex gap-4 flex-wrap"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-            >
-              <Button
-                onClick={() => setLocation("/contact")}
-                size="lg"
-                className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white shadow-lg shadow-purple-500/50"
-              >
-                联系我们 <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-            </motion.div>
-          </motion.div>
-        </div>
+      <section className="pt-32 pb-20 px-4">
+        <motion.div
+          className="container mx-auto text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent">
+            关于极紫星
+          </h1>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            极紫星智慧科技有限公司致力于人工智能、智能机器人、物联网技术创新和时空同步飞行器的研发和应用
+          </p>
+        </motion.div>
       </section>
 
       {/* Company Info Section */}
-      <section className="py-20 relative">
-        <div className="container mx-auto px-4">
+      <section className="py-20 px-4 bg-slate-900/50">
+        <div className="container mx-auto">
           <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">公司信息</h2>
-            <p className="text-gray-400 text-lg">
-              完整的企业资质和经营范围
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto"
+            className="grid md:grid-cols-2 gap-12 items-center"
             variants={staggerContainer}
             initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
+            animate="animate"
           >
-            {/* Company Details */}
             <motion.div variants={fadeInUp}>
-              <Card className="bg-gradient-to-br from-purple-900/40 to-purple-900/20 border-purple-500/30 p-8 h-full">
-                <h3 className="text-2xl font-bold text-white mb-6">企业资质</h3>
-                <div className="space-y-4">
-                  <div>
-                    <p className="text-gray-400 text-sm">公司名称</p>
-                    <p className="text-white font-semibold">极紫星智慧科技有限公司</p>
-                  </div>
-                  <div>
-                    <p className="text-gray-400 text-sm">成立时间</p>
-                    <p className="text-white font-semibold">2025年5月</p>
-                  </div>
-                  <div>
-                    <p className="text-gray-400 text-sm">注册资本</p>
-                    <p className="text-white font-semibold">X万元</p>
-                  </div>
-                  <div>
-                    <p className="text-gray-400 text-sm">注册地址</p>
-                    <p className="text-white font-semibold">陕西省西安市雁塔区二环南路</p>
-                  </div>
-                </div>
-              </Card>
+              <h2 className="text-4xl font-bold mb-6 text-white">公司简介</h2>
+              <p className="text-gray-300 mb-4 leading-relaxed">
+                极紫星智慧科技有限公司是一家专注于前沿科技研发与应用的创新企业。我们汇聚了来自全球顶尖大学和科技公司的精英团队，致力于推动人工智能、智能机器人、物联网和时空同步飞行器等领域的技术突破。
+              </p>
+              <p className="text-gray-300 mb-6 leading-relaxed">
+                我们的使命是通过技术创新，为各社会组织、企业和个人提供极致的东方智慧解决方案，推动各社会组织、企业和个人向未来产业数字化转型。
+              </p>
+              <Button
+                onClick={() => setLocation("/contact")}
+                className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700"
+              >
+                了解更多 <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
             </motion.div>
 
-            {/* Core Values */}
-            <motion.div variants={fadeInUp}>
-              <Card className="bg-gradient-to-br from-cyan-900/40 to-cyan-900/20 border-cyan-500/30 p-8 h-full">
-                <h3 className="text-2xl font-bold text-white mb-6">核心价值</h3>
-                <div className="space-y-4">
-                  <div className="flex gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
-                    <div>
-                      <p className="text-white font-semibold">技术创新</p>
-                      <p className="text-gray-400 text-sm">掌握最前沿的AI和物联网技术</p>
-                    </div>
-                  </div>
-                  <div className="flex gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
-                    <div>
-                      <p className="text-white font-semibold">客户至上</p>
-                      <p className="text-gray-400 text-sm">提供定制化的解决方案</p>
-                    </div>
-                  </div>
-                  <div className="flex gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
-                    <div>
-                      <p className="text-white font-semibold">质量保证</p>
-                      <p className="text-gray-400 text-sm">完善的质量管理体系</p>
-                    </div>
-                  </div>
-                </div>
+            <motion.div variants={fadeInUp} className="grid grid-cols-2 gap-6">
+              <Card className="bg-slate-800/50 border-purple-500/20 p-6">
+                <Zap className="h-8 w-8 text-purple-400 mb-4" />
+                <h3 className="text-lg font-semibold text-white mb-2">创新驱动</h3>
+                <p className="text-sm text-gray-400">
+                  以技术创新为核心，不断推动行业发展
+                </p>
+              </Card>
+              <Card className="bg-slate-800/50 border-cyan-500/20 p-6">
+                <Cpu className="h-8 w-8 text-cyan-400 mb-4" />
+                <h3 className="text-lg font-semibold text-white mb-2">智能科技</h3>
+                <p className="text-sm text-gray-400">
+                  专注于 AI、机器人、IoT 等前沿领域
+                </p>
+              </Card>
+              <Card className="bg-slate-800/50 border-purple-500/20 p-6">
+                <Network className="h-8 w-8 text-purple-400 mb-4" />
+                <h3 className="text-lg font-semibold text-white mb-2">全球合作</h3>
+                <p className="text-sm text-gray-400">
+                  与全球顶尖机构携手共进
+                </p>
+              </Card>
+              <Card className="bg-slate-800/50 border-cyan-500/20 p-6">
+                <Zap className="h-8 w-8 text-cyan-400 mb-4" />
+                <h3 className="text-lg font-semibold text-white mb-2">卓越成就</h3>
+                <p className="text-sm text-gray-400">
+                  为客户创造极致的价值体验
+                </p>
               </Card>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Business Scope Section */}
-      <section className="py-20 relative">
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-900/10 via-transparent to-cyan-900/10" />
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">经营范围</h2>
-            <p className="text-gray-400 text-lg">
-              完整的业务覆盖和服务能力
-            </p>
-          </motion.div>
-
-          {/* General Projects */}
-          <motion.div
-            className="mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <Card className="bg-slate-800/50 border-slate-700/50 p-8">
-              <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-                <span className="w-3 h-3 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full" />
-                一般项目
-              </h3>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {generalProjects.map((project, idx) => (
-                  <motion.div
-                    key={idx}
-                    className="flex gap-3"
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.05 }}
-                  >
-                    <CheckCircle2 className="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" />
-                    <p className="text-gray-300">{project}</p>
-                  </motion.div>
-                ))}
-              </div>
-              <p className="text-gray-500 text-sm mt-6">
-                （除依法须经批准的项目外，凭营业执照依法自主开展经营活动）
-              </p>
-            </Card>
-          </motion.div>
-
-          {/* Licensed Projects */}
+      {/* Partners Section */}
+      <section className="py-20 px-4">
+        <div className="container mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
           >
-            <Card className="bg-gradient-to-br from-cyan-900/40 to-cyan-900/20 border-cyan-500/30 p-8">
-              <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-                <span className="w-3 h-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full" />
-                许可项目
-              </h3>
-              <div className="space-y-4">
-                {licensedProjects.map((project, idx) => (
-                  <motion.div
-                    key={idx}
-                    className="flex gap-3"
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.05 }}
-                  >
-                    <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
-                    <p className="text-gray-300">{project}</p>
-                  </motion.div>
-                ))}
-              </div>
-              <p className="text-gray-500 text-sm mt-6">
-                （依法须经批准的项目，经相关部门批准后方可开展经营活动，具体经营项目以审批结果为准）
-              </p>
-            </Card>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-900/20 via-transparent to-cyan-900/20" />
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            className="text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              合作机会
+            <h2 className="text-4xl font-bold text-center mb-16 text-white">
+              合作伙伴
             </h2>
-            <p className="text-gray-400 text-lg mb-12 max-w-2xl mx-auto">
-              我们期待与全球合作伙伴携手，共同推动智慧科技的发展和应用
-            </p>
 
-            {/* Partners Logo Grid */}
-            <div className="mb-12">
-              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mb-8">
-                {/* Partner Logos */}
+            {/* International Tech Companies */}
+            <div className="mb-16">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="h-1 w-8 bg-gradient-to-r from-purple-500 to-cyan-500 rounded"></div>
+                <h3 className="text-2xl font-semibold text-white">国际科技企业</h3>
+                <div className="flex-1 h-px bg-slate-700/50"></div>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center">
                 <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/eaJsCEVwYATkRPfo.jpg" alt="Google" className="h-16 w-auto" />
                 </div>
@@ -369,10 +185,15 @@ export default function About() {
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/hDujRGvBsJLoeiqd.png" alt="Boston Dynamics" className="h-16 w-auto" />
                 </div>
               </div>
+            </div>
 
-
-
-              {/* More Partner Logos */}
+            {/* Chinese Tech Companies */}
+            <div className="mb-16">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="h-1 w-8 bg-gradient-to-r from-purple-500 to-cyan-500 rounded"></div>
+                <h3 className="text-2xl font-semibold text-white">中国科技企业</h3>
+                <div className="flex-1 h-px bg-slate-700/50"></div>
+              </div>
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center">
                 <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/DWRtZoVSLRrFtKOi.png" alt="Alibaba" className="h-16 w-auto" />
@@ -393,9 +214,16 @@ export default function About() {
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/oFMjzeGhLYEPeOda.jpg" alt="DJI" className="h-16 w-auto" />
                 </div>
               </div>
+            </div>
 
-              {/* Third Row */}
-              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mt-6">
+            {/* Emerging Tech Companies */}
+            <div className="mb-16">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="h-1 w-8 bg-gradient-to-r from-purple-500 to-cyan-500 rounded"></div>
+                <h3 className="text-2xl font-semibold text-white">新兴科技企业</h3>
+                <div className="flex-1 h-px bg-slate-700/50"></div>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center">
                 <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/paluIHNcpiCRrKVy.png" alt="DeepSeek" className="h-16 w-auto" />
                 </div>
@@ -412,9 +240,16 @@ export default function About() {
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/lwKKJnmYnISHaZcR.png" alt="CITIC Group" className="h-16 w-auto" />
                 </div>
               </div>
+            </div>
 
-              {/* Fourth Row */}
-              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mt-6">
+            {/* Government & Finance Organizations */}
+            <div className="mb-16">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="h-1 w-8 bg-gradient-to-r from-purple-500 to-cyan-500 rounded"></div>
+                <h3 className="text-2xl font-semibold text-white">政府与金融机构</h3>
+                <div className="flex-1 h-px bg-slate-700/50"></div>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center">
                 <div className="flex items-center justify-center h-24 rounded-lg hover:bg-slate-700/30 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/FaDsfepYmWleIWxI.png" alt="科创中国" className="h-24 w-auto" />
                 </div>
@@ -434,9 +269,16 @@ export default function About() {
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/BYQYwyFQgnIlMynj.png" alt="学联" className="h-16 w-auto" />
                 </div>
               </div>
+            </div>
 
-              {/* Fifth Row */}
-              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mt-6">
+            {/* International Universities */}
+            <div className="mb-16">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="h-1 w-8 bg-gradient-to-r from-purple-500 to-cyan-500 rounded"></div>
+                <h3 className="text-2xl font-semibold text-white">国际顶尖高校</h3>
+                <div className="flex-1 h-px bg-slate-700/50"></div>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center">
                 <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/OYahgRPyOzCRfQjU.png" alt="团会" className="h-16 w-auto" />
                 </div>
@@ -452,13 +294,20 @@ export default function About() {
                 <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/tUivsGlOeJcfNRsk.png" alt="哈佛大学" className="h-16 w-auto" />
                 </div>
+              </div>
+            </div>
+
+            {/* Chinese Universities & Research Institutions */}
+            <div className="mb-16">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="h-1 w-8 bg-gradient-to-r from-purple-500 to-cyan-500 rounded"></div>
+                <h3 className="text-2xl font-semibold text-white">国内高校与研究机构</h3>
+                <div className="flex-1 h-px bg-slate-700/50"></div>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center">
                 <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/yRQJFSjiJMiWNswJ.png" alt="中国科学技术大学" className="h-16 w-auto" />
                 </div>
-              </div>
-
-              {/* Sixth Row - Universities & Tech Companies */}
-              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mt-6">
                 <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/ayidXxkWNjqtNIXa.png" alt="WAIC" className="h-16 w-auto" />
                 </div>
@@ -489,176 +338,64 @@ export default function About() {
                 <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/SlmERcDRcItGNNjx.png" alt="南京大学" className="h-16 w-auto" />
                 </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/wpqJltNezbnJCHFJ.svg" alt="剑桥大学" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/jXZgUnwHgWNTvFoR.png" alt="牛津大学" className="h-16 w-auto" />
-                </div>
-              </div>
-
-              {/* Seventh Row - Semiconductor & Tech Giants */}
-              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mt-6">
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/mTOKwDVGSfXusrZz.png" alt="Kingsoft" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/lHvrAWgGIwIttVJL.webp" alt="TSMC" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/DHvviZixJnqOQakV.svg" alt="Intel" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/caoSOWjLZeDYsdut.webp" alt="IBM" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/EubAdlXGUnXOyzal.png" alt="ASML" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/mqEjQzJmZqKORmvH.jpg" alt="Apple" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/fEWQWlBMKSloJZVX.gif" alt="Samsung" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/lwKKJnmYnISHaZcR.png" alt="CITIC Group" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/cPcVjNYIsiOroiEo.png" alt="OpenAI" className="h-16 w-auto" />
-                </div>
               </div>
             </div>
 
-
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex justify-center mt-12"
-            >
-              <Button
-                onClick={() => setLocation("/contact")}
-                size="lg"
-                className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white shadow-lg shadow-purple-500/50"
-              >
-                成为合作伙伴 <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-purple-900/20 to-cyan-900/20 border-t border-purple-500/20 relative z-10">
-        <div className="container mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              准备好与我们合作了吗？
-            </h2>
-            <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
-              联系我们的团队，了解如何将极致的东方智慧解决方案应用到您的业务中
+            <p className="text-center text-gray-400 mt-12">
+              我们期待与全球合作伙伴携手，共同推动智慧科技的发展和应用
             </p>
-            <Button
-              onClick={() => setLocation("/contact")}
-              size="lg"
-              className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white shadow-lg shadow-purple-500/50"
-            >
-              立即联系 <ArrowRight className="ml-2 w-4 h-4" />
-            </Button>
           </motion.div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-slate-950/80 border-t border-slate-800 py-12 relative z-10">
+      <footer className="bg-slate-950 border-t border-slate-800 py-12">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <motion.img 
-                  src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/uAJQYgErxzlvdMug.png" 
-                  alt="Jizixing" 
-                  className="h-12 w-auto" 
-                  animate={{ y: [0, -8, 0] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                />
-              </div>
-              <p className="text-gray-400 text-sm">
-                专注于人工智能、智能机器人、物联网技术创新和时空同步飞行器的研发和应用
-              </p>
-            </div>
-
-            <div>
-              <h4 className="text-white font-bold mb-4">产品</h4>
-              <ul className="space-y-2">
-                <li>
-                  <a href="/#products" className="text-gray-400 hover:text-white transition">
-                    AI应用软件
-                  </a>
-                </li>
-                <li>
-                  <a href="/#products" className="text-gray-400 hover:text-white transition">
-                    智能机器人
-                  </a>
-                </li>
-                <li>
-                  <a href="/#products" className="text-gray-400 hover:text-white transition">
-                    物联网解决方案
-                  </a>
-                </li>
-                <li>
-                  <a href="/#products" className="text-gray-400 hover:text-white transition">
-                    时空同步飞行器
-                  </a>
-                </li>
+              <h4 className="text-white font-bold mb-4">产品中心</h4>
+              <ul className="space-y-2 text-gray-400 text-sm">
+                <li><a href="#" className="hover:text-white transition">人工智能应用</a></li>
+                <li><a href="#" className="hover:text-white transition">智能机器人</a></li>
+                <li><a href="#" className="hover:text-white transition">物联网解决方案</a></li>
+                <li><a href="#" className="hover:text-white transition">时空同步飞行器</a></li>
               </ul>
             </div>
-
             <div>
-              <h4 className="text-white font-bold mb-4">服务</h4>
-              <ul className="space-y-2">
-                <li>
-                  <a href="/#solutions" className="text-gray-400 hover:text-white transition">
-                    技术咨询
-                  </a>
-                </li>
-                <li>
-                  <a href="/#solutions" className="text-gray-400 hover:text-white transition">
-                    系统集成
-                  </a>
-                </li>
-                <li>
-                  <a href="/#solutions" className="text-gray-400 hover:text-white transition">
-                    技术支持
-                  </a>
-                </li>
-                <li>
-                  <a href="/#solutions" className="text-gray-400 hover:text-white transition">
-                    金融科技
-                  </a>
-                </li>
+              <h4 className="text-white font-bold mb-4">解决方案</h4>
+              <ul className="space-y-2 text-gray-400 text-sm">
+                <li><a href="#" className="hover:text-white transition">企业数字化</a></li>
+                <li><a href="#" className="hover:text-white transition">智能制造</a></li>
+                <li><a href="#" className="hover:text-white transition">智慧城市</a></li>
+                <li><a href="#" className="hover:text-white transition">金融科技</a></li>
               </ul>
             </div>
-
             <div>
-              <h4 className="text-white font-bold mb-4">联系</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li>邮箱：satifuxie@gmail.com</li>
-                <li>电话：(+86)1519387647</li>
-                <li>地址：陕西省西安市雁塔区二环南路</li>
+              <h4 className="text-white font-bold mb-4">技术服务</h4>
+              <ul className="space-y-2 text-gray-400 text-sm">
+                <li><a href="#" className="hover:text-white transition">技术咨询</a></li>
+                <li><a href="#" className="hover:text-white transition">系统集成</a></li>
+                <li><a href="#" className="hover:text-white transition">技术支持</a></li>
+                <li><a href="#" className="hover:text-white transition">金融科技</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-white font-bold mb-4">关于我们</h4>
+              <ul className="space-y-2 text-gray-400 text-sm">
+                <li><a href="/about" className="hover:text-white transition">公司简介</a></li>
+                <li><a href="#" className="hover:text-white transition">新闻资讯</a></li>
+                <li><a href="#" className="hover:text-white transition">加入我们</a></li>
+                <li><a href="/contact" className="hover:text-white transition">联系我们</a></li>
               </ul>
             </div>
           </div>
-
-          <div className="border-t border-slate-800 pt-8 text-center text-gray-500 text-sm">
-            <p>&copy; 2025 极紫星智慧科技有限公司. All rights reserved.</p>
+          <div className="border-t border-slate-800 pt-8 flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-xs">极</span>
+              </div>
+              <span className="text-gray-400 text-sm">© 2024 极紫星智慧科技有限公司 版权所有</span>
+            </div>
           </div>
         </div>
       </footer>
