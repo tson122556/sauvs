@@ -17,6 +17,7 @@
 - [x] 创建英文首页（HomeEn.tsx）
 - [x] 创建英文联系页面（ContactEn.tsx）
 - [x] 创建英文关于页面（AboutEn.tsx）
+- [x] 为英文 About 页面添加合作伙伴 Logo 展示
 - [x] 实现 SEO 优化（hreflang 标签）
 - [x] 创建 sitemap.xml 和 robots.txt
 - [x] 添加 SEO 元标签组件
