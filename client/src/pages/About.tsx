@@ -526,6 +526,34 @@ export default function About() {
                 </a>
               </div>
 
+              {/* Ninth Row - 8 logos */}
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6 items-center justify-center mt-6">
+                <a href="https://web.mit.edu/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/wpGBkzOqUqPyQAmp.png" alt="麻省理工学院" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.neu.edu.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/dJRuwOvQTpmcIcEx.png" alt="东北大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://openai.com/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/REhqcuvRNDVpvfkt.png" alt="OpenAI" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.bytedance.com/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/hLdutaNJIjvXTYZd.png" alt="字节跳动" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.iflytek.com/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/WtoCCbtnkCNRLTNj.png" alt="科大讯飞" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.avicuas.com/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/wmfSaDvfmeZuAwfC.png" alt="中航无人机" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.jouav.com/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/vibAZqbJpluzTkgi.svg" alt="纵横股份" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.parrot.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/rIgTYTVyfhyRUphq.svg" alt="派洛特" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+              </div>
+
 
             </div>
 
