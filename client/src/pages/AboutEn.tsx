@@ -502,28 +502,6 @@ export default function AboutEn() {
                 <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/SlmERcDRcItGNNjx.png" alt="Shandong University" className="h-16 w-auto group-hover:scale-110 transition-transform" />
               </a>
             </div>
-
-            {/* Eighth Row - 6 logos */}
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mt-6">
-              <a href="https://www.kingsoft.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
-                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/mTOKwDVGSfXusrZz.png" alt="Kingsoft" className="h-16 w-auto group-hover:scale-110 transition-transform" />
-              </a>
-              <a href="https://www.tsmc.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
-                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/lHvrAWgGIwIttVJL.webp" alt="TSMC" className="h-16 w-auto group-hover:scale-110 transition-transform" />
-              </a>
-              <a href="https://www.smics.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
-                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/IdzFSSiNHuLRifkt.jpg" alt="SMIC" className="h-16 w-auto group-hover:scale-110 transition-transform" />
-              </a>
-              <a href="https://www.intel.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
-                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/DHvviZixJnqOQakV.svg" alt="Intel" className="h-16 w-auto group-hover:scale-110 transition-transform" />
-              </a>
-              <a href="https://www.ibm.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
-                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/caoSOWjLZeDYsdut.webp" alt="IBM" className="h-16 w-auto group-hover:scale-110 transition-transform" />
-              </a>
-              <a href="https://www.asml.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
-                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/EubAdlXGUnXOyzal.png" alt="ASML" className="h-16 w-auto group-hover:scale-110 transition-transform" />
-              </a>
-            </div>
           </div>
         </div>
       </section>
