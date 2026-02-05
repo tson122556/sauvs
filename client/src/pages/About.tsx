@@ -485,7 +485,7 @@ export default function About() {
               {/* Seventh Row - 6 logos */}
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mt-6">
                 <a href="https://www.ustc.edu.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/yRQJFSjiJMiWNswJ.png" alt="中国科学技术大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/MaMykRSfNmKWtLsp.svg" alt="中国科学技术大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
                 </a>
                 <a href="https://www.hit.edu.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/lycimjpCbFokWvcp.png" alt="哈尔滨工业大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
