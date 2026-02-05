@@ -495,8 +495,8 @@ export default function About() {
                 <a href="https://www.cam.ac.uk" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/wpqJltNezbnJCHFJ.svg" alt="剑桥大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
                 </a>
-                <a href="https://www.ox.ac.uk" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/jXZgUnwHgWNTvFoR.png" alt="牛津大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                <a href="https://www.samsung.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/fEWQWlBMKSloJZVX.gif" alt="Samsung" className="h-16 w-auto group-hover:scale-110 transition-transform" />
                 </a>
               </div>
 
