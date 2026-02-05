@@ -350,185 +350,182 @@ export default function About() {
             <div className="mb-12">
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mb-8">
                 {/* Partner Logos */}
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/eaJsCEVwYATkRPfo.jpg" alt="Google" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/wrqNyZUhOkIFdGRP.png" alt="Huawei" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/rZjYjnVugZVdMdMm.jpg" alt="NVIDIA" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/paQBRtEPVVDsKaUG.jpg" alt="Tesla" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/vdIfFIxMkZeYECcU.jpg" alt="Meta" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/hDujRGvBsJLoeiqd.png" alt="Boston Dynamics" className="h-16 w-auto" />
-                </div>
+                <a href="https://www.google.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/eaJsCEVwYATkRPfo.jpg" alt="Google" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.huawei.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/wrqNyZUhOkIFdGRP.png" alt="Huawei" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.nvidia.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/rZjYjnVugZVdMdMm.jpg" alt="NVIDIA" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.tesla.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/paQBRtEPVVDsKaUG.jpg" alt="Tesla" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.meta.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/vdIfFIxMkZeYECcU.jpg" alt="Meta" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.bostondynamics.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/hDujRGvBsJLoeiqd.png" alt="Boston Dynamics" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
               </div>
 
 
 
               {/* More Partner Logos */}
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center">
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/DWRtZoVSLRrFtKOi.png" alt="Alibaba" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/xISTsJJSCDSZSqUV.png" alt="Baidu" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/UtngVcEqsPPIYCZN.png" alt="Xiaomi" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/RVxCRODMBYovFfdR.png" alt="JD" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/zHvKuhnitFEJhDie.png" alt="Tencent" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/oFMjzeGhLYEPeOda.jpg" alt="DJI" className="h-16 w-auto" />
-                </div>
+                <a href="https://www.alibaba.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/DWRtZoVSLRrFtKOi.png" alt="Alibaba" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.baidu.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/xISTsJJSCDSZSqUV.png" alt="Baidu" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.xiaomi.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/UtngVcEqsPPIYCZN.png" alt="Xiaomi" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.jd.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/RVxCRODMBYovFfdR.png" alt="JD" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.tencent.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/zHvKuhnitFEJhDie.png" alt="Tencent" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.dji.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/oFMjzeGhLYEPeOda.jpg" alt="DJI" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
               </div>
 
               {/* Third Row */}
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mt-6">
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/paluIHNcpiCRrKVy.png" alt="DeepSeek" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/tfxzXVIvOpmBrkoL.png" alt="Moore Threads" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/SDlWCGjYdrncvpId.jpg" alt="CATL" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/jQamhtrkiLjgucvQ.png" alt="BYD" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/lwKKJnmYnISHaZcR.png" alt="CITIC Group" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/ZutuLLAAZfAXnngs.png" alt="中国共青团" className="h-16 w-auto" />
-                </div>
+                <a href="https://www.deepseek.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/paluIHNcpiCRrKVy.png" alt="DeepSeek" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.mthreads.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/tfxzXVIvOpmBrkoL.png" alt="Moore Threads" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.catl.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/SDlWCGjYdrncvpId.jpg" alt="CATL" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.byd.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/jQamhtrkiLjgucvQ.png" alt="BYD" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.citic.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/lwKKJnmYnISHaZcR.png" alt="CITIC Group" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.gqt.org.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/ZutuLLAAZfAXnngs.png" alt="中国共青团" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
               </div>
 
               {/* Fourth Row */}
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mt-6">
-                <div className="flex items-center justify-center h-24 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/FaDsfepYmWleIWxI.png" alt="科创中国" className="h-24 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/qFvtRWRZNGCBFJEP.png" alt="Microsoft" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/NoWmIdgPjiCuiszH.png" alt="新 Logo" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/whgQezFxaTRPtMVQ.png" alt="中国电信" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/pduUmnIayXBaRucN.png" alt="中国光华科技基金会" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/BYQYwyFQgnIlMynj.png" alt="学联" className="h-16 w-auto" />
-                </div>
+                <a href="https://www.kechuangchina.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-24 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/FaDsfepYmWleIWxI.png" alt="科创中国" className="h-24 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.microsoft.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/qFvtRWRZNGCBFJEP.png" alt="Microsoft" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.tsinghua.edu.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/NoWmIdgPjiCuiszH.png" alt="清华大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.chinatelecom.com.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/whgQezFxaTRPtMVQ.png" alt="中国电信" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.cghf.org.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/pduUmnIayXBaRucN.png" alt="中国光华科技基金会" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/BYQYwyFQgnIlMynj.png" alt="学联" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
               </div>
 
               {/* Fifth Row */}
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mt-6">
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/jXZgUnwHgWNTvFoR.png" alt="牛津大学" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/ZIcMalCTYPNIspYs.svg" alt="麻省理工学院" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/tUivsGlOeJcfNRsk.png" alt="哈佛大学" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/yRQJFSjiJMiWNswJ.png" alt="中国科学技术大学" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/UkBjGQAcrbhnYKTl.png" alt="中国工程院" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/hufXZlnGUtzGvxog.png" alt="宇树科技" className="h-16 w-auto" />
-                </div>
+                <a href="https://www.ox.ac.uk" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/jXZgUnwHgWNTvFoR.png" alt="牛津大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.mit.edu" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/ZIcMalCTYPNIspYs.svg" alt="麻省理工学院" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.harvard.edu" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/tUivsGlOeJcfNRsk.png" alt="哈佛大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.ustc.edu.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/yRQJFSjiJMiWNswJ.png" alt="中国科学技术大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.cae.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/UkBjGQAcrbhnYKTl.png" alt="中国工程院" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.unitree.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/hufXZlnGUtzGvxog.png" alt="宇树科技" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
               </div>
 
               {/* Sixth Row - Universities & Tech Companies */}
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mt-6">
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/ayidXxkWNjqtNIXa.png" alt="WAIC" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/FbIBIASJDDwOjZdb.png" alt="北京大学" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/HffQiHOQqmqrIMNJ.png" alt="上海交通大学" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/UohzNHucYHXIbIVK.png" alt="西安交通大学" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/LegKpTgvKOdhDmNK.png" alt="天津大学" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/QutnuHkFhDIqDaBU.svg" alt="浙江大学" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/FcCWcofvRmQzoFnm.svg" alt="中国科学院" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/lycimjpCbFokWvcp.png" alt="哈尔滨工业大学" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/rsaQvxvsSwwGxBOE.png" alt="复旦大学" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/SlmERcDRcItGNNjx.png" alt="南京大学" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/wpqJltNezbnJCHFJ.svg" alt="剑桥大学" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/jXZgUnwHgWNTvFoR.png" alt="牛津大学" className="h-16 w-auto" />
-                </div>
+                <a href="https://www.waic.sh.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/ayidXxkWNjqtNIXa.png" alt="WAIC" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.pku.edu.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/FbIBIASJDDwOjZdb.png" alt="北京大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.sjtu.edu.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/HffQiHOQqmqrIMNJ.png" alt="上海交通大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.xjtu.edu.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/UohzNHucYHXIbIVK.png" alt="西安交通大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.tju.edu.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/LegKpTgvKOdhDmNK.png" alt="天津大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.zju.edu.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/QutnuHkFhDIqDaBU.svg" alt="浙江大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.cas.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/FcCWcofvRmQzoFnm.svg" alt="中国科学院" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.hit.edu.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/lycimjpCbFokWvcp.png" alt="哈尔滨工业大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.fudan.edu.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/rsaQvxvsSwwGxBOE.png" alt="复旦大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.nju.edu.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/SlmERcDRcItGNNjx.png" alt="南京大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.cam.ac.uk" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/wpqJltNezbnJCHFJ.svg" alt="剑桥大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.ox.ac.uk" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/jXZgUnwHgWNTvFoR.png" alt="牛津大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
               </div>
 
               {/* Seventh Row - Semiconductor & Tech Giants */}
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mt-6">
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/mTOKwDVGSfXusrZz.png" alt="Kingsoft" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/lHvrAWgGIwIttVJL.webp" alt="TSMC" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/DHvviZixJnqOQakV.svg" alt="Intel" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/caoSOWjLZeDYsdut.webp" alt="IBM" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/EubAdlXGUnXOyzal.png" alt="ASML" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/mqEjQzJmZqKORmvH.jpg" alt="Apple" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/fEWQWlBMKSloJZVX.gif" alt="Samsung" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/lwKKJnmYnISHaZcR.png" alt="CITIC Group" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/cPcVjNYIsiOroiEo.png" alt="OpenAI" className="h-16 w-auto" />
-                </div>
+                <a href="https://www.kingsoft.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/mTOKwDVGSfXusrZz.png" alt="Kingsoft" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.tsmc.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/lHvrAWgGIwIttVJL.webp" alt="TSMC" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.intel.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/DHvviZixJnqOQakV.svg" alt="Intel" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.ibm.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/caoSOWjLZeDYsdut.webp" alt="IBM" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.asml.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/EubAdlXGUnXOyzal.png" alt="ASML" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.apple.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/mqEjQzJmZqKORmvH.jpg" alt="Apple" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.samsung.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/fEWQWlBMKSloJZVX.gif" alt="Samsung" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.citic.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/lwKKJnmYnISHaZcR.png" alt="CITIC Group" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
               </div>
             </div>
 
