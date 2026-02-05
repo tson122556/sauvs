@@ -258,7 +258,7 @@ export default function Contact() {
                 <span className="text-lg font-bold text-white">极紫星</span>
               </div>
               <p className="text-gray-400 text-sm">
-                专注于人工智能、智能机器人、物联网技术创新和时空同步飞行器的研发和应用
+我们专注于人工智能、智能机器人、物联网与时空同步飞行器的前沿技术研发与集成应用
               </p>
             </div>
 

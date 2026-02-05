@@ -138,7 +138,7 @@ export default function HomeEn() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
-              Focused on AI technology development and application, intelligent robot research and development, IoT technology innovation, and spacetech aircraft design and research. Committed to providing cutting-edge smart solutions to organizations, enterprises, and individuals worldwide.
+              We focus on cutting-edge research and development of AI, intelligent robots, IoT, and space-time synchronized aircraft. Through deep integration of these technologies, we are committed to providing innovative solutions to organizations and individual customers, empowering their digital transformation in the future industry.
             </motion.p>
 
             <motion.div
