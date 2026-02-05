@@ -452,6 +452,12 @@ export default function About() {
                 <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/yRQJFSjiJMiWNswJ.png" alt="中国科学技术大学" className="h-16 w-auto" />
                 </div>
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/UkBjGQAcrbhnYKTl.png" alt="中国工程院" className="h-16 w-auto" />
+                </div>
+                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/hufXZlnGUtzGvxog.png" alt="宇树科技" className="h-16 w-auto" />
+                </div>
               </div>
 
               {/* Sixth Row - Universities & Tech Companies */}
