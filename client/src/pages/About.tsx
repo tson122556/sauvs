@@ -400,9 +400,6 @@ export default function About() {
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/paluIHNcpiCRrKVy.png" alt="DeepSeek" className="h-16 w-auto" />
                 </div>
                 <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/xLPSjJtCtFZNNDgo.png" alt="ASML" className="h-16 w-auto" />
-                </div>
-                <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/tfxzXVIvOpmBrkoL.png" alt="Moore Threads" className="h-16 w-auto" />
                 </div>
                 <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
