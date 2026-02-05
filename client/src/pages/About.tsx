@@ -427,7 +427,7 @@ export default function About() {
                 <a href="https://www.tsinghua.edu.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/NoWmIdgPjiCuiszH.png" alt="清华大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
                 </a>
-                <a href="https://www.chinamobileltd.com/sc/global/home.php" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <a href="https://www.chinatelecom.com.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/whgQezFxaTRPtMVQ.png" alt="中国电信" className="h-16 w-auto group-hover:scale-110 transition-transform" />
                 </a>
                 <a href="https://www.ghstf.org.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
@@ -460,13 +460,13 @@ export default function About() {
                 </a>
               </div>
 
-              {/* Sixth Row - Universities & Tech Companies */}
+              {/* Sixth Row - 6 logos */}
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mt-6">
                 <a href="https://www.worldaic.com.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/ayidXxkWNjqtNIXa.png" alt="WAIC" className="h-16 w-auto group-hover:scale-110 transition-transform" />
                 </a>
-                <a href="https://www.pku.edu.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/FbIBIASJDDwOjZdb.png" alt="北京大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                <a href="https://www.chinamobileltd.com/sc/global/home.php" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/FbIBIASJDDwOjZdb.png" alt="中国移动" className="h-16 w-auto group-hover:scale-110 transition-transform" />
                 </a>
                 <a href="https://www.sjtu.edu.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/HffQiHOQqmqrIMNJ.png" alt="上海交通大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
@@ -480,8 +480,12 @@ export default function About() {
                 <a href="https://www.zju.edu.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/QutnuHkFhDIqDaBU.svg" alt="浙江大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
                 </a>
-                <a href="https://www.cas.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/FcCWcofvRmQzoFnm.svg" alt="中国科学院" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              </div>
+
+              {/* Seventh Row - 6 logos */}
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mt-6">
+                <a href="https://www.ustc.edu.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/yRQJFSjiJMiWNswJ.png" alt="中国科学技术大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
                 </a>
                 <a href="https://www.hit.edu.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/lycimjpCbFokWvcp.png" alt="哈尔滨工业大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
@@ -500,10 +504,10 @@ export default function About() {
                 </a>
               </div>
 
-              {/* Seventh Row - Semiconductor & Tech Giants */}
+              {/* Eighth Row - 6 logos */}
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mt-6">
-                <a href="https://www.ustc.edu.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/mTOKwDVGSfXusrZz.png" alt="中国科学技术大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                <a href="https://www.kingsoft.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/mTOKwDVGSfXusrZz.png" alt="金山软件" className="h-16 w-auto group-hover:scale-110 transition-transform" />
                 </a>
                 <a href="https://www.tsmc.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/lHvrAWgGIwIttVJL.webp" alt="TSMC" className="h-16 w-auto group-hover:scale-110 transition-transform" />
@@ -521,6 +525,8 @@ export default function About() {
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/mqEjQzJmZqKORmvH.jpg" alt="Apple" className="h-16 w-auto group-hover:scale-110 transition-transform" />
                 </a>
               </div>
+
+
             </div>
 
 
