@@ -316,7 +316,7 @@ export default function ContactEn() {
                 <span className="text-lg font-bold text-white">UVS</span>
               </div>
               <p className="text-gray-400 text-sm">
-                We focus on cutting-edge research and development of AI, intelligent robots, IoT, and space-time synchronized aircraft.
+                Focused on AI, smart robots, IoT technology innovation and spacetech aircraft R&D and application.
               </p>
             </div>
 
