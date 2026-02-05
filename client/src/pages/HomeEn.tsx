@@ -9,14 +9,14 @@ import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 /**
- * 设计哲学：科技未来主义
- * - 深紫色 + 科技蓝配色
- * - 视频动态背景、流光线条、几何图形
- * - 平滑滚动动画、悬停效果
- * - 非对称布局，避免中心对齐
+ * Design Philosophy: Tech Futurism
+ * - Deep Purple + Tech Blue Color Scheme
+ * - Video Dynamic Background, Light Trails, Geometric Shapes
+ * - Smooth Scroll Animations, Hover Effects
+ * - Asymmetric Layout, Avoid Center Alignment
  */
 
-export default function Home() {
+export default function HomeEn() {
   // The userAuth hooks provides authentication state
   // To implement login/logout functionality, simply call logout() or redirect to getLoginUrl()
   let { user, loading, error, isAuthenticated, logout } = useAuth();
@@ -65,16 +65,16 @@ export default function Home() {
             transition={{ delay: 0.2 }}
           >
             <a href="#products" className="text-gray-300 hover:text-white transition">
-              产品中心
+              Products
             </a>
             <a href="#solutions" className="text-gray-300 hover:text-white transition">
-              解决方案
+              Solutions
             </a>
             <a href="#services" className="text-gray-300 hover:text-white transition">
-              技术服务
+              Services
             </a>
             <a href={`/${language}/about`} className="text-gray-300 hover:text-white transition">
-              关于我们
+              About Us
             </a>
           </motion.div>
 
@@ -89,7 +89,7 @@ export default function Home() {
               onClick={() => setLocation(`/${language}/contact`)}
               className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white"
             >
-              联系我们
+              Contact Us
             </Button>
           </motion.div>
         </div>
@@ -100,25 +100,18 @@ export default function Home() {
         {/* Video Background */}
         <video
           autoPlay
-          loop
           muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{
-            filter: "brightness(0.6) contrast(1.1)",
-          }}
-        >
-          <source
-            src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/OkLhbZTfqRdgJMqz.mp4"
-            type="video/mp4"
-          />
-        </video>
+          loop
+          className="absolute inset-0 w-full h-full object-cover opacity-30"
+          src="https://private-us-east-1.manuscdn.com/sessionFile/fhgIRoGEBsYWRa81s985hf/sandbox/UtQ5v7fS4XbOELdZSlIP1Q-bg-video_1770192009000_na1fn_YmctdmlkZW8ubXA0.mp4"
+        />
 
-        {/* Overlay gradient for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/70 via-slate-950/40 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-950/50" />
+        {/* Gradient Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/40 via-transparent to-cyan-900/40" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
 
-        {/* Hero content */}
+        {/* Hero Content */}
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
             className="max-w-3xl"
@@ -132,20 +125,20 @@ export default function Home() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.8 }}
             >
-              极紫星科技
+              UVS
               <br />
               <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
-                点亮智慧未来
+                Smart Technology
               </span>
             </motion.h1>
 
             <motion.p
-              className="text-xl text-gray-200 mb-8 leading-relaxed"
+              className="text-xl text-gray-300 mb-8 leading-relaxed"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
-              专注于人工智能技术的开发与应用、智能机器人研发、物联网技术创新和时空同步飞行器的设计与研发。致力于为各社会组织、企业和个人提供极致的东方智慧解决方案，推动各社会组织、企业和个人向未来产业数字化转型。
+              Focused on AI technology development and application, intelligent robot research and development, IoT technology innovation, and spacetech aircraft design and research. Committed to providing cutting-edge smart solutions to organizations, enterprises, and individuals worldwide.
             </motion.p>
 
             <motion.div
@@ -155,53 +148,36 @@ export default function Home() {
               transition={{ delay: 0.6, duration: 0.8 }}
             >
               <Button
+                onClick={() => setLocation(`/${language}/contact`)}
                 size="lg"
                 className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white shadow-lg shadow-purple-500/50"
               >
-                了解更多<ArrowRight className="ml-2 w-4 h-4" />
+                Get Started <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
               <Button
-                size="lg"
                 variant="outline"
-                className="border-purple-400/80 text-white hover:bg-purple-500/20 bg-slate-900/50"
+                size="lg"
+                className="border-purple-500/50 text-white hover:bg-purple-500/10"
               >
-                获取方案
+                Learn More
               </Button>
             </motion.div>
           </motion.div>
         </div>
 
-        {/* Floating particles effect */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <motion.div
-            className="absolute w-2 h-2 bg-purple-400 rounded-full opacity-60"
-            animate={{
-              y: [0, -100, 0],
-              x: [0, 50, 0],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              delay: 0,
-            }}
-            style={{ top: "20%", left: "10%" }}
-          />
-          <motion.div
-            className="absolute w-2 h-2 bg-cyan-400 rounded-full opacity-60"
-            animate={{
-              y: [0, 100, 0],
-              x: [0, -50, 0],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: 5,
-              repeat: Infinity,
-              delay: 1,
-            }}
-            style={{ bottom: "20%", right: "10%" }}
-          />
-        </div>
+        {/* Floating Geometric Shapes */}
+        <motion.div
+          className="absolute w-64 h-64 border-2 border-purple-500/20 rounded-full"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          style={{ top: "10%", left: "5%" }}
+        />
+        <motion.div
+          className="absolute w-48 h-48 border-2 border-cyan-500/20 rounded-lg"
+          animate={{ rotate: -360 }}
+          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          style={{ bottom: "20%", right: "10%" }}
+        />
       </section>
 
       {/* Core Services Section */}
@@ -214,9 +190,9 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">核心业务</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Core Services</h2>
             <p className="text-gray-400 text-lg">
-              我们提供全方位的智慧科技解决方案
+              Comprehensive smart technology solutions
             </p>
           </motion.div>
 
@@ -230,17 +206,16 @@ export default function Home() {
             {/* AI Software */}
             <motion.div variants={fadeInUp}>
               <Card className="bg-gradient-to-br from-purple-900/40 to-purple-900/20 border-purple-500/30 hover:border-purple-500/60 transition p-8 h-full group cursor-pointer relative overflow-hidden">
-                {/* Background Image */}
                 <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition duration-300" style={{
                   backgroundImage: 'url(https://private-us-east-1.manuscdn.com/sessionFile/fhgIRoGEBsYWRa81s985hf/sandbox/UtQ5v7fS4XbOELdZSlIP1Q-img-1_1770192013000_na1fn_YWktYXBwLWJn.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80)',
                   backgroundSize: 'cover',
                   backgroundPosition: 'center'
                 }} />
                 <div className="relative z-10">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/QVHZWYJfLZBUUJdq.png" alt="AI应用" className="w-16 h-16 mb-4 group-hover:scale-110 transition" style={{backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}} />
-                  <h3 className="text-xl font-bold text-white mb-3">人工智能应用</h3>
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/QVHZWYJfLZBUUJdq.png" alt="AI Application" className="w-16 h-16 mb-4 group-hover:scale-110 transition" style={{backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}} />
+                  <h3 className="text-xl font-bold text-white mb-3">AI Applications</h3>
                   <p className="text-gray-400">
-                    专业的AI应用软件开发，提供智能化解决方案，赋能企业数字化转型。
+                    Professional AI software development providing intelligent solutions to empower enterprise digital transformation.
                   </p>
                 </div>
               </Card>
@@ -249,17 +224,16 @@ export default function Home() {
             {/* Smart Robots */}
             <motion.div variants={fadeInUp}>
               <Card className="bg-gradient-to-br from-cyan-900/40 to-cyan-900/20 border-cyan-500/30 hover:border-cyan-500/60 transition p-8 h-full group cursor-pointer relative overflow-hidden">
-                {/* Background Image */}
                 <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition duration-300" style={{
                   backgroundImage: 'url(https://private-us-east-1.manuscdn.com/sessionFile/fhgIRoGEBsYWRa81s985hf/sandbox/UtQ5v7fS4XbOELdZSlIP1Q-img-2_1770192014000_na1fn_cm9ib3QtYmc.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80)',
                   backgroundSize: 'cover',
                   backgroundPosition: 'center'
                 }} />
                 <div className="relative z-10">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/CyGnmUYzRSFavGGJ.png" alt="智能机器人" className="w-16 h-16 mb-4 group-hover:scale-110 transition" style={{backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}} />
-                  <h3 className="text-xl font-bold text-white mb-3">智能机器人</h3>
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/CyGnmUYzRSFavGGJ.png" alt="Smart Robots" className="w-16 h-16 mb-4 group-hover:scale-110 transition" style={{backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}} />
+                  <h3 className="text-xl font-bold text-white mb-3">Smart Robots</h3>
                   <p className="text-gray-400">
-                    自主研发和销售智能机器人，提供工业和服务机器人解决方案。
+                    Independent R&D and sales of intelligent robots providing industrial and service robot solutions.
                   </p>
                 </div>
               </Card>
@@ -268,17 +242,16 @@ export default function Home() {
             {/* IoT Solutions */}
             <motion.div variants={fadeInUp}>
               <Card className="bg-gradient-to-br from-pink-900/40 to-pink-900/20 border-pink-500/30 hover:border-pink-500/60 transition p-8 h-full group cursor-pointer relative overflow-hidden">
-                {/* Background Image */}
                 <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition duration-300" style={{
                   backgroundImage: 'url(https://private-us-east-1.manuscdn.com/sessionFile/fhgIRoGEBsYWRa81s985hf/sandbox/UtQ5v7fS4XbOELdZSlIP1Q-img-3_1770192011000_na1fn_aW90LWJn.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80)',
                   backgroundSize: 'cover',
                   backgroundPosition: 'center'
                 }} />
                 <div className="relative z-10">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/LPJIpqQEjtYMyJmB.png" alt="物联网技术" className="w-16 h-16 mb-4 group-hover:scale-110 transition" style={{backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}} />
-                  <h3 className="text-xl font-bold text-white mb-3">物联网技术</h3>
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/LPJIpqQEjtYMyJmB.png" alt="IoT Technology" className="w-16 h-16 mb-4 group-hover:scale-110 transition" style={{backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}} />
+                  <h3 className="text-xl font-bold text-white mb-3">IoT Technology</h3>
                   <p className="text-gray-400">
-                    提供物联网技术服务和研发，实现设备互联和智能控制。
+                    IoT technology services and R&D enabling device interconnection and intelligent control.
                   </p>
                 </div>
               </Card>
@@ -287,17 +260,16 @@ export default function Home() {
             {/* Spacetech Aircraft */}
             <motion.div variants={fadeInUp}>
               <Card className="bg-gradient-to-br from-blue-900/40 to-blue-900/20 border-blue-500/30 hover:border-blue-500/60 transition p-8 h-full group cursor-pointer relative overflow-hidden">
-                {/* Background Image */}
                 <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition duration-300" style={{
                   backgroundImage: 'url(https://private-us-east-1.manuscdn.com/sessionFile/fhgIRoGEBsYWRa81s985hf/sandbox/UtQ5v7fS4XbOELdZSlIP1Q-img-3_1770192011000_na1fn_aW90LWJn.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80)',
                   backgroundSize: 'cover',
                   backgroundPosition: 'center'
                 }} />
                 <div className="relative z-10">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/PMmXikHRGAMPGDyc.png" alt="时空同步飞行器" className="w-16 h-16 mb-4 group-hover:scale-110 transition" style={{backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}} />
-                  <h3 className="text-xl font-bold text-white mb-3">时空同步飞行器</h3>
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/PMmXikHRGAMPGDyc.png" alt="Spacetech Aircraft" className="w-16 h-16 mb-4 group-hover:scale-110 transition" style={{backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}} />
+                  <h3 className="text-xl font-bold text-white mb-3">Spacetech Aircraft</h3>
                   <p className="text-gray-400">
-                    前沿的时空同步飞行技术研发与应用，提供创新的飞行解决方案。
+                    Cutting-edge spacetech flight R&D and application providing innovative flight solutions.
                   </p>
                 </div>
               </Card>
@@ -317,9 +289,9 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">为什么选择我们</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Why Choose Us</h2>
             <p className="text-gray-400 text-lg">
-              专业的技术团队和领先的创新能力
+              Professional technical team and leading innovation capability
             </p>
           </motion.div>
 
@@ -332,37 +304,37 @@ export default function Home() {
           >
             {[
               {
-                title: "技术领先",
-                description: "拥有专业的研发团队，掌握最前沿的AI和物联网技术。",
+                title: "Technology Leadership",
+                description: "Professional R&D team mastering cutting-edge AI and IoT technologies.",
                 bg: "https://private-us-east-1.manuscdn.com/sessionFile/fhgIRoGEBsYWRa81s985hf/sandbox/UtQ5v7fS4XbOELdZSlIP1Q-img-4_1770192016000_na1fn_dGVjaC1sZWFkZXJzaGlwLWJn.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80",
               },
               {
-                title: "方案定制",
-                description: "根据客户需求提供个性化的解决方案和服务。",
+                title: "Custom Solutions",
+                description: "Personalized solutions and services tailored to customer needs.",
                 bg: "https://private-us-east-1.manuscdn.com/sessionFile/fhgIRoGEBsYWRa81s985hf/sandbox/UtQ5v7fS4XbOELdZSlIP1Q-img-5_1770192014000_na1fn_Y3VzdG9tLXNvbHV0aW9uLWJn.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80",
               },
               {
-                title: "全方位支持",
-                description: "提供从咨询、开发到维护的全生命周期技术支持。",
+                title: "Comprehensive Support",
+                description: "Full lifecycle technical support from consultation to development and maintenance.",
                 bg: "https://private-us-east-1.manuscdn.com/sessionFile/fhgIRoGEBsYWRa81s985hf/sandbox/UtQ5v7fS4XbOELdZSlIP1Q-img-4_1770192016000_na1fn_dGVjaC1sZWFkZXJzaGlwLWJn.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80",
               },
               {
-                title: "成熟体系",
-                description: "建立了完善的质量管理和项目管理体系。",
+                title: "Mature System",
+                description: "Comprehensive quality management system and proven track record.",
                 bg: "https://private-us-east-1.manuscdn.com/sessionFile/fhgIRoGEBsYWRa81s985hf/sandbox/UtQ5v7fS4XbOELdZSlIP1Q-img-5_1770192014000_na1fn_Y3VzdG9tLXNvbHV0aW9uLWJn.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80",
               },
-            ].map((item, idx) => (
+            ].map((feature, idx) => (
               <motion.div key={idx} variants={fadeInUp}>
-                <Card className="bg-slate-800/50 border-slate-700/50 p-6 h-full group relative overflow-hidden">
-                  {/* Background Image */}
-                  <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition duration-300" style={{
-                    backgroundImage: `url(${item.bg})`,
+                <Card className="bg-slate-800/50 border-slate-700/50 p-8 h-full overflow-hidden group cursor-pointer relative">
+                  <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition duration-300" style={{
+                    backgroundImage: `url(${feature.bg})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center'
                   }} />
                   <div className="relative z-10">
-                    <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
-                    <p className="text-gray-400">{item.description}</p>
+                    <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-lg mb-4 group-hover:scale-110 transition" />
+                    <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
+                    <p className="text-gray-400">{feature.description}</p>
                   </div>
                 </Card>
               </motion.div>
@@ -383,18 +355,26 @@ export default function Home() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              准备好开启智慧未来了吗？
+              Ready to Transform?
             </h2>
-            <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
-              联系我们的专业团队，获取定制化的解决方案
+            <p className="text-gray-400 text-lg mb-12 max-w-2xl mx-auto">
+              Let's work together to bring your vision to life with cutting-edge smart technology solutions.
             </p>
-            <Button
-              onClick={() => setLocation("/contact")}
-              size="lg"
-              className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white shadow-lg shadow-purple-500/50"
+
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
             >
-              立即咨询 <ArrowRight className="ml-2 w-4 h-4" />
-            </Button>
+              <Button
+                onClick={() => setLocation(`/${language}/contact`)}
+                size="lg"
+                className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white shadow-lg shadow-purple-500/50"
+              >
+                Contact Us Today <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -412,77 +392,77 @@ export default function Home() {
                   animate={{ y: [0, -8, 0] }}
                   transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                 />
-                <span className="text-lg font-bold text-white">极紫星</span>
+                <span className="text-lg font-bold text-white">UVS</span>
               </div>
               <p className="text-gray-400 text-sm">
-                专注于人工智能、智能机器人、物联网技术创新和时空同步飞行器的研发和应用
+                Focused on AI, smart robots, IoT technology innovation and spacetech aircraft R&D and application.
               </p>
             </div>
 
             <div>
-              <h4 className="text-white font-bold mb-4">产品</h4>
+              <h4 className="text-white font-bold mb-4">Products</h4>
               <ul className="space-y-2">
                 <li>
                   <a href="#" className="text-gray-400 hover:text-white transition">
-                    AI应用软件
+                    AI Software
                   </a>
                 </li>
                 <li>
                   <a href="#" className="text-gray-400 hover:text-white transition">
-                    智能机器人
+                    Smart Robots
                   </a>
                 </li>
                 <li>
                   <a href="#" className="text-gray-400 hover:text-white transition">
-                    物联网解决方案
+                    IoT Solutions
                   </a>
                 </li>
                 <li>
                   <a href="#" className="text-gray-400 hover:text-white transition">
-                    时空同步飞行器
+                    Spacetech Aircraft
                   </a>
                 </li>
               </ul>
             </div>
 
             <div>
-              <h4 className="text-white font-bold mb-4">服务</h4>
+              <h4 className="text-white font-bold mb-4">Services</h4>
               <ul className="space-y-2">
                 <li>
                   <a href="#" className="text-gray-400 hover:text-white transition">
-                    技术咨询
+                    Technical Consulting
                   </a>
                 </li>
                 <li>
                   <a href="#" className="text-gray-400 hover:text-white transition">
-                    系统集成
+                    System Integration
                   </a>
                 </li>
                 <li>
                   <a href="#" className="text-gray-400 hover:text-white transition">
-                    技术支持
+                    Technical Support
                   </a>
                 </li>
                 <li>
                   <a href="#" className="text-gray-400 hover:text-white transition">
-                    金融科技
+                    FinTech Solutions
                   </a>
                 </li>
               </ul>
             </div>
 
             <div>
-              <h4 className="text-white font-bold mb-4">联系</h4>
+              <h4 className="text-white font-bold mb-4">Contact</h4>
               <ul className="space-y-2 text-sm text-gray-400">
-                <li>邮箱：satifuxie@gmail.com</li>
-                <li>电话：(+86)1519387647</li>
-                <li>地址：陕西省西安市雁塔区二环南路</li>
+                <li>Email: satifuxie@gmail.com</li>
+                <li>Phone: (+86)1519387647</li>
+                <li>Address: Xi'an, Shaanxi, China</li>
               </ul>
             </div>
           </div>
 
           <div className="border-t border-slate-800 pt-8 text-center text-gray-500 text-sm">
-            <p>&copy; 2025 极紫星智慧科技有限公司. All rights reserved.</p>
+            <p>&copy; 2025 UVS Smart Technology. All rights reserved.</p>
           </div>
         </div>
       </footer>

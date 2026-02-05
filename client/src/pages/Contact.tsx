@@ -8,8 +8,10 @@ import { useState } from "react";
 import { trpc } from "@/lib/trpc";
 import { toast } from "sonner";
 import { useLocation } from "wouter";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Contact() {
+  const { language } = useLanguage();
   const [, setLocation] = useLocation();
   const [formData, setFormData] = useState({
     name: "",
@@ -60,7 +62,7 @@ export default function Contact() {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <motion.div
             className="flex items-center gap-2 cursor-pointer"
-            onClick={() => setLocation("/")}
+            onClick={() => setLocation(`/${language}`)}
           >
             <motion.img 
               src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/uAJQYgErxzlvdMug.png" 
@@ -72,8 +74,8 @@ export default function Contact() {
           </motion.div>
 
           <div className="hidden md:flex items-center gap-8">
-            <a href="/" className="text-gray-300 hover:text-white transition">
-              首页
+            <a href={`/${language}`} className="text-gray-300 hover:text-white transition">
+              主页
             </a>
             <a href="#contact" className="text-gray-300 hover:text-white transition">
               联系我们
@@ -81,7 +83,7 @@ export default function Contact() {
           </div>
 
           <Button
-            onClick={() => setLocation("/")}
+            onClick={() => setLocation(`/${language}`)}
             className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white"
           >
             返回首页
@@ -264,22 +266,22 @@ export default function Contact() {
               <h4 className="text-white font-bold mb-4">产品</h4>
               <ul className="space-y-2">
                 <li>
-                  <a href="/#products" className="text-gray-400 hover:text-white transition">
+                  <a href={`/${language}#products`} className="text-gray-400 hover:text-white transition">
                     AI应用软件
                   </a>
                 </li>
                 <li>
-                  <a href="/#products" className="text-gray-400 hover:text-white transition">
+                  <a href={`/${language}#products`} className="text-gray-400 hover:text-white transition">
                     智能机器人
                   </a>
                 </li>
                 <li>
-                  <a href="/#products" className="text-gray-400 hover:text-white transition">
+                  <a href={`/${language}#products`} className="text-gray-400 hover:text-white transition">
                     物联网解决方案
                   </a>
                 </li>
                 <li>
-                  <a href="/#products" className="text-gray-400 hover:text-white transition">
+                  <a href={`/${language}#products`} className="text-gray-400 hover:text-white transition">
                     时空同步飞行器
                   </a>
                 </li>
@@ -290,22 +292,22 @@ export default function Contact() {
               <h4 className="text-white font-bold mb-4">服务</h4>
               <ul className="space-y-2">
                 <li>
-                  <a href="/#solutions" className="text-gray-400 hover:text-white transition">
+                  <a href={`/${language}#solutions`} className="text-gray-400 hover:text-white transition">
                     技术咨询
                   </a>
                 </li>
                 <li>
-                  <a href="/#solutions" className="text-gray-400 hover:text-white transition">
+                  <a href={`/${language}#solutions`} className="text-gray-400 hover:text-white transition">
                     系统集成
                   </a>
                 </li>
                 <li>
-                  <a href="/#solutions" className="text-gray-400 hover:text-white transition">
+                  <a href={`/${language}#solutions`} className="text-gray-400 hover:text-white transition">
                     技术支持
                   </a>
                 </li>
                 <li>
-                  <a href="/#solutions" className="text-gray-400 hover:text-white transition">
+                  <a href={`/${language}#solutions`} className="text-gray-400 hover:text-white transition">
                     金融科技
                   </a>
                 </li>

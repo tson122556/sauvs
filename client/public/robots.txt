@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /404
+
+# Sitemap
+Sitemap: https://jizixing-website.manus.space/sitemap.xml
+
+# Crawl delay (in seconds)
+Crawl-delay: 1

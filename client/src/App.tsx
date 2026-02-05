@@ -4,17 +4,32 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { LanguageProvider } from "./contexts/LanguageContext";
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
+import HomeEn from "./pages/HomeEn";
+import ContactEn from "./pages/ContactEn";
+import AboutEn from "./pages/AboutEn";
+import RootRedirect from "./pages/RootRedirect";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
-      <Route path="/" component={Home} />
-      <Route path="/about" component={About} />
-      <Route path="/contact" component={Contact} />
+      {/* 根路径重定向 */}
+      <Route path="/" component={RootRedirect} />
+      
+      {/* 中文路由 */}
+      <Route path="/zh" component={Home} />
+      <Route path="/zh/about" component={About} />
+      <Route path="/zh/contact" component={Contact} />
+      
+      {/* 英文路由 */}
+      <Route path="/en" component={HomeEn} />
+      <Route path="/en/about" component={AboutEn} />
+      <Route path="/en/contact" component={ContactEn} />
+      
       <Route path="/404" component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
@@ -30,15 +45,17 @@ function Router() {
 function App() {
   return (
     <ErrorBoundary>
-      <ThemeProvider
-        defaultTheme="dark"
-        // switchable
-      >
-        <TooltipProvider>
-          <Toaster />
-          <Router />
-        </TooltipProvider>
-      </ThemeProvider>
+      <LanguageProvider>
+        <ThemeProvider
+          defaultTheme="dark"
+          // switchable
+        >
+          <TooltipProvider>
+            <Toaster />
+            <Router />
+          </TooltipProvider>
+        </ThemeProvider>
+      </LanguageProvider>
     </ErrorBoundary>
   );
 }

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- Chinese Home Page -->
+  <url>
+    <loc>https://jizixing-website.manus.space/zh</loc>
+    <lastmod>2026-02-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jizixing-website.manus.space/en" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://jizixing-website.manus.space/zh" />
+  </url>
+
+  <!-- English Home Page -->
+  <url>
+    <loc>https://jizixing-website.manus.space/en</loc>
+    <lastmod>2026-02-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jizixing-website.manus.space/en" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://jizixing-website.manus.space/zh" />
+  </url>
+
+  <!-- Chinese About Page -->
+  <url>
+    <loc>https://jizixing-website.manus.space/zh/about</loc>
+    <lastmod>2026-02-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jizixing-website.manus.space/en/about" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://jizixing-website.manus.space/zh/about" />
+  </url>
+
+  <!-- English About Page -->
+  <url>
+    <loc>https://jizixing-website.manus.space/en/about</loc>
+    <lastmod>2026-02-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jizixing-website.manus.space/en/about" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://jizixing-website.manus.space/zh/about" />
+  </url>
+
+  <!-- Chinese Contact Page -->
+  <url>
+    <loc>https://jizixing-website.manus.space/zh/contact</loc>
+    <lastmod>2026-02-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jizixing-website.manus.space/en/contact" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://jizixing-website.manus.space/zh/contact" />
+  </url>
+
+  <!-- English Contact Page -->
+  <url>
+    <loc>https://jizixing-website.manus.space/en/contact</loc>
+    <lastmod>2026-02-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jizixing-website.manus.space/en/contact" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://jizixing-website.manus.space/zh/contact" />
+  </url>
+</urlset>

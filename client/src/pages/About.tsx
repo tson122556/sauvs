@@ -3,8 +3,10 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { useLocation } from "wouter";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function About() {
+  const { language } = useLanguage();
   const [, setLocation] = useLocation();
 
   const fadeInUp = {
@@ -59,7 +61,7 @@ export default function About() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             className="flex items-center gap-3 cursor-pointer"
-            onClick={() => setLocation("/")}
+            onClick={() => setLocation(`/${language}`)}
           >
             <motion.img 
               src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/uAJQYgErxzlvdMug.png" 
@@ -77,16 +79,16 @@ export default function About() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            <a href="/#products" className="text-gray-300 hover:text-white transition">
+            <a href={`/${language}#products`} className="text-gray-300 hover:text-white transition">
               产品中心
             </a>
-            <a href="/#solutions" className="text-gray-300 hover:text-white transition">
+            <a href={`/${language}#solutions`} className="text-gray-300 hover:text-white transition">
               解决方案
             </a>
-            <a href="/#services" className="text-gray-300 hover:text-white transition">
+            <a href={`/${language}#services`} className="text-gray-300 hover:text-white transition">
               技术服务
             </a>
-            <a href="/about" className="text-white font-semibold">
+            <a href={`/${language}/about`} className="text-white font-semibold">
               关于我们
             </a>
           </motion.div>
@@ -97,7 +99,7 @@ export default function About() {
             transition={{ delay: 0.3 }}
           >
             <Button
-              onClick={() => setLocation("/contact")}
+              onClick={() => setLocation(`/${language}/contact`)}
               className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white"
             >
               联系我们
