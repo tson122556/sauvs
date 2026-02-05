@@ -412,7 +412,7 @@ export default function About() {
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/lwKKJnmYnISHaZcR.png" alt="CITIC Group" className="h-16 w-auto" />
                 </div>
                 <div className="flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/OYahgRPyOzCRfQjU.png" alt="团会" className="h-16 w-auto" />
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/ZutuLLAAZfAXnngs.png" alt="中国共青团" className="h-16 w-auto" />
                 </div>
               </div>
 
