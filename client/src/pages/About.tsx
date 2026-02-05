@@ -410,6 +410,9 @@ export default function About() {
                 <a href="https://www.byd.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/jQamhtrkiLjgucvQ.png" alt="BYD" className="h-16 w-auto group-hover:scale-110 transition-transform" />
                 </a>
+                <a href="https://www.smics.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/vkFxbQauCvnOtYXk.jpg" alt="SMIC" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
                 <a href="https://www.citic.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/lwKKJnmYnISHaZcR.png" alt="CITIC Group" className="h-16 w-auto group-hover:scale-110 transition-transform" />
                 </a>
