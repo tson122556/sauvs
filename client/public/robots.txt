@@ -1,9 +1,25 @@
+# robots.txt for 极紫星智慧科技官网
+# 允许所有搜索引擎爬虫访问
+
 User-agent: *
 Allow: /
-Disallow: /404
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /node_modules/
+Disallow: /.git/
 
-# Sitemap
-Sitemap: https://jizixing-website.manus.space/sitemap.xml
+# 特定搜索引擎规则
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
 
-# Crawl delay (in seconds)
+User-agent: Baiduspider
+Allow: /
 Crawl-delay: 1
+
+# Sitemap 位置
+Sitemap: https://jizixing-website.manus.space/sitemap.xml
+Sitemap: https://jizixing-website.manus.space/sitemap-zh.xml
