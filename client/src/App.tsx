@@ -21,6 +21,8 @@ import ProductRobot from "./pages/ProductRobot";
 import ProductIoT from "./pages/ProductIoT";
 import News from "./pages/News";
 import NewsEn from "./pages/NewsEn";
+import AIUsageStats from "./pages/AIUsageStats";
+import AIUsageStatsEn from "./pages/AIUsageStatsEn";
 import RootRedirect from "./pages/RootRedirect";
 
 function Router() {
@@ -53,6 +55,10 @@ function Router() {
       <Route path="/zh/uvs-ai-chat" component={UVSAIChat} />
       <Route path="/en/uvs-ai-chat" component={UVSAIChat} />
       <Route path="/en/uvs-ai" component={UVSAI} />
+      
+      {/* 使用统计页面 */}
+      <Route path="/zh/ai-usage-stats" component={AIUsageStats} />
+      <Route path="/en/ai-usage-stats" component={AIUsageStatsEn} />
       
       {/* 产品详情页面 */}
       <Route path="/zh/product/ai" component={ProductAI} />
