@@ -446,3 +446,10 @@
 - [x] 更新页脚产品列表第四项
 - [x] 更新页脚中的公司描述文本
 - [x] 更新所有页面的页脚
+
+
+## 修复英文页面核心业务按鑒（2026-02-06）
+- [x] 修复 Smart Robots 的 Learn More 按鑒
+- [x] 修复 IoT Technology 的 Learn More 按鑒
+- [x] 为 Spacetime Synchronous/Asynchronous Navigation 添加 Learn More 按鑒
+- [ ] 创建对应的英文产品页面
