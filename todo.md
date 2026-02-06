@@ -386,3 +386,20 @@
 - [x] 实现联系表单功能
 - [x] 集成邮件服务
 - [x] 编写测试用例
+
+
+## Stripe 支付功能集成（2026-02-06）
+- [x] 创建数据库表（stripeCustomers、subscriptions、payments、subscriptionPlans）
+- [x] 实现 Stripe 产品和价格配置
+- [x] 创建 Stripe 数据库查询助手
+- [x] 实现 Stripe tRPC 路由（订阅、一次性购买、支付历史等）
+- [x] 创建定价页面（Pricing.tsx）
+- [x] 创建支付成功页面（PaymentSuccess.tsx）
+- [x] 创建支付取消页面（PaymentCancel.tsx）
+- [x] 添加支付路由到 App.tsx
+- [x] 实现 Stripe Webhook 处理器
+- [x] 创建 Webhook 路由集成
+- [ ] 配置 Stripe API 密钥
+- [ ] 在 Stripe Dashboard 创建产品和价格
+- [ ] 测试支付流程
+- [ ] 配置 Webhook 端点

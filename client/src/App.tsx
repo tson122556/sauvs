@@ -34,6 +34,9 @@ import ResetPasswordEn from "./pages/ResetPasswordEn";
 import VerifyEmail from "./pages/VerifyEmail";
 import VerifyEmailEn from "./pages/VerifyEmailEn";
 import RootRedirect from "./pages/RootRedirect";
+import Pricing from "./pages/Pricing";
+import PaymentSuccess from "./pages/PaymentSuccess";
+import PaymentCancel from "./pages/PaymentCancel";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -87,6 +90,11 @@ function Router() {
       <Route path="/en/product/ai" component={ProductAIEn} />
       <Route path="/zh/product/robot" component={ProductRobot} />
       <Route path="/zh/product/iot" component={ProductIoT} />
+      
+      {/* 支付相关页面 */}
+      <Route path="/pricing" component={Pricing} />
+      <Route path="/payments/success" component={PaymentSuccess} />
+      <Route path="/payments/cancel" component={PaymentCancel} />
       
       <Route path="/404" component={NotFound} />
       {/* Final fallback route */}

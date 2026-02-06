@@ -208,3 +208,118 @@ export const aiUsageStats = mysqlTable("aiUsageStats", {
 
 export type AIUsageStat = typeof aiUsageStats.$inferSelect;
 export type InsertAIUsageStat = typeof aiUsageStats.$inferInsert;
+
+
+/**
+ * Stripe 客户表：存储 Stripe 客户信息和用户的关联
+ */
+export const stripeCustomers = mysqlTable("stripeCustomers", {
+  id: int("id").autoincrement().primaryKey(),
+  /** 用户 ID，关联 users 表 */
+  userId: int("userId").notNull().unique(),
+  /** Stripe 客户 ID */
+  stripeCustomerId: varchar("stripeCustomerId", { length: 100 }).notNull().unique(),
+  /** 创建时间 */
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  /** 更新时间 */
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type StripeCustomer = typeof stripeCustomers.$inferSelect;
+export type InsertStripeCustomer = typeof stripeCustomers.$inferInsert;
+
+/**
+ * 订阅表：存储用户的订阅信息
+ */
+export const subscriptions = mysqlTable("subscriptions", {
+  id: int("id").autoincrement().primaryKey(),
+  /** 用户 ID */
+  userId: int("userId").notNull(),
+  /** Stripe 订阅 ID */
+  stripeSubscriptionId: varchar("stripeSubscriptionId", { length: 100 }).notNull().unique(),
+  /** 订阅计划：basic, pro, enterprise */
+  plan: mysqlEnum("plan", ["basic", "pro", "enterprise"]).notNull(),
+  /** 订阅状态：active, past_due, canceled, unpaid */
+  status: varchar("status", { length: 50 }).notNull(),
+  /** 当前周期开始时间 */
+  currentPeriodStart: timestamp("currentPeriodStart"),
+  /** 当前周期结束时间 */
+  currentPeriodEnd: timestamp("currentPeriodEnd"),
+  /** 取消时间 */
+  canceledAt: timestamp("canceledAt"),
+  /** 创建时间 */
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  /** 更新时间 */
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Subscription = typeof subscriptions.$inferSelect;
+export type InsertSubscription = typeof subscriptions.$inferInsert;
+
+/**
+ * 支付表：存储订单和支付信息
+ */
+export const payments = mysqlTable("payments", {
+  id: int("id").autoincrement().primaryKey(),
+  /** 用户 ID */
+  userId: int("userId").notNull(),
+  /** Stripe 支付意图 ID */
+  stripePaymentIntentId: varchar("stripePaymentIntentId", { length: 100 }).notNull().unique(),
+  /** 金额（以美分计） */
+  amount: int("amount").notNull(),
+  /** 货币 */
+  currency: varchar("currency", { length: 10 }).default("usd").notNull(),
+  /** 支付状态：succeeded, processing, requires_payment_method */
+  status: varchar("status", { length: 50 }).notNull(),
+  /** 产品类型：subscription, one_time */
+  productType: mysqlEnum("productType", ["subscription", "one_time"]).notNull(),
+  /** 产品 ID（如果是一次性购买） */
+  productId: int("productId"),
+  /** 订阅 ID（如果是订阅相关的支付） */
+  subscriptionId: int("subscriptionId"),
+  /** 支付方法信息 */
+  paymentMethod: varchar("paymentMethod", { length: 100 }),
+  /** 收据 URL */
+  receiptUrl: text("receiptUrl"),
+  /** 创建时间 */
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  /** 更新时间 */
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Payment = typeof payments.$inferSelect;
+export type InsertPayment = typeof payments.$inferInsert;
+
+/**
+ * 订阅计划表：存储可用的订阅计划
+ */
+export const subscriptionPlans = mysqlTable("subscriptionPlans", {
+  id: int("id").autoincrement().primaryKey(),
+  /** 计划名称 */
+  name: varchar("name", { length: 100 }).notNull(),
+  /** 计划标识：basic, pro, enterprise */
+  planId: varchar("planId", { length: 50 }).notNull().unique(),
+  /** 计划描述 */
+  description: text("description"),
+  /** 月价格（以美分计） */
+  monthlyPrice: int("monthlyPrice").notNull(),
+  /** 年价格（以美分计） */
+  yearlyPrice: int("yearlyPrice"),
+  /** Stripe 产品 ID */
+  stripeProductId: varchar("stripeProductId", { length: 100 }).notNull(),
+  /** Stripe 月价格 ID */
+  stripePriceIdMonthly: varchar("stripePriceIdMonthly", { length: 100 }).notNull(),
+  /** Stripe 年价格 ID */
+  stripePriceIdYearly: varchar("stripePriceIdYearly", { length: 100 }),
+  /** 功能列表（JSON 格式） */
+  features: text("features"),
+  /** 是否发布 */
+  published: int("published").default(1).notNull(),
+  /** 创建时间 */
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  /** 更新时间 */
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type SubscriptionPlan = typeof subscriptionPlans.$inferSelect;
+export type InsertSubscriptionPlan = typeof subscriptionPlans.$inferInsert;

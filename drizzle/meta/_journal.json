@@ -29,6 +29,13 @@
       "when": 1770359551951,
       "tag": "0003_stiff_wind_dancer",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1770387504359,
+      "tag": "0004_lean_weapon_omega",
+      "breakpoints": true
     }
   ]
 }

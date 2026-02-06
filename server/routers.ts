@@ -9,6 +9,7 @@ import { aiChatRouter } from "./routers/aiChat";
 import { uvsChatStreamRouter } from "./routers/uvsChatStream";
 import { modalityChatRouter } from "./routers/modalityChat";
 import { contactRouter } from "./routers/contact";
+import { stripeRouter } from "./routers/stripe";
 import { sendAppointmentConfirmationEmail } from "./email";
 
 export const appRouter = router({
@@ -18,6 +19,7 @@ export const appRouter = router({
   uvsChatStream: uvsChatStreamRouter,
   modalityChat: modalityChatRouter,
   contact: contactRouter,
+  stripe: stripeRouter,
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),
     logout: publicProcedure.mutation(({ ctx }) => {
