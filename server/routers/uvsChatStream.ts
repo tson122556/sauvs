@@ -124,6 +124,8 @@ export const uvsChatStreamRouter = router({
         conversationId: z.number(),
         content: z.string().min(1),
         contentType: z.enum(["text", "image", "video", "code", "analysis"]).optional(),
+        manualModel: z.string().optional(), // 用户手动选择的模型
+        isModelLocked: z.boolean().optional(), // 是否锁定模型选择
       })
     )
     .mutation(async ({ input, ctx }) => {
@@ -168,15 +170,17 @@ export const uvsChatStreamRouter = router({
         // 使用模态分发器路由到对应的服务
         let fullResponse = "";
         let responseUrl: string | undefined;
-        let selectedModel = conversation.model;
+        // 如果用户手动选择了模型，优先使用手动选择的模型
+        let selectedModel = input.manualModel || conversation.model;
         let modality: string = "text";
+        let isManuallySelected = !!input.manualModel;
 
         try {
           const dispatchResult = await dispatchByModality({
             messages: messageList,
             userInput: input.content,
             contentType: input.contentType as any,
-            model: conversation.model,
+            model: selectedModel,
             onChunk: (chunk) => {
               // 流式数据处理（在实际应用中会通过 SSE 发送）
               process.stdout.write(chunk);
@@ -189,7 +193,7 @@ export const uvsChatStreamRouter = router({
           modality = dispatchResult.modality;
 
           console.log(
-            `[uvsChatStream] Dispatch completed: modality=${modality}, model=${selectedModel}`
+            `[uvsChatStream] Dispatch completed: modality=${modality}, model=${selectedModel}, manuallySelected=${isManuallySelected}, locked=${input.isModelLocked}`
           );
         } catch (dispatchError) {
           console.error("Modality dispatch error:", dispatchError);
