@@ -16,11 +16,23 @@ import { getDb } from "../db";
 import { eq } from "drizzle-orm";
 import { users } from "../../drizzle/schema";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
-  apiVersion: "2026-01-28.clover",
-});
+// 只在有有效密钥时初始化 Stripe 客户端
+let stripe: Stripe | null = null;
+
+if (process.env.STRIPE_SECRET_KEY) {
+  stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+    apiVersion: "2026-01-28.clover" as any,
+  });
+}
 
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET || "";
+
+function ensureStripeConfigured(): Stripe {
+  if (!stripe) {
+    throw new Error("Stripe is not configured. Please set STRIPE_SECRET_KEY environment variable.");
+  }
+  return stripe;
+}
 
 /**
  * 验证 Webhook 签名
@@ -30,7 +42,8 @@ export function verifyWebhookSignature(
   signature: string
 ): Stripe.Event | null {
   try {
-    return stripe.webhooks.constructEvent(body, signature, webhookSecret);
+    const stripeClient = ensureStripeConfigured();
+    return stripeClient.webhooks.constructEvent(body, signature, webhookSecret);
   } catch (error) {
     console.error("[Webhook] Signature verification failed:", error);
     return null;
@@ -61,7 +74,8 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session) 
   // 处理订阅
   if (session.mode === "subscription" && session.subscription) {
     const subscriptionId = session.subscription as string;
-    const subscription = await stripe.subscriptions.retrieve(subscriptionId);
+    const stripeClient = ensureStripeConfigured();
+    const subscription = await stripeClient.subscriptions.retrieve(subscriptionId);
 
     const planId = (session.metadata?.planId || "basic") as string;
 
@@ -81,7 +95,8 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session) 
   // 处理一次性支付
   if (session.mode === "payment" && session.payment_intent) {
     const paymentIntentId = session.payment_intent as string;
-    const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
+    const stripeClient = ensureStripeConfigured();
+    const paymentIntent = await stripeClient.paymentIntents.retrieve(paymentIntentId);
 
     const amount = paymentIntent.amount || 0;
     const currency = paymentIntent.currency || "usd";

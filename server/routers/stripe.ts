@@ -21,9 +21,25 @@ import {
 import { SUBSCRIPTION_PLANS } from "../stripe/products";
 
 // 初始化 Stripe
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
-  apiVersion: "2026-01-28.clover",
-});
+// 只在有有效密钥时初始化 Stripe 客户端
+let stripe: Stripe | null = null;
+
+if (process.env.STRIPE_SECRET_KEY) {
+  stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+    apiVersion: "2026-01-28.clover" as any,
+  });
+}
+
+// 辅助函数：检查 Stripe 是否已配置
+function ensureStripeConfigured() {
+  if (!stripe || !process.env.STRIPE_SECRET_KEY) {
+    throw new TRPCError({
+      code: "INTERNAL_SERVER_ERROR",
+      message: "Stripe is not configured. Please set STRIPE_SECRET_KEY environment variable.",
+    });
+  }
+  return stripe;
+}
 
 export const stripeRouter = router({
   /**
@@ -72,7 +88,8 @@ export const stripeRouter = router({
         // 获取或创建 Stripe 客户
         let stripeCustomerId = await getUserStripeCustomerId(ctx.user.id);
         if (!stripeCustomerId) {
-          const customer = await stripe.customers.create({
+          const stripeClient = ensureStripeConfigured();
+          const customer = await stripeClient.customers.create({
             email: ctx.user.email || undefined,
             name: ctx.user.name || undefined,
             metadata: {
@@ -121,7 +138,8 @@ export const stripeRouter = router({
         }
 
         // 创建 Checkout Session
-        const session = await stripe.checkout.sessions.create({
+        const stripeClient = ensureStripeConfigured();
+        const session = await stripeClient.checkout.sessions.create({
           customer: stripeCustomerId,
           mode: "subscription",
           payment_method_types: ["card"],
@@ -139,7 +157,7 @@ export const stripeRouter = router({
             planId: input.planId,
           },
           allow_promotion_codes: true,
-        } as Parameters<typeof stripe.checkout.sessions.create>[0]);
+              } as Parameters<typeof stripeClient.checkout.sessions.create>[0]);
 
         if (!session.url) {
           throw new TRPCError({
@@ -181,10 +199,11 @@ export const stripeRouter = router({
           });
         }
 
-        // 获取或创建 Stripe 客户
+           // 获取或创建 Stripe 客户
         let stripeCustomerId = await getUserStripeCustomerId(ctx.user.id);
         if (!stripeCustomerId) {
-          const customer = await stripe.customers.create({
+          const stripeClient = ensureStripeConfigured();
+          const customer = await stripeClient.customers.create({
             email: ctx.user.email || undefined,
             name: ctx.user.name || undefined,
             metadata: {
@@ -202,7 +221,7 @@ export const stripeRouter = router({
           }
         }
 
-        // 这里应该从数据库获取产品信息
+        // 获取一次性产品配置信息
         // 为了演示，我们使用硬编码的产品
         const products: Record<
           string,
@@ -234,7 +253,8 @@ export const stripeRouter = router({
         }
 
         // 创建 Checkout Session
-        const session = await stripe.checkout.sessions.create({
+        const stripeClient = ensureStripeConfigured();
+        const session = await stripeClient.checkout.sessions.create({
           customer: stripeCustomerId,
           mode: "payment",
           payment_method_types: ["card"],
@@ -252,7 +272,7 @@ export const stripeRouter = router({
             productId: input.productId,
           },
           allow_promotion_codes: true,
-        } as Parameters<typeof stripe.checkout.sessions.create>[0]);
+        } as Parameters<typeof stripeClient.checkout.sessions.create>[0]);
 
         if (!session.url) {
           throw new TRPCError({
@@ -324,7 +344,8 @@ export const stripeRouter = router({
         }
 
         // 在 Stripe 中取消订阅
-        await stripe.subscriptions.update(input.stripeSubscriptionId, {
+        const stripeClient = ensureStripeConfigured();
+        await stripeClient.subscriptions.update(input.stripeSubscriptionId, {
           cancel_at_period_end: true,
         });
 
@@ -383,7 +404,8 @@ export const stripeRouter = router({
     .input(z.object({ sessionId: z.string() }))
     .query(async ({ input }) => {
       try {
-        const session = await stripe.checkout.sessions.retrieve(input.sessionId);
+        const stripeClient = ensureStripeConfigured();
+        const session = await stripeClient.checkout.sessions.retrieve(input.sessionId);
         return {
           id: session.id,
           status: session.payment_status,
