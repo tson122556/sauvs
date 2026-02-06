@@ -29,6 +29,10 @@ import Login from "./pages/Login";
 import LoginEn from "./pages/LoginEn";
 import ForgotPassword from "./pages/ForgotPassword";
 import ForgotPasswordEn from "./pages/ForgotPasswordEn";
+import ResetPassword from "./pages/ResetPassword";
+import ResetPasswordEn from "./pages/ResetPasswordEn";
+import VerifyEmail from "./pages/VerifyEmail";
+import VerifyEmailEn from "./pages/VerifyEmailEn";
 import RootRedirect from "./pages/RootRedirect";
 
 function Router() {
@@ -73,6 +77,10 @@ function Router() {
       <Route path="/en/login" component={LoginEn} />
       <Route path="/zh/forgot-password" component={ForgotPassword} />
       <Route path="/en/forgot-password" component={ForgotPasswordEn} />
+      <Route path="/zh/reset-password" component={ResetPassword} />
+      <Route path="/en/reset-password" component={ResetPasswordEn} />
+      <Route path="/zh/verify-email" component={VerifyEmail} />
+      <Route path="/en/verify-email" component={VerifyEmailEn} />
       
       {/* 产品详情页面 */}
       <Route path="/zh/product/ai" component={ProductAI} />
