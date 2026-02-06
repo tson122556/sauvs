@@ -546,7 +546,6 @@ export default function AboutEn() {
                 <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/wmfSaDvfmeZuAwfC.png" alt="AVIC UAS" className="h-16 w-auto group-hover:scale-110 transition-transform" />
               </a>
             </div>
-
             {/* Tenth Row */}
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mt-6">
               <a href="https://www.jouav.com/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
@@ -554,6 +553,19 @@ export default function AboutEn() {
               </a>
               <a href="https://www.parrot.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
                 <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/rIgTYTVyfhyRUphq.svg" alt="Parrot" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              </a>
+            </div>
+
+            {/* Eleventh Row - 3 logos (Stanford, UC, TII) */}
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mt-6">
+              <a href="https://www.stanford.edu/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/vkToGhYeoeyxpMmj.png" alt="Stanford University" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              </a>
+              <a href="https://www.universityofcalifornia.edu/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/VcHeiBaPPbLegBHv.png" alt="University of California" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              </a>
+              <a href="https://www.tii.ae/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/sRHFgpuDjPEEGopJ.svg" alt="Technology Innovation Institute" className="h-16 w-auto group-hover:scale-110 transition-transform" />
               </a>
             </div>
           </div>
