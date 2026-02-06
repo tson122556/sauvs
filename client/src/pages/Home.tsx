@@ -80,6 +80,9 @@ export default function Home() {
             <a href={`/${language}/ai-hub`} className="text-gray-300 hover:text-white transition">
               AI 助手
             </a>
+            <a href={`/${language}/jizixing-ai`} className="text-gray-300 hover:text-white transition">
+              极紫星 AI
+            </a>
           </motion.div>
 
           <motion.div
