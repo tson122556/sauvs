@@ -6,12 +6,14 @@ import { z } from "zod";
 import { createInquiry, getInquiries, updateInquiryStatus, createProduct, getProducts, getProductById, updateProduct, createNews, getNews, getNewsById, updateNews, createAppointment, getAppointments } from "./db";
 import { uvsAIRouter } from "./routers/uvsAI";
 import { aiChatRouter } from "./routers/aiChat";
+import { uvsChatStreamRouter } from "./routers/uvsChatStream";
 import { sendAppointmentConfirmationEmail } from "./email";
 
 export const appRouter = router({
   system: systemRouter,
   uvsAI: uvsAIRouter,
   aiChat: aiChatRouter,
+  uvsChatStream: uvsChatStreamRouter,
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),
     logout: publicProcedure.mutation(({ ctx }) => {
