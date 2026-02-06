@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Mail, Lock, Eye, EyeOff, ArrowRight, Github } from "lucide-react";
+import { Mail, Lock, Eye, EyeOff, ArrowRight, Chrome, Apple, MessageCircle, Instagram } from "lucide-react";
 import { useLocation } from "wouter";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
@@ -73,9 +73,7 @@ export default function Login() {
     }
   };
 
-  const handleOAuthLogin = () => {
-    window.location.href = getLoginUrl();
-  };
+
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center p-4">
@@ -237,16 +235,60 @@ export default function Login() {
               </div>
             </div>
 
-            {/* OAuth 登录 */}
-            <Button
-              type="button"
-              onClick={handleOAuthLogin}
-              variant="outline"
-              className="w-full flex items-center justify-center gap-2 py-2.5"
-            >
-              <Github size={18} />
-              {language === "zh" ? "使用 Manus 登录" : "Sign in with Manus"}
-            </Button>
+            {/* 第三方登录 */}
+            <div className="space-y-2">
+              {/* Google 登录 */}
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full flex items-center justify-center gap-2 py-2.5"
+              >
+                <Chrome size={18} />
+                {language === "zh" ? "使用 Google 登录" : "Sign in with Google"}
+              </Button>
+
+              {/* Microsoft 登录 */}
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full flex items-center justify-center gap-2 py-2.5"
+              >
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M11.4 24H0V12.6h11.4V24zM24 24H12.6V12.6H24V24zM11.4 11.4H0V0h11.4v11.4zm12.6 0H12.6V0H24v11.4z"/>
+                </svg>
+                {language === "zh" ? "使用 Microsoft 登录" : "Sign in with Microsoft"}
+              </Button>
+
+              {/* Apple 登录 */}
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full flex items-center justify-center gap-2 py-2.5"
+              >
+                <Apple size={18} />
+                {language === "zh" ? "使用 Apple 登录" : "Sign in with Apple"}
+              </Button>
+
+              {/* 微信登录 */}
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full flex items-center justify-center gap-2 py-2.5"
+              >
+                <MessageCircle size={18} />
+                {language === "zh" ? "使用微信登录" : "Sign in with WeChat"}
+              </Button>
+
+              {/* Instagram 登录 */}
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full flex items-center justify-center gap-2 py-2.5"
+              >
+                <Instagram size={18} />
+                {language === "zh" ? "使用 Instagram 登录" : "Sign in with Instagram"}
+              </Button>
+            </div>
 
             {/* 注册链接 */}
             <div className="text-center pt-4 border-t border-slate-700">
