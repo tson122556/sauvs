@@ -237,7 +237,7 @@ export default function AIHubZh() {
         <div className="mb-16">
           <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-2">
             <span className="w-1 h-8 bg-gradient-to-b from-purple-500 to-pink-500" />
-            UVS专有模型
+            极紫星 AI 专有模型
           </h2>
           <Card className="bg-gradient-to-br from-slate-800 via-slate-800 to-slate-900 border-purple-500/30 hover:border-purple-500/60 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/20 overflow-hidden">
             <div className="p-8">

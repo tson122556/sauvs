@@ -136,7 +136,7 @@ export default function Home() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.8 }}
             >
-              UVS科技
+              极紫星科技
               <br />
               <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
                 点亮智慧未来
@@ -439,7 +439,7 @@ export default function Home() {
                   animate={{ y: [0, -8, 0] }}
                   transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                 />
-                <span className="text-lg font-bold text-white">UVS</span>
+                <span className="text-lg font-bold text-white">极紫星</span>
               </div>
               <p className="text-gray-400 text-sm">
                 专注于人工智能、智能机器人、物联网技术创新和时空同步飞行器的研发和应用
@@ -509,7 +509,7 @@ export default function Home() {
           </div>
 
           <div className="border-t border-slate-800 pt-8 text-center text-gray-500 text-sm">
-            <p>&copy; 2025 UVS智慧科技有限公司. All rights reserved.</p>
+            <p>&copy; 2025 极紫星智慧科技有限公司. All rights reserved.</p>
           </div>
         </div>
       </footer>

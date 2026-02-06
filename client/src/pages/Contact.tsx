@@ -255,7 +255,7 @@ export default function Contact() {
                   animate={{ y: [0, -8, 0] }}
                   transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                 />
-                <span className="text-lg font-bold text-white">UVS</span>
+                <span className="text-lg font-bold text-white">极紫星</span>
               </div>
               <p className="text-gray-400 text-sm">
 我们专注于人工智能、智能机器人、物联网与时空同步飞行器的前沿技术研发与集成应用
@@ -325,7 +325,7 @@ export default function Contact() {
           </div>
 
           <div className="border-t border-slate-800 pt-8 text-center text-gray-500 text-sm">
-            <p>&copy; 2025 UVS智慧科技有限公司. All rights reserved.</p>
+            <p>&copy; 2025 极紫星智慧科技有限公司. All rights reserved.</p>
           </div>
         </div>
       </footer>
