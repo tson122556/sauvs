@@ -210,9 +210,9 @@ export default function UVSAIChat() {
     setIsLoading(true);
 
     try {
-      // 自动选择最优模型
-      const optimalModel = getOptimalModel(inputValue);
-      const updatedConversation = { ...conversation, model: optimalModel };
+      // 使用用户选择的模型，或自动选择
+      const selectedModel = conversation.model || getOptimalModel(inputValue);
+      const updatedConversation = { ...conversation, model: selectedModel };
       setCurrentConversation(updatedConversation);
       setConversations((prev) => 
         prev.map((c) => c.id === conversation.id ? updatedConversation : c)
@@ -221,11 +221,12 @@ export default function UVSAIChat() {
       // 模拟 AI 响应
       await new Promise((resolve) => setTimeout(resolve, 1500));
 
+      const modelName = MODELS[selectedModel as keyof typeof MODELS]?.name || selectedModel;
       const assistantMessage: Message = {
         role: "assistant",
-        content: `这是来自 ${MODELS[optimalModel as keyof typeof MODELS]?.name || optimalModel} 的响应。您的问题："${inputValue}"`,
+        content: `这是来自 ${modelName} 的响应。\n\n您的问题:"${inputValue}"\n\n${modelName} 的回答:\n正在为您生成回答...`,
         timestamp: new Date(),
-        model: optimalModel,
+        model: selectedModel,
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
@@ -550,6 +551,28 @@ export default function UVSAIChat() {
             language={language as "zh" | "en"}
           />
         )}
+
+        {/* 模型选择 */}
+        <div className="border-t border-border px-6 py-3 bg-card/50">
+          <p className="text-xs text-muted-foreground mb-2">
+            {language === "zh" ? "选择 AI 模型：" : "Select AI Model:"}
+          </p>
+          <div className="flex gap-2 flex-wrap">
+            {Object.entries(MODELS).map(([modelId, modelInfo]) => (
+              <button
+                key={modelId}
+                onClick={() => setCurrentConversation(prev => prev ? { ...prev, model: modelId } : null)}
+                className={`px-3 py-1 text-xs rounded-full transition ${
+                  currentConversation?.model === modelId
+                    ? `bg-gradient-to-r ${modelInfo.color} text-white`
+                    : "bg-slate-700 text-slate-300 hover:bg-slate-600"
+                }`}
+              >
+                {modelInfo.name}
+              </button>
+            ))}
+          </div>
+        </div>
 
         {/* 内容类型选择 */}
         <div className="border-t border-border px-6 py-3 bg-card/50">
