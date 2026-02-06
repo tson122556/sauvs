@@ -232,6 +232,41 @@ export default function AIHubZh() {
           </h2>
           {renderModelCards(ACADEMIC_MODELS)}
         </div>
+
+        {/* Jizixing AI Proprietary Model Section */}
+        <div className="mb-16">
+          <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-2">
+            <span className="w-1 h-8 bg-gradient-to-b from-purple-500 to-pink-500" />
+            极紫星专有模型
+          </h2>
+          <Card className="bg-gradient-to-br from-slate-800 via-slate-800 to-slate-900 border-purple-500/30 hover:border-purple-500/60 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/20 overflow-hidden">
+            <div className="p-8">
+              <div className="flex items-start justify-between mb-4">
+                <div>
+                  <div className="text-4xl mb-3">🤖</div>
+                  <h3 className="text-2xl font-bold text-white mb-2">极紫星 AI</h3>
+                  <p className="text-gray-300 mb-2">极紫星专有 AI 模型集成系统</p>
+                  <p className="text-purple-400 italic border-l-2 border-purple-500 pl-3">智能调度、高效会话、专业分析</p>
+                </div>
+              </div>
+              <p className="text-gray-400 mb-6">整合全球顶先 AI 模型，通过智能调度引擎为您提供最优的 AI 对话体验。</p>
+              <div className="flex gap-4">
+                <button
+                  onClick={() => window.location.href = '/zh/jizixing-ai'}
+                  className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/50"
+                >
+                  管理不同模型
+                </button>
+                <button
+                  onClick={() => window.location.href = '/zh/jizixing-ai?chat=true'}
+                  className="flex-1 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/50"
+                >
+                  开始对话
+                </button>
+              </div>
+            </div>
+          </Card>
+        </div>
       </div>
     </div>
   );
