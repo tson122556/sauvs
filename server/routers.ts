@@ -8,6 +8,7 @@ import { uvsAIRouter } from "./routers/uvsAI";
 import { aiChatRouter } from "./routers/aiChat";
 import { uvsChatStreamRouter } from "./routers/uvsChatStream";
 import { modalityChatRouter } from "./routers/modalityChat";
+import { uvsAIChatRouter } from "./routers/uvsAIChat";
 import { contactRouter } from "./routers/contact";
 import { stripeRouter } from "./routers/stripe";
 import { sendAppointmentConfirmationEmail } from "./email";
@@ -18,6 +19,7 @@ export const appRouter = router({
   aiChat: aiChatRouter,
   uvsChatStream: uvsChatStreamRouter,
   modalityChat: modalityChatRouter,
+  uvsAIChat: uvsAIChatRouter,
   contact: contactRouter,
   stripe: stripeRouter,
   auth: router({
