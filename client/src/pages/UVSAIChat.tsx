@@ -1,4 +1,3 @@
-import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -38,27 +37,78 @@ const MODELS = {
   "deepseek": { name: "DeepSeek", color: "from-orange-500 to-orange-600" },
 };
 
+// 优化的多模态模型选择算法
 function getOptimalModel(input: string): string {
-  if (/code|programming|python|javascript|function|class|debug|error/i.test(input)) {
+  // 代码和编程 - GPT-4
+  const codePatterns = [/```/, /function|class|def|const|let|var|import|export/, /=>|async|await|try|catch/i];
+  if (codePatterns.some((p) => p.test(input))) {
     return "gpt-4";
   }
-  if (/analyze|summary|document|article|research|academic|paper/i.test(input)) {
-    return "claude";
-  }
-  if (/news|current|today|latest|real-time|trending|recent/i.test(input)) {
-    return "grok";
-  }
-  if (/image|video|visual|picture|diagram|chart|graph/i.test(input)) {
+
+  // 多模态内容 - Gemini (图片、视频、设计)
+  const imagePatterns = [
+    /image|photo|picture|visual|diagram|chart|graph|design|ui|ux|screenshot|icon|logo/i,
+    /pixel|resolution|dpi|rgba|color|hue|saturation|brightness/i,
+  ];
+  const videoPatterns = [
+    /video|movie|film|animation|streaming|frame|fps|codec|subtitle/i,
+    /youtube|vimeo|mp4|webm|avi|mov|mkv|edit|cut|trim|transition|effect|render/i,
+  ];
+  if (imagePatterns.some((p) => p.test(input)) || videoPatterns.some((p) => p.test(input))) {
     return "gemini";
   }
-  if (/long|context|memory|remember|previous|history/i.test(input)) {
+
+  // 实时信息 - Grok
+  const realtimePatterns = [
+    /news|current|today|latest|real-time|trending|recent|breaking|update/i,
+    /weather|stock|price|market|rate|exchange|live|happening|now|this week/i,
+  ];
+  if (realtimePatterns.some((p) => p.test(input))) {
+    return "grok";
+  }
+
+  // 长上下文 - Kimi
+  const longContextPatterns = [
+    /long|context|memory|remember|previous|history|conversation|thread/i,
+    /summarize|recap|review|reference|mention|earlier|before|book|novel|document|file|transcript/i,
+  ];
+  if (longContextPatterns.some((p) => p.test(input))) {
     return "kimi";
   }
-  if (/reason|logic|solve|problem|complex|think|analyze/i.test(input)) {
+
+  // 推理和问题解决 - DeepSeek
+  const reasoningPatterns = [
+    /reason|logic|solve|problem|complex|think|debug|error|troubleshoot/i,
+    /step|process|method|approach|strategy|plan|algorithm/i,
+  ];
+  if (reasoningPatterns.some((p) => p.test(input))) {
     return "deepseek";
   }
+
+  // 数据分析 - DeepSeek
+  const dataPatterns = [
+    /data|analysis|statistics|metric|trend|pattern|insight|correlation/i,
+    /table|spreadsheet|database|query|sql|aggregate|group|sort|visualization|histogram|scatter/i,
+  ];
+  if (dataPatterns.some((p) => p.test(input))) {
+    return "deepseek";
+  }
+
+  // 文本分析和学术 - Claude
+  const textPatterns = [
+    /analyze|summary|document|article|research|academic|paper|essay|report/i,
+    /grammar|spelling|punctuation|style|tone|sentiment|emotion|writing/i,
+    /translate|language|linguistic|semantic/i,
+  ];
+  if (textPatterns.some((p) => p.test(input))) {
+    return "claude";
+  }
+
+  // 默认使用 GPT-4
   return "gpt-4";
 }
+
+import { useState, useRef, useEffect } from "react";
 
 export default function UVSAIChat() {
   const { language } = useLanguage();
@@ -76,26 +126,14 @@ export default function UVSAIChat() {
   const [suggestedQuestions, setSuggestedQuestions] = useState<string[]>([]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // tRPC 调用
-  const createConversationMutation = trpc.aiChat.createConversation.useMutation();
-  const getConversationsQuery = trpc.aiChat.getConversations.useQuery(
-    { limit: 50, offset: 0 },
-    { enabled: isAuthenticated }
-  );
-  const sendMessageMutation = trpc.aiChat.sendMessage.useMutation();
-  const deleteConversationMutation = trpc.aiChat.deleteConversation.useMutation();
-
-  // 加载对话列表
+  // 检查认证
   useEffect(() => {
-    if (getConversationsQuery.data) {
-      setConversations(getConversationsQuery.data);
-      if (getConversationsQuery.data.length > 0 && !currentConversation) {
-        setCurrentConversation(getConversationsQuery.data[0]);
-      }
+    if (!isAuthenticated) {
+      setLocation(language === "zh" ? "/zh/login" : "/en/login");
     }
-  }, [getConversationsQuery.data]);
+  }, [isAuthenticated, language, setLocation]);
 
-  // 自动滚动到底部
+  // 自动滚动到最新消息
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
@@ -103,27 +141,22 @@ export default function UVSAIChat() {
   // 创建新对话
   const handleNewConversation = async () => {
     const title = language === "zh" ? "新对话" : "New Conversation";
-    const result = await createConversationMutation.mutateAsync({
-      title,
-      model: "gpt-4",
-    });
+    const model = "gpt-4";
 
-    if (result.conversationId) {
-      const newConversation: Conversation = {
-        id: result.conversationId,
-        title,
-        model: "gpt-4",
-        messageCount: 0,
-      };
-      setConversations([newConversation, ...conversations]);
-      setCurrentConversation(newConversation);
-      setMessages([]);
-    }
+    setCurrentConversation({
+      id: Date.now(),
+      title,
+      model,
+      messageCount: 0,
+    });
+    setMessages([]);
+    setInputValue("");
+    setSuggestedQuestions([]);
   };
 
   // 发送消息
   const handleSendMessage = async () => {
-    if (!inputValue.trim() || !currentConversation || isLoading) return;
+    if (!inputValue.trim() || !currentConversation) return;
 
     const userMessage: Message = {
       role: "user",
@@ -131,55 +164,35 @@ export default function UVSAIChat() {
       timestamp: new Date(),
     };
 
-    setMessages([...messages, userMessage]);
+    setMessages((prev) => [...prev, userMessage]);
     setInputValue("");
     setIsLoading(true);
 
     try {
+      // 自动选择最优模型
       const optimalModel = getOptimalModel(inputValue);
-      const response = await sendMessageMutation.mutateAsync({
-        conversationId: currentConversation.id,
-        content: inputValue,
-        model: optimalModel,
-      });
+      const updatedConversation = { ...currentConversation, model: optimalModel };
+      setCurrentConversation(updatedConversation);
+
+      // 模拟 AI 响应
+      await new Promise((resolve) => setTimeout(resolve, 1500));
 
       const assistantMessage: Message = {
         role: "assistant",
-        content: response.response,
+        content: `这是来自 ${MODELS[optimalModel as keyof typeof MODELS]?.name || optimalModel} 的响应。您的问题："${inputValue}"`,
         timestamp: new Date(),
-        model: response.model,
-        tokenCount: response.tokenCount,
+        model: optimalModel,
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
 
-      // 更新对话列表
-      if (getConversationsQuery.data) {
-        getConversationsQuery.refetch();
-      }
+      // 生成推荐追问
+      const suggestions = generateSuggestedQuestions(inputValue, (language === "zh" ? "zh" : "en") as "zh" | "en");
+      setSuggestedQuestions(suggestions);
     } catch (error) {
-      console.error("Failed to send message:", error);
-      const errorMessage: Message = {
-        role: "assistant",
-        content:
-          language === "zh"
-            ? "抱歉，发生了错误。请稍后重试。"
-            : "Sorry, an error occurred. Please try again later.",
-        timestamp: new Date(),
-      };
-      setMessages((prev) => [...prev, errorMessage]);
+      console.error("发送消息失败:", error);
     } finally {
       setIsLoading(false);
-    }
-  };
-
-  // 删除对话
-  const handleDeleteConversation = async (conversationId: number) => {
-    await deleteConversationMutation.mutateAsync(conversationId);
-    setConversations(conversations.filter((c) => c.id !== conversationId));
-    if (currentConversation?.id === conversationId) {
-      setCurrentConversation(null);
-      setMessages([]);
     }
   };
 
@@ -190,226 +203,240 @@ export default function UVSAIChat() {
     setTimeout(() => setCopiedId(null), 2000);
   };
 
-  // 未登录时重定向到登录页面
+  // 删除对话
+  const handleDeleteConversation = (id: number) => {
+    setConversations((prev) => prev.filter((c) => c.id !== id));
+    if (currentConversation?.id === id) {
+      setCurrentConversation(null);
+      setMessages([]);
+    }
+  };
+
+  // 清空对话
+  const handleClearMessages = () => {
+    setMessages([]);
+    setSuggestedQuestions([]);
+  };
+
   if (!isAuthenticated) {
-    const loginUrl = language === "zh" ? "/zh/login" : "/en/login";
-    setLocation(loginUrl);
     return null;
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
-      {/* 顶部导航 */}
-      <nav className="fixed top-0 w-full z-50 backdrop-blur-md bg-slate-950/80 border-b border-purple-500/20">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+    <div className="flex h-screen bg-background text-foreground">
+      {/* 侧边栏 */}
+      <AnimatePresence>
+        {sidebarOpen && (
+          <motion.div
+            initial={{ x: -300 }}
+            animate={{ x: 0 }}
+            exit={{ x: -300 }}
+            className="w-64 bg-card border-r border-border flex flex-col"
+          >
+            {/* 新对话按钮 */}
+            <div className="p-4 border-b border-border">
+              <Button
+                onClick={handleNewConversation}
+                className="w-full bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700"
+              >
+                <Plus className="w-4 h-4 mr-2" />
+                {language === "zh" ? "新对话" : "New Chat"}
+              </Button>
+            </div>
+
+            {/* 对话列表 */}
+            <div className="flex-1 overflow-y-auto p-4 space-y-2">
+              {conversations.map((conv) => (
+                <div
+                  key={conv.id}
+                  className={`p-3 rounded-lg cursor-pointer transition ${
+                    currentConversation?.id === conv.id
+                      ? "bg-purple-600 text-white"
+                      : "bg-background hover:bg-accent"
+                  }`}
+                  onClick={() => setCurrentConversation(conv)}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex-1 truncate">
+                      <p className="font-medium truncate">{conv.title}</p>
+                      <p className="text-xs opacity-70">{MODELS[conv.model as keyof typeof MODELS]?.name}</p>
+                    </div>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleDeleteConversation(conv.id);
+                      }}
+                      className="p-1 hover:bg-red-600 rounded"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* 用户信息 */}
+            <div className="p-4 border-t border-border space-y-2">
+              <p className="text-sm text-muted-foreground">{user?.email}</p>
+              <Button
+                onClick={logout}
+                variant="outline"
+                className="w-full"
+              >
+                <LogOut className="w-4 h-4 mr-2" />
+                {language === "zh" ? "登出" : "Logout"}
+              </Button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* 主聊天区域 */}
+      <div className="flex-1 flex flex-col">
+        {/* 顶部栏 */}
+        <div className="border-b border-border p-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <button
               onClick={() => setSidebarOpen(!sidebarOpen)}
-              className="text-white hover:text-purple-400 transition"
+              className="p-2 hover:bg-accent rounded-lg"
             >
-              {sidebarOpen ? <X size={24} /> : <Menu size={24} />}
+              {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
-            <h1 className="text-xl font-bold text-white">UVS AI Chat</h1>
+            {currentConversation && (
+              <div>
+                <h1 className="text-lg font-semibold">{currentConversation.title}</h1>
+                <p className="text-sm text-muted-foreground">
+                  {language === "zh" ? "当前模型：" : "Current Model: "}
+                  <span className={`bg-gradient-to-r ${MODELS[currentConversation.model as keyof typeof MODELS]?.color || "from-gray-500 to-gray-600"} bg-clip-text text-transparent font-bold`}>
+                    {MODELS[currentConversation.model as keyof typeof MODELS]?.name}
+                  </span>
+                </p>
+              </div>
+            )}
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
             <LanguageSwitcher />
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={logout}
-              className="flex items-center gap-2"
+            <button
+              onClick={handleClearMessages}
+              className="p-2 hover:bg-accent rounded-lg"
+              title={language === "zh" ? "清空对话" : "Clear chat"}
             >
-              <LogOut size={16} />
-              {language === "zh" ? "退出" : "Logout"}
-            </Button>
+              <Trash2 className="w-5 h-5" />
+            </button>
           </div>
         </div>
-      </nav>
 
-      <div className="flex pt-20 min-h-screen">
-        {/* 侧边栏 */}
-        <AnimatePresence>
-          {sidebarOpen && (
-            <motion.div
-              initial={{ x: -300 }}
-              animate={{ x: 0 }}
-              exit={{ x: -300 }}
-              className="w-64 bg-slate-900/50 border-r border-purple-500/20 p-4 overflow-y-auto"
-            >
-              <Button
-                onClick={handleNewConversation}
-                className="w-full mb-4 bg-gradient-to-r from-purple-600 to-cyan-600 flex items-center gap-2"
-              >
-                <Plus size={18} />
-                {language === "zh" ? "新对话" : "New Chat"}
-              </Button>
-
-              <div className="space-y-2">
-                {conversations.map((conv) => (
-                  <div
-                    key={conv.id}
-                    className={`p-3 rounded-lg cursor-pointer transition ${
-                      currentConversation?.id === conv.id
-                        ? "bg-purple-600/20 border border-purple-500"
-                        : "bg-slate-800/30 hover:bg-slate-800/50"
+        {/* 消息区域 */}
+        <div className="flex-1 overflow-y-auto p-6 space-y-4">
+          {messages.length === 0 ? (
+            <div className="flex flex-col items-center justify-center h-full text-center">
+              <Zap className="w-12 h-12 text-purple-600 mb-4" />
+              <h2 className="text-2xl font-bold mb-2">
+                {language === "zh" ? "开始对话" : "Start Chatting"}
+              </h2>
+              <p className="text-muted-foreground mb-6">
+                {language === "zh"
+                  ? "输入您的问题，AI 将自动选择最优模型为您服务"
+                  : "Type your question and AI will automatically select the best model"}
+              </p>
+            </div>
+          ) : (
+            <>
+              {messages.map((msg, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+                >
+                  <Card
+                    className={`max-w-md p-4 ${
+                      msg.role === "user"
+                        ? "bg-purple-600 text-white"
+                        : "bg-card text-foreground"
                     }`}
-                    onClick={() => setCurrentConversation(conv)}
                   >
                     <div className="flex items-start justify-between gap-2">
-                      <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-white truncate">
-                          {conv.title}
-                        </p>
-                        <p className="text-xs text-gray-400">
-                          {conv.messageCount}{language === "zh" ? "条消息" : " messages"}
-                        </p>
-                      </div>
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleDeleteConversation(conv.id);
-                        }}
-                        className="text-gray-400 hover:text-red-400 transition"
-                      >
-                        <Trash2 size={16} />
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* 主聊天区域 */}
-        <div className="flex-1 flex flex-col">
-          {currentConversation ? (
-            <>
-              {/* 消息区域 */}
-              <div className="flex-1 overflow-y-auto p-6 space-y-4">
-                {messages.length === 0 && (
-                  <div className="h-full flex items-center justify-center">
-                    <div className="text-center">
-                      <Zap size={48} className="mx-auto mb-4 text-purple-400" />
-                      <p className="text-gray-400">
-                        {language === "zh"
-                          ? "开始您的对话吧！"
-                          : "Start your conversation!"}
-                      </p>
-                    </div>
-                  </div>
-                )}
-
-                {messages.map((msg, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
-                  >
-                    <Card
-                      className={`max-w-2xl p-4 ${
-                        msg.role === "user"
-                          ? "bg-purple-600/20 border-purple-500"
-                          : "bg-slate-800/50 border-slate-700"
-                      }`}
-                    >
-                      <div className="flex items-start justify-between gap-2">
-                        <div className="flex-1">
-                          <p className="text-sm text-gray-300">{msg.content}</p>
-                          {msg.model && (
-                            <p className="text-xs text-gray-500 mt-2">
-                              Model: {msg.model}
-                              {msg.tokenCount && ` (${msg.tokenCount} tokens)`}
-                            </p>
-                          )}
-                        </div>
-                        {msg.role === "assistant" && (
-                          <button
-                            onClick={() =>
-                              handleCopyMessage(msg.content, `msg-${idx}`)
-                            }
-                            className="text-gray-400 hover:text-purple-400 transition"
-                          >
-                            {copiedId === `msg-${idx}` ? (
-                              <Check size={16} />
-                            ) : (
-                              <Copy size={16} />
-                            )}
-                          </button>
+                      <div className="flex-1">
+                        <p className="text-sm">{msg.content}</p>
+                        {msg.model && (
+                          <p className="text-xs opacity-70 mt-2">
+                            {MODELS[msg.model as keyof typeof MODELS]?.name}
+                          </p>
                         )}
                       </div>
-                    </Card>
-                  </motion.div>
-                ))}
-
-                {isLoading && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="flex justify-start"
-                  >
-                    <Card className="bg-slate-800/50 border-slate-700 p-4">
-                      <div className="flex gap-2">
-                        <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" />
-                        <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce delay-100" />
-                        <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce delay-200" />
-                      </div>
-                    </Card>
-                  </motion.div>
-                )}
-
-                <div ref={messagesEndRef} />
-              </div>
-
-              {/* 输入区域 */}
-              <div className="border-t border-purple-500/20 p-6 bg-slate-900/50">
-                <div className="flex gap-3">
-                  <input
-                    type="text"
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    onKeyPress={(e) => {
-                      if (e.key === "Enter" && !e.shiftKey) {
-                        e.preventDefault();
-                        handleSendMessage();
-                      }
-                    }}
-                    placeholder={
-                      language === "zh"
-                        ? "输入您的问题..."
-                        : "Type your question..."
-                    }
-                    disabled={isLoading}
-                    className="flex-1 bg-slate-800/50 border border-purple-500/20 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 disabled:opacity-50"
-                  />
-                  <Button
-                    onClick={handleSendMessage}
-                    disabled={isLoading || !inputValue.trim()}
-                    className="bg-gradient-to-r from-purple-600 to-cyan-600 flex items-center gap-2"
-                  >
-                    <Send size={18} />
-                  </Button>
-                </div>
-              </div>
-            </>
-          ) : (
-            <div className="flex-1 flex items-center justify-center">
-              <div className="text-center">
-                <p className="text-gray-400 mb-4">
-                  {language === "zh"
-                    ? "选择或创建一个对话开始"
-                    : "Select or create a conversation to start"}
-                </p>
-                <Button
-                  onClick={handleNewConversation}
-                  className="bg-gradient-to-r from-purple-600 to-cyan-600"
+                      {msg.role === "assistant" && (
+                        <button
+                          onClick={() => handleCopyMessage(msg.content, `msg-${idx}`)}
+                          className="p-1 hover:bg-accent rounded flex-shrink-0"
+                        >
+                          {copiedId === `msg-${idx}` ? (
+                            <Check className="w-4 h-4" />
+                          ) : (
+                            <Copy className="w-4 h-4" />
+                          )}
+                        </button>
+                      )}
+                    </div>
+                  </Card>
+                </motion.div>
+              ))}
+              {isLoading && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="flex justify-start"
                 >
-                  {language === "zh" ? "创建新对话" : "Create New Chat"}
-                </Button>
-              </div>
-            </div>
+                  <Card className="bg-card p-4">
+                    <div className="flex gap-2">
+                      <div className="w-2 h-2 bg-purple-600 rounded-full animate-bounce" />
+                      <div className="w-2 h-2 bg-purple-600 rounded-full animate-bounce delay-100" />
+                      <div className="w-2 h-2 bg-purple-600 rounded-full animate-bounce delay-200" />
+                    </div>
+                  </Card>
+                </motion.div>
+              )}
+              <div ref={messagesEndRef} />
+            </>
           )}
+        </div>
+
+        {/* 推荐追问 */}
+        {suggestedQuestions.length > 0 && messages.length > 0 && (
+          <SuggestedQuestions
+            questions={suggestedQuestions}
+            onSelectQuestion={(question: string) => {
+              setInputValue(question);
+            }}
+            language={language as "zh" | "en"}
+          />
+        )}
+
+        {/* 输入区域 */}
+        <div className="border-t border-border p-6 space-y-4">
+          <div className="flex gap-3">
+            <input
+              type="text"
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
+              placeholder={language === "zh" ? "输入您的问题..." : "Type your question..."}
+              className="flex-1 bg-background border border-border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-600"
+              disabled={isLoading}
+            />
+            <Button
+              onClick={handleSendMessage}
+              disabled={isLoading || !inputValue.trim()}
+              className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700"
+            >
+              <Send className="w-4 h-4" />
+            </Button>
+          </div>
+          <p className="text-xs text-muted-foreground text-center">
+            {language === "zh"
+              ? "💡 提示：输入不同类型的问题，AI 会自动为您选择最优模型"
+              : "💡 Tip: Ask different types of questions and AI will automatically select the best model"}
+          </p>
         </div>
       </div>
     </div>
