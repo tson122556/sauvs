@@ -256,7 +256,7 @@ export default function News() {
             <div>
               <h4 className="text-white font-bold mb-4">关于我们</h4>
               <p className="text-gray-400 text-sm">
-                我们专注于人工智能、智能机器人、物联网与时空同步飞行器的前沿技术研发与集成应用。
+                我们专注于人工智能、智能机器人、物联网与时空同步/异步航行器的前沿技术研发与集成应用。
               </p>
             </div>
             <div>

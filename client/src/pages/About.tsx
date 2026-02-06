@@ -142,7 +142,7 @@ export default function About() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
-我们专注于人工智能、智能机器人、物联网与时空同步飞行器的前沿技术研发与集成应用。通过将这些技术深度整合，致力于为各社会组织及个人客户提供创新解决方案，赋能其在未来数字产业中的转型升级。
+我们专注于人工智能、智能机器人、物联网与时空同步/异步航行器的前沿技术研发与集成应用。通过将这些技术深度整合，致力于为各社会组织及个人客户提供创新解决方案，赋能其在未来数字产业中的转型升级。
             </motion.p>
 
             <motion.div
@@ -634,7 +634,7 @@ export default function About() {
                 />
               </div>
               <p className="text-gray-400 text-sm">
-                专注于人工智能、智能机器人、物联网技术创新和时空同步飞行器的研发和应用
+                专注于人工智能、智能机器人、物联网技术创新和时空同步/异步航行器的研发和应用
               </p>
             </div>
 
@@ -658,7 +658,7 @@ export default function About() {
                 </li>
                 <li>
                   <a href="/#products" className="text-gray-400 hover:text-white transition">
-                    时空同步飞行器
+                    时空同步/异步航行器
                   </a>
                 </li>
               </ul>

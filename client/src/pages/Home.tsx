@@ -149,7 +149,7 @@ export default function Home() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
-我们专注于人工智能、智能机器人、物联网与时空同步飞行器的前沿技术研发与集成应用。通过将这些技术深度整合，致力于为各社会组织及个人客户提供创新解决方案，赋能其在未来数字产业中的转型升级。
+我们专注于人工智能、智能机器人、物联网与时空同步/异步航行器的前沿技术研发与集成应用。通过将这些技术深度整合，致力于为各社会组织及个人客户提供创新解决方案，赋能其在未来数字产业中的转型升级。
             </motion.p>
 
             <motion.div
@@ -319,10 +319,10 @@ export default function Home() {
                   backgroundPosition: 'center'
                 }} />
                 <div className="relative z-10 flex-grow">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/PMmXikHRGAMPGDyc.png" alt="时空同步飞行器" className="w-16 h-16 mb-4 group-hover:scale-110 transition" style={{backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}} />
-                  <h3 className="text-xl font-bold text-white mb-3">时空同步飞行器</h3>
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/PMmXikHRGAMPGDyc.png" alt="时空同步/异步航行器" className="w-16 h-16 mb-4 group-hover:scale-110 transition" style={{backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}} />
+                  <h3 className="text-xl font-bold text-white mb-3">时空同步/异步航行器</h3>
                   <p className="text-gray-400 mb-4">
-                    前沿的时空同步飞行技术研发与应用，提供创新的飞行解决方案。
+                    前沿的时空同步/异步航行技术研发与应用，提供创新的航行与飞行解决方案。
                   </p>
                   <div className="inline-block px-3 py-1 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs font-semibold rounded-full mb-4">
                     {language === "zh" ? "仅对合作伙伴开放" : "Partners Only"}
@@ -452,7 +452,7 @@ export default function Home() {
                 <span className="text-lg font-bold text-white">极紫星</span>
               </div>
               <p className="text-gray-400 text-sm">
-                专注于人工智能、智能机器人、物联网技术创新和时空同步飞行器的研发和应用
+                专注于人工智能、智能机器人、物联网技术创新和时空同步/异步航行器的研发和应用
               </p>
             </div>
 
@@ -476,7 +476,7 @@ export default function Home() {
                 </li>
                 <li>
                   <a href="#" className="text-gray-400 hover:text-white transition">
-                    时空同步飞行器
+                    时空同步/异步航行器
                   </a>
                 </li>
               </ul>

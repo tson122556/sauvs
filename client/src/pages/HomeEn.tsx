@@ -291,10 +291,13 @@ export default function HomeEn() {
                 }} />
                 <div className="relative z-10">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/PMmXikHRGAMPGDyc.png" alt="Spacetech Aircraft" className="w-16 h-16 mb-4 group-hover:scale-110 transition" style={{backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}} />
-                  <h3 className="text-xl font-bold text-white mb-3">Spacetech Aircraft</h3>
-                  <p className="text-gray-400">
-                    Cutting-edge spacetech flight R&D and application providing innovative flight solutions.
+                  <h3 className="text-xl font-bold text-white mb-3">Spacetime Synchronous/Asynchronous Navigation</h3>
+                  <p className="text-gray-400 mb-4">
+                    Cutting-edge spacetime synchronous/asynchronous navigation R&D and application providing innovative navigation and flight solutions.
                   </p>
+                  <div className="inline-block px-3 py-1 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs font-semibold rounded-full">
+                    Partners Only
+                  </div>
                 </div>
               </Card>
             </motion.div>
@@ -443,7 +446,7 @@ export default function HomeEn() {
                 </li>
                 <li>
                   <a href="#" className="text-gray-400 hover:text-white transition">
-                    Spacetech Aircraft
+                    Spacetime Synchronous/Asynchronous Navigation
                   </a>
                 </li>
               </ul>

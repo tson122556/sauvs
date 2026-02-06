@@ -258,7 +258,7 @@ export default function Contact() {
                 <span className="text-lg font-bold text-white">极紫星</span>
               </div>
               <p className="text-gray-400 text-sm">
-我们专注于人工智能、智能机器人、物联网与时空同步飞行器的前沿技术研发与集成应用
+我们专注于人工智能、智能机器人、物联网与时空同步/异步航行器的前沿技术研发与集成应用
               </p>
             </div>
 
@@ -282,7 +282,7 @@ export default function Contact() {
                 </li>
                 <li>
                   <a href={`/${language}#products`} className="text-gray-400 hover:text-white transition">
-                    时空同步飞行器
+                    时空同步/异步航行器
                   </a>
                 </li>
               </ul>
