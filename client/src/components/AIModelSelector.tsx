@@ -7,6 +7,7 @@ export interface AIModel {
   id: string;
   name: string;
   description: string;
+  feature: string;
   icon: string;
   color: string;
   url: string;
@@ -19,6 +20,7 @@ const AI_MODELS: AIModel[] = [
     id: "chatgpt",
     name: "ChatGPT",
     description: "OpenAI's advanced language model",
+    feature: "Excels at natural conversations and creative content generation",
     icon: "🤖",
     color: "from-green-500 to-green-600",
     url: "https://chat.openai.com",
@@ -28,6 +30,7 @@ const AI_MODELS: AIModel[] = [
     id: "claude",
     name: "Claude",
     description: "Anthropic's advanced AI assistant",
+    feature: "Specializes in detailed analysis and long-form document processing",
     icon: "🧠",
     color: "from-amber-500 to-amber-600",
     url: "https://claude.ai",
@@ -37,6 +40,7 @@ const AI_MODELS: AIModel[] = [
     id: "grok",
     name: "Grok",
     description: "X's real-time AI assistant",
+    feature: "Provides real-time information and current event analysis",
     icon: "⚡",
     color: "from-purple-500 to-purple-600",
     url: "https://grok.x.com",
@@ -46,6 +50,7 @@ const AI_MODELS: AIModel[] = [
     id: "gemini",
     name: "Gemini",
     description: "Google's multimodal AI",
+    feature: "Handles images, text, and video with advanced multimodal understanding",
     icon: "✨",
     color: "from-blue-500 to-blue-600",
     url: "https://gemini.google.com",
@@ -57,6 +62,7 @@ const AI_MODELS: AIModel[] = [
     id: "kimi",
     name: "Kimi",
     description: "Moonshot's long-context AI",
+    feature: "Processes ultra-long documents and maintains context over extended conversations",
     icon: "🌙",
     color: "from-indigo-500 to-indigo-600",
     url: "https://kimi.moonshot.cn",
@@ -66,6 +72,7 @@ const AI_MODELS: AIModel[] = [
     id: "deepseek",
     name: "DeepSeek",
     description: "Chinese advanced reasoning AI",
+    feature: "Excels at complex reasoning and problem-solving with deep analysis",
     icon: "🔍",
     color: "from-orange-500 to-orange-600",
     url: "https://chat.deepseek.com",
@@ -75,6 +82,7 @@ const AI_MODELS: AIModel[] = [
     id: "qwen",
     name: "Qwen",
     description: "Alibaba's large language model",
+    feature: "Optimized for Chinese language with superior multilingual capabilities",
     icon: "🌟",
     color: "from-red-500 to-red-600",
     url: "https://qwenlm.github.io",
@@ -84,6 +92,7 @@ const AI_MODELS: AIModel[] = [
     id: "doubao",
     name: "豆包",
     description: "ByteDance's AI assistant",
+    feature: "Fast response with strong Chinese understanding and creative capabilities",
     icon: "🎯",
     color: "from-pink-500 to-pink-600",
     url: "https://www.doubao.com",
@@ -119,7 +128,10 @@ export default function AIModelSelector() {
               <h3 className="text-2xl font-bold text-white mb-2">
                 {model.name}
               </h3>
-              <p className="text-gray-400 text-sm">{model.description}</p>
+              <p className="text-gray-400 text-sm mb-3">{model.description}</p>
+              <p className="text-purple-300 text-xs italic border-l-2 border-purple-500 pl-2">
+                {model.feature}
+              </p>
             </div>
 
             {/* Spacer */}
@@ -184,36 +196,37 @@ export default function AIModelSelector() {
           </p>
           <ul className="space-y-2 text-gray-400 text-sm">
             <li>
-              <strong className="text-purple-400">ChatGPT:</strong> Best for
-              general-purpose conversations and creative writing
+              <strong className="text-purple-400">ChatGPT:</strong> Excels at
+              natural conversations and creative content generation
             </li>
             <li>
-              <strong className="text-purple-400">Claude:</strong> Excels at
-              detailed analysis and long-form content
+              <strong className="text-purple-400">Claude:</strong> Specializes
+              in detailed analysis and long-form document processing
             </li>
             <li>
-              <strong className="text-purple-400">Grok:</strong> Real-time
-              information and current events
+              <strong className="text-purple-400">Grok:</strong> Provides
+              real-time information and current event analysis
             </li>
             <li>
-              <strong className="text-purple-400">Gemini:</strong> Multimodal
-              capabilities including image understanding
+              <strong className="text-purple-400">Gemini:</strong> Handles
+              images, text, and video with advanced multimodal understanding
             </li>
             <li>
-              <strong className="text-purple-400">Kimi:</strong> Long-context
-              analysis and document processing
+              <strong className="text-purple-400">Kimi:</strong> Processes
+              ultra-long documents and maintains context over extended
+              conversations
             </li>
             <li>
-              <strong className="text-purple-400">DeepSeek:</strong> Advanced
-              reasoning and problem-solving
+              <strong className="text-purple-400">DeepSeek:</strong> Excels at
+              complex reasoning and problem-solving with deep analysis
             </li>
             <li>
               <strong className="text-purple-400">Qwen:</strong> Optimized for
-              Chinese language and multilingual tasks
+              Chinese language with superior multilingual capabilities
             </li>
             <li>
-              <strong className="text-purple-400">豆包:</strong> ByteDance's AI
-              with strong Chinese language capabilities
+              <strong className="text-purple-400">豆包:</strong> Fast response
+              with strong Chinese understanding and creative capabilities
             </li>
           </ul>
         </div>

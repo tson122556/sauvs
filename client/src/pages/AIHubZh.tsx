@@ -6,6 +6,7 @@ interface AIModel {
   id: string;
   name: string;
   description: string;
+  feature: string;
   icon: string;
   color: string;
   url: string;
@@ -18,6 +19,7 @@ const AI_MODELS: AIModel[] = [
     id: "chatgpt",
     name: "ChatGPT",
     description: "OpenAI 的先进语言模型",
+    feature: "擅长自然对话和创意内容生成",
     icon: "🤖",
     color: "from-green-500 to-green-600",
     url: "https://chat.openai.com",
@@ -27,6 +29,7 @@ const AI_MODELS: AIModel[] = [
     id: "claude",
     name: "Claude",
     description: "Anthropic 的高级 AI 助手",
+    feature: "专精于详细分析和长文档处理",
     icon: "🧠",
     color: "from-amber-500 to-amber-600",
     url: "https://claude.ai",
@@ -36,6 +39,7 @@ const AI_MODELS: AIModel[] = [
     id: "grok",
     name: "Grok",
     description: "X 的实时 AI 助手",
+    feature: "提供实时信息和当前事件分析",
     icon: "⚡",
     color: "from-purple-500 to-purple-600",
     url: "https://grok.x.com",
@@ -45,6 +49,7 @@ const AI_MODELS: AIModel[] = [
     id: "gemini",
     name: "Gemini",
     description: "谷歌的多模态 AI",
+    feature: "处理图像、文本和视频的高级多模态理解",
     icon: "✨",
     color: "from-blue-500 to-blue-600",
     url: "https://gemini.google.com",
@@ -56,6 +61,7 @@ const AI_MODELS: AIModel[] = [
     id: "kimi",
     name: "Kimi",
     description: "月之暗面的长文本 AI",
+    feature: "处理超长文档并在长对话中保持上下文",
     icon: "🌙",
     color: "from-indigo-500 to-indigo-600",
     url: "https://kimi.moonshot.cn",
@@ -65,6 +71,7 @@ const AI_MODELS: AIModel[] = [
     id: "deepseek",
     name: "DeepSeek",
     description: "中国先进推理 AI",
+    feature: "擅长复杂推理和深度分析的问题解决",
     icon: "🔍",
     color: "from-orange-500 to-orange-600",
     url: "https://chat.deepseek.com",
@@ -74,6 +81,7 @@ const AI_MODELS: AIModel[] = [
     id: "qwen",
     name: "通义千问",
     description: "阿里巴巴的大语言模型",
+    feature: "中文语言优化，多语言能力卓越",
     icon: "🌟",
     color: "from-red-500 to-red-600",
     url: "https://qwenlm.github.io",
@@ -83,6 +91,7 @@ const AI_MODELS: AIModel[] = [
     id: "doubao",
     name: "豆包",
     description: "字节跳动的 AI 助手",
+    feature: "响应快速，中文理解能力强，创意表达出色",
     icon: "🎯",
     color: "from-pink-500 to-pink-600",
     url: "https://www.doubao.com",
@@ -116,7 +125,10 @@ export default function AIHubZh() {
               <h3 className="text-2xl font-bold text-white mb-2">
                 {model.name}
               </h3>
-              <p className="text-gray-400 text-sm">{model.description}</p>
+              <p className="text-gray-400 text-sm mb-3">{model.description}</p>
+              <p className="text-purple-300 text-xs italic border-l-2 border-purple-500 pl-2">
+                {model.feature}
+              </p>
             </div>
 
             {/* Spacer */}
@@ -178,35 +190,35 @@ export default function AIHubZh() {
           <ul className="space-y-2 text-gray-400 text-sm">
             <li>
               <strong className="text-purple-400">ChatGPT：</strong>
-              最适合通用对话和创意写作
+              擅长自然对话和创意内容生成
             </li>
             <li>
               <strong className="text-purple-400">Claude：</strong>
-              擅长详细分析和长篇内容
+              专精于详细分析和长文档处理
             </li>
             <li>
               <strong className="text-purple-400">Grok：</strong>
-              擅长实时信息和当前事件
+              提供实时信息和当前事件分析
             </li>
             <li>
               <strong className="text-purple-400">Gemini：</strong>
-              强大的多模态能力，包括图像理解
+              处理图像、文本和视频的高级多模态理解
             </li>
             <li>
               <strong className="text-purple-400">Kimi：</strong>
-              专门处理长文本分析和文档处理
+              处理超长文档并在长对话中保持上下文
             </li>
             <li>
               <strong className="text-purple-400">DeepSeek：</strong>
-              先进的推理和问题解决能力
+              擅长复杂推理和深度分析的问题解决
             </li>
             <li>
               <strong className="text-purple-400">通义千问：</strong>
-              优化了中文语言和多语言任务
+              中文语言优化，多语言能力卓越
             </li>
             <li>
               <strong className="text-purple-400">豆包：</strong>
-              字节跳动的 AI，中文能力强大
+              响应快速，中文理解能力强，创意表达出色
             </li>
           </ul>
         </div>
