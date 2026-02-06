@@ -151,7 +151,7 @@ export default function ContactEn() {
                   <MapPin className="w-8 h-8 text-pink-400 mb-4" />
                   <h3 className="text-white font-bold mb-2">Address</h3>
                   <p className="text-gray-400 text-sm">
-                    Xi'an, Shaanxi Province, China
+                    Second Ring South Road, Yanta District, Xi'an, Shaanxi Province, China
                   </p>
                 </Card>
               </motion.div>

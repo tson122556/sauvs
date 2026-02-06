@@ -142,7 +142,7 @@ export default function Contact() {
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">地址</h3>
                 <p className="text-gray-400 text-sm">
-                  陕西省西安市雁塔区二环南路100号金叶现代之窗
+                  陕西省西安市雁塔区二环南路
                 </p>
               </Card>
             </div>

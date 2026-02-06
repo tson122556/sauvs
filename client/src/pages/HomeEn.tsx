@@ -300,7 +300,7 @@ export default function HomeEn() {
                   </div>
                 </div>
                 <Button
-                  onClick={() => setLocation(`/en/product/spacetime`)}
+                  onClick={() => setLocation(`/en/contact`)}
                   className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white mt-4 relative z-10"
                 >
                   Learn More
