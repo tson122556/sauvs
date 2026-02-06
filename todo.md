@@ -353,3 +353,11 @@
 - [x] 创建官方图标组件
 - [x] 更新登录页面使用官方图标
 - [x] 更新创建账户页面使用官方图标
+
+## UVS AI 系统重构：意图分析和能力路由（2026-02-06）
+- [x] 实现 Intent & Modality Analyzer 意图判断层
+- [x] 实现 Capability Router 能力路由层
+- [x] 实现图像能力池 Image Model Hub
+- [x] 实现统一的返回 Schema 封装
+- [x] 修改前端以支持新的 Schema
+- [x] 编写测试用例验证
