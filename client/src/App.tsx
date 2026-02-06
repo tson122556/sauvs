@@ -23,6 +23,10 @@ import News from "./pages/News";
 import NewsEn from "./pages/NewsEn";
 import AIUsageStats from "./pages/AIUsageStats";
 import AIUsageStatsEn from "./pages/AIUsageStatsEn";
+import Register from "./pages/Register";
+import RegisterEn from "./pages/RegisterEn";
+import Login from "./pages/Login";
+import LoginEn from "./pages/LoginEn";
 import RootRedirect from "./pages/RootRedirect";
 
 function Router() {
@@ -59,6 +63,12 @@ function Router() {
       {/* 使用统计页面 */}
       <Route path="/zh/ai-usage-stats" component={AIUsageStats} />
       <Route path="/en/ai-usage-stats" component={AIUsageStatsEn} />
+      
+      {/* 注册和登录页面 */}
+      <Route path="/zh/register" component={Register} />
+      <Route path="/en/register" component={RegisterEn} />
+      <Route path="/zh/login" component={Login} />
+      <Route path="/en/login" component={LoginEn} />
       
       {/* 产品详情页面 */}
       <Route path="/zh/product/ai" component={ProductAI} />

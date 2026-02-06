@@ -188,27 +188,11 @@ export default function UVSAIChat() {
     setTimeout(() => setCopiedId(null), 2000);
   };
 
+  // 未登录时重定向到登录页面
   if (!isAuthenticated) {
-    return (
-      <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center">
-        <Card className="p-8 text-center max-w-md">
-          <h2 className="text-2xl font-bold mb-4">
-            {language === "zh" ? "请先登录" : "Please Login"}
-          </h2>
-          <p className="text-gray-400 mb-6">
-            {language === "zh"
-              ? "您需要登录才能使用 UVS AI Chat"
-              : "You need to login to use UVS AI Chat"}
-          </p>
-          <Button
-            onClick={() => setLocation("/zh/uvs-ai-chat")}
-            className="w-full bg-gradient-to-r from-purple-600 to-cyan-600"
-          >
-            {language === "zh" ? "返回首页" : "Back to Home"}
-          </Button>
-        </Card>
-      </div>
-    );
+    const loginUrl = language === "zh" ? "/zh/login" : "/en/login";
+    setLocation(loginUrl);
+    return null;
   }
 
   return (
