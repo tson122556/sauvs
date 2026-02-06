@@ -134,8 +134,19 @@ export default function UVSAIChat() {
   useEffect(() => {
     if (!isAuthenticated) {
       setLocation(language === "zh" ? "/zh/login" : "/en/login");
+    } else if (!currentConversation) {
+      // 自动创建第一个对话
+      const title = language === "zh" ? "新对话" : "New Conversation";
+      const newConversation: Conversation = {
+        id: Date.now(),
+        title,
+        model: "gpt-4",
+        messageCount: 0,
+      };
+      setCurrentConversation(newConversation);
+      setConversations([newConversation]);
     }
-  }, [isAuthenticated, language, setLocation]);
+  }, [isAuthenticated, language, setLocation, currentConversation]);
 
   // 自动滚动到最新消息
   useEffect(() => {
@@ -160,7 +171,21 @@ export default function UVSAIChat() {
 
   // 发送消息
   const handleSendMessage = async () => {
-    if (!inputValue.trim() || !currentConversation) return;
+    if (!inputValue.trim()) return;
+    
+    // 如果没有当前对话，创建一个新的
+    let conversation = currentConversation;
+    if (!conversation) {
+      const title = language === "zh" ? "新对话" : "New Conversation";
+      conversation = {
+        id: Date.now(),
+        title,
+        model: "gpt-4",
+        messageCount: 0,
+      };
+      setCurrentConversation(conversation);
+      setConversations([conversation]);
+    }
 
     const userMessage: Message = {
       role: "user",
@@ -175,8 +200,11 @@ export default function UVSAIChat() {
     try {
       // 自动选择最优模型
       const optimalModel = getOptimalModel(inputValue);
-      const updatedConversation = { ...currentConversation, model: optimalModel };
+      const updatedConversation = { ...conversation, model: optimalModel };
       setCurrentConversation(updatedConversation);
+      setConversations((prev) => 
+        prev.map((c) => c.id === conversation.id ? updatedConversation : c)
+      );
 
       // 模拟 AI 响应
       await new Promise((resolve) => setTimeout(resolve, 1500));
