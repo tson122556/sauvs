@@ -4,9 +4,11 @@ import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router, protectedProcedure } from "./_core/trpc";
 import { z } from "zod";
 import { createInquiry, getInquiries, updateInquiryStatus, createProduct, getProducts, getProductById, updateProduct, createNews, getNews, getNewsById, updateNews } from "./db";
+import { jizixingAIRouter } from "./routers/jizixingAI";
 
 export const appRouter = router({
   system: systemRouter,
+  jizixingAI: jizixingAIRouter,
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),
     logout: publicProcedure.mutation(({ ctx }) => {

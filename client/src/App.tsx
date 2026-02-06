@@ -13,6 +13,7 @@ import ContactEn from "./pages/ContactEn";
 import AboutEn from "./pages/AboutEn";
 import AIHub from "./pages/AIHub";
 import AIHubZh from "./pages/AIHubZh";
+import JizixingAI from "./pages/JizixingAI";
 import RootRedirect from "./pages/RootRedirect";
 
 function Router() {
@@ -35,6 +36,11 @@ function Router() {
       
       {/* AI Hub 路由 */}
       <Route path="/zh/ai-hub" component={AIHubZh} />
+      
+      {/* 极紫星专有模型路由 */}
+      <Route path="/jizixing-ai" component={JizixingAI} />
+      <Route path="/zh/jizixing-ai" component={JizixingAI} />
+      <Route path="/en/jizixing-ai" component={JizixingAI} />
       
       <Route path="/404" component={NotFound} />
       {/* Final fallback route */}
