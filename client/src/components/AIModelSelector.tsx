@@ -185,51 +185,7 @@ export default function AIModelSelector() {
           {renderModelCards(CHINA_MODELS)}
         </div>
 
-        {/* Info Section */}
-        <div className="bg-slate-800/30 border border-slate-700 rounded-lg p-8 max-w-3xl mx-auto">
-          <h2 className="text-xl font-bold text-white mb-4">
-            About Our AI Models
-          </h2>
-          <p className="text-gray-300 mb-4">
-            We provide access to the world's leading AI models, each with unique
-            strengths:
-          </p>
-          <ul className="space-y-2 text-gray-400 text-sm">
-            <li>
-              <strong className="text-purple-400">ChatGPT:</strong> Excels at
-              natural conversations and creative content generation
-            </li>
-            <li>
-              <strong className="text-purple-400">Claude:</strong> Specializes
-              in detailed analysis and long-form document processing
-            </li>
-            <li>
-              <strong className="text-purple-400">Grok:</strong> Provides
-              real-time information and current event analysis
-            </li>
-            <li>
-              <strong className="text-purple-400">Gemini:</strong> Handles
-              images, text, and video with advanced multimodal understanding
-            </li>
-            <li>
-              <strong className="text-purple-400">Kimi:</strong> Processes
-              ultra-long documents and maintains context over extended
-              conversations
-            </li>
-            <li>
-              <strong className="text-purple-400">DeepSeek:</strong> Excels at
-              complex reasoning and problem-solving with deep analysis
-            </li>
-            <li>
-              <strong className="text-purple-400">Qwen:</strong> Optimized for
-              Chinese language with superior multilingual capabilities
-            </li>
-            <li>
-              <strong className="text-purple-400">豆包:</strong> Fast response
-              with strong Chinese understanding and creative capabilities
-            </li>
-          </ul>
-        </div>
+
       </div>
     </div>
   );

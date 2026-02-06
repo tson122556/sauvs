@@ -181,47 +181,7 @@ export default function AIHubZh() {
           {renderModelCards(CHINA_MODELS)}
         </div>
 
-        {/* Info Section */}
-        <div className="bg-slate-800/30 border border-slate-700 rounded-lg p-8 max-w-3xl mx-auto">
-          <h2 className="text-xl font-bold text-white mb-4">关于我们的 AI 模型</h2>
-          <p className="text-gray-300 mb-4">
-            我们提供全球领先的 AI 模型，每个模型都有独特的优势：
-          </p>
-          <ul className="space-y-2 text-gray-400 text-sm">
-            <li>
-              <strong className="text-purple-400">ChatGPT：</strong>
-              擅长自然对话和创意内容生成
-            </li>
-            <li>
-              <strong className="text-purple-400">Claude：</strong>
-              专精于详细分析和长文档处理
-            </li>
-            <li>
-              <strong className="text-purple-400">Grok：</strong>
-              提供实时信息和当前事件分析
-            </li>
-            <li>
-              <strong className="text-purple-400">Gemini：</strong>
-              处理图像、文本和视频的高级多模态理解
-            </li>
-            <li>
-              <strong className="text-purple-400">Kimi：</strong>
-              处理超长文档并在长对话中保持上下文
-            </li>
-            <li>
-              <strong className="text-purple-400">DeepSeek：</strong>
-              擅长复杂推理和深度分析的问题解决
-            </li>
-            <li>
-              <strong className="text-purple-400">通义千问：</strong>
-              中文语言优化，多语言能力卓越
-            </li>
-            <li>
-              <strong className="text-purple-400">豆包：</strong>
-              响应快速，中文理解能力强，创意表达出色
-            </li>
-          </ul>
-        </div>
+
       </div>
     </div>
   );
