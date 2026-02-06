@@ -18,6 +18,8 @@ import ProductAI from "./pages/ProductAI";
 import ProductAIEn from "./pages/ProductAIEn";
 import ProductRobot from "./pages/ProductRobot";
 import ProductIoT from "./pages/ProductIoT";
+import News from "./pages/News";
+import NewsEn from "./pages/NewsEn";
 import RootRedirect from "./pages/RootRedirect";
 
 function Router() {
@@ -31,12 +33,14 @@ function Router() {
       <Route path="/zh" component={Home} />
       <Route path="/zh/about" component={About} />
       <Route path="/zh/contact" component={Contact} />
+      <Route path="/zh/news" component={News} />
       
       {/* 英文路由 */}
       <Route path="/en" component={HomeEn} />
       <Route path="/en/about" component={AboutEn} />
       <Route path="/en/contact" component={ContactEn} />
       <Route path="/en/ai-hub" component={AIHub} />
+      <Route path="/en/news" component={NewsEn} />
       
       {/* AI Hub 路由 */}
       <Route path="/zh/ai-hub" component={AIHubZh} />

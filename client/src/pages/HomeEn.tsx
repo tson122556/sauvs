@@ -208,55 +208,76 @@ export default function HomeEn() {
           >
             {/* AI Software */}
             <motion.div variants={fadeInUp}>
-              <Card className="bg-gradient-to-br from-purple-900/40 to-purple-900/20 border-purple-500/30 hover:border-purple-500/60 transition p-8 h-full group cursor-pointer relative overflow-hidden">
+              <Card className="bg-gradient-to-br from-purple-900/40 to-purple-900/20 border-purple-500/30 hover:border-purple-500/60 transition p-8 h-full group cursor-pointer relative overflow-hidden flex flex-col">
                 <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition duration-300" style={{
                   backgroundImage: 'url(https://private-us-east-1.manuscdn.com/sessionFile/fhgIRoGEBsYWRa81s985hf/sandbox/UtQ5v7fS4XbOELdZSlIP1Q-img-1_1770192013000_na1fn_YWktYXBwLWJn.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80)',
                   backgroundSize: 'cover',
                   backgroundPosition: 'center'
                 }} />
-                <div className="relative z-10">
+                <div className="relative z-10 flex-grow">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/QVHZWYJfLZBUUJdq.png" alt="AI Application" className="w-16 h-16 mb-4 group-hover:scale-110 transition" style={{backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}} />
                   <h3 className="text-xl font-bold text-white mb-3">AI Applications</h3>
-                  <p className="text-gray-400">
+                  <p className="text-gray-400 mb-6">
                     Professional AI software development providing intelligent solutions to empower enterprise digital transformation.
                   </p>
                 </div>
+                <Button
+                  onClick={() => setLocation(`/${language}/product/ai`)}
+                  className="w-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white mt-4 relative z-10"
+                >
+                  Learn More
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
               </Card>
             </motion.div>
 
             {/* Smart Robots */}
             <motion.div variants={fadeInUp}>
-              <Card className="bg-gradient-to-br from-cyan-900/40 to-cyan-900/20 border-cyan-500/30 hover:border-cyan-500/60 transition p-8 h-full group cursor-pointer relative overflow-hidden">
+              <Card className="bg-gradient-to-br from-cyan-900/40 to-cyan-900/20 border-cyan-500/30 hover:border-cyan-500/60 transition p-8 h-full group cursor-pointer relative overflow-hidden flex flex-col">
                 <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition duration-300" style={{
                   backgroundImage: 'url(https://private-us-east-1.manuscdn.com/sessionFile/fhgIRoGEBsYWRa81s985hf/sandbox/UtQ5v7fS4XbOELdZSlIP1Q-img-2_1770192014000_na1fn_cm9ib3QtYmc.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80)',
                   backgroundSize: 'cover',
                   backgroundPosition: 'center'
                 }} />
-                <div className="relative z-10">
+                <div className="relative z-10 flex-grow">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/CyGnmUYzRSFavGGJ.png" alt="Smart Robots" className="w-16 h-16 mb-4 group-hover:scale-110 transition" style={{backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}} />
                   <h3 className="text-xl font-bold text-white mb-3">Smart Robots</h3>
-                  <p className="text-gray-400">
+                  <p className="text-gray-400 mb-6">
                     Independent R&D and sales of intelligent robots providing industrial and service robot solutions.
                   </p>
                 </div>
+                <Button
+                  onClick={() => setLocation(`/${language}/product/robot`)}
+                  className="w-full bg-gradient-to-r from-cyan-600 to-cyan-700 hover:from-cyan-700 hover:to-cyan-800 text-white mt-4 relative z-10"
+                >
+                  Learn More
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
               </Card>
             </motion.div>
 
             {/* IoT Solutions */}
             <motion.div variants={fadeInUp}>
-              <Card className="bg-gradient-to-br from-pink-900/40 to-pink-900/20 border-pink-500/30 hover:border-pink-500/60 transition p-8 h-full group cursor-pointer relative overflow-hidden">
+              <Card className="bg-gradient-to-br from-pink-900/40 to-pink-900/20 border-pink-500/30 hover:border-pink-500/60 transition p-8 h-full group cursor-pointer relative overflow-hidden flex flex-col">
                 <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition duration-300" style={{
                   backgroundImage: 'url(https://private-us-east-1.manuscdn.com/sessionFile/fhgIRoGEBsYWRa81s985hf/sandbox/UtQ5v7fS4XbOELdZSlIP1Q-img-3_1770192011000_na1fn_aW90LWJn.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80)',
                   backgroundSize: 'cover',
                   backgroundPosition: 'center'
                 }} />
-                <div className="relative z-10">
+                <div className="relative z-10 flex-grow">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/LPJIpqQEjtYMyJmB.png" alt="IoT Technology" className="w-16 h-16 mb-4 group-hover:scale-110 transition" style={{backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}} />
                   <h3 className="text-xl font-bold text-white mb-3">IoT Technology</h3>
-                  <p className="text-gray-400">
+                  <p className="text-gray-400 mb-6">
                     IoT technology services and R&D enabling device interconnection and intelligent control.
                   </p>
                 </div>
+                <Button
+                  onClick={() => setLocation(`/${language}/product/iot`)}
+                  className="w-full bg-gradient-to-r from-pink-600 to-pink-700 hover:from-pink-700 hover:to-pink-800 text-white mt-4 relative z-10"
+                >
+                  Learn More
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
               </Card>
             </motion.div>
 

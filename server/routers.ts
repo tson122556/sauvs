@@ -5,6 +5,7 @@ import { publicProcedure, router, protectedProcedure } from "./_core/trpc";
 import { z } from "zod";
 import { createInquiry, getInquiries, updateInquiryStatus, createProduct, getProducts, getProductById, updateProduct, createNews, getNews, getNewsById, updateNews, createAppointment, getAppointments } from "./db";
 import { jizixingAIRouter } from "./routers/jizixingAI";
+import { sendAppointmentConfirmationEmail } from "./email";
 
 export const appRouter = router({
   system: systemRouter,
@@ -127,6 +128,23 @@ export const appRouter = router({
       }))
       .mutation(async ({ input }) => {
         await createAppointment(input);
+        
+        // 发送确认邮件
+        const consultationTypeMap: Record<string, string> = {
+          ai: 'AI 应用咨询',
+          robot: '智能机器人咨询',
+          iot: 'IoT 解决方案咨询',
+        };
+        
+        await sendAppointmentConfirmationEmail({
+          email: input.email,
+          name: input.name,
+          consultationType: consultationTypeMap[input.consultationType],
+          appointmentDate: input.preferredDate,
+          appointmentTime: input.preferredTime,
+          phone: input.phone,
+        });
+        
         return { success: true };
       }),
     // 获取所有预约（仅管理员）
@@ -140,6 +158,33 @@ export const appRouter = router({
           throw new Error('Unauthorized');
         }
         return await getAppointments(input.limit, input.offset);
+      }),
+    // 发送提醒邮件（仅管理员）
+    sendReminder: protectedProcedure
+      .input(z.object({
+        appointmentId: z.number(),
+        name: z.string(),
+        email: z.string().email(),
+        consultationType: z.string(),
+        appointmentDate: z.string(),
+        appointmentTime: z.string(),
+      }))
+      .mutation(async ({ input, ctx }) => {
+        if (ctx.user?.role !== 'admin') {
+          throw new Error('Unauthorized');
+        }
+        
+        const { sendAppointmentReminderEmail } = await import('./email');
+        await sendAppointmentReminderEmail({
+          email: input.email,
+          name: input.name,
+          consultationType: input.consultationType,
+          appointmentDate: input.appointmentDate,
+          appointmentTime: input.appointmentTime,
+          phone: '', // 提醒邮件中不需要电话
+        });
+        
+        return { success: true };
       }),
   }),
 
