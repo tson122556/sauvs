@@ -10,7 +10,7 @@ interface AIModel {
   icon: string;
   color: string;
   url: string;
-  region: "international" | "china";
+  region: "international" | "china" | "academic";
 }
 
 const AI_MODELS: AIModel[] = [
@@ -97,12 +97,55 @@ const AI_MODELS: AIModel[] = [
     url: "https://www.doubao.com",
     region: "china",
   },
+
+  // Academic Models
+  {
+    id: "alpaca",
+    name: "Alpaca",
+    description: "斯坦福大学的微调模型",
+    feature: "轻量级高效的指令跟随模型",
+    icon: "🦙",
+    color: "from-cyan-500 to-cyan-600",
+    url: "https://crfm.stanford.edu/2023/03/13/alpaca.html",
+    region: "academic",
+  },
+  {
+    id: "starcoder2",
+    name: "StarCoder2",
+    description: "加州大学伯克利分校的代码生成模型",
+    feature: "专精于代码生成和编程辅助",
+    icon: "⭐",
+    color: "from-yellow-500 to-yellow-600",
+    url: "https://huggingface.co/bigcode/starcoder2",
+    region: "academic",
+  },
+  {
+    id: "falcon",
+    name: "Falcon",
+    description: "阿联酋技术创新研究所的开源模型",
+    feature: "高性能模型，多语言能力强",
+    icon: "🦅",
+    color: "from-teal-500 to-teal-600",
+    url: "https://www.falconllm.ai",
+    region: "academic",
+  },
+  {
+    id: "chatglm3",
+    name: "ChatGLM-3",
+    description: "清华大学与智谱 AI 合作的模型",
+    feature: "先进的中文语言理解和强大的推理能力",
+    icon: "🎓",
+    color: "from-violet-500 to-violet-600",
+    url: "https://github.com/THUDM/ChatGLM3",
+    region: "academic",
+  },
 ];
 
 const INTERNATIONAL_MODELS = AI_MODELS.filter(
   (m) => m.region === "international"
 );
 const CHINA_MODELS = AI_MODELS.filter((m) => m.region === "china");
+const ACADEMIC_MODELS = AI_MODELS.filter((m) => m.region === "academic");
 
 export default function AIHubZh() {
   const renderModelCards = (models: AIModel[]) => (
@@ -181,7 +224,14 @@ export default function AIHubZh() {
           {renderModelCards(CHINA_MODELS)}
         </div>
 
-
+        {/* Academic AI Models Section */}
+        <div className="mb-16">
+          <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-2">
+            <span className="w-1 h-8 bg-gradient-to-b from-cyan-500 to-blue-500" />
+            学术模型
+          </h2>
+          {renderModelCards(ACADEMIC_MODELS)}
+        </div>
       </div>
     </div>
   );

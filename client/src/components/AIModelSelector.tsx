@@ -11,7 +11,7 @@ export interface AIModel {
   icon: string;
   color: string;
   url: string;
-  region: "international" | "china";
+  region: "international" | "china" | "academic";
 }
 
 const AI_MODELS: AIModel[] = [
@@ -98,12 +98,55 @@ const AI_MODELS: AIModel[] = [
     url: "https://www.doubao.com",
     region: "china",
   },
+
+  // Academic Models
+  {
+    id: "alpaca",
+    name: "Alpaca",
+    description: "Stanford University's fine-tuned model",
+    feature: "Lightweight and efficient instruction-following model",
+    icon: "🦙",
+    color: "from-cyan-500 to-cyan-600",
+    url: "https://crfm.stanford.edu/2023/03/13/alpaca.html",
+    region: "academic",
+  },
+  {
+    id: "starcoder2",
+    name: "StarCoder2",
+    description: "UC Berkeley's code generation model",
+    feature: "Specialized in code generation and programming assistance",
+    icon: "⭐",
+    color: "from-yellow-500 to-yellow-600",
+    url: "https://huggingface.co/bigcode/starcoder2",
+    region: "academic",
+  },
+  {
+    id: "falcon",
+    name: "Falcon",
+    description: "UAEU's open-source large language model",
+    feature: "High-performance model with strong multilingual capabilities",
+    icon: "🦅",
+    color: "from-teal-500 to-teal-600",
+    url: "https://www.falconllm.ai",
+    region: "academic",
+  },
+  {
+    id: "chatglm3",
+    name: "ChatGLM-3",
+    description: "Tsinghua University & Zhipu AI's model",
+    feature: "Advanced Chinese language understanding with strong reasoning abilities",
+    icon: "🎓",
+    color: "from-violet-500 to-violet-600",
+    url: "https://github.com/THUDM/ChatGLM3",
+    region: "academic",
+  },
 ];
 
 const INTERNATIONAL_MODELS = AI_MODELS.filter(
   (m) => m.region === "international"
 );
 const CHINA_MODELS = AI_MODELS.filter((m) => m.region === "china");
+const ACADEMIC_MODELS = AI_MODELS.filter((m) => m.region === "academic");
 
 export default function AIModelSelector() {
   const [, setLocation] = useLocation();
@@ -185,7 +228,14 @@ export default function AIModelSelector() {
           {renderModelCards(CHINA_MODELS)}
         </div>
 
-
+        {/* Academic AI Models Section */}
+        <div className="mb-16">
+          <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-2">
+            <span className="w-1 h-8 bg-gradient-to-b from-cyan-500 to-blue-500" />
+            Academic Models
+          </h2>
+          {renderModelCards(ACADEMIC_MODELS)}
+        </div>
       </div>
     </div>
   );
