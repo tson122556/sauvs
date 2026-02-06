@@ -550,13 +550,22 @@ export default function About() {
                 </a>
               </div>
 
-              {/* Tenth Row - 2 logos */}
+              {/* Tenth Row - 5 logos */}
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mt-6">
                 <a href="https://www.jouav.com/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/vibAZqbJpluzTkgi.svg" alt="纵横股份" className="h-16 w-auto group-hover:scale-110 transition-transform" />
                 </a>
                 <a href="https://www.parrot.com" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/rIgTYTVyfhyRUphq.svg" alt="派洛特" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.stanford.edu/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/KSoxhHYccQwFoaLq.png" alt="斯坦福大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.universityofcalifornia.edu/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/cqpRbRGXTefjEuuE.png" alt="加州大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.tii.ae/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/tnbKSMwcGRYmEIWX.svg" alt="阿联酋技术创新研究所" className="h-16 w-auto group-hover:scale-110 transition-transform" />
                 </a>
               </div>
 
