@@ -16,6 +16,9 @@ interface Message {
   timestamp?: Date;
   model?: string;
   tokenCount?: number;
+  contentType?: "text" | "image" | "video" | "code" | "analysis";
+  url?: string;
+  metadata?: Record<string, any>;
 }
 
 interface Conversation {
@@ -124,6 +127,7 @@ export default function UVSAIChat() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [suggestedQuestions, setSuggestedQuestions] = useState<string[]>([]);
+  const [selectedContentType, setSelectedContentType] = useState<"text" | "image" | "video" | "code" | "analysis" | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // 检查认证
@@ -350,7 +354,7 @@ export default function UVSAIChat() {
                   className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
                 >
                   <Card
-                    className={`max-w-md p-4 ${
+                    className={`max-w-2xl p-4 ${
                       msg.role === "user"
                         ? "bg-purple-600 text-white"
                         : "bg-card text-foreground"
@@ -358,7 +362,33 @@ export default function UVSAIChat() {
                   >
                     <div className="flex items-start justify-between gap-2">
                       <div className="flex-1">
-                        <p className="text-sm">{msg.content}</p>
+                        {msg.contentType && msg.contentType !== "text" && (
+                          <div className="mb-2">
+                            <span className="inline-block px-2 py-1 text-xs font-semibold rounded bg-gradient-to-r from-purple-500 to-cyan-500 text-white">
+                              {msg.contentType.toUpperCase()}
+                            </span>
+                          </div>
+                        )}
+                        <p className="text-sm mb-2">{msg.content}</p>
+                        {msg.contentType === "image" && msg.url && (
+                          <img
+                            src={msg.url}
+                            alt="Generated image"
+                            className="max-w-full h-auto rounded-lg mb-2 max-h-96"
+                          />
+                        )}
+                        {msg.contentType === "video" && msg.url && (
+                          <video
+                            src={msg.url}
+                            controls
+                            className="max-w-full h-auto rounded-lg mb-2 max-h-96"
+                          />
+                        )}
+                        {msg.contentType === "code" && (
+                          <pre className="bg-slate-900 text-slate-100 p-3 rounded-lg overflow-x-auto text-xs mb-2">
+                            <code>{msg.content}</code>
+                          </pre>
+                        )}
                         {msg.model && (
                           <p className="text-xs opacity-70 mt-2">
                             {MODELS[msg.model as keyof typeof MODELS]?.name}
@@ -412,6 +442,28 @@ export default function UVSAIChat() {
           />
         )}
 
+        {/* 内容类型选择 */}
+        <div className="border-t border-border px-6 py-3 bg-card/50">
+          <p className="text-xs text-muted-foreground mb-2">
+            {language === "zh" ? "生成内容类型：" : "Content Type:"}
+          </p>
+          <div className="flex gap-2 flex-wrap">
+            {(["text", "image", "video", "code", "analysis"] as const).map((type) => (
+              <button
+                key={type}
+                onClick={() => setSelectedContentType(selectedContentType === type ? null : type)}
+                className={`px-3 py-1 text-xs rounded-full transition ${
+                  selectedContentType === type
+                    ? "bg-gradient-to-r from-purple-600 to-cyan-600 text-white"
+                    : "bg-slate-700 text-slate-300 hover:bg-slate-600"
+                }`}
+              >
+                {type.toUpperCase()}
+              </button>
+            ))}
+          </div>
+        </div>
+
         {/* 输入区域 */}
         <div className="border-t border-border p-6 space-y-4">
           <div className="flex gap-3">
@@ -434,8 +486,8 @@ export default function UVSAIChat() {
           </div>
           <p className="text-xs text-muted-foreground text-center">
             {language === "zh"
-              ? "💡 提示：输入不同类型的问题，AI 会自动为您选择最优模型"
-              : "💡 Tip: Ask different types of questions and AI will automatically select the best model"}
+              ? "💡 提示：输入不同类型的问题，AI 会自动为您选择最优模型。支持生成文本、图片、视频、代码等内容"
+              : "💡 Tip: Ask different types of questions and AI will automatically select the best model. Supports generating text, images, videos, code and more"}
           </p>
         </div>
       </div>

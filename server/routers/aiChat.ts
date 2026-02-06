@@ -18,8 +18,104 @@ import {
   getAIUsageStats,
 } from "../db";
 import { invokeLLM } from "../_core/llm";
+import { generateMultimodalContent, detectContentType, selectOptimalModel } from "../_core/multimodalGenerator";
 
 export const aiChatRouter = router({
+  /**
+   * 生成多模态内容（文本、图片、视频等）
+   */
+  generateMultimodalContent: protectedProcedure
+    .input(
+      z.object({
+        prompt: z.string().min(1),
+        contentType: z.enum(["text", "image", "video", "code", "analysis"]).optional(),
+        model: z.string().optional(),
+        imageOptions: z.object({
+          style: z.string().optional(),
+          quality: z.enum(["low", "medium", "high"]).optional(),
+        }).optional(),
+        videoOptions: z.object({
+          duration: z.number().optional(),
+          resolution: z.enum(["720p", "1080p", "4k"]).optional(),
+          style: z.string().optional(),
+        }).optional(),
+      })
+    )
+    .mutation(async ({ input, ctx }) => {
+      if (!ctx.user?.id) {
+        throw new Error("User not authenticated");
+      }
+
+      try {
+        const result = await generateMultimodalContent({
+          prompt: input.prompt,
+          contentType: input.contentType,
+          model: input.model,
+          imageOptions: input.imageOptions,
+          videoOptions: input.videoOptions,
+        });
+
+        // 记录使用统计
+        const today = new Date().toISOString().split("T")[0];
+        await createOrUpdateAIUsageStat({
+          userId: ctx.user.id,
+          model: result.model || "gpt-4",
+          callCount: 1,
+          totalTokens: result.metadata?.tokens || 0,
+          successCount: 1,
+          failureCount: 0,
+          statDate: new Date(today),
+        });
+
+        return {
+          success: true,
+          ...result,
+        };
+      } catch (error) {
+        console.error("Multimodal generation error:", error);
+
+        // 记录失败统计
+        const today = new Date().toISOString().split("T")[0];
+        await createOrUpdateAIUsageStat({
+          userId: ctx.user.id,
+          model: input.model || "gpt-4",
+          callCount: 1,
+          totalTokens: 0,
+          successCount: 0,
+          failureCount: 1,
+          statDate: new Date(today),
+        });
+
+        throw new Error("Failed to generate multimodal content");
+      }
+    }),
+
+  /**
+   * 检测内容类型
+   */
+  detectContentType: publicProcedure
+    .input(z.string())
+    .query(({ input }) => {
+      return {
+        contentType: detectContentType(input),
+      };
+    }),
+
+  /**
+   * 选择最优模型
+   */
+  selectOptimalModel: publicProcedure
+    .input(
+      z.object({
+        contentType: z.enum(["text", "image", "video", "code", "analysis"]),
+        userModel: z.string().optional(),
+      })
+    )
+    .query(({ input }) => {
+      return {
+        model: selectOptimalModel(input.contentType, input.userModel),
+      };
+    }),
   /**
    * 创建新的对话
    */
