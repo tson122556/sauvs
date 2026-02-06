@@ -241,15 +241,15 @@ export default function AIModelSelector() {
         <div className="mb-16">
           <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-2">
             <span className="w-1 h-8 bg-gradient-to-b from-purple-500 to-pink-500" />
-            UVS Proprietary Model
+            UVS Proprietary AI Model
           </h2>
           <Card className="bg-gradient-to-br from-slate-800 via-slate-800 to-slate-900 border-purple-500/30 hover:border-purple-500/60 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/20 overflow-hidden">
             <div className="p-8">
               <div className="flex items-start justify-between mb-4">
                 <div>
                   <div className="text-4xl mb-3">🤖</div>
-                  <h3 className="text-2xl font-bold text-white mb-2">UVS AI</h3>
-                  <p className="text-gray-300 mb-2">UVS Proprietary AI Model Integration System</p>
+                  <h3 className="text-2xl font-bold text-white mb-2">UVS AI Assistant</h3>
+                  <p className="text-gray-300 mb-2">Intelligent AI Model Integration & Scheduling System</p>
                   <p className="text-purple-400 italic border-l-2 border-purple-500 pl-3">Intelligent scheduling, efficient conversations, professional analysis</p>
                 </div>
               </div>
@@ -262,7 +262,7 @@ export default function AIModelSelector() {
                   Manage Models
                 </button>
                 <button
-                  onClick={() => window.location.href = '/en/uvs-ai?chat=true'}
+                  onClick={() => window.location.href = '/en/uvs-ai-chat'}
                   className="flex-1 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/50"
                 >
                   Start Conversation

@@ -258,7 +258,7 @@ export default function AIHubZh() {
                   管理不同模型
                 </button>
                 <button
-                  onClick={() => window.location.href = '/zh/uvs-ai?chat=true'}
+                  onClick={() => window.location.href = '/zh/uvs-ai-chat'}
                   className="flex-1 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/50"
                 >
                   开始对话
