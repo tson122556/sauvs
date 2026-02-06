@@ -325,7 +325,7 @@ export default function Home() {
                     前沿的时空同步飞行技术研发与应用，提供创新的飞行解决方案。
                   </p>
                   <div className="inline-block px-3 py-1 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs font-semibold rounded-full mb-4">
-                    {language === "zh" ? "仅对会员开放" : "Members Only"}
+                    {language === "zh" ? "仅对合作伙伴开放" : "Partners Only"}
                   </div>
                 </div>
                 <Button
