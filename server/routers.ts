@@ -5,11 +5,13 @@ import { publicProcedure, router, protectedProcedure } from "./_core/trpc";
 import { z } from "zod";
 import { createInquiry, getInquiries, updateInquiryStatus, createProduct, getProducts, getProductById, updateProduct, createNews, getNews, getNewsById, updateNews, createAppointment, getAppointments } from "./db";
 import { uvsAIRouter } from "./routers/uvsAI";
+import { aiChatRouter } from "./routers/aiChat";
 import { sendAppointmentConfirmationEmail } from "./email";
 
 export const appRouter = router({
   system: systemRouter,
   uvsAI: uvsAIRouter,
+  aiChat: aiChatRouter,
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),
     logout: publicProcedure.mutation(({ ctx }) => {

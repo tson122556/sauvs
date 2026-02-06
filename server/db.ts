@@ -1,6 +1,6 @@
-import { eq, desc } from "drizzle-orm";
+import { eq, desc, and } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users, InsertInquiry, inquiries, InsertProduct, products, InsertNews, news, InsertAppointment, appointments } from "../drizzle/schema";
+import { InsertUser, users, InsertInquiry, inquiries, InsertProduct, products, InsertNews, news, InsertAppointment, appointments, aiConversations, aiMessages, aiUsageStats, InsertAIConversation, InsertAIMessage, InsertAIUsageStat } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -231,4 +231,106 @@ export async function updateAppointmentStatus(id: number, status: "pending" | "c
     throw new Error("Database not available");
   }
   return await db.update(appointments).set({ status }).where(eq(appointments.id, id));
+}
+
+/**
+ * UVS AI 对话相关函数
+ */
+export async function createAIConversation(conversation: InsertAIConversation) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+  const result = await db.insert(aiConversations).values(conversation);
+  return result;
+}
+
+export async function getAIConversations(userId: number, limit = 50, offset = 0) {
+  const db = await getDb();
+  if (!db) {
+    return [];
+  }
+  return await db.select().from(aiConversations).where(eq(aiConversations.userId, userId)).orderBy(desc(aiConversations.updatedAt)).limit(limit).offset(offset);
+}
+
+export async function getAIConversationById(id: number) {
+  const db = await getDb();
+  if (!db) {
+    return undefined;
+  }
+  const result = await db.select().from(aiConversations).where(eq(aiConversations.id, id)).limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+export async function updateAIConversation(id: number, data: Partial<InsertAIConversation>) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+  return await db.update(aiConversations).set(data).where(eq(aiConversations.id, id));
+}
+
+export async function deleteAIConversation(id: number) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+  return await db.delete(aiConversations).where(eq(aiConversations.id, id));
+}
+
+/**
+ * UVS AI 消息相关函数
+ */
+export async function createAIMessage(message: InsertAIMessage) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+  const result = await db.insert(aiMessages).values(message);
+  return result;
+}
+
+export async function getAIMessages(conversationId: number, limit = 100, offset = 0) {
+  const db = await getDb();
+  if (!db) {
+    return [];
+  }
+  return await db.select().from(aiMessages).where(eq(aiMessages.conversationId, conversationId)).orderBy(aiMessages.createdAt).limit(limit).offset(offset);
+}
+
+export async function deleteAIMessages(conversationId: number) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+  return await db.delete(aiMessages).where(eq(aiMessages.conversationId, conversationId));
+}
+
+/**
+ * UVS AI 使用统计相关函数
+ */
+export async function createOrUpdateAIUsageStat(stat: InsertAIUsageStat) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+  return await db.insert(aiUsageStats).values(stat).onDuplicateKeyUpdate({
+    set: {
+      callCount: stat.callCount,
+      totalTokens: stat.totalTokens,
+      successCount: stat.successCount,
+      failureCount: stat.failureCount,
+    },
+  });
+}
+
+export async function getAIUsageStats(userId: number, model?: string) {
+  const db = await getDb();
+  if (!db) {
+    return [];
+  }
+  if (model) {
+    return await db.select().from(aiUsageStats).where(and(eq(aiUsageStats.userId, userId), eq(aiUsageStats.model, model))).orderBy(desc(aiUsageStats.statDate));
+  }
+  return await db.select().from(aiUsageStats).where(eq(aiUsageStats.userId, userId)).orderBy(desc(aiUsageStats.statDate));
 }

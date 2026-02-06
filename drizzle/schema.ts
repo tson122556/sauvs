@@ -1,4 +1,4 @@
-import { int, mysqlEnum, mysqlTable, text, timestamp, varchar } from "drizzle-orm/mysql-core";
+import { int, mysqlEnum, mysqlTable, text, timestamp, varchar, date } from "drizzle-orm/mysql-core";
 
 /**
  * Core user table backing auth flow.
@@ -134,3 +134,77 @@ export const appointments = mysqlTable("appointments", {
 
 export type Appointment = typeof appointments.$inferSelect;
 export type InsertAppointment = typeof appointments.$inferInsert;
+
+/**
+ * UVS AI 对话表：存储用户与 AI 的对话记录
+ */
+export const aiConversations = mysqlTable("aiConversations", {
+  id: int("id").autoincrement().primaryKey(),
+  /** 用户 ID，关联 users 表 */
+  userId: int("userId").notNull(),
+  /** 对话标题 */
+  title: varchar("title", { length: 300 }).notNull(),
+  /** 对话模型：gpt-4, claude, grok, gemini, kimi, deepseek */
+  model: varchar("model", { length: 50 }).default("gpt-4").notNull(),
+  /** 对话摘要 */
+  summary: text("summary"),
+  /** 消息总数 */
+  messageCount: int("messageCount").default(0).notNull(),
+  /** 创建时间 */
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  /** 更新时间 */
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type AIConversation = typeof aiConversations.$inferSelect;
+export type InsertAIConversation = typeof aiConversations.$inferInsert;
+
+/**
+ * UVS AI 消息表：存储对话中的每条消息
+ */
+export const aiMessages = mysqlTable("aiMessages", {
+  id: int("id").autoincrement().primaryKey(),
+  /** 对话 ID，关联 aiConversations 表 */
+  conversationId: int("conversationId").notNull(),
+  /** 消息角色：user 或 assistant */
+  role: mysqlEnum("role", ["user", "assistant"]).notNull(),
+  /** 消息内容 */
+  content: text("content").notNull(),
+  /** 使用的模型（仅对 assistant 消息） */
+  model: varchar("model", { length: 50 }),
+  /** 消息令牌数 */
+  tokenCount: int("tokenCount").default(0),
+  /** 创建时间 */
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type AIMessage = typeof aiMessages.$inferSelect;
+export type InsertAIMessage = typeof aiMessages.$inferInsert;
+
+/**
+ * UVS AI 使用统计表：记录 API 调用统计
+ */
+export const aiUsageStats = mysqlTable("aiUsageStats", {
+  id: int("id").autoincrement().primaryKey(),
+  /** 用户 ID */
+  userId: int("userId").notNull(),
+  /** 模型名称 */
+  model: varchar("model", { length: 50 }).notNull(),
+  /** 调用次数 */
+  callCount: int("callCount").default(0).notNull(),
+  /** 总令牌数 */
+  totalTokens: int("totalTokens").default(0).notNull(),
+  /** 成功调用次数 */
+  successCount: int("successCount").default(0).notNull(),
+  /** 失败调用次数 */
+  failureCount: int("failureCount").default(0).notNull(),
+  /** 统计日期 */
+  statDate: date("statDate").notNull(),
+  /** 创建时间 */
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  /** 更新时间 */
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type AIUsageStat = typeof aiUsageStats.$inferSelect;
+export type InsertAIUsageStat = typeof aiUsageStats.$inferInsert;
