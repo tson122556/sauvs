@@ -66,7 +66,7 @@ export default function ContactEn() {
           >
             <motion.img 
               src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/uAJQYgErxzlvdMug.png" 
-              alt="Jizixing" 
+              alt="UVS" 
               className="h-16 w-auto" 
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
@@ -308,7 +308,7 @@ export default function ContactEn() {
               <div className="flex items-center gap-2 mb-4">
                 <motion.img 
                   src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/uAJQYgErxzlvdMug.png" 
-                  alt="Jizixing" 
+                  alt="UVS" 
                   className="h-12 w-auto" 
                   animate={{ y: [0, -8, 0] }}
                   transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}

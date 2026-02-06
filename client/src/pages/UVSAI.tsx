@@ -23,7 +23,7 @@ interface SchedulingStats {
   successRate: string;
 }
 
-export default function JizixingAI() {
+export default function UVSAI() {
   const [selectedTab, setSelectedTab] = useState<
     "overview" | "models" | "performance" | "scheduler"
   >("overview");
@@ -33,15 +33,15 @@ export default function JizixingAI() {
   );
 
   // 获取所有模型
-  const { data: allModels } = trpc.jizixingAI.getAllModels.useQuery();
+  const { data: allModels } = trpc.uvsAI.getAllModels.useQuery();
 
   // 获取性能统计
   const { data: perfStats, refetch: refetchPerf } =
-    trpc.jizixingAI.getPerformanceStats.useQuery(undefined);
+    trpc.uvsAI.getPerformanceStats.useQuery(undefined);
 
   // 获取调度统计
   const { data: schedStats, refetch: refetchSched } =
-    trpc.jizixingAI.getSchedulingStats.useQuery();
+    trpc.uvsAI.getSchedulingStats.useQuery();
 
   useEffect(() => {
     if (perfStats) {
@@ -72,7 +72,7 @@ export default function JizixingAI() {
           <div className="flex items-center justify-center gap-2 mb-4">
             <Sparkles className="w-8 h-8 text-purple-500" />
             <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
-              极紫星专有 AI 模型
+              UVS专有 AI 模型
             </h1>
           </div>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">

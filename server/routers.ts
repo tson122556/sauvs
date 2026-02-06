@@ -4,12 +4,12 @@ import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router, protectedProcedure } from "./_core/trpc";
 import { z } from "zod";
 import { createInquiry, getInquiries, updateInquiryStatus, createProduct, getProducts, getProductById, updateProduct, createNews, getNews, getNewsById, updateNews, createAppointment, getAppointments } from "./db";
-import { jizixingAIRouter } from "./routers/jizixingAI";
+import { uvsAIRouter } from "./routers/uvsAI";
 import { sendAppointmentConfirmationEmail } from "./email";
 
 export const appRouter = router({
   system: systemRouter,
-  jizixingAI: jizixingAIRouter,
+  uvsAI: uvsAIRouter,
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),
     logout: publicProcedure.mutation(({ ctx }) => {

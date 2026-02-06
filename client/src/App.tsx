@@ -13,7 +13,8 @@ import ContactEn from "./pages/ContactEn";
 import AboutEn from "./pages/AboutEn";
 import AIHub from "./pages/AIHub";
 import AIHubZh from "./pages/AIHubZh";
-import JizixingAI from "./pages/JizixingAI";
+import UVSAI from "./pages/UVSAI";
+import UVSAIChat from "./pages/UVSAIChat";
 import ProductAI from "./pages/ProductAI";
 import ProductAIEn from "./pages/ProductAIEn";
 import ProductRobot from "./pages/ProductRobot";
@@ -45,10 +46,13 @@ function Router() {
       {/* AI Hub 路由 */}
       <Route path="/zh/ai-hub" component={AIHubZh} />
       
-      {/* 极紫星专有模型路由 */}
-      <Route path="/jizixing-ai" component={JizixingAI} />
-      <Route path="/zh/jizixing-ai" component={JizixingAI} />
-      <Route path="/en/jizixing-ai" component={JizixingAI} />
+      {/* UVS专有模型路由 */}
+      <Route path="/uvs-ai" component={UVSAI} />
+      <Route path="/zh/uvs-ai" component={UVSAI} />
+      <Route path="/uvs-ai-chat" component={UVSAIChat} />
+      <Route path="/zh/uvs-ai-chat" component={UVSAIChat} />
+      <Route path="/en/uvs-ai-chat" component={UVSAIChat} />
+      <Route path="/en/uvs-ai" component={UVSAI} />
       
       {/* 产品详情页面 */}
       <Route path="/zh/product/ai" component={ProductAI} />

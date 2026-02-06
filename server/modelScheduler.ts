@@ -1,10 +1,10 @@
 /**
- * 极紫星 AI 模型调度引擎
+ * UVS AI 模型调度引擎
  * 实现智能路由、负载均衡和故障转移
  */
 
 import {
-  JIZIXING_MODELS,
+  UVS_MODELS,
   SCHEDULING_STRATEGIES,
   TaskType,
   AIModel,
@@ -47,10 +47,10 @@ export interface RequestMetrics {
 }
 
 /**
- * 极紫星 AI 调度器
+ * UVS AI 调度器
  * 管理模型选择、负载均衡和性能监控
  */
-export class JizixingScheduler {
+export class UVSScheduler {
   private performanceData: Map<string, ModelPerformance> = new Map();
   private requestQueue: SchedulingRequest[] = [];
   private activeRequests: Map<string, RequestMetrics> = new Map();
@@ -67,7 +67,7 @@ export class JizixingScheduler {
    * 初始化性能数据
    */
   private initializePerformanceData(): void {
-    Object.values(JIZIXING_MODELS).forEach((model) => {
+    Object.values(UVS_MODELS).forEach((model) => {
       this.performanceData.set(model.id, {
         modelId: model.id,
         totalRequests: 0,
@@ -85,7 +85,7 @@ export class JizixingScheduler {
    * 初始化模型负载
    */
   private initializeModelLoad(): void {
-    Object.keys(JIZIXING_MODELS).forEach((modelId) => {
+    Object.keys(UVS_MODELS).forEach((modelId) => {
       this.modelLoadMap.set(modelId, 0);
     });
   }
@@ -101,7 +101,7 @@ export class JizixingScheduler {
 
     // 1. 如果用户有偏好，优先使用用户偏好
     if (request.userPreference) {
-      const preferredModel = JIZIXING_MODELS[request.userPreference];
+      const preferredModel = UVS_MODELS[request.userPreference];
       if (preferredModel?.isActive) {
         selectedModel = preferredModel;
       } else {
@@ -140,7 +140,7 @@ export class JizixingScheduler {
       strategy.primaryModel,
       ...strategy.fallbackModels,
     ]
-      .map((id) => JIZIXING_MODELS[id])
+      .map((id) => UVS_MODELS[id])
       .filter((model) => model?.isActive);
 
     if (candidateModels.length === 0) {
@@ -357,4 +357,4 @@ export class JizixingScheduler {
 }
 
 // 创建全局调度器实例
-export const globalScheduler = new JizixingScheduler();
+export const globalScheduler = new UVSScheduler();

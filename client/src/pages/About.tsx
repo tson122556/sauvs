@@ -65,12 +65,12 @@ export default function About() {
           >
             <motion.img 
               src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/uAJQYgErxzlvdMug.png" 
-              alt="Jizixing" 
+              alt="UVS" 
               className="h-16 w-auto" 
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
             />
-            <span className="text-lg font-bold text-white">极紫星</span>
+            <span className="text-lg font-bold text-white">UVS</span>
           </motion.div>
 
           <motion.div
@@ -132,7 +132,7 @@ export default function About() {
               关于
               <br />
               <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
-                极紫星科技
+                UVS科技
               </span>
             </motion.h1>
 
@@ -193,7 +193,7 @@ export default function About() {
                 <div className="space-y-4">
                   <div>
                     <p className="text-gray-400 text-sm">公司名称</p>
-                    <p className="text-white font-semibold">极紫星智慧科技有限公司</p>
+                    <p className="text-white font-semibold">UVS智慧科技有限公司</p>
                   </div>
                   <div>
                     <p className="text-gray-400 text-sm">成立时间</p>
@@ -618,7 +618,7 @@ export default function About() {
               <div className="flex items-center gap-2 mb-4">
                 <motion.img 
                   src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/uAJQYgErxzlvdMug.png" 
-                  alt="Jizixing" 
+                  alt="UVS" 
                   className="h-12 w-auto" 
                   animate={{ y: [0, -8, 0] }}
                   transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
@@ -692,7 +692,7 @@ export default function About() {
           </div>
 
           <div className="border-t border-slate-800 pt-8 text-center text-gray-500 text-sm">
-            <p>&copy; 2025 极紫星智慧科技有限公司. All rights reserved.</p>
+            <p>&copy; 2025 UVS智慧科技有限公司. All rights reserved.</p>
           </div>
         </div>
       </footer>

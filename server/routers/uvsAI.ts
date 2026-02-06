@@ -1,12 +1,12 @@
 /**
- * 极紫星专有 AI 模型 tRPC 路由器
+ * UVS专有 AI 模型 tRPC 路由器
  * 提供统一的 AI 对话接口，自动调度到最优模型
  */
 
 import { publicProcedure, router } from "../_core/trpc";
 import { z } from "zod";
 import {
-  JIZIXING_MODELS,
+  UVS_MODELS,
   TaskType,
   getOptimalModel,
   getFallbackModels,
@@ -20,7 +20,7 @@ import {
   SchedulingResult,
 } from "../modelScheduler";
 
-export const jizixingAIRouter = router({
+export const uvsAIRouter = router({
   /**
    * 获取所有可用的 AI 模型
    */
@@ -156,7 +156,7 @@ export const jizixingAIRouter = router({
     return Object.entries(loads).map(([modelId, load]) => ({
       modelId,
       currentLoad: load,
-      model: JIZIXING_MODELS[modelId],
+      model: UVS_MODELS[modelId],
     }));
   }),
 
@@ -178,7 +178,7 @@ export const jizixingAIRouter = router({
    * 获取模型详情
    */
   getModelDetails: publicProcedure.input(z.string()).query(({ input }) => {
-    const model = JIZIXING_MODELS[input];
+    const model = UVS_MODELS[input];
     if (!model) {
       throw new Error(`Model not found: ${input}`);
     }

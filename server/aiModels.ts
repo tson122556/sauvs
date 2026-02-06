@@ -1,5 +1,5 @@
 /**
- * 极紫星专有 AI 模型集成系统
+ * UVS专有 AI 模型集成系统
  * 通过智能调度实现多个国内外优秀模型的高效协作
  */
 
@@ -52,10 +52,10 @@ export interface SchedulingStrategy {
 }
 
 /**
- * 极紫星专有模型配置
+ * UVS专有模型配置
  * 整合了国际、国内和学术机构的优秀模型
  */
-export const JIZIXING_MODELS: Record<string, AIModel> = {
+export const UVS_MODELS: Record<string, AIModel> = {
   // 国际模型
   chatgpt: {
     id: "chatgpt",
@@ -220,7 +220,7 @@ export const JIZIXING_MODELS: Record<string, AIModel> = {
 };
 
 /**
- * 极紫星智能调度策略
+ * UVS智能调度策略
  * 根据任务类型自动选择最优模型组合
  */
 export const SCHEDULING_STRATEGIES: Record<TaskType, SchedulingStrategy> = {
@@ -298,13 +298,13 @@ export function getOptimalModel(
   userPreference?: string
 ): AIModel {
   // 如果用户有偏好且该模型可用，使用用户偏好
-  if (userPreference && JIZIXING_MODELS[userPreference]?.isActive) {
-    return JIZIXING_MODELS[userPreference];
+  if (userPreference && UVS_MODELS[userPreference]?.isActive) {
+    return UVS_MODELS[userPreference];
   }
 
   // 否则使用调度策略中的主模型
   const strategy = SCHEDULING_STRATEGIES[taskType];
-  return JIZIXING_MODELS[strategy.primaryModel];
+  return UVS_MODELS[strategy.primaryModel];
 }
 
 /**
@@ -313,7 +313,7 @@ export function getOptimalModel(
 export function getFallbackModels(taskType: TaskType): AIModel[] {
   const strategy = SCHEDULING_STRATEGIES[taskType];
   return strategy.fallbackModels
-    .map((modelId) => JIZIXING_MODELS[modelId])
+    .map((modelId) => UVS_MODELS[modelId])
     .filter((model) => model.isActive);
 }
 
@@ -328,14 +328,14 @@ export function getBestModelByPerformance(
   const candidateModels = [
     strategy.primaryModel,
     ...strategy.fallbackModels,
-  ].filter((id) => JIZIXING_MODELS[id]?.isActive);
+  ].filter((id) => UVS_MODELS[id]?.isActive);
 
   // 计算每个模型的综合评分
-  let bestModel = JIZIXING_MODELS[strategy.primaryModel];
+  let bestModel = UVS_MODELS[strategy.primaryModel];
   let bestScore = -Infinity;
 
   for (const modelId of candidateModels) {
-    const model = JIZIXING_MODELS[modelId];
+    const model = UVS_MODELS[modelId];
     const performance = performanceData[modelId];
 
     if (!model) continue;
@@ -360,14 +360,14 @@ export function getBestModelByPerformance(
  * 获取所有活跃模型
  */
 export function getActiveModels(): AIModel[] {
-  return Object.values(JIZIXING_MODELS).filter((model) => model.isActive);
+  return Object.values(UVS_MODELS).filter((model) => model.isActive);
 }
 
 /**
  * 按区域获取模型
  */
 export function getModelsByRegion(region: ModelRegion): AIModel[] {
-  return Object.values(JIZIXING_MODELS).filter(
+  return Object.values(UVS_MODELS).filter(
     (model) => model.region === region && model.isActive
   );
 }
@@ -376,7 +376,7 @@ export function getModelsByRegion(region: ModelRegion): AIModel[] {
  * 按能力获取模型
  */
 export function getModelsByCapability(capability: TaskType): AIModel[] {
-  return Object.values(JIZIXING_MODELS).filter(
+  return Object.values(UVS_MODELS).filter(
     (model) => model.capabilities.includes(capability) && model.isActive
   );
 }

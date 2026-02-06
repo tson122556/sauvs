@@ -50,7 +50,7 @@ export default function NewsEn() {
           >
             <motion.img 
               src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/uAJQYgErxzlvdMug.png" 
-              alt="Jizixing" 
+              alt="UVS" 
               className="h-16 w-auto" 
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
@@ -125,7 +125,7 @@ export default function NewsEn() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
-              Get the latest news, technology articles, and industry insights from Jizixing Smart Technology
+              Get the latest news, technology articles, and industry insights from UVS Smart Technology
             </motion.p>
           </motion.div>
         </div>
@@ -286,7 +286,7 @@ export default function NewsEn() {
             </div>
           </div>
           <div className="border-t border-purple-500/20 pt-8 text-center text-gray-400 text-sm">
-            <p>&copy; 2026 Xi'an Jizixing Smart Technology Co., Ltd. All rights reserved.</p>
+            <p>&copy; 2026 Xi'an UVS Smart Technology Co., Ltd. All rights reserved.</p>
           </div>
         </div>
       </footer>

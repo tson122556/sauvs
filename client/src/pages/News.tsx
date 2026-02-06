@@ -50,7 +50,7 @@ export default function News() {
           >
             <motion.img 
               src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/uAJQYgErxzlvdMug.png" 
-              alt="Jizixing" 
+              alt="UVS" 
               className="h-16 w-auto" 
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
@@ -125,7 +125,7 @@ export default function News() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
-              获取极紫星智慧科技的最新新闻、技术文章和行业资讯
+              获取UVS智慧科技的最新新闻、技术文章和行业资讯
             </motion.p>
           </motion.div>
         </div>
@@ -286,7 +286,7 @@ export default function News() {
             </div>
           </div>
           <div className="border-t border-purple-500/20 pt-8 text-center text-gray-400 text-sm">
-            <p>&copy; 2026 西安极紫星智慧科技有限公司。保留所有权利。</p>
+            <p>&copy; 2026 西安UVS智慧科技有限公司。保留所有权利。</p>
           </div>
         </div>
       </footer>

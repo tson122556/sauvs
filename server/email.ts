@@ -30,7 +30,7 @@ export async function sendAppointmentConfirmationEmail(data: AppointmentEmailDat
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
       <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; text-align: center; border-radius: 8px 8px 0 0;">
         <h1 style="margin: 0; font-size: 28px;">预约确认</h1>
-        <p style="margin: 10px 0 0 0; font-size: 14px;">感谢您选择极紫星智慧科技</p>
+        <p style="margin: 10px 0 0 0; font-size: 14px;">感谢您选择UVS智慧科技</p>
       </div>
       
       <div style="background: #f9f9f9; padding: 30px; border-radius: 0 0 8px 8px;">
@@ -61,7 +61,7 @@ export async function sendAppointmentConfirmationEmail(data: AppointmentEmailDat
         </div>
         
         <p style="color: #999; font-size: 12px; text-align: center; margin-top: 30px;">
-          © 2026 西安极紫星智慧科技有限公司。保留所有权利。
+          © 2026 西安UVS智慧科技有限公司。保留所有权利。
         </p>
       </div>
     </div>
@@ -71,7 +71,7 @@ export async function sendAppointmentConfirmationEmail(data: AppointmentEmailDat
     await transporter.sendMail({
       from: process.env.SMTP_FROM || 'noreply@jizixing.com',
       to: email,
-      subject: '预约确认 - 极紫星智慧科技',
+      subject: '预约确认 - UVS智慧科技',
       html: htmlContent,
     });
     return { success: true };
@@ -116,7 +116,7 @@ export async function sendAppointmentReminderEmail(data: AppointmentEmailData) {
     await transporter.sendMail({
       from: process.env.SMTP_FROM || 'noreply@jizixing.com',
       to: email,
-      subject: '预约提醒 - 极紫星智慧科技',
+      subject: '预约提醒 - UVS智慧科技',
       html: htmlContent,
     });
     return { success: true };
