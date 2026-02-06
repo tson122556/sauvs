@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Mail, Lock, User, Eye, EyeOff, ArrowRight } from "lucide-react";
+import { Mail, Lock, User, Eye, EyeOff, ArrowRight, Chrome, MessageCircle, Instagram } from "lucide-react";
 import { useLocation } from "wouter";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
@@ -287,8 +287,53 @@ export default function Register() {
                 : "Create Account"}
             </Button>
 
+            {/* 分割线 */}
+            <div className="relative py-4">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-slate-700" />
+              </div>
+              <div className="relative flex justify-center text-sm">
+                <span className="px-2 bg-slate-900/50 text-gray-500">
+                  {language === "zh" ? "或" : "Or"}
+                </span>
+              </div>
+            </div>
+
+            {/* 第三方登录 */}
+            <div className="space-y-2">
+              {/* Google 登录 */}
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full flex items-center justify-center gap-2 py-2.5"
+              >
+                <Chrome size={18} />
+                {language === "zh" ? "使用 Google 注册" : "Sign up with Google"}
+              </Button>
+
+              {/* 微信登录 */}
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full flex items-center justify-center gap-2 py-2.5"
+              >
+                <MessageCircle size={18} />
+                {language === "zh" ? "使用微信注册" : "Sign up with WeChat"}
+              </Button>
+
+              {/* Instagram 登录 */}
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full flex items-center justify-center gap-2 py-2.5"
+              >
+                <Instagram size={18} />
+                {language === "zh" ? "使用 Instagram 注册" : "Sign up with Instagram"}
+              </Button>
+            </div>
+
             {/* 登录链接 */}
-            <div className="text-center pt-4 border-t border-slate-700">
+            <div className="text-center pt-2 border-t border-slate-700">
               <p className="text-gray-400 text-sm">
                 {language === "zh" ? "已有账户？" : "Already have an account?"}{" "}
                 <button

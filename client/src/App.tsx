@@ -27,6 +27,8 @@ import Register from "./pages/Register";
 import RegisterEn from "./pages/RegisterEn";
 import Login from "./pages/Login";
 import LoginEn from "./pages/LoginEn";
+import ForgotPassword from "./pages/ForgotPassword";
+import ForgotPasswordEn from "./pages/ForgotPasswordEn";
 import RootRedirect from "./pages/RootRedirect";
 
 function Router() {
@@ -69,6 +71,8 @@ function Router() {
       <Route path="/en/register" component={RegisterEn} />
       <Route path="/zh/login" component={Login} />
       <Route path="/en/login" component={LoginEn} />
+      <Route path="/zh/forgot-password" component={ForgotPassword} />
+      <Route path="/en/forgot-password" component={ForgotPasswordEn} />
       
       {/* 产品详情页面 */}
       <Route path="/zh/product/ai" component={ProductAI} />
