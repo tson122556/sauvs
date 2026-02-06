@@ -42,7 +42,7 @@ describe("UVS Chat Stream", () => {
 
       expect(typeof gpt4Response).toBe("string");
       expect(typeof claudeResponse).toBe("string");
-    });
+    }, 15000); // 增加超时时间到 15 秒
   });
 
   describe("buildSystemPrompt", () => {

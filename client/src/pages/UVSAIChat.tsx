@@ -8,6 +8,9 @@ import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { SuggestedQuestions, generateSuggestedQuestions } from "@/components/SuggestedQuestions";
+import { ModelCompetition, type CompetingModel } from "@/components/ModelCompetition";
+import { ModelComparison, type ModelResponse } from "@/components/ModelComparison";
+import { ModelSelectionInfo, MessageModelInfo, type ModelSelectionDetails } from "@/components/ModelSelectionInfo";
 
 interface Message {
   id?: number;
@@ -19,6 +22,10 @@ interface Message {
   contentType?: "text" | "image" | "video" | "code" | "analysis";
   url?: string;
   metadata?: Record<string, any>;
+  modelSelectionReason?: string;
+  responseTime?: number;
+  alternativeResponses?: ModelResponse[];
+  selectionDetails?: ModelSelectionDetails;
 }
 
 interface Conversation {
@@ -128,6 +135,11 @@ export default function UVSAIChat() {
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [suggestedQuestions, setSuggestedQuestions] = useState<string[]>([]);
   const [selectedContentType, setSelectedContentType] = useState<"text" | "image" | "video" | "code" | "analysis" | null>(null);
+  const [showModelCompetition, setShowModelCompetition] = useState(false);
+  const [showModelComparison, setShowModelComparison] = useState(false);
+  const [competingModels, setCompetingModels] = useState<CompetingModel[]>([]);
+  const [modelResponses, setModelResponses] = useState<ModelResponse[]>([]);
+  const [selectedModelSelection, setSelectedModelSelection] = useState<ModelSelectionDetails | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // 检查认证
@@ -374,6 +386,65 @@ export default function UVSAIChat() {
             </div>
           ) : (
             <>
+              {showModelCompetition && (
+                <ModelCompetition
+                  models={competingModels}
+                  isActive={showModelCompetition}
+                  onComplete={(winnerId) => {
+                    setShowModelCompetition(false);
+                    // 这里可以添加获胜模型的处理逻辑
+                  }}
+                />
+              )}
+
+              {showModelComparison && modelResponses.length > 0 && (
+                <ModelComparison
+                  responses={modelResponses}
+                  onSelectResponse={(modelId) => {
+                    // 选择特定模型的响应
+                    const selected = modelResponses.find(r => r.modelId === modelId);
+                    if (selected) {
+                      setMessages(prev => [...prev, {
+                        role: 'assistant',
+                        content: selected.response,
+                        model: modelId,
+                        contentType: 'text',
+                        responseTime: selected.responseTime,
+                      }]);
+                    }
+                    setShowModelComparison(false);
+                    setModelResponses([]);
+                  }}
+                  onCombineResponses={(modelIds) => {
+                    // 组合多个模型的响应
+                    const combined = modelIds
+                      .map(id => {
+                        const resp = modelResponses.find(r => r.modelId === id);
+                        return resp ? `【${resp.modelName}】\n${resp.response}` : '';
+                      })
+                      .filter(Boolean)
+                      .join('\n\n');
+                    
+                    setMessages(prev => [...prev, {
+                      role: 'assistant',
+                      content: combined,
+                      model: 'combined',
+                      contentType: 'text',
+                    }]);
+                    setShowModelComparison(false);
+                    setModelResponses([]);
+                  }}
+                />
+              )}
+
+              {selectedModelSelection && (
+                <ModelSelectionInfo
+                  selection={selectedModelSelection}
+                  showDetails={true}
+                  position="inline"
+                />
+              )}
+
               {messages.map((msg, idx) => (
                 <motion.div
                   key={idx}
@@ -418,9 +489,19 @@ export default function UVSAIChat() {
                           </pre>
                         )}
                         {msg.model && (
-                          <p className="text-xs opacity-70 mt-2">
-                            {MODELS[msg.model as keyof typeof MODELS]?.name}
-                          </p>
+                          <>
+                            <p className="text-xs opacity-70 mt-2">
+                              {MODELS[msg.model as keyof typeof MODELS]?.name}
+                            </p>
+                            {msg.responseTime && (
+                              <MessageModelInfo
+                                modelName={MODELS[msg.model as keyof typeof MODELS]?.name || msg.model}
+                                modelColor={MODELS[msg.model as keyof typeof MODELS]?.color || "bg-gray-500"}
+                                responseTime={msg.responseTime}
+                                modality={msg.contentType as any}
+                              />
+                            )}
+                          </>
                         )}
                       </div>
                       {msg.role === "assistant" && (
