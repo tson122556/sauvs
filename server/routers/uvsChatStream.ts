@@ -19,6 +19,7 @@ import {
 } from "../db";
 import { invokeLLM } from "../_core/llm";
 import { streamLLMResponse, buildSystemPrompt } from "../_core/streamingLLM";
+import { dispatchByModality } from "../_core/modalityDispatcher";
 
 export const uvsChatStreamRouter = router({
   /**
@@ -164,19 +165,34 @@ export const uvsChatStreamRouter = router({
           content: systemPrompt,
         });
 
-        // 调用 LLM 获取响应
+        // 使用模态分发器路由到对应的服务
         let fullResponse = "";
+        let responseUrl: string | undefined;
+        let selectedModel = conversation.model;
+        let modality: string = "text";
+
         try {
-          fullResponse = await streamLLMResponse(
-            messageList,
-            conversation.model,
-            (chunk) => {
+          const dispatchResult = await dispatchByModality({
+            messages: messageList,
+            userInput: input.content,
+            contentType: input.contentType as any,
+            model: conversation.model,
+            onChunk: (chunk) => {
               // 流式数据处理（在实际应用中会通过 SSE 发送）
               process.stdout.write(chunk);
-            }
+            },
+          });
+
+          fullResponse = dispatchResult.content;
+          responseUrl = dispatchResult.url;
+          selectedModel = dispatchResult.model;
+          modality = dispatchResult.modality;
+
+          console.log(
+            `[uvsChatStream] Dispatch completed: modality=${modality}, model=${selectedModel}`
           );
-        } catch (llmError) {
-          console.error("LLM API error:", llmError);
+        } catch (dispatchError) {
+          console.error("Modality dispatch error:", dispatchError);
           fullResponse = "抱歉，AI 服务暂时不可用。请稍后重试。";
         }
 
@@ -185,9 +201,25 @@ export const uvsChatStreamRouter = router({
           conversationId: input.conversationId,
           role: "assistant",
           content: fullResponse,
-          model: conversation.model,
+          model: selectedModel,
           tokenCount: Math.ceil(fullResponse.length / 4), // 粗略估计
         });
+
+        // 如果有 URL（图片或视频），在内容中添加
+        if (responseUrl) {
+          const urlContent = modality === "image" 
+            ? `![Generated Image](${responseUrl})`
+            : modality === "video"
+            ? `[Generated Video](${responseUrl})`
+            : fullResponse;
+          
+          await createAIMessage({
+            conversationId: input.conversationId,
+            role: "assistant",
+            content: urlContent,
+            model: selectedModel,
+          });
+        }
 
         // 更新对话消息计数
         await updateAIConversation(input.conversationId, {
