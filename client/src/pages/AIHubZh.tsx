@@ -9,9 +9,11 @@ interface AIModel {
   icon: string;
   color: string;
   url: string;
+  region: "international" | "china";
 }
 
 const AI_MODELS: AIModel[] = [
+  // International Models
   {
     id: "chatgpt",
     name: "ChatGPT",
@@ -19,6 +21,16 @@ const AI_MODELS: AIModel[] = [
     icon: "🤖",
     color: "from-green-500 to-green-600",
     url: "https://chat.openai.com",
+    region: "international",
+  },
+  {
+    id: "claude",
+    name: "Claude",
+    description: "Anthropic 的高级 AI 助手",
+    icon: "🧠",
+    color: "from-amber-500 to-amber-600",
+    url: "https://claude.ai",
+    region: "international",
   },
   {
     id: "grok",
@@ -27,6 +39,7 @@ const AI_MODELS: AIModel[] = [
     icon: "⚡",
     color: "from-purple-500 to-purple-600",
     url: "https://grok.x.com",
+    region: "international",
   },
   {
     id: "gemini",
@@ -35,7 +48,10 @@ const AI_MODELS: AIModel[] = [
     icon: "✨",
     color: "from-blue-500 to-blue-600",
     url: "https://gemini.google.com",
+    region: "international",
   },
+
+  // China Models
   {
     id: "kimi",
     name: "Kimi",
@@ -43,6 +59,7 @@ const AI_MODELS: AIModel[] = [
     icon: "🌙",
     color: "from-indigo-500 to-indigo-600",
     url: "https://kimi.moonshot.cn",
+    region: "china",
   },
   {
     id: "deepseek",
@@ -51,6 +68,7 @@ const AI_MODELS: AIModel[] = [
     icon: "🔍",
     color: "from-orange-500 to-orange-600",
     url: "https://chat.deepseek.com",
+    region: "china",
   },
   {
     id: "qwen",
@@ -59,10 +77,64 @@ const AI_MODELS: AIModel[] = [
     icon: "🌟",
     color: "from-red-500 to-red-600",
     url: "https://qwenlm.github.io",
+    region: "china",
+  },
+  {
+    id: "doubao",
+    name: "豆包",
+    description: "字节跳动的 AI 助手",
+    icon: "🎯",
+    color: "from-pink-500 to-pink-600",
+    url: "https://www.doubao.com",
+    region: "china",
   },
 ];
 
+const INTERNATIONAL_MODELS = AI_MODELS.filter(
+  (m) => m.region === "international"
+);
+const CHINA_MODELS = AI_MODELS.filter((m) => m.region === "china");
+
 export default function AIHubZh() {
+  const renderModelCards = (models: AIModel[]) => (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {models.map((model) => (
+        <Card
+          key={model.id}
+          className="group relative overflow-hidden bg-slate-800/50 border-slate-700 hover:border-purple-500/50 transition-all duration-300 cursor-pointer"
+        >
+          {/* Background gradient */}
+          <div
+            className={`absolute inset-0 bg-gradient-to-br ${model.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}
+          />
+
+          {/* Content */}
+          <div className="relative p-6 flex flex-col h-full">
+            {/* Icon and Name */}
+            <div className="mb-4">
+              <div className="text-5xl mb-3">{model.icon}</div>
+              <h3 className="text-2xl font-bold text-white mb-2">
+                {model.name}
+              </h3>
+              <p className="text-gray-400 text-sm">{model.description}</p>
+            </div>
+
+            {/* Spacer */}
+            <div className="flex-1" />
+
+            {/* Button */}
+            <Button
+              onClick={() => window.open(model.url, "_blank")}
+              className={`w-full bg-gradient-to-r ${model.color} hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 text-white font-semibold`}
+            >
+              打开 {model.name}
+            </Button>
+          </div>
+        </Card>
+      ))}
+    </div>
+  );
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 py-20">
       <div className="container mx-auto px-4">
@@ -79,42 +151,22 @@ export default function AIHubZh() {
           </p>
         </div>
 
-        {/* AI Models Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {AI_MODELS.map((model) => (
-            <Card
-              key={model.id}
-              className="group relative overflow-hidden bg-slate-800/50 border-slate-700 hover:border-purple-500/50 transition-all duration-300 cursor-pointer"
-            >
-              {/* Background gradient */}
-              <div
-                className={`absolute inset-0 bg-gradient-to-br ${model.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}
-              />
+        {/* International AI Models Section */}
+        <div className="mb-16">
+          <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-2">
+            <span className="w-1 h-8 bg-gradient-to-b from-purple-500 to-cyan-500" />
+            国际模型
+          </h2>
+          {renderModelCards(INTERNATIONAL_MODELS)}
+        </div>
 
-              {/* Content */}
-              <div className="relative p-6 flex flex-col h-full">
-                {/* Icon and Name */}
-                <div className="mb-4">
-                  <div className="text-5xl mb-3">{model.icon}</div>
-                  <h3 className="text-2xl font-bold text-white mb-2">
-                    {model.name}
-                  </h3>
-                  <p className="text-gray-400 text-sm">{model.description}</p>
-                </div>
-
-                {/* Spacer */}
-                <div className="flex-1" />
-
-                {/* Button */}
-                <Button
-                  onClick={() => window.open(model.url, "_blank")}
-                  className={`w-full bg-gradient-to-r ${model.color} hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 text-white font-semibold`}
-                >
-                  打开 {model.name}
-                </Button>
-              </div>
-            </Card>
-          ))}
+        {/* China AI Models Section */}
+        <div className="mb-16">
+          <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-2">
+            <span className="w-1 h-8 bg-gradient-to-b from-red-500 to-orange-500" />
+            国内模型
+          </h2>
+          {renderModelCards(CHINA_MODELS)}
         </div>
 
         {/* Info Section */}
@@ -127,6 +179,10 @@ export default function AIHubZh() {
             <li>
               <strong className="text-purple-400">ChatGPT：</strong>
               最适合通用对话和创意写作
+            </li>
+            <li>
+              <strong className="text-purple-400">Claude：</strong>
+              擅长详细分析和长篇内容
             </li>
             <li>
               <strong className="text-purple-400">Grok：</strong>
@@ -147,6 +203,10 @@ export default function AIHubZh() {
             <li>
               <strong className="text-purple-400">通义千问：</strong>
               优化了中文语言和多语言任务
+            </li>
+            <li>
+              <strong className="text-purple-400">豆包：</strong>
+              字节跳动的 AI，中文能力强大
             </li>
           </ul>
         </div>
