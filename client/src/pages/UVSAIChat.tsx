@@ -514,8 +514,8 @@ export default function UVSAIChat() {
           </div>
           <p className="text-xs text-muted-foreground text-center">
             {language === "zh"
-              ? "💡 提示：输入不同类型的问题，AI 会自动为您选择最优模型。支持生成文本、图片、视频、代码等内容"
-              : "💡 Tip: Ask different types of questions and AI will automatically select the best model. Supports generating text, images, videos, code and more"}
+              ? "💡 提示：输入不同类型的问题，AI 会自动使各最优模型为您抢答。支持生成文本、图片、视频、代码等内容"
+              : "💡 Tip: Ask different types of questions and AI will automatically have the best models compete to answer for you. Supports generating text, images, videos, code and more"}
           </p>
         </div>
       </div>
