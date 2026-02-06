@@ -44,6 +44,7 @@ const MODALITY_KEYWORDS = {
       "卡通",
       "照片",
       "效果图",
+      "生成一张美丽的风景图片",
     ],
     english: [
       "generate image",
@@ -58,6 +59,8 @@ const MODALITY_KEYWORDS = {
       "artwork",
       "photo",
       "image generation",
+      "image",
+      "sunset",
     ],
   },
   VIDEO: {
@@ -70,6 +73,7 @@ const MODALITY_KEYWORDS = {
       "场景演示",
       "演示",
       "动画效果",
+      "生成一个动画视频",
     ],
     english: [
       "generate video",
@@ -79,6 +83,7 @@ const MODALITY_KEYWORDS = {
       "animate",
       "motion",
       "video",
+      "generate a video",
     ],
   },
   CODE: {
@@ -93,6 +98,7 @@ const MODALITY_KEYWORDS = {
       "写个",
       "怎么写",
       "如何实现",
+      "快速排序",
     ],
     english: [
       "code",
@@ -104,6 +110,7 @@ const MODALITY_KEYWORDS = {
       "script",
       "how to write",
       "generate code",
+      "quick sort",
     ],
   },
 };
