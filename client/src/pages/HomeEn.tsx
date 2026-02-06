@@ -76,6 +76,9 @@ export default function HomeEn() {
             <a href={`/${language}/about`} className="text-gray-300 hover:text-white transition">
               About Us
             </a>
+            <a href={`/${language}/ai-hub`} className="text-gray-300 hover:text-white transition">
+              AI Hub
+            </a>
           </motion.div>
 
           <motion.div

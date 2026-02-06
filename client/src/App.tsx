@@ -11,6 +11,8 @@ import About from "./pages/About";
 import HomeEn from "./pages/HomeEn";
 import ContactEn from "./pages/ContactEn";
 import AboutEn from "./pages/AboutEn";
+import AIHub from "./pages/AIHub";
+import AIHubZh from "./pages/AIHubZh";
 import RootRedirect from "./pages/RootRedirect";
 
 function Router() {
@@ -29,6 +31,10 @@ function Router() {
       <Route path="/en" component={HomeEn} />
       <Route path="/en/about" component={AboutEn} />
       <Route path="/en/contact" component={ContactEn} />
+      <Route path="/en/ai-hub" component={AIHub} />
+      
+      {/* AI Hub 路由 */}
+      <Route path="/zh/ai-hub" component={AIHubZh} />
       
       <Route path="/404" component={NotFound} />
       {/* Final fallback route */}
