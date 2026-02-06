@@ -7,6 +7,7 @@ import { createInquiry, getInquiries, updateInquiryStatus, createProduct, getPro
 import { uvsAIRouter } from "./routers/uvsAI";
 import { aiChatRouter } from "./routers/aiChat";
 import { uvsChatStreamRouter } from "./routers/uvsChatStream";
+import { modalityChatRouter } from "./routers/modalityChat";
 import { sendAppointmentConfirmationEmail } from "./email";
 
 export const appRouter = router({
@@ -14,6 +15,7 @@ export const appRouter = router({
   uvsAI: uvsAIRouter,
   aiChat: aiChatRouter,
   uvsChatStream: uvsChatStreamRouter,
+  modalityChat: modalityChatRouter,
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),
     logout: publicProcedure.mutation(({ ctx }) => {
