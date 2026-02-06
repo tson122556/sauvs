@@ -104,3 +104,33 @@ export const news = mysqlTable("news", {
 
 export type News = typeof news.$inferSelect;
 export type InsertNews = typeof news.$inferInsert;
+
+/**
+ * 预约表：存储客户的咨询预约信息
+ */
+export const appointments = mysqlTable("appointments", {
+  id: int("id").autoincrement().primaryKey(),
+  /** 客户名称 */
+  name: varchar("name", { length: 100 }).notNull(),
+  /** 客户邮箱 */
+  email: varchar("email", { length: 320 }).notNull(),
+  /** 客户电话 */
+  phone: varchar("phone", { length: 20 }).notNull(),
+  /** 咨询类型：AI应用、智能机器人、物联网 */
+  consultationType: mysqlEnum("consultationType", ["ai", "robot", "iot"]).notNull(),
+  /** 偏好日期 */
+  preferredDate: varchar("preferredDate", { length: 20 }).notNull(),
+  /** 偏好时间 */
+  preferredTime: varchar("preferredTime", { length: 10 }).default("09:00").notNull(),
+  /** 备注信息 */
+  message: text("message"),
+  /** 预约状态：待处理、已确认、已完成、已取消 */
+  status: mysqlEnum("status", ["pending", "confirmed", "completed", "cancelled"]).default("pending").notNull(),
+  /** 创建时间 */
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  /** 更新时间 */
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Appointment = typeof appointments.$inferSelect;
+export type InsertAppointment = typeof appointments.$inferInsert;

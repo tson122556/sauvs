@@ -14,6 +14,10 @@ import AboutEn from "./pages/AboutEn";
 import AIHub from "./pages/AIHub";
 import AIHubZh from "./pages/AIHubZh";
 import JizixingAI from "./pages/JizixingAI";
+import ProductAI from "./pages/ProductAI";
+import ProductAIEn from "./pages/ProductAIEn";
+import ProductRobot from "./pages/ProductRobot";
+import ProductIoT from "./pages/ProductIoT";
 import RootRedirect from "./pages/RootRedirect";
 
 function Router() {
@@ -41,6 +45,12 @@ function Router() {
       <Route path="/jizixing-ai" component={JizixingAI} />
       <Route path="/zh/jizixing-ai" component={JizixingAI} />
       <Route path="/en/jizixing-ai" component={JizixingAI} />
+      
+      {/* 产品详情页面 */}
+      <Route path="/zh/product/ai" component={ProductAI} />
+      <Route path="/en/product/ai" component={ProductAIEn} />
+      <Route path="/zh/product/robot" component={ProductRobot} />
+      <Route path="/zh/product/iot" component={ProductIoT} />
       
       <Route path="/404" component={NotFound} />
       {/* Final fallback route */}

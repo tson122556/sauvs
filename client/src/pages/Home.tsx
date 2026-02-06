@@ -7,6 +7,7 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { useState } from "react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { useLanguage } from "@/contexts/LanguageContext";
+import SuccessStories from "@/components/SuccessStories";
 
 /**
  * 设计哲学：科技未来主义
@@ -374,9 +375,11 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Success Stories Section */}
+      <SuccessStories language={language as "zh" | "en"} />
+
       {/* CTA Section */}
-      <section id="services" className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-900/20 via-transparent to-cyan-900/20" />
+      <section id="services" className="py-20 relative bg-gradient-to-r from-purple-900/20 via-transparent to-pink-900/20">
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
             className="text-center"
@@ -392,7 +395,7 @@ export default function Home() {
               联系我们的专业团队，获取定制化的解决方案
             </p>
             <Button
-              onClick={() => setLocation("/contact")}
+              onClick={() => setLocation(`/${language}/contact`)}
               size="lg"
               className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white shadow-lg shadow-purple-500/50"
             >

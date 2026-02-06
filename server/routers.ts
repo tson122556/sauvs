@@ -3,7 +3,7 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router, protectedProcedure } from "./_core/trpc";
 import { z } from "zod";
-import { createInquiry, getInquiries, updateInquiryStatus, createProduct, getProducts, getProductById, updateProduct, createNews, getNews, getNewsById, updateNews } from "./db";
+import { createInquiry, getInquiries, updateInquiryStatus, createProduct, getProducts, getProductById, updateProduct, createNews, getNews, getNewsById, updateNews, createAppointment, getAppointments } from "./db";
 import { jizixingAIRouter } from "./routers/jizixingAI";
 
 export const appRouter = router({
@@ -109,6 +109,37 @@ export const appRouter = router({
         const { id, ...data } = input;
         await updateProduct(id, data);
         return { success: true };
+      }),
+  }),
+
+  // 预约相关 API
+  appointments: router({
+    // 创建预约（公开）
+    create: publicProcedure
+      .input(z.object({
+        name: z.string().min(1),
+        email: z.string().email(),
+        phone: z.string().min(1),
+        consultationType: z.enum(['ai', 'robot', 'iot']),
+        preferredDate: z.string().min(1),
+        preferredTime: z.string().default('09:00'),
+        message: z.string().optional().default(''),
+      }))
+      .mutation(async ({ input }) => {
+        await createAppointment(input);
+        return { success: true };
+      }),
+    // 获取所有预约（仅管理员）
+    list: protectedProcedure
+      .input(z.object({
+        limit: z.number().default(50),
+        offset: z.number().default(0),
+      }))
+      .query(async ({ input, ctx }) => {
+        if (ctx.user?.role !== 'admin') {
+          throw new Error('Unauthorized');
+        }
+        return await getAppointments(input.limit, input.offset);
       }),
   }),
 

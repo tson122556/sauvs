@@ -1,6 +1,6 @@
 import { eq, desc } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users, InsertInquiry, inquiries, InsertProduct, products, InsertNews, news } from "../drizzle/schema";
+import { InsertUser, users, InsertInquiry, inquiries, InsertProduct, products, InsertNews, news, InsertAppointment, appointments } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -195,4 +195,40 @@ export async function updateNews(id: number, newsItem: Partial<InsertNews>) {
     throw new Error("Database not available");
   }
   return await db.update(news).set(newsItem).where(eq(news.id, id));
+}
+
+/**
+ * 预约相关函数
+ */
+export async function createAppointment(appointment: InsertAppointment) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+  return await db.insert(appointments).values(appointment);
+}
+
+export async function getAppointments(limit = 50, offset = 0) {
+  const db = await getDb();
+  if (!db) {
+    return [];
+  }
+  return await db.select().from(appointments).orderBy(desc(appointments.createdAt)).limit(limit).offset(offset);
+}
+
+export async function getAppointmentById(id: number) {
+  const db = await getDb();
+  if (!db) {
+    return undefined;
+  }
+  const result = await db.select().from(appointments).where(eq(appointments.id, id)).limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+export async function updateAppointmentStatus(id: number, status: "pending" | "confirmed" | "completed" | "cancelled") {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+  return await db.update(appointments).set({ status }).where(eq(appointments.id, id));
 }
