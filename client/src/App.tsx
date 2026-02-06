@@ -37,6 +37,8 @@ import RootRedirect from "./pages/RootRedirect";
 import Pricing from "./pages/Pricing";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import PaymentCancel from "./pages/PaymentCancel";
+import UnifiedLogin from "./pages/UnifiedLogin";
+import OAuthCallback from "./pages/OAuthCallback";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -95,6 +97,15 @@ function Router() {
       <Route path="/pricing" component={Pricing} />
       <Route path="/payments/success" component={PaymentSuccess} />
       <Route path="/payments/cancel" component={PaymentCancel} />
+      
+      {/* OAuth 相关页面 */}
+      <Route path="/auth/login" component={UnifiedLogin} />
+      <Route path="/auth/register" component={UnifiedLogin} />
+      <Route path="/auth/callback/google" component={OAuthCallback} />
+      <Route path="/auth/callback/microsoft" component={OAuthCallback} />
+      <Route path="/auth/callback/apple" component={OAuthCallback} />
+      <Route path="/auth/callback/wechat" component={OAuthCallback} />
+      <Route path="/auth/callback/instagram" component={OAuthCallback} />
       
       <Route path="/404" component={NotFound} />
       {/* Final fallback route */}

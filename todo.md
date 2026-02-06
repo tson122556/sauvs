@@ -403,3 +403,14 @@
 - [ ] 在 Stripe Dashboard 创建产品和价格
 - [ ] 测试支付流程
 - [ ] 配置 Webhook 端点
+
+
+## 统一登录/注册界面和 OAuth 集成（2026-02-06）
+- [x] 创建统一的 AuthForm 组件（支持中英文）
+- [x] 创建 UnifiedLogin 页面
+- [x] 添加 OAuth 提供商配置（Google、Microsoft、Apple、WeChat、Instagram）
+- [x] 实现 OAuth URL 生成函数
+- [x] 实现 OAuth 回调处理
+- [ ] 配置第三方 OAuth 应用凭证
+- [ ] 测试第三方登录功能
+- [ ] 更新现有登录/注册页面使用新的 AuthForm 组件
