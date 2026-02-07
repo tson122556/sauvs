@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, Zap, Cpu, Network, Play } from "lucide-react";
+import { ArrowRight, Zap, Cpu, Network } from "lucide-react";
 import { useLocation } from "wouter";
+import Navbar from "@/components/Navbar";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { useState } from "react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
@@ -42,6 +43,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+      <Navbar />
+      <div className="pt-20"> {/* 为导航栏留出空间 */}
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 backdrop-blur-md bg-slate-950/80 border-b border-purple-500/20">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
@@ -523,6 +526,7 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      </div>
     </div>
   );
 }

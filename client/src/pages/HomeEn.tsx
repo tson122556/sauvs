@@ -7,6 +7,7 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { useState } from "react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { useLanguage } from "@/contexts/LanguageContext";
+import Navbar from "@/components/Navbar";
 
 /**
  * Design Philosophy: Tech Futurism
@@ -41,8 +42,10 @@ export default function HomeEn() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 backdrop-blur-md bg-slate-950/80 border-b border-purple-500/20">
+      <Navbar />
+      <div className="pt-20"> {/* 为导航栏留出空间 */}
+      {/* Old Navigation - Can be removed */}
+      <nav className="hidden fixed top-0 w-full z-50 backdrop-blur-md bg-slate-950/80 border-b border-purple-500/20">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -500,6 +503,7 @@ export default function HomeEn() {
           </div>
         </div>
       </footer>
+      </div>
     </div>
   );
 }
