@@ -112,7 +112,7 @@ export default function HomeEn() {
           muted
           loop
           className="absolute inset-0 w-full h-full object-cover opacity-30"
-          src="https://private-us-east-1.manuscdn.com/sessionFile/fhgIRoGEBsYWRa81s985hf/sandbox/UtQ5v7fS4XbOELdZSlIP1Q-bg-video_1770192009000_na1fn_YmctdmlkZW8ubXA0.mp4"
+          src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/aLnWuwntEDWQpoxU.mp4"
         />
 
         {/* Gradient Overlays */}
