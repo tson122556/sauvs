@@ -206,7 +206,7 @@ export default function HomeEn() {
           </motion.div>
 
           <motion.div
-            className="grid md:grid-cols-4 gap-8"
+            className="grid md:grid-cols-5 gap-8"
             variants={staggerContainer}
             initial="initial"
             whileInView="animate"
@@ -308,6 +308,32 @@ export default function HomeEn() {
                 <Button
                   onClick={() => setLocation(`/en/contact`)}
                   className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white mt-4 relative z-10"
+                >
+                  Learn More
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </Card>
+            </motion.div>
+
+            {/* Spacetime Encoding/Decoding Body */}
+            <motion.div variants={fadeInUp}>
+              <Card className="bg-gradient-to-br from-indigo-900/40 to-indigo-900/20 border-indigo-500/30 hover:border-indigo-500/60 transition p-8 h-full group cursor-pointer relative overflow-hidden flex flex-col">
+                <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition duration-300" style={{
+                  backgroundImage: 'url(https://private-us-east-1.manuscdn.com/sessionFile/fhgIRoGEBsYWRa81s985hf/sandbox/UtQ5v7fS4XbOELdZSlIP1Q-img-3_1770192011000_na1fn_aW90LWJn.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80)',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center'
+                }} />
+                <div className="relative z-10 flex-grow">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/PMmXikHRGAMPGDyc.png" alt="Spacetime Encoding/Decoding Body" className="w-16 h-16 mb-4 group-hover:scale-110 transition" />
+                  <h3 className="text-xl font-bold text-white mb-3">Spacetime Encoding/Decoding Body</h3>
+                  <p className="text-gray-400 mb-4">Advanced spacetime encoding and decoding technology providing cutting-edge spacetime data processing and transformation solutions.</p>
+                  <div className="inline-block px-3 py-1 bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-xs font-semibold rounded-full mb-4">
+                    Partners Only
+                  </div>
+                </div>
+                <Button
+                  onClick={() => setLocation(`/en/contact`)}
+                  className="w-full bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white mt-4 relative z-10"
                 >
                   Learn More
                   <ArrowRight className="w-4 h-4 ml-2" />
