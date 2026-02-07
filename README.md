@@ -108,10 +108,10 @@ MIT License - 详见 LICENSE 文件
 
 ## 联系方式
 
-- 官网: https://jizixing.com
-- 邮箱: contact@jizixing.com
-- 电话: +86-29-XXXX-XXXX
+- 官网: https://www.sauvs.com
+- 邮箱: satifuxie@gmail.com
+- 电话: +86-151-9387-6470
 
 ---
 
-© 2024 极紫星智慧科技有限公司。保留所有权利。
+© 2025 极紫星智慧科技有限公司。保留所有权利。
