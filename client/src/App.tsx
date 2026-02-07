@@ -21,6 +21,8 @@ import ProductRobot from "./pages/ProductRobot";
 import ProductIoT from "./pages/ProductIoT";
 import News from "./pages/News";
 import NewsEn from "./pages/NewsEn";
+import NewsDetail from "./pages/NewsDetail";
+import NewsDetailEn from "./pages/NewsDetailEn";
 import AIUsageStats from "./pages/AIUsageStats";
 import AIUsageStatsEn from "./pages/AIUsageStatsEn";
 import Register from "./pages/Register";
@@ -39,6 +41,7 @@ import PaymentSuccess from "./pages/PaymentSuccess";
 import PaymentCancel from "./pages/PaymentCancel";
 import UnifiedLogin from "./pages/UnifiedLogin";
 import OAuthCallback from "./pages/OAuthCallback";
+import CustomerService from "./components/CustomerService";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -52,6 +55,7 @@ function Router() {
       <Route path="/zh/about" component={About} />
       <Route path="/zh/contact" component={Contact} />
       <Route path="/zh/news" component={News} />
+      <Route path="/zh/news/:id" component={NewsDetail} />
       
       {/* 英文路由 */}
       <Route path="/en" component={HomeEn} />
@@ -59,6 +63,7 @@ function Router() {
       <Route path="/en/contact" component={ContactEn} />
       <Route path="/en/ai-hub" component={AIHub} />
       <Route path="/en/news" component={NewsEn} />
+      <Route path="/en/news/:id" component={NewsDetailEn} />
       
       {/* AI Hub 路由 */}
       <Route path="/zh/ai-hub" component={AIHubZh} />
@@ -114,6 +119,15 @@ function Router() {
   );
 }
 
+function RouterWithCustomerService() {
+  return (
+    <>
+      <Router />
+      <CustomerService />
+    </>
+  );
+}
+
 // NOTE: About Theme
 // - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
 //   to keep consistent foreground/background color across components
@@ -129,7 +143,7 @@ function App() {
         >
           <TooltipProvider>
             <Toaster />
-            <Router />
+            <RouterWithCustomerService />
           </TooltipProvider>
         </ThemeProvider>
       </LanguageProvider>
