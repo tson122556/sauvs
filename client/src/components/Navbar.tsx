@@ -226,8 +226,17 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Language Switch & Mobile Menu */}
+          {/* Contact Button & Language Switch & Mobile Menu */}
           <div className="flex items-center gap-4">
+            {/* Contact Button */}
+            <Button
+              onClick={() => setLocation(`/${language}/contact`)}
+              className="hidden sm:inline-flex bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white font-semibold"
+              size="sm"
+            >
+              {language === 'zh' ? '联系我们' : 'Contact Us'}
+            </Button>
+
             {/* Language Switch */}
             <div className="flex gap-2">
               <Button
