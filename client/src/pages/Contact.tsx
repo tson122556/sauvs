@@ -92,16 +92,15 @@ export default function Contact() {
       </nav>
 
       {/* Contact Section */}
-      <section id="contact" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 pb-20">
+      <section id="contact" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-40 pb-20">
         {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-cyan-900/20" />
         <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
-
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-6xl mx-auto pt-16">
             {/* Header */}
-            <div className="text-center mb-16">
+            <div className="text-center mb-20 mt-12">
               <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
                 联系我们
               </h1>
@@ -110,7 +109,7 @@ export default function Contact() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8 mb-16">
+            <div className="grid md:grid-cols-3 gap-8 mb-20">
               {/* Contact Info Cards */}
               <Card className="bg-gradient-to-br from-purple-900/40 to-purple-900/20 border-purple-500/30 p-8">
                 <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-lg mb-4">
@@ -148,7 +147,7 @@ export default function Contact() {
             </div>
 
             {/* Contact Form */}
-            <Card className="bg-slate-800/50 border-slate-700/50 p-8 md:p-12">
+            <Card className="bg-slate-800/50 border-slate-700/50 p-8 md:p-12 mt-8">
               <h2 className="text-2xl font-bold text-white mb-8">发送消息</h2>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
