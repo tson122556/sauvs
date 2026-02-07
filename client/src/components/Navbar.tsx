@@ -133,14 +133,18 @@ export default function Navbar() {
 
   const menuItems = language === 'zh' 
     ? [
-        { label: '首页', path: '/zh' },
+        { label: '产品中心', path: '#products' },
+        { label: '解决方案', path: '#solutions' },
+        { label: '技术服务', path: '#services' },
         { label: '关于我们', path: '/zh/about' },
-        { label: '联系我们', path: '/zh/contact' },
+        { label: 'AI 助手', path: '/zh/ai-hub' },
       ]
     : [
-        { label: 'Home', path: '/en' },
+        { label: 'Products', path: '#products' },
+        { label: 'Solutions', path: '#solutions' },
+        { label: 'Services', path: '#services' },
         { label: 'About Us', path: '/en/about' },
-        { label: 'Contact Us', path: '/en/contact' },
+        { label: 'AI Assistant', path: '/en/ai-hub' },
       ];
 
   const newsLabel = language === 'zh' ? '新闻' : 'News';
