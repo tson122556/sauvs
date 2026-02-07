@@ -436,6 +436,7 @@
 - [x] 测试和验证功能
 
 
+<<<<<<< Updated upstream
 ## 更新核心业务页面内容（2026-02-06）
 - [x] 更新中文业务页面：时空同步飞行器 → 时空同步/异步航行器
 - [x] 更新英文业务页面：添加合作伙伴限制说明
@@ -459,3 +460,11 @@
 - [x] 修复英文页面所有 Learn More 按鑒指向联系我们页面
 - [x] 为 Spacetime Synchronous/Asynchronous Navigation 添加 Learn More 按鑒指向联系我们
 - [x] 更新联系我们页面的地址为陕西省西安市雁塔区二环南路
+=======
+## 创建英文产品详情页面和优化排版（2026-02-06）
+- [x] 创建 ProductAiEn.tsx（AI Applications 英文页面）
+- [x] 创建 ProductRobotEn.tsx（Smart Robots 英文页面）
+- [x] 创建 ProductIotEn.tsx（IoT Technology 英文页面）
+- [x] 优化 ContactEn.tsx 的排版（内容往下移）
+- [x] 更新 HomeEn.tsx 的 Learn More 按鑒指向新的产品页面
+>>>>>>> Stashed changes

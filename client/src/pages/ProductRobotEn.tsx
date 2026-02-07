@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, Brain, Zap, Shield, TrendingUp, Users, Lightbulb } from "lucide-react";
+import { ArrowRight, Zap, Cpu, Shield, Wifi, Gauge, Lightbulb } from "lucide-react";
 import { useLocation } from "wouter";
 
-export default function ProductAIEn() {
+export default function ProductRobotEn() {
   const [, setLocation] = useLocation();
 
   const fadeInUp = {
@@ -15,67 +15,67 @@ export default function ProductAIEn() {
 
   const features = [
     {
-      icon: Brain,
-      title: "Deep Learning Models",
-      description: "Adopting the most advanced deep learning technology, supporting multiple neural network architectures and algorithms",
+      icon: Cpu,
+      title: "Intelligent Decision System",
+      description: "Smart decision engine based on reinforcement learning and decision trees, supporting complex scenario handling",
     },
     {
-      icon: Zap,
-      title: "Real-time Inference",
-      description: "Millisecond-level response time supporting high-concurrency request processing",
+      icon: Wifi,
+      title: "Real-time Communication",
+      description: "Low-latency, high-reliability wireless communication protocols supporting 5G and edge computing",
     },
     {
       icon: Shield,
-      title: "Enterprise Security",
-      description: "Complete security system including data encryption, access control, and audit logs",
+      title: "Security Protection",
+      description: "Multi-layer security protection mechanisms supporting encrypted communication and identity authentication",
     },
     {
-      icon: TrendingUp,
-      title: "Performance Optimization",
-      description: "Automatic model optimization supporting edge computing and distributed deployment",
+      icon: Zap,
+      title: "Efficient Energy Management",
+      description: "Intelligent power management system supporting fast charging and extended battery life",
     },
     {
-      icon: Users,
-      title: "Multi-user Collaboration",
-      description: "Supporting team collaboration, permission management, and version control",
+      icon: Gauge,
+      title: "Precision Control",
+      description: "Millimeter-level precision motion control supporting complex trajectory planning",
     },
     {
       icon: Lightbulb,
-      title: "Continuous Learning",
-      description: "Model self-adaptive optimization supporting incremental learning and transfer learning",
+      title: "Adaptive Learning",
+      description: "Automatic robot learning and optimization supporting transfer learning",
     },
   ];
 
-  const useCases = [
+  const applications = [
     {
-      title: "Intelligent Customer Service",
-      description: "NLP-driven intelligent customer service system supporting multi-language, sentiment analysis, and intent recognition",
-      metrics: "Response Accuracy 95%+ | Efficiency Improvement 80%",
+      title: "Industrial Automation",
+      description: "Factory production line automation, quality inspection, and logistics handling",
+      benefits: "Efficiency Increase 60% | Cost Reduction 40% | Safety Improvement 95%",
     },
     {
-      title: "Content Analysis",
-      description: "Automated content moderation, classification, tagging, and sentiment analysis",
-      metrics: "Processing Speed 1000+ items/sec | Accuracy 98%+",
+      title: "Medical Care",
+      description: "Surgical assistance robots, rehabilitation training, and patient care",
+      benefits: "Surgery Precision 99.9% | Care Efficiency Increase 70% | Patient Satisfaction 98%",
     },
     {
-      title: "Predictive Analytics",
-      description: "Time series forecasting, anomaly detection, and trend analysis",
-      metrics: "Prediction Accuracy 92%+ | Early Warning 72 hours",
+      title: "Service Robots",
+      description: "Intelligent service in hotels, restaurants, shopping malls, and other scenarios",
+      benefits: "Service Coverage 99% | Customer Satisfaction 96% | Operating Cost Reduction 50%",
     },
     {
-      title: "Recommendation Engine",
-      description: "Personalized recommendation engine supporting collaborative filtering and content-based recommendations",
-      metrics: "CTR Improvement 35% | Conversion Increase 28%",
+      title: "Exploration & Rescue",
+      description: "Disaster rescue, extreme environment exploration, and scientific research",
+      benefits: "Coverage Range 10x Increase | Safety Improvement 99% | Data Collection Efficiency 5x",
     },
   ];
 
   const specifications = [
-    { label: "Supported Models", value: "TensorFlow, PyTorch, ONNX, Keras, etc." },
-    { label: "Inference Framework", value: "TensorRT, ONNX Runtime, TVM" },
-    { label: "Deployment Options", value: "Cloud, Edge, On-premise, Hybrid" },
-    { label: "API Interfaces", value: "REST, gRPC, WebSocket" },
-    { label: "Performance Metrics", value: "P99 Latency < 100ms | Throughput > 10K QPS" },
-    { label: "Availability", value: "99.99% SLA | Automatic Failover" },
+    { label: "Processor", value: "High-performance multi-core processor with GPU acceleration" },
+    { label: "Sensors", value: "Multi-modal sensing including vision, touch, hearing, and smell" },
+    { label: "Motion Capability", value: "Max Speed 5m/s | Load Capacity 50kg | Precision ±2mm" },
+    { label: "Communication", value: "5G, WiFi 6, Bluetooth 5.2, NB-IoT" },
+    { label: "Battery", value: "Fast Charge 30 minutes | Battery Life 8-12 hours" },
+    { label: "Operating System", value: "Proprietary RTOS supporting ROS 2 ecosystem" },
   ];
 
   return (
@@ -89,8 +89,8 @@ export default function ProductAIEn() {
       >
         <div className="container mx-auto max-w-4xl">
           <motion.div {...fadeInUp} className="mb-6">
-            <span className="inline-block px-4 py-2 rounded-full bg-purple-500/20 text-purple-300 text-sm font-semibold mb-6">
-              AI Application Solutions
+            <span className="inline-block px-4 py-2 rounded-full bg-cyan-500/20 text-cyan-300 text-sm font-semibold mb-6">
+              Intelligent Robot Solutions
             </span>
           </motion.div>
 
@@ -98,14 +98,14 @@ export default function ProductAIEn() {
             {...fadeInUp}
             className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent"
           >
-            Enterprise AI Application Platform
+            Next-Generation Smart Robots
           </motion.h1>
 
           <motion.p
             {...fadeInUp}
             className="text-xl text-gray-300 mb-8 leading-relaxed"
           >
-            Integrating multiple advanced AI models to provide end-to-end application development, deployment, and management solutions. Supporting the complete lifecycle from prototype development to production-level applications.
+            Integrating advanced AI algorithms, high-precision sensing, and intelligent control to create intelligent robot systems that adapt to multiple scenarios. Supporting applications in industrial, medical, and service sectors.
           </motion.p>
 
           <motion.div
@@ -153,7 +153,7 @@ export default function ProductAIEn() {
                   viewport={{ once: true }}
                 >
                   <Card className="bg-slate-800/50 border-slate-700 p-8 hover:border-purple-500/50 transition-all h-full">
-                    <Icon className="w-12 h-12 text-purple-500 mb-4" />
+                    <Icon className="w-12 h-12 text-cyan-500 mb-4" />
                     <h3 className="text-xl font-bold text-white mb-3">
                       {feature.title}
                     </h3>
@@ -166,7 +166,7 @@ export default function ProductAIEn() {
         </div>
       </motion.section>
 
-      {/* Use Cases */}
+      {/* Applications */}
       <motion.section
         className="py-20 px-4 bg-slate-900/50"
         initial={{ opacity: 0 }}
@@ -176,11 +176,11 @@ export default function ProductAIEn() {
       >
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-4xl font-bold text-white mb-16 text-center">
-            Use Cases
+            Application Domains
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {useCases.map((useCase, index) => (
+            {applications.map((app, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
@@ -190,12 +190,12 @@ export default function ProductAIEn() {
               >
                 <Card className="bg-slate-800/50 border-slate-700 p-8 h-full">
                   <h3 className="text-2xl font-bold text-white mb-3">
-                    {useCase.title}
+                    {app.title}
                   </h3>
-                  <p className="text-gray-400 mb-4">{useCase.description}</p>
+                  <p className="text-gray-400 mb-4">{app.description}</p>
                   <div className="pt-4 border-t border-slate-700">
                     <p className="text-sm text-cyan-400 font-semibold">
-                      {useCase.metrics}
+                      {app.benefits}
                     </p>
                   </div>
                 </Card>
@@ -249,7 +249,7 @@ export default function ProductAIEn() {
             Ready to Get Started?
           </h2>
           <p className="text-xl text-gray-300 mb-8">
-            Contact our expert team to learn how to integrate AI applications into your business
+            Contact our expert team to learn how to integrate smart robots into your business
           </p>
           <Button
             onClick={() => setLocation("/en/contact")}

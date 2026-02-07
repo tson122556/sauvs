@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, Brain, Zap, Shield, TrendingUp, Users, Lightbulb } from "lucide-react";
+import { ArrowRight, Wifi, Cloud, Lock, Zap, BarChart3, Lightbulb } from "lucide-react";
 import { useLocation } from "wouter";
 
-export default function ProductAIEn() {
+export default function ProductIoTEn() {
   const [, setLocation] = useLocation();
 
   const fadeInUp = {
@@ -15,67 +15,67 @@ export default function ProductAIEn() {
 
   const features = [
     {
-      icon: Brain,
-      title: "Deep Learning Models",
-      description: "Adopting the most advanced deep learning technology, supporting multiple neural network architectures and algorithms",
+      icon: Wifi,
+      title: "Fully Connected Ecosystem",
+      description: "Supporting multiple connectivity methods including WiFi, Bluetooth, 5G, and NB-IoT for seamless interconnection",
+    },
+    {
+      icon: Cloud,
+      title: "Cloud-Edge Collaboration",
+      description: "Combining cloud processing with edge computing for low-latency, high-efficiency data processing",
+    },
+    {
+      icon: Lock,
+      title: "Security & Reliability",
+      description: "End-to-end encryption, multi-layer authentication, and secure boot ensuring data and device security",
     },
     {
       icon: Zap,
-      title: "Real-time Inference",
-      description: "Millisecond-level response time supporting high-concurrency request processing",
+      title: "Low Power Design",
+      description: "Ultra-low-power chips and intelligent power-saving algorithms supporting long-term battery operation",
     },
     {
-      icon: Shield,
-      title: "Enterprise Security",
-      description: "Complete security system including data encryption, access control, and audit logs",
-    },
-    {
-      icon: TrendingUp,
-      title: "Performance Optimization",
-      description: "Automatic model optimization supporting edge computing and distributed deployment",
-    },
-    {
-      icon: Users,
-      title: "Multi-user Collaboration",
-      description: "Supporting team collaboration, permission management, and version control",
+      icon: BarChart3,
+      title: "Data Analytics",
+      description: "Real-time data collection, processing, and visualization supporting AI-driven intelligent analysis",
     },
     {
       icon: Lightbulb,
-      title: "Continuous Learning",
-      description: "Model self-adaptive optimization supporting incremental learning and transfer learning",
+      title: "Intelligent Decision Making",
+      description: "Big data-driven intelligent decision support enabling self-adaptive and self-optimizing systems",
     },
   ];
 
-  const useCases = [
+  const scenarios = [
     {
-      title: "Intelligent Customer Service",
-      description: "NLP-driven intelligent customer service system supporting multi-language, sentiment analysis, and intent recognition",
-      metrics: "Response Accuracy 95%+ | Efficiency Improvement 80%",
+      title: "Smart Cities",
+      description: "Intelligent transportation, environmental monitoring, energy management, and public safety",
+      metrics: "Coverage 100+ sq km | Devices 1M+ | Data Processing 1TB+/day",
     },
     {
-      title: "Content Analysis",
-      description: "Automated content moderation, classification, tagging, and sentiment analysis",
-      metrics: "Processing Speed 1000+ items/sec | Accuracy 98%+",
+      title: "Industry 4.0",
+      description: "Device monitoring, predictive maintenance, production optimization, and quality control",
+      metrics: "Downtime Reduction 80% | Efficiency Increase 40% | Cost Reduction 30%",
     },
     {
-      title: "Predictive Analytics",
-      description: "Time series forecasting, anomaly detection, and trend analysis",
-      metrics: "Prediction Accuracy 92%+ | Early Warning 72 hours",
+      title: "Smart Agriculture",
+      description: "Soil monitoring, weather forecasting, irrigation control, and pest prevention",
+      metrics: "Yield Increase 25% | Water Reduction 40% | Cost Reduction 35%",
     },
     {
-      title: "Recommendation Engine",
-      description: "Personalized recommendation engine supporting collaborative filtering and content-based recommendations",
-      metrics: "CTR Improvement 35% | Conversion Increase 28%",
+      title: "Smart Home",
+      description: "Environmental control, security monitoring, energy management, and intelligent appliances",
+      metrics: "Energy Reduction 35% | Comfort Improvement 90% | Security Enhancement 99%",
     },
   ];
 
   const specifications = [
-    { label: "Supported Models", value: "TensorFlow, PyTorch, ONNX, Keras, etc." },
-    { label: "Inference Framework", value: "TensorRT, ONNX Runtime, TVM" },
-    { label: "Deployment Options", value: "Cloud, Edge, On-premise, Hybrid" },
-    { label: "API Interfaces", value: "REST, gRPC, WebSocket" },
-    { label: "Performance Metrics", value: "P99 Latency < 100ms | Throughput > 10K QPS" },
-    { label: "Availability", value: "99.99% SLA | Automatic Failover" },
+    { label: "Connectivity Protocols", value: "WiFi 6E, 5G, NB-IoT, LoRaWAN, Zigbee" },
+    { label: "Data Processing", value: "Real-time Processing 100K+ Devices | Latency < 100ms" },
+    { label: "Storage Capacity", value: "Support PB-level Data Storage | Automatic Tiering Management" },
+    { label: "Security Mechanisms", value: "256-bit Encryption | Multi-factor Authentication | Secure Boot" },
+    { label: "Scalability", value: "Support 100M+ Device Connections | Elastic Scaling" },
+    { label: "Availability", value: "99.99% SLA | Multi-region Redundancy | Automatic Failover" },
   ];
 
   return (
@@ -89,8 +89,8 @@ export default function ProductAIEn() {
       >
         <div className="container mx-auto max-w-4xl">
           <motion.div {...fadeInUp} className="mb-6">
-            <span className="inline-block px-4 py-2 rounded-full bg-purple-500/20 text-purple-300 text-sm font-semibold mb-6">
-              AI Application Solutions
+            <span className="inline-block px-4 py-2 rounded-full bg-pink-500/20 text-pink-300 text-sm font-semibold mb-6">
+              IoT Solutions
             </span>
           </motion.div>
 
@@ -98,14 +98,14 @@ export default function ProductAIEn() {
             {...fadeInUp}
             className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent"
           >
-            Enterprise AI Application Platform
+            Enterprise IoT Platform
           </motion.h1>
 
           <motion.p
             {...fadeInUp}
             className="text-xl text-gray-300 mb-8 leading-relaxed"
           >
-            Integrating multiple advanced AI models to provide end-to-end application development, deployment, and management solutions. Supporting the complete lifecycle from prototype development to production-level applications.
+            Connect, manage, and analyze data from millions of devices. Providing complete solutions from edge to cloud, supporting real-time monitoring, predictive analytics, and intelligent decision-making.
           </motion.p>
 
           <motion.div
@@ -153,7 +153,7 @@ export default function ProductAIEn() {
                   viewport={{ once: true }}
                 >
                   <Card className="bg-slate-800/50 border-slate-700 p-8 hover:border-purple-500/50 transition-all h-full">
-                    <Icon className="w-12 h-12 text-purple-500 mb-4" />
+                    <Icon className="w-12 h-12 text-pink-500 mb-4" />
                     <h3 className="text-xl font-bold text-white mb-3">
                       {feature.title}
                     </h3>
@@ -166,7 +166,7 @@ export default function ProductAIEn() {
         </div>
       </motion.section>
 
-      {/* Use Cases */}
+      {/* Scenarios */}
       <motion.section
         className="py-20 px-4 bg-slate-900/50"
         initial={{ opacity: 0 }}
@@ -176,11 +176,11 @@ export default function ProductAIEn() {
       >
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-4xl font-bold text-white mb-16 text-center">
-            Use Cases
+            Application Scenarios
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {useCases.map((useCase, index) => (
+            {scenarios.map((scenario, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
@@ -190,12 +190,12 @@ export default function ProductAIEn() {
               >
                 <Card className="bg-slate-800/50 border-slate-700 p-8 h-full">
                   <h3 className="text-2xl font-bold text-white mb-3">
-                    {useCase.title}
+                    {scenario.title}
                   </h3>
-                  <p className="text-gray-400 mb-4">{useCase.description}</p>
+                  <p className="text-gray-400 mb-4">{scenario.description}</p>
                   <div className="pt-4 border-t border-slate-700">
                     <p className="text-sm text-cyan-400 font-semibold">
-                      {useCase.metrics}
+                      {scenario.metrics}
                     </p>
                   </div>
                 </Card>
@@ -249,7 +249,7 @@ export default function ProductAIEn() {
             Ready to Get Started?
           </h2>
           <p className="text-xl text-gray-300 mb-8">
-            Contact our expert team to learn how to integrate AI applications into your business
+            Contact our expert team to learn how to integrate IoT solutions into your business
           </p>
           <Button
             onClick={() => setLocation("/en/contact")}

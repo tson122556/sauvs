@@ -92,7 +92,7 @@ export default function ContactEn() {
       </nav>
 
       {/* Contact Section */}
-      <section id="contact" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 pb-20">
+      <section id="contact" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-40 pb-20">
         {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-cyan-900/20" />
         <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
@@ -377,7 +377,7 @@ export default function ContactEn() {
               <ul className="space-y-2 text-sm text-gray-400">
                 <li>Email: satifuxie@gmail.com</li>
                 <li>Phone: (+86)1519387647</li>
-                <li>Address: Xi'an, Shaanxi, China</li>
+                <li>Address: Yanta District, Xi'an, Shaanxi, China</li>
               </ul>
             </div>
           </div>

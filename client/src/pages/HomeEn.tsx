@@ -222,7 +222,7 @@ export default function HomeEn() {
                   </p>
                 </div>
                 <Button
-                  onClick={() => setLocation(`/en/contact`)}
+                  onClick={() => setLocation("/en/product/ai")}
                   className="w-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white mt-4 relative z-10"
                 >
                   Learn More
@@ -247,7 +247,7 @@ export default function HomeEn() {
                   </p>
                 </div>
                 <Button
-                  onClick={() => setLocation(`/en/contact`)}
+                  onClick={() => setLocation("/en/product/robot")}
                   className="w-full bg-gradient-to-r from-cyan-600 to-cyan-700 hover:from-cyan-700 hover:to-cyan-800 text-white mt-4 relative z-10"
                 >
                   Learn More
@@ -272,7 +272,7 @@ export default function HomeEn() {
                   </p>
                 </div>
                 <Button
-                  onClick={() => setLocation(`/en/contact`)}
+                  onClick={() => setLocation("/en/product/iot")}
                   className="w-full bg-gradient-to-r from-pink-600 to-pink-700 hover:from-pink-700 hover:to-pink-800 text-white mt-4 relative z-10"
                 >
                   Learn More
@@ -292,7 +292,7 @@ export default function HomeEn() {
                 <div className="relative z-10 flex-grow">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/PMmXikHRGAMPGDyc.png" alt="Spacetime Synchronous/Asynchronous Navigation" className="w-16 h-16 mb-4 group-hover:scale-110 transition" style={{backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}} />
                   <h3 className="text-xl font-bold text-white mb-3">Spacetime Synchronous/Asynchronous Navigation</h3>
-                  <p className="text-gray-400 mb-4">
+                  <p className="text-gray-400 mb-6">
                     Cutting-edge spacetime synchronous/asynchronous navigation R&D and application providing innovative navigation and flight solutions.
                   </p>
                   <div className="inline-block px-3 py-1 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs font-semibold rounded-full mb-4">
