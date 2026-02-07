@@ -456,6 +456,6 @@
 
 
 ## 修复英文页面 Learn More 按鑒和地址更新（2026-02-06）
-- [x] 修复英文页面所有 Learn More 按鑒指向（仅时空同步/异步航行器指向联系我们）
+- [x] 修复英文页面所有 Learn More 按鑒指向联系我们页面
 - [x] 为 Spacetime Synchronous/Asynchronous Navigation 添加 Learn More 按鑒指向联系我们
 - [x] 更新联系我们页面的地址为陕西省西安市雁塔区二环南路

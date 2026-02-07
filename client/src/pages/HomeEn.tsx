@@ -222,7 +222,7 @@ export default function HomeEn() {
                   </p>
                 </div>
                 <Button
-                  onClick={() => setLocation(`/en/product/ai`)}
+                  onClick={() => setLocation(`/en/contact`)}
                   className="w-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white mt-4 relative z-10"
                 >
                   Learn More
@@ -247,7 +247,7 @@ export default function HomeEn() {
                   </p>
                 </div>
                 <Button
-                  onClick={() => setLocation(`/en/product/robot`)}
+                  onClick={() => setLocation(`/en/contact`)}
                   className="w-full bg-gradient-to-r from-cyan-600 to-cyan-700 hover:from-cyan-700 hover:to-cyan-800 text-white mt-4 relative z-10"
                 >
                   Learn More
@@ -272,7 +272,7 @@ export default function HomeEn() {
                   </p>
                 </div>
                 <Button
-                  onClick={() => setLocation(`/en/product/iot`)}
+                  onClick={() => setLocation(`/en/contact`)}
                   className="w-full bg-gradient-to-r from-pink-600 to-pink-700 hover:from-pink-700 hover:to-pink-800 text-white mt-4 relative z-10"
                 >
                   Learn More
