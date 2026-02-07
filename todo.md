@@ -504,3 +504,11 @@
 - [x] 修复 HomeEn.tsx 中 IoT Technology 的 Learn More 按钮指向 /en/product/iot
 - [x] 重新设计和翻译 ProductRobotEn.tsx
 - [x] 重新设计和翻译 ProductIoTEn.tsx
+
+
+## 修复 Smart Robots 和 IoT Technology 的 Learn More 按钮跳转（2026-02-07）
+- [x] 检查中文首页 Home.tsx 中 Smart Robots 和 IoT Technology 的 Learn More 按钮指向
+- [x] 修复中文首页的 Learn More 按钮指向到正确的产品详情页面
+- [x] 检查英文首页 HomeEn.tsx 中 Smart Robots 和 IoT Technology 的 Learn More 按钮指向
+- [x] 在 App.tsx 中添加英文产品详情页的路由配置
+- [x] 验证 ProductRobotEn.tsx 和 ProductIoTEn.tsx 的内容完整性

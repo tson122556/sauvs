@@ -18,7 +18,9 @@ import UVSAIChat from "./pages/UVSAIChat";
 import ProductAI from "./pages/ProductAI";
 import ProductAIEn from "./pages/ProductAIEn";
 import ProductRobot from "./pages/ProductRobot";
+import ProductRobotEn from "./pages/ProductRobotEn";
 import ProductIoT from "./pages/ProductIoT";
+import ProductIoTEn from "./pages/ProductIoTEn";
 import News from "./pages/News";
 import NewsEn from "./pages/NewsEn";
 import NewsDetail from "./pages/NewsDetail";
@@ -96,7 +98,9 @@ function Router() {
       <Route path="/zh/product/ai" component={ProductAI} />
       <Route path="/en/product/ai" component={ProductAIEn} />
       <Route path="/zh/product/robot" component={ProductRobot} />
+      <Route path="/en/product/robot" component={ProductRobotEn} />
       <Route path="/zh/product/iot" component={ProductIoT} />
+      <Route path="/en/product/iot" component={ProductIoTEn} />
       
       {/* 支付相关页面 */}
       <Route path="/pricing" component={Pricing} />
