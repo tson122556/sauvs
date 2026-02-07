@@ -19,39 +19,48 @@ export default function Navbar() {
   const [, setLocation] = useLocation();
   const { language, setLanguage } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
-  const [newsOpen, setNewsOpen] = useState(false);
   const [news, setNews] = useState<NewsItem[]>([]);
-  const [loadingNews, setLoadingNews] = useState(false);
+  const [loadingNews, setLoadingNews] = useState(true);
 
   // 获取新闻数据
   useEffect(() => {
     const fetchNews = async () => {
       setLoadingNews(true);
       try {
-        // 使用 NewsAPI 获取航空和无人机相关新闻
+        // 尝试从 NewsAPI 获取航空和无人机相关新闻
         const keywords = language === 'zh' ? '无人机 航空' : 'drone aviation aircraft';
+        
+        // 注意：需要使用真实的 NewsAPI 密钥
+        // 可以在环境变量中配置：VITE_NEWS_API_KEY
+        const apiKey = import.meta.env.VITE_NEWS_API_KEY || 'demo';
+        
         const response = await fetch(
-          `https://newsapi.org/v2/everything?q=${encodeURIComponent(keywords)}&sortBy=publishedAt&language=${language === 'zh' ? 'zh' : 'en'}&pageSize=5&apiKey=demo`
+          `https://newsapi.org/v2/everything?q=${encodeURIComponent(keywords)}&sortBy=publishedAt&language=${language === 'zh' ? 'zh' : 'en'}&pageSize=5&apiKey=${apiKey}`
         );
         
         if (response.ok) {
           const data = await response.json();
-          const formattedNews = data.articles?.slice(0, 5).map((article: any) => ({
-            id: article.url,
-            title: article.title,
-            description: article.description || article.content?.substring(0, 100),
-            url: article.url,
-            image: article.urlToImage || 'https://via.placeholder.com/100',
-            publishedAt: article.publishedAt,
-            source: article.source.name,
-          })) || [];
-          setNews(formattedNews);
+          if (data.articles && data.articles.length > 0) {
+            const formattedNews = data.articles.slice(0, 5).map((article: any) => ({
+              id: article.url,
+              title: article.title,
+              description: article.description || article.content?.substring(0, 100),
+              url: article.url,
+              image: article.urlToImage || 'https://via.placeholder.com/100',
+              publishedAt: article.publishedAt,
+              source: article.source.name,
+            }));
+            setNews(formattedNews);
+            setLoadingNews(false);
+            return;
+          }
         }
       } catch (error) {
-        console.error('Failed to fetch news:', error);
-        // 使用本地示例数据作为备选
-        setNews(getLocalNews());
+        console.error('Failed to fetch news from API:', error);
       }
+      
+      // 如果 API 失败或没有结果，使用本地新闻数据
+      setNews(getLocalNews());
       setLoadingNews(false);
     };
 
@@ -63,42 +72,60 @@ export default function Navbar() {
       return [
         {
           id: '1',
-          title: '全球无人机市场规模持续增长',
-          description: '根据最新市场研究报告，全球无人机市场在2024年保持强劲增长势头...',
-          url: '#',
-          image: 'https://via.placeholder.com/100',
-          publishedAt: new Date().toISOString(),
+          title: '全球无人机市场规模持续增长，预计2024年达到300亿美元',
+          description: '根据最新市场研究报告，全球无人机市场在2024年保持强劲增长势头，工业级无人机应用不断拓展...',
+          url: 'https://example.com/news/1',
+          image: 'https://via.placeholder.com/300x200?text=Drone+Market',
+          publishedAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
           source: '科技新闻',
         },
         {
           id: '2',
-          title: '航空航天企业加大研发投入',
-          description: '多家国际航空航天企业宣布增加研发预算，重点投入新型飞行器开发...',
-          url: '#',
-          image: 'https://via.placeholder.com/100',
-          publishedAt: new Date().toISOString(),
+          title: '航空航天企业加大研发投入，新型飞行器技术取得突破',
+          description: '多家国际航空航天企业宣布增加研发预算，重点投入新型飞行器开发和空中交通管理系统...',
+          url: 'https://example.com/news/2',
+          image: 'https://via.placeholder.com/300x200?text=Aerospace+Innovation',
+          publishedAt: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000).toISOString(),
           source: '行业报告',
+        },
+        {
+          id: '3',
+          title: '人工智能在无人机自主导航中的应用前景广阔',
+          description: '最新研究表明，AI 技术与无人机的结合将推动自主飞行和智能决策能力的发展...',
+          url: 'https://example.com/news/3',
+          image: 'https://via.placeholder.com/300x200?text=AI+Drones',
+          publishedAt: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000).toISOString(),
+          source: '技术动态',
         },
       ];
     } else {
       return [
         {
           id: '1',
-          title: 'Global Drone Market Shows Strong Growth',
-          description: 'The global drone market continues to expand with increasing adoption in various industries...',
-          url: '#',
-          image: 'https://via.placeholder.com/100',
-          publishedAt: new Date().toISOString(),
+          title: 'Global Drone Market Reaches $30 Billion, Expected to Grow Further in 2024',
+          description: 'Latest market research shows the global drone market maintaining strong growth momentum, with expanding industrial applications...',
+          url: 'https://example.com/news/1',
+          image: 'https://via.placeholder.com/300x200?text=Drone+Market',
+          publishedAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
           source: 'Tech News',
         },
         {
           id: '2',
-          title: 'Aerospace Companies Boost R&D Investments',
-          description: 'Major aerospace companies announce increased funding for next-generation aircraft development...',
-          url: '#',
-          image: 'https://via.placeholder.com/100',
-          publishedAt: new Date().toISOString(),
+          title: 'Aerospace Companies Boost R&D Investment, Breakthrough in Next-Gen Aircraft',
+          description: 'Major aerospace companies announce increased funding for next-generation aircraft development and air traffic management systems...',
+          url: 'https://example.com/news/2',
+          image: 'https://via.placeholder.com/300x200?text=Aerospace+Innovation',
+          publishedAt: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000).toISOString(),
           source: 'Industry Report',
+        },
+        {
+          id: '3',
+          title: 'AI Applications in Autonomous Drone Navigation Show Promising Future',
+          description: 'New research indicates the combination of AI technology with drones will drive autonomous flight and intelligent decision-making capabilities...',
+          url: 'https://example.com/news/3',
+          image: 'https://via.placeholder.com/300x200?text=AI+Drones',
+          publishedAt: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000).toISOString(),
+          source: 'Tech Updates',
         },
       ];
     }
@@ -158,12 +185,8 @@ export default function Navbar() {
               </button>
               
               {/* Dropdown Menu */}
-              <div className="absolute left-0 mt-0 w-80 bg-slate-800 border border-slate-700 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-4">
-                {loadingNews ? (
-                  <div className="px-4 py-8 text-center text-gray-400">
-                    {language === 'zh' ? '加载中...' : 'Loading...'}
-                  </div>
-                ) : news.length > 0 ? (
+              <div className="absolute left-0 mt-0 w-96 bg-slate-800 border border-slate-700 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-2">
+                {news.length > 0 ? (
                   <>
                     {news.slice(0, 3).map((item) => (
                       <a
@@ -181,7 +204,7 @@ export default function Navbar() {
                     ))}
                     <button
                       onClick={() => setLocation(`/${language}/news`)}
-                      className="w-full px-4 py-3 text-center text-cyan-400 hover:text-cyan-300 font-semibold text-sm border-t border-slate-700"
+                      className="w-full px-4 py-3 text-center text-cyan-400 hover:text-cyan-300 font-semibold text-sm border-t border-slate-700 hover:bg-slate-700 transition"
                     >
                       {viewMoreLabel} →
                     </button>
