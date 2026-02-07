@@ -558,7 +558,7 @@ export default function AboutEn() {
                 <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/rIgTYTVyfhyRUphq.svg" alt="Parrot" className="h-16 w-auto group-hover:scale-110 transition-transform" />
               </a>
               <a href="https://www.stanford.edu/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
-                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/KSoxhHYccQwFoaLq.png" alt="Stanford University" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/KSoxhHYccQwFoaLq.png" alt="Stanford University" className="h-20 w-auto group-hover:scale-110 transition-transform" />
               </a>
               <a href="https://www.universityofcalifornia.edu/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
                 <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/cqpRbRGXTefjEuuE.png" alt="University of California" className="h-16 w-auto group-hover:scale-110 transition-transform" />
