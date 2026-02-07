@@ -243,7 +243,7 @@ export default function AIHubZh() {
             <div className="p-8">
               <div className="flex items-start justify-between mb-4">
                 <div>
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/JONsEsRUUEqlTLtx.png" alt="UVS AI" className="w-16 h-16 mb-3" />
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/TwiiMkmPRNBoNOuY.png" alt="UVS AI" className="w-16 h-16 mb-3" />
                   <h3 className="text-2xl font-bold text-white mb-2">UVS AI</h3>
                   <p className="text-gray-300 mb-2">UVS专有 AI 模型集成系统</p>
                   <p className="text-purple-400 italic border-l-2 border-purple-500 pl-3">智能调度、高效会话、专业分析</p>

@@ -243,7 +243,7 @@ export default function AIHub() {
             <div className="p-8">
               <div className="flex items-start justify-between mb-4">
                 <div>
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/JONsEsRUUEqlTLtx.png" alt="SAUVS AI" className="w-16 h-16 mb-3" />
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/TwiiMkmPRNBoNOuY.png" alt="SAUVS AI" className="w-16 h-16 mb-3" />
                   <h3 className="text-2xl font-bold text-white mb-2">SAUVS AI</h3>
                   <p className="text-gray-300 mb-2">SAUVS Proprietary AI Model Integration System</p>
                   <p className="text-purple-400 italic border-l-2 border-purple-500 pl-3">Intelligent scheduling, efficient conversations, professional analysis</p>
