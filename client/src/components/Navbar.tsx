@@ -163,13 +163,13 @@ export default function Navbar() {
           >
             <motion.img 
               src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/uAJQYgErxzlvdMug.png" 
-              alt={language === 'zh' ? '极紫星' : 'SAUVS'} 
+              alt={language === 'zh' ? '极紫星' : 'UVS'} 
               className="h-10 w-auto" 
               animate={{ y: [0, -4, 0] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
             />
             <span className="text-lg font-bold text-white hidden sm:inline">
-              {language === 'zh' ? '极紫星' : 'SAUVS'}
+              {language === 'zh' ? '极紫星' : 'UVS'}
             </span>
           </motion.div>
 
