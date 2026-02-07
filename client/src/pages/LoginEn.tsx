@@ -2,7 +2,8 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Mail, Lock, Eye, EyeOff, ArrowRight, Github } from "lucide-react";
+import { Mail, Lock, Eye, EyeOff, ArrowRight } from "lucide-react";
+import { GoogleIcon, MicrosoftIcon, AppleIcon, WeChatIcon, InstagramIcon } from "@/components/SocialIcons";
 import { useLocation } from "wouter";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
@@ -70,13 +71,9 @@ export default function LoginEn() {
     }
   };
 
-  const handleOAuthLogin = () => {
-    window.location.href = getLoginUrl();
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center p-4">
-      {/* 背景装饰 */}
+      {/* Background Decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
@@ -88,7 +85,7 @@ export default function LoginEn() {
         transition={{ duration: 0.6 }}
         className="w-full max-w-md relative z-10"
       >
-        {/* 顶部导航 */}
+        {/* Top Navigation */}
         <div className="flex items-center justify-between mb-8">
           <button
             onClick={() => setLocation("/en")}
@@ -101,15 +98,15 @@ export default function LoginEn() {
         </div>
 
         <Card className="p-8 bg-slate-900/50 border-purple-500/20 backdrop-blur-xl">
-          {/* 标题 */}
+          {/* Title */}
           <div className="mb-8 text-center">
             <h1 className="text-3xl font-bold text-white mb-2">Welcome Back</h1>
             <p className="text-gray-400">Sign in to your UVS AI account</p>
           </div>
 
-          {/* 表单 */}
+          {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
-            {/* 邮箱 */}
+            {/* Email */}
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">
                 Email Address
@@ -134,7 +131,7 @@ export default function LoginEn() {
               )}
             </div>
 
-            {/* 密码 */}
+            {/* Password */}
             <div>
               <div className="flex items-center justify-between mb-2">
                 <label className="block text-sm font-medium text-gray-300">
@@ -175,7 +172,7 @@ export default function LoginEn() {
               )}
             </div>
 
-            {/* 记住我 */}
+            {/* Remember Me */}
             <div className="flex items-center">
               <input
                 type="checkbox"
@@ -190,7 +187,7 @@ export default function LoginEn() {
               </label>
             </div>
 
-            {/* 提交错误 */}
+            {/* Submit Error */}
             {errors.submit && (
               <motion.div
                 initial={{ opacity: 0 }}
@@ -201,7 +198,7 @@ export default function LoginEn() {
               </motion.div>
             )}
 
-            {/* 登录按钮 */}
+            {/* Sign In Button */}
             <Button
               type="submit"
               disabled={isLoading}
@@ -210,7 +207,7 @@ export default function LoginEn() {
               {isLoading ? "Signing in..." : "Sign In"}
             </Button>
 
-            {/* 分割线 */}
+            {/* Divider */}
             <div className="relative py-4">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-slate-700" />
@@ -220,18 +217,60 @@ export default function LoginEn() {
               </div>
             </div>
 
-            {/* OAuth 登录 */}
-            <Button
-              type="button"
-              onClick={handleOAuthLogin}
-              variant="outline"
-              className="w-full flex items-center justify-center gap-2 py-2.5"
-            >
-              <Github size={18} />
-              Sign in with Manus
-            </Button>
+            {/* Third-party Login */}
+            <div className="space-y-2">
+              {/* Google Login */}
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full flex items-center justify-center gap-2 py-2.5"
+              >
+                <GoogleIcon size={18} />
+                Sign in with Google
+              </Button>
 
-            {/* 注册链接 */}
+              {/* Microsoft Login */}
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full flex items-center justify-center gap-2 py-2.5"
+              >
+                <MicrosoftIcon size={18} />
+                Sign in with Microsoft
+              </Button>
+
+              {/* Apple Login */}
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full flex items-center justify-center gap-2 py-2.5"
+              >
+                <AppleIcon size={18} />
+                Sign in with Apple
+              </Button>
+
+              {/* WeChat Login */}
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full flex items-center justify-center gap-2 py-2.5"
+              >
+                <WeChatIcon size={18} />
+                Sign in with WeChat
+              </Button>
+
+              {/* Instagram Login */}
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full flex items-center justify-center gap-2 py-2.5"
+              >
+                <InstagramIcon size={18} />
+                Sign in with Instagram
+              </Button>
+            </div>
+
+            {/* Sign Up Link */}
             <div className="text-center pt-4 border-t border-slate-700">
               <p className="text-gray-400 text-sm">
                 Don't have an account?{" "}
@@ -247,7 +286,7 @@ export default function LoginEn() {
           </form>
         </Card>
 
-        {/* 底部提示 */}
+        {/* Bottom Notice */}
         <p className="text-center text-gray-500 text-xs mt-6">
           By signing in, you agree to our Terms of Service and Privacy Policy
         </p>
