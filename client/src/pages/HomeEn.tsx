@@ -324,7 +324,7 @@ export default function HomeEn() {
                   backgroundPosition: 'center'
                 }} />
                 <div className="relative z-10 flex-grow">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/lvwzTJertYmcZBfg.png" alt="Spacetime Encoding/Decoding Body" className="w-16 h-16 mb-4 group-hover:scale-110 transition" />
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/bxDzpBbKhWogCvkF.png" alt="Spacetime Encoding/Decoding Body" className="w-16 h-16 mb-4 group-hover:scale-110 transition" />
                   <h3 className="text-xl font-bold text-white mb-3">Spacetime Encoding/Decoding Body</h3>
                   <p className="text-gray-400 mb-4">Advanced spacetime encoding and decoding technology providing cutting-edge spacetime data processing and transformation solutions.</p>
                   <div className="inline-block px-3 py-1 bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-xs font-semibold rounded-full mb-4">

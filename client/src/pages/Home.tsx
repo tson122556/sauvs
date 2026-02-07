@@ -353,7 +353,7 @@ export default function Home() {
                   backgroundPosition: 'center'
                 }} />
                 <div className="relative z-10 flex-grow">
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/lvwzTJertYmcZBfg.png" alt="时空编码/解码体" className="w-16 h-16 mb-4 group-hover:scale-110 transition" />
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/bxDzpBbKhWogCvkF.png" alt="时空编码/解码体" className="w-16 h-16 mb-4 group-hover:scale-110 transition" />
                   <h3 className="text-xl font-bold text-white mb-3">时空编码/解码体</h3>
                   <p className="text-gray-400 mb-4">高级时空编码与解码技术，提供前沿的时空数据处理和转换解决方案。</p>
                   <div className="inline-block px-3 py-1 bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-xs font-semibold rounded-full mb-4">
