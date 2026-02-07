@@ -89,23 +89,23 @@ export default function ProductIoTEn() {
       >
         <div className="container mx-auto max-w-4xl">
           <motion.div {...fadeInUp} className="mb-6">
-            <span className="inline-block px-4 py-2 rounded-full bg-pink-500/20 text-pink-300 text-sm font-semibold mb-6">
-              IoT Solutions
+            <span className="inline-block px-4 py-2 rounded-full bg-green-500/20 text-green-300 text-sm font-semibold mb-6">
+              IoT Platform Solutions
             </span>
           </motion.div>
 
           <motion.h1
             {...fadeInUp}
-            className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent"
+            className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-green-400 via-emerald-400 to-cyan-400 bg-clip-text text-transparent"
           >
-            Enterprise IoT Platform
+            IoT Technology
           </motion.h1>
 
           <motion.p
             {...fadeInUp}
             className="text-xl text-gray-300 mb-8 leading-relaxed"
           >
-            Connect, manage, and analyze data from millions of devices. Providing complete solutions from edge to cloud, supporting real-time monitoring, predictive analytics, and intelligent decision-making.
+            Comprehensive IoT platform supporting device connectivity, data processing, and intelligent decision-making. Enabling digital transformation across smart cities, industrial 4.0, agriculture, and smart homes.
           </motion.p>
 
           <motion.div
@@ -114,15 +114,9 @@ export default function ProductIoTEn() {
           >
             <Button
               onClick={() => setLocation("/en/contact")}
-              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-3 rounded-lg font-semibold flex items-center gap-2"
+              className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white px-8 py-6 text-lg rounded-lg"
             >
-              Contact Us <ArrowRight className="w-4 h-4" />
-            </Button>
-            <Button
-              variant="outline"
-              className="border-purple-500/50 text-purple-300 hover:bg-purple-500/10 px-8 py-3 rounded-lg font-semibold"
-            >
-              View Demo
+              Contact Us <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </motion.div>
         </div>
@@ -137,9 +131,13 @@ export default function ProductIoTEn() {
         viewport={{ once: true }}
       >
         <div className="container mx-auto max-w-6xl">
-          <h2 className="text-4xl font-bold text-white mb-16 text-center">
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-4xl font-bold text-center mb-16 text-white"
+          >
             Core Features
-          </h2>
+          </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => {
@@ -152,8 +150,8 @@ export default function ProductIoTEn() {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <Card className="bg-slate-800/50 border-slate-700 p-8 hover:border-purple-500/50 transition-all h-full">
-                    <Icon className="w-12 h-12 text-pink-500 mb-4" />
+                  <Card className="bg-slate-800/50 border-slate-700 p-6 h-full hover:border-green-500/50 transition-colors">
+                    <Icon className="w-12 h-12 text-green-400 mb-4" />
                     <h3 className="text-xl font-bold text-white mb-3">
                       {feature.title}
                     </h3>
@@ -175,9 +173,13 @@ export default function ProductIoTEn() {
         viewport={{ once: true }}
       >
         <div className="container mx-auto max-w-6xl">
-          <h2 className="text-4xl font-bold text-white mb-16 text-center">
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-4xl font-bold text-center mb-16 text-white"
+          >
             Application Scenarios
-          </h2>
+          </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {scenarios.map((scenario, index) => (
@@ -188,15 +190,13 @@ export default function ProductIoTEn() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="bg-slate-800/50 border-slate-700 p-8 h-full">
-                  <h3 className="text-2xl font-bold text-white mb-3">
+                <Card className="bg-slate-800/50 border-slate-700 p-8 h-full hover:border-green-500/50 transition-colors">
+                  <h3 className="text-2xl font-bold text-white mb-4">
                     {scenario.title}
                   </h3>
-                  <p className="text-gray-400 mb-4">{scenario.description}</p>
+                  <p className="text-gray-400 mb-6">{scenario.description}</p>
                   <div className="pt-4 border-t border-slate-700">
-                    <p className="text-sm text-cyan-400 font-semibold">
-                      {scenario.metrics}
-                    </p>
+                    <p className="text-green-300 text-sm font-semibold">{scenario.metrics}</p>
                   </div>
                 </Card>
               </motion.div>
@@ -214,49 +214,73 @@ export default function ProductIoTEn() {
         viewport={{ once: true }}
       >
         <div className="container mx-auto max-w-4xl">
-          <h2 className="text-4xl font-bold text-white mb-16 text-center">
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-4xl font-bold text-center mb-16 text-white"
+          >
             Technical Specifications
-          </h2>
+          </motion.h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-4">
             {specifications.map((spec, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.05 }}
                 viewport={{ once: true }}
-                className="bg-slate-800/50 border border-slate-700 rounded-lg p-6"
               >
-                <p className="text-gray-400 text-sm mb-2">{spec.label}</p>
-                <p className="text-white font-semibold">{spec.value}</p>
+                <Card className="bg-slate-800/50 border-slate-700 p-6 hover:border-green-500/50 transition-colors">
+                  <div className="flex justify-between items-start">
+                    <h4 className="text-lg font-bold text-white">{spec.label}</h4>
+                    <p className="text-green-300 text-right">{spec.value}</p>
+                  </div>
+                </Card>
               </motion.div>
             ))}
           </div>
         </div>
       </motion.section>
 
-      {/* CTA */}
+      {/* CTA Section */}
       <motion.section
-        className="py-20 px-4"
+        className="py-20 px-4 bg-gradient-to-r from-green-900/20 to-emerald-900/20"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
         <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">
-            Ready to Get Started?
-          </h2>
-          <p className="text-xl text-gray-300 mb-8">
-            Contact our expert team to learn how to integrate IoT solutions into your business
-          </p>
-          <Button
-            onClick={() => setLocation("/en/contact")}
-            className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-3 rounded-lg font-semibold flex items-center gap-2 mx-auto"
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-4xl font-bold mb-8 text-white"
           >
-            Contact Us <ArrowRight className="w-4 h-4" />
-          </Button>
+            Ready to Transform Your Business?
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="text-xl text-gray-300 mb-8"
+          >
+            Our IoT solutions can help you achieve digital transformation and intelligent operations. Contact us today to learn more.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+          >
+            <Button
+              onClick={() => setLocation("/en/contact")}
+              className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white px-8 py-6 text-lg rounded-lg"
+            >
+              Contact Us <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+          </motion.div>
         </div>
       </motion.section>
     </div>

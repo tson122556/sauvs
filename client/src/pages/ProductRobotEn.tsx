@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, Zap, Cpu, Shield, Wifi, Gauge, Lightbulb } from "lucide-react";
+import { ArrowRight, Cpu, Wifi, Shield, Zap, Gauge, Lightbulb } from "lucide-react";
 import { useLocation } from "wouter";
 
 export default function ProductRobotEn() {
@@ -89,16 +89,16 @@ export default function ProductRobotEn() {
       >
         <div className="container mx-auto max-w-4xl">
           <motion.div {...fadeInUp} className="mb-6">
-            <span className="inline-block px-4 py-2 rounded-full bg-cyan-500/20 text-cyan-300 text-sm font-semibold mb-6">
-              Intelligent Robot Solutions
+            <span className="inline-block px-4 py-2 rounded-full bg-blue-500/20 text-blue-300 text-sm font-semibold mb-6">
+              Intelligent Robotics Solutions
             </span>
           </motion.div>
 
           <motion.h1
             {...fadeInUp}
-            className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent"
+            className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent"
           >
-            Next-Generation Smart Robots
+            Smart Robots
           </motion.h1>
 
           <motion.p
@@ -114,15 +114,9 @@ export default function ProductRobotEn() {
           >
             <Button
               onClick={() => setLocation("/en/contact")}
-              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-3 rounded-lg font-semibold flex items-center gap-2"
+              className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white px-8 py-6 text-lg rounded-lg"
             >
-              Contact Us <ArrowRight className="w-4 h-4" />
-            </Button>
-            <Button
-              variant="outline"
-              className="border-purple-500/50 text-purple-300 hover:bg-purple-500/10 px-8 py-3 rounded-lg font-semibold"
-            >
-              View Demo
+              Contact Us <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </motion.div>
         </div>
@@ -152,8 +146,8 @@ export default function ProductRobotEn() {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <Card className="bg-slate-800/50 border-slate-700 p-8 hover:border-purple-500/50 transition-all h-full">
-                    <Icon className="w-12 h-12 text-cyan-500 mb-4" />
+                  <Card className="bg-slate-800/50 border-slate-700 p-6 h-full hover:border-blue-500/50 transition-colors">
+                    <Icon className="w-12 h-12 text-blue-400 mb-4" />
                     <h3 className="text-xl font-bold text-white mb-3">
                       {feature.title}
                     </h3>
@@ -194,9 +188,7 @@ export default function ProductRobotEn() {
                   </h3>
                   <p className="text-gray-400 mb-4">{app.description}</p>
                   <div className="pt-4 border-t border-slate-700">
-                    <p className="text-sm text-cyan-400 font-semibold">
-                      {app.benefits}
-                    </p>
+                    <p className="text-blue-300 text-sm font-semibold">{app.benefits}</p>
                   </div>
                 </Card>
               </motion.div>
@@ -253,9 +245,9 @@ export default function ProductRobotEn() {
           </p>
           <Button
             onClick={() => setLocation("/en/contact")}
-            className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-3 rounded-lg font-semibold flex items-center gap-2 mx-auto"
+            className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white px-8 py-6 text-lg rounded-lg"
           >
-            Contact Us <ArrowRight className="w-4 h-4" />
+            Contact Us <ArrowRight className="ml-2 w-5 h-5" />
           </Button>
         </div>
       </motion.section>

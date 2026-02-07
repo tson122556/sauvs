@@ -483,3 +483,10 @@
 - [x] 创建客服后端 API
 - [x] 集成客服到网站
 - [x] 测试客服功能
+
+
+## 修复 Smart Robots 和 IoT Technology 英文页面（2026-02-06）
+- [x] 检查 AI Applications 的英文页面实现
+- [x] 参考 AI Applications 修复 Smart Robots 英文页面
+- [x] 参考 AI Applications 修复 IoT Technology 英文页面
+- [x] 测试英文页面是否正常显示
