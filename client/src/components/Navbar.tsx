@@ -157,9 +157,13 @@ export default function Navbar() {
             className="flex items-center gap-2 cursor-pointer"
             onClick={() => setLocation(`/${language}`)}
           >
-            <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">极</span>
-            </div>
+            <motion.img 
+              src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/uAJQYgErxzlvdMug.png" 
+              alt={language === 'zh' ? '极紫星' : 'SAUVS'} 
+              className="h-10 w-auto" 
+              animate={{ y: [0, -4, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            />
             <span className="text-lg font-bold text-white hidden sm:inline">
               {language === 'zh' ? '极紫星' : 'SAUVS'}
             </span>
