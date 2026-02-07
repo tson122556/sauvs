@@ -52,6 +52,11 @@ function Router() {
       {/* 根路径重定向 */}
       <Route path="/" component={RootRedirect} />
       
+      {/* 无语言前缀的路由重定向 - 根据浏览器语言自动跳转 */}
+      <Route path="/about" component={RootRedirect} />
+      <Route path="/contact" component={RootRedirect} />
+      <Route path="/news" component={RootRedirect} />
+      
       {/* 中文路由 */}
       <Route path="/zh" component={Home} />
       <Route path="/zh/about" component={About} />

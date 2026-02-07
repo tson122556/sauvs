@@ -512,3 +512,9 @@
 - [x] 检查英文首页 HomeEn.tsx 中 Smart Robots 和 IoT Technology 的 Learn More 按钮指向
 - [x] 在 App.tsx 中添加英文产品详情页的路由配置
 - [x] 验证 ProductRobotEn.tsx 和 ProductIoTEn.tsx 的内容完整性
+
+
+## 修复搜索引擎链接的语言环境重定向（2026-02-07）
+- [x] 检查 RootRedirect 页面的当前实现
+- [x] 修改重定向逻辑以根据浏览器语言自动跳转
+- [x] 验证不同语言环境下的重定向是否正确
