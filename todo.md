@@ -495,3 +495,12 @@
 ## 修改时空同步/异步航行器导航和联系页面排版（2026-02-07）
 - [x] 修改中文首页时空同步/异步航行器的了解更多按钮指向联系我们页面
 - [x] 调整联系我们页面的排版往下移
+
+
+## 添加时空航行器到经营范围和修复 Learn More 按钮（2026-02-07）
+- [x] 在中文经营范围页面添加时空同步航行器和异步航行器设计与研发
+- [x] 在英文经营范围页面添加相应的英文翻译
+- [x] 修复 HomeEn.tsx 中 Smart Robots 的 Learn More 按钮指向 /en/product/robot
+- [x] 修复 HomeEn.tsx 中 IoT Technology 的 Learn More 按钮指向 /en/product/iot
+- [x] 重新设计和翻译 ProductRobotEn.tsx
+- [x] 重新设计和翻译 ProductIoTEn.tsx

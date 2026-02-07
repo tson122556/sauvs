@@ -31,6 +31,8 @@ export default function AboutEn() {
     "Intelligent control system integration",
     "Intelligent robot R&D",
     "Intelligent robot sales",
+    "Spacetime synchronous navigator design and R&D",
+    "Spacetime asynchronous navigator design and R&D",
     "Drone design",
     "Drone novel motor R&D",
     "Drone system integration",

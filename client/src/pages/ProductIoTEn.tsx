@@ -96,16 +96,16 @@ export default function ProductIoTEn() {
 
           <motion.h1
             {...fadeInUp}
-            className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-green-400 via-emerald-400 to-cyan-400 bg-clip-text text-transparent"
+            className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 bg-clip-text text-transparent"
           >
-            IoT Technology
+            Enterprise IoT Platform
           </motion.h1>
 
           <motion.p
             {...fadeInUp}
             className="text-xl text-gray-300 mb-8 leading-relaxed"
           >
-            Comprehensive IoT platform supporting device connectivity, data processing, and intelligent decision-making. Enabling digital transformation across smart cities, industrial 4.0, agriculture, and smart homes.
+            Connect, manage, and analyze data from millions of devices. Providing complete edge-to-cloud solutions supporting real-time monitoring, predictive analytics, and intelligent decision-making.
           </motion.p>
 
           <motion.div
@@ -257,7 +257,7 @@ export default function ProductIoTEn() {
             whileInView={{ opacity: 1 }}
             className="text-4xl font-bold mb-8 text-white"
           >
-            Ready to Transform Your Business?
+            Ready to Get Started?
           </motion.h2>
 
           <motion.p
@@ -266,7 +266,7 @@ export default function ProductIoTEn() {
             transition={{ delay: 0.2 }}
             className="text-xl text-gray-300 mb-8"
           >
-            Our IoT solutions can help you achieve digital transformation and intelligent operations. Contact us today to learn more.
+            Contact our expert team to learn how to integrate IoT solutions into your business.
           </motion.p>
 
           <motion.div

@@ -98,14 +98,14 @@ export default function ProductRobotEn() {
             {...fadeInUp}
             className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent"
           >
-            Smart Robots
+            Next-Generation Smart Robots
           </motion.h1>
 
           <motion.p
             {...fadeInUp}
             className="text-xl text-gray-300 mb-8 leading-relaxed"
           >
-            Integrating advanced AI algorithms, high-precision sensing, and intelligent control to create intelligent robot systems that adapt to multiple scenarios. Supporting applications in industrial, medical, and service sectors.
+            Combining advanced AI algorithms, high-precision sensing, and intelligent control to create intelligent robot systems that adapt to multiple scenarios. Supporting applications in industrial, medical, and service sectors.
           </motion.p>
 
           <motion.div
@@ -230,25 +230,42 @@ export default function ProductRobotEn() {
 
       {/* CTA */}
       <motion.section
-        className="py-20 px-4"
+        className="py-20 px-4 bg-gradient-to-r from-blue-900/20 to-cyan-900/20"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
         <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">
-            Ready to Get Started?
-          </h2>
-          <p className="text-xl text-gray-300 mb-8">
-            Contact our expert team to learn how to integrate smart robots into your business
-          </p>
-          <Button
-            onClick={() => setLocation("/en/contact")}
-            className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white px-8 py-6 text-lg rounded-lg"
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-4xl font-bold mb-8 text-white"
           >
-            Contact Us <ArrowRight className="ml-2 w-5 h-5" />
-          </Button>
+            Ready to Get Started?
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="text-xl text-gray-300 mb-8"
+          >
+            Contact our expert team to learn how to integrate smart robots into your business.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+          >
+            <Button
+              onClick={() => setLocation("/en/contact")}
+              className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white px-8 py-6 text-lg rounded-lg"
+            >
+              Contact Us <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+          </motion.div>
         </div>
       </motion.section>
     </div>
