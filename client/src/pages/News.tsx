@@ -250,43 +250,87 @@ export default function News() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-purple-500/20 py-12 bg-slate-950/50">
+      <footer className="bg-slate-950/80 border-t border-slate-800 py-12 relative z-10">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
-              <h4 className="text-white font-bold mb-4">关于我们</h4>
+              <div className="flex items-center gap-2 mb-4">
+                <img 
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/uAJQYgErxzlvdMug.png" 
+                  alt="UVS" 
+                  className="h-12 w-auto" 
+                />
+                <span className="text-lg font-bold text-white">极紫星</span>
+              </div>
               <p className="text-gray-400 text-sm">
-                我们专注于人工智能、智能机器人、物联网与时空同步/异步航行器的前沿技术研发与集成应用。
+                专注于人工智能、智能机器人、物联网技术创新和时空同步/异步航行器的研发和应用
               </p>
             </div>
-            <div>
-              <h4 className="text-white font-bold mb-4">快速链接</h4>
-              <ul className="text-gray-400 text-sm space-y-2">
-                <li><a href={`/${language}`} className="hover:text-white transition">首页</a></li>
-                <li><a href={`/${language}/about`} className="hover:text-white transition">关于我们</a></li>
-                <li><a href={`/${language}/ai-hub`} className="hover:text-white transition">AI 助手</a></li>
-                <li><a href={`/${language}/contact`} className="hover:text-white transition">联系我们</a></li>
-              </ul>
-            </div>
+
             <div>
               <h4 className="text-white font-bold mb-4">产品</h4>
-              <ul className="text-gray-400 text-sm space-y-2">
-                <li><a href={`/${language}/product/ai`} className="hover:text-white transition">AI 应用</a></li>
-                <li><a href={`/${language}/product/robot`} className="hover:text-white transition">智能机器人</a></li>
-                <li><a href={`/${language}/product/iot`} className="hover:text-white transition">IoT 解决方案</a></li>
+              <ul className="space-y-2">
+                <li>
+                  <a href={`/${language}/product/ai`} className="text-gray-400 hover:text-white transition">
+                    AI应用软件
+                  </a>
+                </li>
+                <li>
+                  <a href={`/${language}/product/robot`} className="text-gray-400 hover:text-white transition">
+                    智能机器人
+                  </a>
+                </li>
+                <li>
+                  <a href={`/${language}/product/iot`} className="text-gray-400 hover:text-white transition">
+                    物联网解决方案
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-400 hover:text-white transition">
+                    时空同步/异步航行器
+                  </a>
+                </li>
               </ul>
             </div>
+
             <div>
-              <h4 className="text-white font-bold mb-4">联系方式</h4>
-              <ul className="text-gray-400 text-sm space-y-2">
-                <li>电话：+86 15193876647</li>
-                <li>邮箱：contact@jizixing.com</li>
-                <li>地址：西安市高新区</li>
+              <h4 className="text-white font-bold mb-4">服务</h4>
+              <ul className="space-y-2">
+                <li>
+                  <a href="#" className="text-gray-400 hover:text-white transition">
+                    技术咨询
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-400 hover:text-white transition">
+                    系统集成
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-400 hover:text-white transition">
+                    技术支持
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-400 hover:text-white transition">
+                    金融科技
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-white font-bold mb-4">联系</h4>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li>邮箱：satifuxie@gmail.com</li>
+                <li>电话：(+86)1519387647</li>
+                <li>地址：陕西省西安市雁塔区二环南路</li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-purple-500/20 pt-8 text-center text-gray-400 text-sm">
-            <p>&copy; 2026 西u5b89极紫星智慧科技有限公司。保留所有权利。</p>
+
+          <div className="border-t border-slate-800 pt-8 text-center text-gray-500 text-sm">
+            <p>&copy; 2025 极紫星智慧科技有限公司. All rights reserved.</p>
           </div>
         </div>
       </footer>

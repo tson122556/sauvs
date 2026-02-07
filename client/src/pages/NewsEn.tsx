@@ -250,43 +250,87 @@ export default function NewsEn() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-purple-500/20 py-12 bg-slate-950/50">
+      <footer className="bg-slate-950/80 border-t border-slate-800 py-12 relative z-10">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
-              <h4 className="text-white font-bold mb-4">About Us</h4>
+              <div className="flex items-center gap-2 mb-4">
+                <img 
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/uAJQYgErxzlvdMug.png" 
+                  alt="UVS" 
+                  className="h-12 w-auto" 
+                />
+                <span className="text-lg font-bold text-white">UVS</span>
+              </div>
               <p className="text-gray-400 text-sm">
-                We focus on cutting-edge research and development of AI, intelligent robots, IoT, and space-time synchronized aircraft.
+                Focused on AI, smart robots, IoT technology innovation and spacetech aircraft R&D and application.
               </p>
             </div>
-            <div>
-              <h4 className="text-white font-bold mb-4">Quick Links</h4>
-              <ul className="text-gray-400 text-sm space-y-2">
-                <li><a href={`/${language}`} className="hover:text-white transition">Home</a></li>
-                <li><a href={`/${language}/about`} className="hover:text-white transition">About</a></li>
-                <li><a href={`/${language}/ai-hub`} className="hover:text-white transition">AI Hub</a></li>
-                <li><a href={`/${language}/contact`} className="hover:text-white transition">Contact</a></li>
-              </ul>
-            </div>
+
             <div>
               <h4 className="text-white font-bold mb-4">Products</h4>
-              <ul className="text-gray-400 text-sm space-y-2">
-                <li><a href={`/${language}/product/ai`} className="hover:text-white transition">AI Applications</a></li>
-                <li><a href={`/${language}/product/robot`} className="hover:text-white transition">Smart Robots</a></li>
-                <li><a href={`/${language}/product/iot`} className="hover:text-white transition">IoT Solutions</a></li>
+              <ul className="space-y-2">
+                <li>
+                  <a href={`/${language}/product/ai`} className="text-gray-400 hover:text-white transition">
+                    AI Software
+                  </a>
+                </li>
+                <li>
+                  <a href={`/${language}/product/robot`} className="text-gray-400 hover:text-white transition">
+                    Smart Robots
+                  </a>
+                </li>
+                <li>
+                  <a href={`/${language}/product/iot`} className="text-gray-400 hover:text-white transition">
+                    IoT Solutions
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-400 hover:text-white transition">
+                    Spacetime Synchronous/Asynchronous Navigation
+                  </a>
+                </li>
               </ul>
             </div>
+
+            <div>
+              <h4 className="text-white font-bold mb-4">Services</h4>
+              <ul className="space-y-2">
+                <li>
+                  <a href="#" className="text-gray-400 hover:text-white transition">
+                    Technical Consulting
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-400 hover:text-white transition">
+                    System Integration
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-400 hover:text-white transition">
+                    Technical Support
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-400 hover:text-white transition">
+                    FinTech Solutions
+                  </a>
+                </li>
+              </ul>
+            </div>
+
             <div>
               <h4 className="text-white font-bold mb-4">Contact</h4>
-              <ul className="text-gray-400 text-sm space-y-2">
-                <li>Phone: +86 15193876647</li>
-                <li>Email: contact@jizixing.com</li>
-                <li>Address: Xi'an High-Tech Zone</li>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li>Email: satifuxie@gmail.com</li>
+                <li>Phone: (+86)1519387647</li>
+                <li>Address: Xi'an, Shaanxi, China</li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-purple-500/20 pt-8 text-center text-gray-400 text-sm">
-            <p>&copy; 2026 Xi'an UVS Smart Technology Co., Ltd. All rights reserved.</p>
+
+          <div className="border-t border-slate-800 pt-8 text-center text-gray-500 text-sm">
+            <p>&copy; 2025 UVS Smart Technology. All rights reserved.</p>
           </div>
         </div>
       </footer>
