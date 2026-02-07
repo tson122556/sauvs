@@ -76,11 +76,14 @@ export default function HomeEn() {
             <a href="#services" className="text-gray-300 hover:text-white transition">
               Services
             </a>
-            <a href={`/${language}/about`} className="text-gray-300 hover:text-white transition">
+            <a href="#about" className="text-gray-300 hover:text-white transition">
               About Us
             </a>
             <a href={`/${language}/ai-hub`} className="text-gray-300 hover:text-white transition">
-              AI Hub
+              AI Assistant
+            </a>
+            <a href={`/${language}/news`} className="text-gray-300 hover:text-white transition">
+              News
             </a>
           </motion.div>
 

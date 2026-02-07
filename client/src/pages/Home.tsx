@@ -83,6 +83,9 @@ export default function Home() {
             <a href={`/${language}/ai-hub`} className="text-gray-300 hover:text-white transition">
               AI 助手
             </a>
+            <a href={`/${language}/news`} className="text-gray-300 hover:text-white transition">
+              新闻
+            </a>
           </motion.div>
 
           <motion.div
