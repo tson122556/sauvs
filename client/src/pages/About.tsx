@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { useLocation } from "wouter";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -594,6 +595,185 @@ export default function About() {
                 成为合作伙伴 <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* 点亮我们 - 招聘部分 */}
+      <section className="py-20 relative">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">点亮我们</h2>
+            <p className="text-gray-400 text-lg">
+              加入极紫星，与我们一起开创未来
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-5xl mx-auto"
+          >
+            <Tabs defaultValue="ai" className="w-full">
+              <TabsList className="grid w-full grid-cols-4 mb-8 bg-slate-800/50 border border-purple-500/30">
+                <TabsTrigger value="ai" className="text-sm md:text-base">AI事业部</TabsTrigger>
+                <TabsTrigger value="robot" className="text-sm md:text-base">机器人事业部</TabsTrigger>
+                <TabsTrigger value="iot" className="text-sm md:text-base">物联网与系统</TabsTrigger>
+                <TabsTrigger value="research" className="text-sm md:text-base">前沿研究院</TabsTrigger>
+              </TabsList>
+
+              {/* AI事业部 */}
+              <TabsContent value="ai" className="space-y-4">
+                <Card className="bg-gradient-to-br from-slate-800 via-slate-800 to-slate-900 border-purple-500/30">
+                  <div className="p-8 space-y-6">
+                    <div>
+                      <h3 className="text-2xl font-bold text-white mb-2">一、人工智能事业部</h3>
+                      <p className="text-gray-400 mb-6">专注于预测与决策类AI产品的研发与应用</p>
+                    </div>
+
+                    <div className="space-y-4">
+                      <div className="border-l-2 border-purple-500 pl-4">
+                        <h4 className="text-lg font-semibold text-white mb-2">1.1 机器学习算法专家 (MLE)</h4>
+                        <p className="text-gray-300 mb-3">核心职责：专注于预测与决策类AI产品（如风控、营销、运营优化）的核心算法研发与模型迭代。</p>
+                        <p className="text-purple-400 font-semibold">年薪范围：40万 - 75万人民币</p>
+                      </div>
+
+                      <div className="border-l-2 border-cyan-500 pl-4">
+                        <h4 className="text-lg font-semibold text-white mb-2">1.2 计算机视觉工程师 (CV Engineer)</h4>
+                        <p className="text-gray-300 mb-3">核心职责：负责图像/视频理解、目标检测、三维重建等技术的研发，应用于机器人感知、智能安防等产品。</p>
+                        <p className="text-cyan-400 font-semibold">年薪范围：35万 - 65万人民币</p>
+                      </div>
+
+                      <div className="border-l-2 border-pink-500 pl-4">
+                        <h4 className="text-lg font-semibold text-white mb-2">1.3 AI解决方案架构师</h4>
+                        <p className="text-gray-300 mb-3">核心职责：面向金融、制造等行业客户，设计端到端的AI解决方案，主导技术选型、架构设计及交付。</p>
+                        <p className="text-pink-400 font-semibold">年薪范围：60万 - 110万人民币 + 项目奖金</p>
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+              </TabsContent>
+
+              {/* 机器人事业部 */}
+              <TabsContent value="robot" className="space-y-4">
+                <Card className="bg-gradient-to-br from-slate-800 via-slate-800 to-slate-900 border-purple-500/30">
+                  <div className="p-8 space-y-6">
+                    <div>
+                      <h3 className="text-2xl font-bold text-white mb-2">二、智能机器人事业部</h3>
+                      <p className="text-gray-400 mb-6">研发高精度、高动态的机器人控制与感知系统</p>
+                    </div>
+
+                    <div className="space-y-4">
+                      <div className="border-l-2 border-purple-500 pl-4">
+                        <h4 className="text-lg font-semibold text-white mb-2">2.1 机器人运动控制工程师</h4>
+                        <p className="text-gray-300 mb-3">核心职责：研发高精度、高动态的伺服控制、力位混合控制算法，并实现于机器人本体。</p>
+                        <p className="text-purple-400 font-semibold">年薪范围：45万 - 80万人民币</p>
+                      </div>
+
+                      <div className="border-l-2 border-cyan-500 pl-4">
+                        <h4 className="text-lg font-semibold text-white mb-2">2.2 机器人感知算法工程师</h4>
+                        <p className="text-gray-300 mb-3">核心职责：开发多传感器（激光雷达、视觉、IMU）融合的SLAM、场景理解及目标识别算法。</p>
+                        <p className="text-cyan-400 font-semibold">年薪范围：40万 - 75万人民币</p>
+                      </div>
+
+                      <div className="border-l-2 border-pink-500 pl-4">
+                        <h4 className="text-lg font-semibold text-white mb-2">2.3 机器人软件平台开发工程师</h4>
+                        <p className="text-gray-300 mb-3">核心职责：设计并开发机器人统一软件框架、仿真平台及高可靠性的核心中间件。</p>
+                        <p className="text-pink-400 font-semibold">年薪范围：35万 - 70万人民币</p>
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+              </TabsContent>
+
+              {/* 物联网与系统工程部 */}
+              <TabsContent value="iot" className="space-y-4">
+                <Card className="bg-gradient-to-br from-slate-800 via-slate-800 to-slate-900 border-purple-500/30">
+                  <div className="p-8 space-y-6">
+                    <div>
+                      <h3 className="text-2xl font-bold text-white mb-2">三、物联网与系统工程部</h3>
+                      <p className="text-gray-400 mb-6">构建物联网PaaS平台与边缘计算解决方案</p>
+                    </div>
+
+                    <div className="space-y-4">
+                      <div className="border-l-2 border-purple-500 pl-4">
+                        <h4 className="text-lg font-semibold text-white mb-2">3.1 物联网平台资深开发工程师</h4>
+                        <p className="text-gray-300 mb-3">核心职责：负责物联网PaaS平台核心服务（设备接入、规则引擎、数据流处理）的开发与性能优化。</p>
+                        <p className="text-purple-400 font-semibold">年薪范围：50万 - 90万人民币</p>
+                      </div>
+
+                      <div className="border-l-2 border-cyan-500 pl-4">
+                        <h4 className="text-lg font-semibold text-white mb-2">3.2 边缘计算专家</h4>
+                        <p className="text-gray-300 mb-3">核心职责：研发轻量级AI模型在边缘设备的部署框架、推理优化及边缘-云协同计算架构。</p>
+                        <p className="text-cyan-400 font-semibold">年薪范围：45万 - 85万人民币</p>
+                      </div>
+
+                      <div className="border-l-2 border-pink-500 pl-4">
+                        <h4 className="text-lg font-semibold text-white mb-2">3.3 物联网安全工程师</h4>
+                        <p className="text-gray-300 mb-3">核心职责：构建物联网端到端安全体系，包括设备安全认证、通信加密、漏洞挖掘与防护。</p>
+                        <p className="text-pink-400 font-semibold">年薪范围：40万 - 75万人民币</p>
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+              </TabsContent>
+
+              {/* 前沿技术研究院 */}
+              <TabsContent value="research" className="space-y-4">
+                <Card className="bg-gradient-to-br from-slate-800 via-slate-800 to-slate-900 border-purple-500/30">
+                  <div className="p-8 space-y-6">
+                    <div>
+                      <h3 className="text-2xl font-bold text-white mb-2">四、前沿技术研究院</h3>
+                      <p className="text-gray-400 mb-6">探索人类认知边界的特许区域，打造全球学术枢纽</p>
+                    </div>
+
+                    <div className="space-y-4">
+                      <div className="border-l-2 border-purple-500 pl-4">
+                        <h4 className="text-lg font-semibold text-white mb-2">4.1 时空异步/同步航行器首席科学家</h4>
+                        <p className="text-gray-300 mb-3">主导时空异步/同步航行器的前沿理论体系构建，领导跨学科团队开展核心技术攻关。</p>
+                        <p className="text-purple-400 font-semibold">薪酬："紫星学者"领军计划，基础包不低于年薪200万人民币</p>
+                      </div>
+
+                      <div className="border-l-2 border-cyan-500 pl-4">
+                        <h4 className="text-lg font-semibold text-white mb-2">4.2 时空编码/解码体首席科学家</h4>
+                        <p className="text-gray-300 mb-3">开创时空信息的新型表达、压缩、加密与重构理论，构建完整的数学与信息论框架。</p>
+                        <p className="text-cyan-400 font-semibold">薪酬："紫星学者"领军计划，基础包不低于年薪180万人民币</p>
+                      </div>
+
+                      <div className="border-l-2 border-pink-500 pl-4">
+                        <h4 className="text-lg font-semibold text-white mb-2">4.3 （高级）时空信息处理科学家</h4>
+                        <p className="text-gray-300 mb-3">在首席科学家的指导下，开展时空基准、数据融合等具体方向的深入研究与工程化尝试。</p>
+                        <p className="text-pink-400 font-semibold">年薪范围：70万 - 150万人民币 + 绩效奖金与项目激励</p>
+                      </div>
+                    </div>
+
+                    <div className="mt-8 pt-6 border-t border-slate-700">
+                      <p className="text-gray-300 mb-4"><span className="text-white font-semibold">我们提供：</span></p>
+                      <ul className="space-y-2 text-gray-400 text-sm">
+                        <li>• 竞争力的薪酬福利与股权/期权激励计划</li>
+                        <li>• 与行业顶尖技术团队共事的机会</li>
+                        <li>• 系统的技术与管理培训及学术会议参与机会</li>
+                        <li>• 扁平化管理与开放的创新文化</li>
+                      </ul>
+                    </div>
+
+                    <div className="mt-6 pt-6 border-t border-slate-700">
+                      <p className="text-gray-300 mb-4"><span className="text-white font-semibold">申请方式：</span></p>
+                      <p className="text-gray-400 text-sm mb-3">请将您的个人简历发送至 <span className="text-purple-400 font-semibold">careers@sauvs.com</span>，邮件标题注明申请的 "事业部 - 职位名称"</p>
+                      <p className="text-gray-400 text-sm">研究院职位请发送至 <span className="text-cyan-400 font-semibold">research-fellowship@sauvs.com</span></p>
+                    </div>
+                  </div>
+                </Card>
+              </TabsContent>
+            </Tabs>
           </motion.div>
         </div>
       </section>
