@@ -137,6 +137,7 @@ export default function Navbar() {
         { label: '解决方案', path: '#solutions' },
         { label: '技术服务', path: '#services' },
         { label: '关于我们', path: '/zh/about' },
+        { label: '点亮我们', path: '/zh/careers' },
         { label: 'AI 助手', path: '/zh/ai-hub' },
       ]
     : [
@@ -144,6 +145,7 @@ export default function Navbar() {
         { label: 'Solutions', path: '#solutions' },
         { label: 'Services', path: '#services' },
         { label: 'About Us', path: '/en/about' },
+        { label: 'Illuminate Us', path: '/en/careers' },
         { label: 'AI Assistant', path: '/en/ai-hub' },
       ];
 

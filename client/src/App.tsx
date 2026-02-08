@@ -25,6 +25,8 @@ import News from "./pages/News";
 import NewsEn from "./pages/NewsEn";
 import NewsDetail from "./pages/NewsDetail";
 import NewsDetailEn from "./pages/NewsDetailEn";
+import Careers from "./pages/Careers";
+import CareersEn from "./pages/CareersEn";
 import AIUsageStats from "./pages/AIUsageStats";
 import AIUsageStatsEn from "./pages/AIUsageStatsEn";
 import Register from "./pages/Register";
@@ -60,6 +62,7 @@ function Router() {
       {/* 中文路由 */}
       <Route path="/zh" component={Home} />
       <Route path="/zh/about" component={About} />
+      <Route path="/zh/careers" component={Careers} />
       <Route path="/zh/contact" component={Contact} />
       <Route path="/zh/news" component={News} />
       <Route path="/zh/news/:id" component={NewsDetail} />
@@ -67,6 +70,7 @@ function Router() {
       {/* 英文路由 */}
       <Route path="/en" component={HomeEn} />
       <Route path="/en/about" component={AboutEn} />
+      <Route path="/en/careers" component={CareersEn} />
       <Route path="/en/contact" component={ContactEn} />
       <Route path="/en/ai-hub" component={AIHub} />
       <Route path="/en/news" component={NewsEn} />
