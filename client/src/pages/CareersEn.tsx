@@ -198,13 +198,27 @@ export default function CareersEn() {
             whileInView="animate"
             viewport={{ once: true }}
           >
-            {departments.map((dept, idx) => (
+            {departments.map((dept, idx) => {
+              const departmentPaths = [
+                '/en/department/ai',
+                '/en/department/robotics',
+                '/en/department/iot',
+                '/en/department/research'
+              ];
+              return (
               <motion.div key={idx} variants={fadeInUp}>
-                <div className="mb-6">
+                <div className="mb-6 flex items-center justify-between">
                   <h3 className="text-3xl font-bold text-white flex items-center gap-3">
                     <Briefcase className="w-8 h-8 text-purple-400" />
                     {dept.title}
                   </h3>
+                  <Button
+                    onClick={() => setLocation(departmentPaths[idx])}
+                    variant="outline"
+                    className="border-purple-500/50 text-purple-400 hover:bg-purple-500/10"
+                  >
+                    Learn More <ArrowRight className="ml-2 w-4 h-4" />
+                  </Button>
                 </div>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -221,7 +235,7 @@ export default function CareersEn() {
                         {pos.salary}
                       </p>
                       <Button
-                        onClick={() => window.open("mailto:careers@sauvs.com")}
+                        onClick={() => setLocation(departmentPaths[idx])}
                         variant="ghost"
                         className="mt-4 text-purple-400 hover:text-purple-300 p-0"
                       >
@@ -231,7 +245,8 @@ export default function CareersEn() {
                   ))}
                 </div>
               </motion.div>
-            ))}
+            );
+            })}
           </motion.div>
         </div>
       </section>

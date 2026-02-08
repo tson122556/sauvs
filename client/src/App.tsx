@@ -31,6 +31,10 @@ import DepartmentAI from "./pages/DepartmentAI";
 import DepartmentRobotics from "./pages/DepartmentRobotics";
 import DepartmentIoT from "./pages/DepartmentIoT";
 import DepartmentResearch from "./pages/DepartmentResearch";
+import DepartmentAIEn from "./pages/DepartmentAIEn";
+import DepartmentRoboticsEn from "./pages/DepartmentRoboticsEn";
+import DepartmentIoTEn from "./pages/DepartmentIoTEn";
+import DepartmentResearchEn from "./pages/DepartmentResearchEn";
 import AIUsageStats from "./pages/AIUsageStats";
 import AIUsageStatsEn from "./pages/AIUsageStatsEn";
 import Register from "./pages/Register";
@@ -79,6 +83,10 @@ function Router() {
       <Route path="/en" component={HomeEn} />
       <Route path="/en/about" component={AboutEn} />
       <Route path="/en/careers" component={CareersEn} />
+      <Route path="/en/department/ai" component={DepartmentAIEn} />
+      <Route path="/en/department/robotics" component={DepartmentRoboticsEn} />
+      <Route path="/en/department/iot" component={DepartmentIoTEn} />
+      <Route path="/en/department/research" component={DepartmentResearchEn} />
       <Route path="/en/contact" component={ContactEn} />
       <Route path="/en/ai-hub" component={AIHub} />
       <Route path="/en/news" component={NewsEn} />
