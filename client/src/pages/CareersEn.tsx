@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, Mail, Briefcase } from "lucide-react";
+import { ArrowRight, Mail, Briefcase, ArrowLeft } from "lucide-react";
 import { useLocation } from "wouter";
 
 export default function CareersEn() {
@@ -110,6 +110,18 @@ export default function CareersEn() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+      {/* Back Button */}
+      <div className="fixed top-24 left-4 z-40">
+        <Button
+          onClick={() => setLocation("/en")}
+          variant="outline"
+          className="border-purple-500/50 text-purple-400 hover:bg-purple-500/10 flex items-center gap-2"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Back to Home
+        </Button>
+      </div>
+
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-cyan-900/20" />
