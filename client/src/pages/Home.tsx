@@ -45,69 +45,6 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
       <Navbar />
       <div className="pt-20"> {/* 为导航栏留出空间 */}
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 backdrop-blur-md bg-slate-950/80 border-b border-purple-500/20">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="flex items-center gap-2"
-          >
-            <motion.img 
-              src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/uAJQYgErxzlvdMug.png" 
-              alt="UVS" 
-              className="h-16 w-auto" 
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            />
-          </motion.div>
-
-          <motion.div
-            className="hidden md:flex items-center gap-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-          >
-            <a href="#products" className="text-gray-300 hover:text-white transition">
-              产品中心
-            </a>
-            <a href="#solutions" className="text-gray-300 hover:text-white transition">
-              解决方案
-            </a>
-            <a href="#services" className="text-gray-300 hover:text-white transition">
-              技术服务
-            </a>
-            <a href={`/${language}/about`} className="text-gray-300 hover:text-white transition">
-              关于我们
-            </a>
-            <a href={`/${language}/careers`} className="text-gray-300 hover:text-white transition">
-              点亮我们
-            </a>
-            <a href={`/${language}/ai-hub`} className="text-gray-300 hover:text-white transition">
-              AI 助手
-            </a>
-            <a href={`/${language}/news`} className="text-gray-300 hover:text-white transition flex items-center gap-1">
-              新闻
-              <ArrowRight className="w-4 h-4" />
-            </a>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3 }}
-            className="flex items-center gap-6"
-          >
-            <LanguageSwitcher />
-            <Button
-              onClick={() => setLocation(`/${language}/contact`)}
-              className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white"
-            >
-              联系我们
-            </Button>
-          </motion.div>
-        </div>
-      </nav>
 
       {/* Hero Section with Video Background */}
       <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
