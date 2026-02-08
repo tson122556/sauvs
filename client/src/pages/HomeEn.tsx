@@ -85,8 +85,9 @@ export default function HomeEn() {
             <a href={`/${language}/ai-hub`} className="text-gray-300 hover:text-white transition">
               AI Assistant
             </a>
-            <a href={`/${language}/news`} className="text-gray-300 hover:text-white transition">
+            <a href={`/${language}/news`} className="text-gray-300 hover:text-white transition flex items-center gap-1">
               News
+              <ArrowRight className="w-4 h-4" />
             </a>
           </motion.div>
 
