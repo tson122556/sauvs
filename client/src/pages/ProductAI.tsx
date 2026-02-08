@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, Brain, Zap, Shield, TrendingUp, Users, Lightbulb } from "lucide-react";
+import { ArrowRight, Brain, Zap, Shield, TrendingUp, Users, Lightbulb, ChevronLeft } from "lucide-react";
 import { useLocation } from "wouter";
 
 export default function ProductAI() {
@@ -80,6 +80,17 @@ export default function ProductAI() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+      {/* Back Button */}
+      <div className="fixed top-24 left-4 z-40">
+        <Button
+          onClick={() => setLocation("/zh/ai-hub")}
+          className="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded-lg flex items-center gap-2"
+        >
+          <ChevronLeft className="w-4 h-4" />
+          返回
+        </Button>
+      </div>
+
       {/* Header */}
       <motion.div
         className="pt-32 pb-20 px-4 text-center"

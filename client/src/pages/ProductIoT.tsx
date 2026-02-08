@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, Wifi, Cloud, Lock, Zap, BarChart3, Lightbulb } from "lucide-react";
+import { ArrowRight, Wifi, Cloud, Lock, Zap, BarChart3, Lightbulb, ChevronLeft } from "lucide-react";
 import { useLocation } from "wouter";
 
 export default function ProductIoT() {
@@ -78,8 +78,19 @@ export default function ProductIoT() {
     { label: "可用性", value: "99.99% SLA | 多地域冗余 | 自动故障转移" },
   ];
 
-  return (
+    return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+      {/* Back Button */}
+      <div className="fixed top-24 left-4 z-40">
+        <Button
+          onClick={() => setLocation("/zh/ai-hub")}
+          className="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded-lg flex items-center gap-2"
+        >
+          <ChevronLeft className="w-4 h-4" />
+          返回
+        </Button>
+      </div>
+
       {/* Header */}
       <motion.div
         className="pt-32 pb-20 px-4 text-center"
@@ -89,8 +100,8 @@ export default function ProductIoT() {
       >
         <div className="container mx-auto max-w-4xl">
           <motion.div {...fadeInUp} className="mb-6">
-            <span className="inline-block px-4 py-2 rounded-full bg-purple-500/20 text-purple-300 text-sm font-semibold mb-6">
-              物联网解决方案
+            <span className="inline-block px-4 py-2 rounded-full bg-cyan-500/20 text-cyan-300 text-sm font-semibold mb-6">
+              IoT 解决方案案
             </span>
           </motion.div>
 

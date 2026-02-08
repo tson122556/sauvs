@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, Cpu, Wifi, Shield, Zap, Gauge, Lightbulb } from "lucide-react";
+import { ArrowRight, Cpu, Wifi, Shield, Zap, Gauge, Lightbulb, ChevronLeft } from "lucide-react";
 import { useLocation } from "wouter";
 
 export default function ProductRobotEn() {
@@ -80,6 +80,17 @@ export default function ProductRobotEn() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+      {/* Back Button */}
+      <div className="fixed top-24 left-4 z-40">
+        <Button
+          onClick={() => setLocation("/en/ai-hub")}
+          className="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded-lg flex items-center gap-2"
+        >
+          <ChevronLeft className="w-4 h-4" />
+          Back
+        </Button>
+      </div>
+
       {/* Header */}
       <motion.div
         className="pt-32 pb-20 px-4 text-center"
@@ -89,8 +100,8 @@ export default function ProductRobotEn() {
       >
         <div className="container mx-auto max-w-4xl">
           <motion.div {...fadeInUp} className="mb-6">
-            <span className="inline-block px-4 py-2 rounded-full bg-blue-500/20 text-blue-300 text-sm font-semibold mb-6">
-              Intelligent Robotics Solutions
+            <span className="inline-block px-4 py-2 rounded-full bg-green-500/20 text-green-300 text-sm font-semibold mb-6">
+              Intelligent Robot Solutions
             </span>
           </motion.div>
 

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Sparkles } from "lucide-react";
+import { Sparkles, ChevronLeft } from "lucide-react";
+import { useLocation } from "wouter";
 
 interface AIModel {
   id: string;
@@ -190,8 +191,21 @@ export default function AIHubZh() {
     </div>
   );
 
+  const [, setLocation] = useLocation();
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 py-20">
+      {/* Back Button */}
+      <div className="fixed top-24 left-4 z-40">
+        <Button
+          onClick={() => setLocation("/zh")}
+          className="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded-lg flex items-center gap-2"
+        >
+          <ChevronLeft className="w-4 h-4" />
+          返回
+        </Button>
+      </div>
+
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">
