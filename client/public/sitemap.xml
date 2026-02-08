@@ -6,7 +6,7 @@
   <!-- 首页 -->
   <url>
     <loc>https://www.sauvs.com/</loc>
-    <lastmod>2026-02-08</lastmod>
+    <lastmod>2026-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <mobile:mobile/>
@@ -15,7 +15,7 @@
   <!-- 中文首页 -->
   <url>
     <loc>https://www.sauvs.com/zh</loc>
-    <lastmod>2026-02-08</lastmod>
+    <lastmod>2026-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en" />
@@ -26,7 +26,7 @@
   <!-- 英文首页 -->
   <url>
     <loc>https://www.sauvs.com/en</loc>
-    <lastmod>2026-02-08</lastmod>
+    <lastmod>2026-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en" />
@@ -37,7 +37,7 @@
   <!-- 产品页面 - AI 应用 -->
   <url>
     <loc>https://www.sauvs.com/zh/ai-app</loc>
-    <lastmod>2026-02-08</lastmod>
+    <lastmod>2026-02-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/ai-app" />
@@ -47,7 +47,7 @@
   
   <url>
     <loc>https://www.sauvs.com/en/ai-app</loc>
-    <lastmod>2026-02-08</lastmod>
+    <lastmod>2026-02-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/ai-app" />
@@ -58,7 +58,7 @@
   <!-- 产品页面 - 智能机器人 -->
   <url>
     <loc>https://www.sauvs.com/zh/robot</loc>
-    <lastmod>2026-02-08</lastmod>
+    <lastmod>2026-02-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/robot" />
@@ -68,7 +68,7 @@
   
   <url>
     <loc>https://www.sauvs.com/en/robot</loc>
-    <lastmod>2026-02-08</lastmod>
+    <lastmod>2026-02-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/robot" />
@@ -79,7 +79,7 @@
   <!-- 产品页面 - 物联网 -->
   <url>
     <loc>https://www.sauvs.com/zh/iot</loc>
-    <lastmod>2026-02-08</lastmod>
+    <lastmod>2026-02-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/iot" />
@@ -89,7 +89,7 @@
   
   <url>
     <loc>https://www.sauvs.com/en/iot</loc>
-    <lastmod>2026-02-08</lastmod>
+    <lastmod>2026-02-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/iot" />
@@ -100,7 +100,7 @@
   <!-- AI Hub 页面 -->
   <url>
     <loc>https://www.sauvs.com/zh/ai-hub</loc>
-    <lastmod>2026-02-08</lastmod>
+    <lastmod>2026-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/ai-hub" />
@@ -110,7 +110,7 @@
   
   <url>
     <loc>https://www.sauvs.com/en/ai-hub</loc>
-    <lastmod>2026-02-08</lastmod>
+    <lastmod>2026-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/ai-hub" />
@@ -121,7 +121,7 @@
   <!-- UVS AI Chat 页面 -->
   <url>
     <loc>https://www.sauvs.com/zh/uvs-ai-chat</loc>
-    <lastmod>2026-02-08</lastmod>
+    <lastmod>2026-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/uvs-ai-chat" />
@@ -131,7 +131,7 @@
   
   <url>
     <loc>https://www.sauvs.com/en/uvs-ai-chat</loc>
-    <lastmod>2026-02-08</lastmod>
+    <lastmod>2026-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/uvs-ai-chat" />
@@ -142,7 +142,7 @@
   <!-- 新闻页面 -->
   <url>
     <loc>https://www.sauvs.com/zh/news</loc>
-    <lastmod>2026-02-08</lastmod>
+    <lastmod>2026-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/news" />
@@ -152,7 +152,7 @@
   
   <url>
     <loc>https://www.sauvs.com/en/news</loc>
-    <lastmod>2026-02-08</lastmod>
+    <lastmod>2026-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/news" />
@@ -163,7 +163,7 @@
   <!-- 关于页面 -->
   <url>
     <loc>https://www.sauvs.com/zh/about</loc>
-    <lastmod>2026-02-08</lastmod>
+    <lastmod>2026-02-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/about" />
@@ -173,7 +173,7 @@
   
   <url>
     <loc>https://www.sauvs.com/en/about</loc>
-    <lastmod>2026-02-08</lastmod>
+    <lastmod>2026-02-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/about" />
@@ -184,7 +184,7 @@
   <!-- 联系页面 -->
   <url>
     <loc>https://www.sauvs.com/zh/contact</loc>
-    <lastmod>2026-02-08</lastmod>
+    <lastmod>2026-02-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/contact" />
@@ -194,7 +194,7 @@
   
   <url>
     <loc>https://www.sauvs.com/en/contact</loc>
-    <lastmod>2026-02-08</lastmod>
+    <lastmod>2026-02-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/contact" />
@@ -205,7 +205,7 @@
   <!-- 使用统计页面 -->
   <url>
     <loc>https://www.sauvs.com/zh/ai-usage-stats</loc>
-    <lastmod>2026-02-08</lastmod>
+    <lastmod>2026-02-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/ai-usage-stats" />
@@ -215,7 +215,7 @@
   
   <url>
     <loc>https://www.sauvs.com/en/ai-usage-stats</loc>
-    <lastmod>2026-02-08</lastmod>
+    <lastmod>2026-02-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/ai-usage-stats" />
@@ -226,7 +226,7 @@
   <!-- 合规页面 -->
   <url>
     <loc>https://www.sauvs.com/zh/privacy</loc>
-    <lastmod>2026-02-08</lastmod>
+    <lastmod>2026-02-06</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/privacy" />
@@ -236,7 +236,7 @@
   
   <url>
     <loc>https://www.sauvs.com/en/privacy</loc>
-    <lastmod>2026-02-08</lastmod>
+    <lastmod>2026-02-06</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/privacy" />
@@ -246,7 +246,7 @@
   
   <url>
     <loc>https://www.sauvs.com/zh/terms</loc>
-    <lastmod>2026-02-08</lastmod>
+    <lastmod>2026-02-06</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/terms" />
@@ -256,7 +256,7 @@
   
   <url>
     <loc>https://www.sauvs.com/en/terms</loc>
-    <lastmod>2026-02-08</lastmod>
+    <lastmod>2026-02-06</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/terms" />
