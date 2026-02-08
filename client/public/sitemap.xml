@@ -5,7 +5,7 @@
   
   <!-- 首页 -->
   <url>
-    <loc>https://jizixing-website.manus.space/</loc>
+    <loc>https://www.sauvs.com/</loc>
     <lastmod>2026-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -14,253 +14,253 @@
   
   <!-- 中文首页 -->
   <url>
-    <loc>https://jizixing-website.manus.space/zh</loc>
+    <loc>https://www.sauvs.com/zh</loc>
     <lastmod>2026-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://jizixing-website.manus.space/en" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://jizixing-website.manus.space/zh" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.sauvs.com/zh" />
     <mobile:mobile/>
   </url>
   
   <!-- 英文首页 -->
   <url>
-    <loc>https://jizixing-website.manus.space/en</loc>
+    <loc>https://www.sauvs.com/en</loc>
     <lastmod>2026-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://jizixing-website.manus.space/en" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://jizixing-website.manus.space/zh" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.sauvs.com/zh" />
     <mobile:mobile/>
   </url>
   
   <!-- 产品页面 - AI 应用 -->
   <url>
-    <loc>https://jizixing-website.manus.space/zh/ai-app</loc>
+    <loc>https://www.sauvs.com/zh/ai-app</loc>
     <lastmod>2026-02-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://jizixing-website.manus.space/en/ai-app" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://jizixing-website.manus.space/zh/ai-app" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/ai-app" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.sauvs.com/zh/ai-app" />
     <mobile:mobile/>
   </url>
   
   <url>
-    <loc>https://jizixing-website.manus.space/en/ai-app</loc>
+    <loc>https://www.sauvs.com/en/ai-app</loc>
     <lastmod>2026-02-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://jizixing-website.manus.space/en/ai-app" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://jizixing-website.manus.space/zh/ai-app" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/ai-app" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.sauvs.com/zh/ai-app" />
     <mobile:mobile/>
   </url>
   
   <!-- 产品页面 - 智能机器人 -->
   <url>
-    <loc>https://jizixing-website.manus.space/zh/robot</loc>
+    <loc>https://www.sauvs.com/zh/robot</loc>
     <lastmod>2026-02-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://jizixing-website.manus.space/en/robot" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://jizixing-website.manus.space/zh/robot" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/robot" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.sauvs.com/zh/robot" />
     <mobile:mobile/>
   </url>
   
   <url>
-    <loc>https://jizixing-website.manus.space/en/robot</loc>
+    <loc>https://www.sauvs.com/en/robot</loc>
     <lastmod>2026-02-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://jizixing-website.manus.space/en/robot" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://jizixing-website.manus.space/zh/robot" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/robot" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.sauvs.com/zh/robot" />
     <mobile:mobile/>
   </url>
   
   <!-- 产品页面 - 物联网 -->
   <url>
-    <loc>https://jizixing-website.manus.space/zh/iot</loc>
+    <loc>https://www.sauvs.com/zh/iot</loc>
     <lastmod>2026-02-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://jizixing-website.manus.space/en/iot" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://jizixing-website.manus.space/zh/iot" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/iot" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.sauvs.com/zh/iot" />
     <mobile:mobile/>
   </url>
   
   <url>
-    <loc>https://jizixing-website.manus.space/en/iot</loc>
+    <loc>https://www.sauvs.com/en/iot</loc>
     <lastmod>2026-02-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://jizixing-website.manus.space/en/iot" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://jizixing-website.manus.space/zh/iot" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/iot" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.sauvs.com/zh/iot" />
     <mobile:mobile/>
   </url>
   
   <!-- AI Hub 页面 -->
   <url>
-    <loc>https://jizixing-website.manus.space/zh/ai-hub</loc>
+    <loc>https://www.sauvs.com/zh/ai-hub</loc>
     <lastmod>2026-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://jizixing-website.manus.space/en/ai-hub" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://jizixing-website.manus.space/zh/ai-hub" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/ai-hub" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.sauvs.com/zh/ai-hub" />
     <mobile:mobile/>
   </url>
   
   <url>
-    <loc>https://jizixing-website.manus.space/en/ai-hub</loc>
+    <loc>https://www.sauvs.com/en/ai-hub</loc>
     <lastmod>2026-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://jizixing-website.manus.space/en/ai-hub" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://jizixing-website.manus.space/zh/ai-hub" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/ai-hub" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.sauvs.com/zh/ai-hub" />
     <mobile:mobile/>
   </url>
   
   <!-- UVS AI Chat 页面 -->
   <url>
-    <loc>https://jizixing-website.manus.space/zh/uvs-ai-chat</loc>
+    <loc>https://www.sauvs.com/zh/uvs-ai-chat</loc>
     <lastmod>2026-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://jizixing-website.manus.space/en/uvs-ai-chat" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://jizixing-website.manus.space/zh/uvs-ai-chat" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/uvs-ai-chat" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.sauvs.com/zh/uvs-ai-chat" />
     <mobile:mobile/>
   </url>
   
   <url>
-    <loc>https://jizixing-website.manus.space/en/uvs-ai-chat</loc>
+    <loc>https://www.sauvs.com/en/uvs-ai-chat</loc>
     <lastmod>2026-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://jizixing-website.manus.space/en/uvs-ai-chat" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://jizixing-website.manus.space/zh/uvs-ai-chat" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/uvs-ai-chat" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.sauvs.com/zh/uvs-ai-chat" />
     <mobile:mobile/>
   </url>
   
   <!-- 新闻页面 -->
   <url>
-    <loc>https://jizixing-website.manus.space/zh/news</loc>
+    <loc>https://www.sauvs.com/zh/news</loc>
     <lastmod>2026-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://jizixing-website.manus.space/en/news" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://jizixing-website.manus.space/zh/news" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/news" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.sauvs.com/zh/news" />
     <mobile:mobile/>
   </url>
   
   <url>
-    <loc>https://jizixing-website.manus.space/en/news</loc>
+    <loc>https://www.sauvs.com/en/news</loc>
     <lastmod>2026-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://jizixing-website.manus.space/en/news" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://jizixing-website.manus.space/zh/news" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/news" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.sauvs.com/zh/news" />
     <mobile:mobile/>
   </url>
   
   <!-- 关于页面 -->
   <url>
-    <loc>https://jizixing-website.manus.space/zh/about</loc>
+    <loc>https://www.sauvs.com/zh/about</loc>
     <lastmod>2026-02-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://jizixing-website.manus.space/en/about" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://jizixing-website.manus.space/zh/about" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/about" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.sauvs.com/zh/about" />
     <mobile:mobile/>
   </url>
   
   <url>
-    <loc>https://jizixing-website.manus.space/en/about</loc>
+    <loc>https://www.sauvs.com/en/about</loc>
     <lastmod>2026-02-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://jizixing-website.manus.space/en/about" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://jizixing-website.manus.space/zh/about" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/about" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.sauvs.com/zh/about" />
     <mobile:mobile/>
   </url>
   
   <!-- 联系页面 -->
   <url>
-    <loc>https://jizixing-website.manus.space/zh/contact</loc>
+    <loc>https://www.sauvs.com/zh/contact</loc>
     <lastmod>2026-02-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://jizixing-website.manus.space/en/contact" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://jizixing-website.manus.space/zh/contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/contact" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.sauvs.com/zh/contact" />
     <mobile:mobile/>
   </url>
   
   <url>
-    <loc>https://jizixing-website.manus.space/en/contact</loc>
+    <loc>https://www.sauvs.com/en/contact</loc>
     <lastmod>2026-02-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://jizixing-website.manus.space/en/contact" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://jizixing-website.manus.space/zh/contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/contact" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.sauvs.com/zh/contact" />
     <mobile:mobile/>
   </url>
   
   <!-- 使用统计页面 -->
   <url>
-    <loc>https://jizixing-website.manus.space/zh/ai-usage-stats</loc>
+    <loc>https://www.sauvs.com/zh/ai-usage-stats</loc>
     <lastmod>2026-02-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://jizixing-website.manus.space/en/ai-usage-stats" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://jizixing-website.manus.space/zh/ai-usage-stats" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/ai-usage-stats" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.sauvs.com/zh/ai-usage-stats" />
     <mobile:mobile/>
   </url>
   
   <url>
-    <loc>https://jizixing-website.manus.space/en/ai-usage-stats</loc>
+    <loc>https://www.sauvs.com/en/ai-usage-stats</loc>
     <lastmod>2026-02-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://jizixing-website.manus.space/en/ai-usage-stats" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://jizixing-website.manus.space/zh/ai-usage-stats" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/ai-usage-stats" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.sauvs.com/zh/ai-usage-stats" />
     <mobile:mobile/>
   </url>
   
   <!-- 合规页面 -->
   <url>
-    <loc>https://jizixing-website.manus.space/zh/privacy</loc>
+    <loc>https://www.sauvs.com/zh/privacy</loc>
     <lastmod>2026-02-06</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://jizixing-website.manus.space/en/privacy" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://jizixing-website.manus.space/zh/privacy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/privacy" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.sauvs.com/zh/privacy" />
     <mobile:mobile/>
   </url>
   
   <url>
-    <loc>https://jizixing-website.manus.space/en/privacy</loc>
+    <loc>https://www.sauvs.com/en/privacy</loc>
     <lastmod>2026-02-06</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://jizixing-website.manus.space/en/privacy" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://jizixing-website.manus.space/zh/privacy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/privacy" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.sauvs.com/zh/privacy" />
     <mobile:mobile/>
   </url>
   
   <url>
-    <loc>https://jizixing-website.manus.space/zh/terms</loc>
+    <loc>https://www.sauvs.com/zh/terms</loc>
     <lastmod>2026-02-06</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://jizixing-website.manus.space/en/terms" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://jizixing-website.manus.space/zh/terms" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/terms" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.sauvs.com/zh/terms" />
     <mobile:mobile/>
   </url>
   
   <url>
-    <loc>https://jizixing-website.manus.space/en/terms</loc>
+    <loc>https://www.sauvs.com/en/terms</loc>
     <lastmod>2026-02-06</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://jizixing-website.manus.space/en/terms" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://jizixing-website.manus.space/zh/terms" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sauvs.com/en/terms" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.sauvs.com/zh/terms" />
     <mobile:mobile/>
   </url>
   

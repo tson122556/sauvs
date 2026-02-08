@@ -21,5 +21,5 @@ Allow: /
 Crawl-delay: 1
 
 # Sitemap 位置
-Sitemap: https://jizixing-website.manus.space/sitemap.xml
-Sitemap: https://jizixing-website.manus.space/sitemap-zh.xml
+Sitemap: https://www.sauvs.com/sitemap.xml
+Sitemap: https://www.sauvs.com/sitemap-zh.xml
