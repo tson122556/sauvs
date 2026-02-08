@@ -27,6 +27,10 @@ import NewsDetail from "./pages/NewsDetail";
 import NewsDetailEn from "./pages/NewsDetailEn";
 import Careers from "./pages/Careers";
 import CareersEn from "./pages/CareersEn";
+import DepartmentAI from "./pages/DepartmentAI";
+import DepartmentRobotics from "./pages/DepartmentRobotics";
+import DepartmentIoT from "./pages/DepartmentIoT";
+import DepartmentResearch from "./pages/DepartmentResearch";
 import AIUsageStats from "./pages/AIUsageStats";
 import AIUsageStatsEn from "./pages/AIUsageStatsEn";
 import Register from "./pages/Register";
@@ -63,6 +67,10 @@ function Router() {
       <Route path="/zh" component={Home} />
       <Route path="/zh/about" component={About} />
       <Route path="/zh/careers" component={Careers} />
+      <Route path="/zh/department/ai" component={DepartmentAI} />
+      <Route path="/zh/department/robotics" component={DepartmentRobotics} />
+      <Route path="/zh/department/iot" component={DepartmentIoT} />
+      <Route path="/zh/department/research" component={DepartmentResearch} />
       <Route path="/zh/contact" component={Contact} />
       <Route path="/zh/news" component={News} />
       <Route path="/zh/news/:id" component={NewsDetail} />
