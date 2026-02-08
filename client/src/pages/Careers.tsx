@@ -235,14 +235,15 @@ export default function Careers() {
                         {pos.salary}
                       </p>
                       <Button
-                        onClick={() => window.open("mailto:careers@sauvs.com")}
+                        onClick={() => setLocation(departmentPaths[idx])}
                         variant="ghost"
                         className="mt-4 text-purple-400 hover:text-purple-300 p-0"
                       >
                         了解更多 <ArrowRight className="ml-2 w-4 h-4" />
                       </Button>
                     </Card>
-                  ))}                </div>
+                  ))}
+                </div>
               </motion.div>
             );
             })}
