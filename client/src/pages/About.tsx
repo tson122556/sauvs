@@ -638,8 +638,8 @@ export default function About() {
                   transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                 />
               </div>
-              <p className="text-gray-400 text-sm">
-                专注于人工智能、智能机器人、物联网技术创新和时空同步/异步航行器的研发和应用
+              <p className="text-gray-400 text-sm leading-relaxed">
+                专注于人工智能、智能机器人、物联网技术创新、时空同步/异步航行器和时空编码/解码体的研发和应用，以及智慧金融领域的解决方案。
               </p>
             </div>
 
@@ -666,6 +666,11 @@ export default function About() {
                     时空同步/异步航行器
                   </a>
                 </li>
+                <li>
+                  <a href="/#products" className="text-gray-400 hover:text-white transition">
+                    时空编码/解码体
+                  </a>
+                </li>
               </ul>
             </div>
 
@@ -689,7 +694,7 @@ export default function About() {
                 </li>
                 <li>
                   <a href="/#solutions" className="text-gray-400 hover:text-white transition">
-                    金融科技
+                    智慧金融
                   </a>
                 </li>
               </ul>
