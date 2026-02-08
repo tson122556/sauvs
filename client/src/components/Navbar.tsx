@@ -92,7 +92,7 @@ export default function Navbar() {
           id: '3',
           title: '时空编码/解码体技术突破，应用于量子计算领域',
           description: '极紫星自主研发的时空编码/解码体技术实现重大突破，成功应用于量子计算和信息安全领域，获得国家科技进步奖...',
-          url: 'https://www.tech.gov.cn/quantum-computing-2026',
+          url: 'https://www.xinhuanet.com/tech/2026-02/08/c_1129450123.htm',
           image: 'https://via.placeholder.com/300x200?text=Quantum+Tech',
           publishedAt: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000).toISOString(),
           source: '技术动态',
