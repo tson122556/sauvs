@@ -80,6 +80,9 @@ export default function Home() {
             <a href={`/${language}/about`} className="text-gray-300 hover:text-white transition">
               关于我们
             </a>
+            <a href={`/${language}/careers`} className="text-gray-300 hover:text-white transition">
+              点亮我们
+            </a>
             <a href={`/${language}/ai-hub`} className="text-gray-300 hover:text-white transition">
               AI 助手
             </a>
