@@ -465,7 +465,7 @@ export default function HomeEn() {
                 <span className="text-lg font-bold text-white">UVS</span>
               </div>
               <p className="text-gray-400 text-sm">
-                Focused on AI, smart robots, IoT technology innovation and spacetech aircraft R&D and application.
+                Focused on AI, smart robots, IoT technology innovation, spacetime synchronous/asynchronous navigation and spacetime encoding/decoding body R&D and application.
               </p>
             </div>
 
@@ -492,6 +492,11 @@ export default function HomeEn() {
                     Spacetime Synchronous/Asynchronous Navigation
                   </a>
                 </li>
+                <li>
+                  <a href="#" className="text-gray-400 hover:text-white transition">
+                    Spacetime Encoding/Decoding Body
+                  </a>
+                </li>
               </ul>
             </div>
 
@@ -516,6 +521,11 @@ export default function HomeEn() {
                 <li>
                   <a href="#" className="text-gray-400 hover:text-white transition">
                     FinTech Solutions
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-400 hover:text-white transition">
+                    Smart Finance
                   </a>
                 </li>
               </ul>
