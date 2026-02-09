@@ -263,7 +263,7 @@ export default function NewsEn() {
                 <span className="text-lg font-bold text-white">UVS</span>
               </div>
               <p className="text-gray-400 text-sm">
-                Focused on AI, smart robots, IoT technology innovation and spacetech aircraft R&D and application.
+                Focused on AI, smart robots, IoT technology innovation, spacetime synchronous/asynchronous navigation and spacetime encoding/decoding body R&D and application.
               </p>
             </div>
 
@@ -288,6 +288,11 @@ export default function NewsEn() {
                 <li>
                   <a href="#" className="text-gray-400 hover:text-white transition">
                     Spacetime Synchronous/Asynchronous Navigation
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-400 hover:text-white transition">
+                    Spacetime Encoding/Decoding Body
                   </a>
                 </li>
               </ul>
@@ -316,6 +321,11 @@ export default function NewsEn() {
                     FinTech Solutions
                   </a>
                 </li>
+                <li>
+                  <a href="#" className="text-gray-400 hover:text-white transition">
+                    Smart Finance
+                  </a>
+                </li>
               </ul>
             </div>
 
@@ -324,7 +334,7 @@ export default function NewsEn() {
               <ul className="space-y-2 text-sm text-gray-400">
                 <li>Email: satifuxie@gmail.com</li>
                 <li>Phone: (+86)1519387647</li>
-                <li>Address: Xi'an, Shaanxi, China</li>
+                <li>Address: Shatin District, Science and Technology Avenue East 8, Hong Kong SAR, China</li>
               </ul>
             </div>
           </div>

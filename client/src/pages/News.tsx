@@ -263,7 +263,7 @@ export default function News() {
                 <span className="text-lg font-bold text-white">极紫星</span>
               </div>
               <p className="text-gray-400 text-sm">
-                专注于人工智能、智能机器人、物联网技术创新和时空同步/异步航行器的研发和应用
+                专注于人工智能、智能机器人、物联网技术创新、时空同步/异步航行器和时空编码/解码体的研发和应用
               </p>
             </div>
 
@@ -288,6 +288,11 @@ export default function News() {
                 <li>
                   <a href="#" className="text-gray-400 hover:text-white transition">
                     时空同步/异步航行器
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-400 hover:text-white transition">
+                    时空编码/解码体
                   </a>
                 </li>
               </ul>
@@ -316,6 +321,11 @@ export default function News() {
                     金融科技
                   </a>
                 </li>
+                <li>
+                  <a href="#" className="text-gray-400 hover:text-white transition">
+                    智慧金融
+                  </a>
+                </li>
               </ul>
             </div>
 
@@ -324,7 +334,7 @@ export default function News() {
               <ul className="space-y-2 text-sm text-gray-400">
                 <li>邮箱：satifuxie@gmail.com</li>
                 <li>电话：(+86)1519387647</li>
-                <li>地址：陕西省西安市雁塔区二环南路</li>
+                <li>地址：中国香港特别行政区沙田区科技大道东8号</li>
               </ul>
             </div>
           </div>
