@@ -11,7 +11,6 @@ import { modalityChatRouter } from "./routers/modalityChat";
 import { uvsAIChatRouter } from "./routers/uvsAIChat";
 import { contactRouter } from "./routers/contact";
 import { stripeRouter } from "./routers/stripe";
-import { authRouter } from "./routers/auth";
 import { sendAppointmentConfirmationEmail } from "./email";
 
 export const appRouter = router({
@@ -23,7 +22,16 @@ export const appRouter = router({
   uvsAIChat: uvsAIChatRouter,
   contact: contactRouter,
   stripe: stripeRouter,
-  auth: authRouter,
+  auth: router({
+    me: publicProcedure.query(opts => opts.ctx.user),
+    logout: publicProcedure.mutation(({ ctx }) => {
+      const cookieOptions = getSessionCookieOptions(ctx.req);
+      ctx.res.clearCookie(COOKIE_NAME, { ...cookieOptions, maxAge: -1 });
+      return {
+        success: true,
+      } as const;
+    }),
+  }),
 
   // 咨询相关 API
   inquiries: router({

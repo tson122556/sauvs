@@ -36,13 +36,6 @@
       "when": 1770387504359,
       "tag": "0004_lean_weapon_omega",
       "breakpoints": true
-    },
-    {
-      "idx": 5,
-      "version": "5",
-      "when": 1770614471713,
-      "tag": "0005_careless_landau",
-      "breakpoints": true
     }
   ]
 }
