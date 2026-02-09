@@ -11,7 +11,7 @@ import { modalityChatRouter } from "./routers/modalityChat";
 import { uvsAIChatRouter } from "./routers/uvsAIChat";
 import { contactRouter } from "./routers/contact";
 import { stripeRouter } from "./routers/stripe";
-import { simpleAuthRouter } from "./routers/simpleAuth";
+import { authRouter } from "./routers/auth";
 import { sendAppointmentConfirmationEmail } from "./email";
 
 export const appRouter = router({
@@ -23,7 +23,7 @@ export const appRouter = router({
   uvsAIChat: uvsAIChatRouter,
   contact: contactRouter,
   stripe: stripeRouter,
-  auth: simpleAuthRouter,
+  auth: authRouter,
 
   // 咨询相关 API
   inquiries: router({

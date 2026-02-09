@@ -1,8 +1,0 @@
-{
-  "query": "ALTER TABLE `users` MODIFY COLUMN `openId` varchar(64);\nALTER TABLE `users` MODIFY COLUMN `loginMethod` varchar(64) DEFAULT 'email';\nALTER TABLE `users` MODIFY COLUMN `lastSignedIn` timestamp;\nALTER TABLE `users` ADD `username` varchar(100);\nALTER TABLE `users` ADD `passwordHash` text;\nALTER TABLE `users` ADD `isActive` int DEFAULT 1 NOT NULL;\nALTER TABLE `users` ADD CONSTRAINT `users_username_unique` UNIQUE(`username`);\nALTER TABLE `users` ADD CONSTRAINT `users_email_unique` UNIQUE(`email`);",
-  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3BPBiC4NTfsTHY2.root --database LeH9c94nfUYwUF6G27VX4S --execute ALTER TABLE `users` MODIFY COLUMN `openId` varchar(64);\nALTER TABLE `users` MODIFY COLUMN `loginMethod` varchar(64) DEFAULT 'email';\nALTER TABLE `users` MODIFY COLUMN `lastSignedIn` timestamp;\nALTER TABLE `users` ADD `username` varchar(100);\nALTER TABLE `users` ADD `passwordHash` text;\nALTER TABLE `users` ADD `isActive` int DEFAULT 1 NOT NULL;\nALTER TABLE `users` ADD CONSTRAINT `users_username_unique` UNIQUE(`username`);\nALTER TABLE `users` ADD CONSTRAINT `users_email_unique` UNIQUE(`email`);",
-  "returncode": 1,
-  "logs": [
-    "ERROR 1060 (42S21) at line 4: Duplicate column name 'username'"
-  ]
-}

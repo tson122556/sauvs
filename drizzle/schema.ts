@@ -6,22 +6,101 @@ import { int, mysqlEnum, mysqlTable, text, timestamp, varchar, date } from "driz
  * Columns use camelCase to match both database fields and generated types.
  */
 export const users = mysqlTable("users", {
+  /**
+   * Surrogate primary key. Auto-incremented numeric value managed by the database.
+   * Use this for relations between tables.
+   */
   id: int("id").autoincrement().primaryKey(),
+  /** Manus OAuth identifier (openId) returned from the OAuth callback. Unique per user. */
   openId: varchar("openId", { length: 64 }).unique(),
+  /** 用户名 */
   username: varchar("username", { length: 100 }).unique(),
-  email: varchar("email", { length: 320 }).unique(),
+  /** 邮箱 */
+  email: varchar("email", { length: 320 }).notNull().unique(),
+  /** 密码哈希值 */
   passwordHash: text("passwordHash"),
+  /** 用户名称 */
   name: text("name"),
-  loginMethod: varchar("loginMethod", { length: 64 }).default("email"),
+  /** 登录方式：email, oauth, google, wechat 等 */
+  loginMethod: varchar("loginMethod", { length: 64 }).default("email").notNull(),
+  /** 用户角色 */
   role: mysqlEnum("role", ["user", "admin"]).default("user").notNull(),
+  /** 邮箱是否已验证 */
+  emailVerified: int("emailVerified").default(0).notNull(),
+  /** 账户是否启用 */
   isActive: int("isActive").default(1).notNull(),
+  /** 创建时间 */
   createdAt: timestamp("createdAt").defaultNow().notNull(),
+  /** 更新时间 */
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  /** 最后登录时间 */
   lastSignedIn: timestamp("lastSignedIn"),
 });
 
 export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
+
+/**
+ * 邮箱验证令牌表：存储邮箱验证的令牌
+ */
+export const emailVerificationTokens = mysqlTable("emailVerificationTokens", {
+  id: int("id").autoincrement().primaryKey(),
+  /** 用户 ID */
+  userId: int("userId").notNull(),
+  /** 验证令牌 */
+  token: varchar("token", { length: 255 }).notNull().unique(),
+  /** 令牌过期时间 */
+  expiresAt: timestamp("expiresAt").notNull(),
+  /** 是否已使用 */
+  used: int("used").default(0).notNull(),
+  /** 创建时间 */
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type EmailVerificationToken = typeof emailVerificationTokens.$inferSelect;
+export type InsertEmailVerificationToken = typeof emailVerificationTokens.$inferInsert;
+
+/**
+ * 密码重置令牌表：存储密码重置的令牌
+ */
+export const passwordResetTokens = mysqlTable("passwordResetTokens", {
+  id: int("id").autoincrement().primaryKey(),
+  /** 用户 ID */
+  userId: int("userId").notNull(),
+  /** 重置令牌 */
+  token: varchar("token", { length: 255 }).notNull().unique(),
+  /** 令牌过期时间 */
+  expiresAt: timestamp("expiresAt").notNull(),
+  /** 是否已使用 */
+  used: int("used").default(0).notNull(),
+  /** 创建时间 */
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type PasswordResetToken = typeof passwordResetTokens.$inferSelect;
+export type InsertPasswordResetToken = typeof passwordResetTokens.$inferInsert;
+
+/**
+ * 会话表：存储用户会话信息
+ */
+export const sessions = mysqlTable("sessions", {
+  id: int("id").autoincrement().primaryKey(),
+  /** 用户 ID */
+  userId: int("userId").notNull(),
+  /** 会话令牌 */
+  token: varchar("token", { length: 255 }).notNull().unique(),
+  /** 会话过期时间 */
+  expiresAt: timestamp("expiresAt").notNull(),
+  /** 用户代理 */
+  userAgent: text("userAgent"),
+  /** IP 地址 */
+  ipAddress: varchar("ipAddress", { length: 45 }),
+  /** 创建时间 */
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type Session = typeof sessions.$inferSelect;
+export type InsertSession = typeof sessions.$inferInsert;
 
 /**
  * 客户咨询表：存储来自网站的客户咨询信息
