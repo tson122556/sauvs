@@ -151,7 +151,7 @@ export default function ContactEn() {
                   <MapPin className="w-8 h-8 text-pink-400 mb-4" />
                   <h3 className="text-white font-bold mb-2">Address</h3>
                   <p className="text-gray-400 text-sm">
-                    Second Ring South Road, Yanta District, Xi'an, Shaanxi Province, China
+                    Shatin District, Science and Technology Avenue East 8, Hong Kong SAR, China
                   </p>
                 </Card>
               </motion.div>
@@ -377,7 +377,7 @@ export default function ContactEn() {
               <ul className="space-y-2 text-sm text-gray-400">
                 <li>Email: satifuxie@gmail.com</li>
                 <li>Phone: (+86)1519387647</li>
-                <li>Address: Yanta District, Xi'an, Shaanxi, China</li>
+                <li>Address: Shatin District, Science and Technology Avenue East 8, Hong Kong SAR, China</li>
               </ul>
             </div>
           </div>

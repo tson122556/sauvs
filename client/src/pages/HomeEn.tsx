@@ -535,7 +535,7 @@ export default function HomeEn() {
               <ul className="space-y-2 text-sm text-gray-400">
                 <li>Email: satifuxie@gmail.com</li>
                 <li>Phone: (+86)1519387647</li>
-                <li>Address: Xi'an, Shaanxi, China</li>
+                <li>Address: Shatin District, Science and Technology Avenue East 8, Hong Kong SAR, China</li>
               </ul>
             </div>
           </div>

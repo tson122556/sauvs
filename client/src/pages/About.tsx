@@ -207,7 +207,7 @@ export default function About() {
                   </div>
                   <div>
                     <p className="text-gray-400 text-sm">注册地址</p>
-                    <p className="text-white font-semibold">陕西省西安市雁塔区二环南路</p>
+                    <p className="text-white font-semibold">中国香港特别行政区沙田区科技大道东8号</p>
                   </div>
                 </div>
               </Card>

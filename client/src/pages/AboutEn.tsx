@@ -207,7 +207,7 @@ export default function AboutEn() {
                   </div>
                   <div>
                     <p className="text-gray-400 text-sm">Registered Address</p>
-                    <p className="text-white font-semibold">Xi'an, Shaanxi Province, China</p>
+                    <p className="text-white font-semibold">Shatin District, Science and Technology Avenue East 8, Hong Kong SAR, China</p>
                   </div>
                 </div>
               </Card>
@@ -687,7 +687,7 @@ export default function AboutEn() {
               <ul className="space-y-2 text-sm text-gray-400">
                 <li>Email: satifuxie@gmail.com</li>
                 <li>Phone: (+86)1519387647</li>
-                <li>Address: Xi'an, Shaanxi, China</li>
+                <li>Address: Shatin District, Science and Technology Avenue East 8, Hong Kong SAR, China</li>
               </ul>
             </div>
           </div>

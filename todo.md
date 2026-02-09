@@ -498,6 +498,17 @@
 
 
 ## 添加时空航行器到经营范围和修复 Learn More 按钮（2026-02-07）
+
+## 更新公司地址（2026-02-09）
+- [x] 更新Home.tsx中的地址为香港地址
+- [x] 更新Contact.tsx中的地址为香港地址
+- [x] 更新About.tsx中的地址为香港地址
+- [x] 更新HomeEn.tsx中的地址为香港地址
+- [x] 更新ContactEn.tsx中的地址为香港地址
+- [x] 更新AboutEn.tsx中的地址为香港地址
+- [ ] 更新News.tsx中的地址为香港地址
+- [ ] 更新NewsEn.tsx中的地址为香港地址
+- [ ] 测试并保存
 - [x] 在中文经营范围页面添加时空同步航行器和异步航行器设计与研发
 - [x] 在英文经营范围页面添加相应的英文翻译
 - [x] 修复 HomeEn.tsx 中 Smart Robots 的 Learn More 按钮指向 /en/product/robot

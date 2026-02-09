@@ -141,7 +141,7 @@ export default function Contact() {
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">地址</h3>
                 <p className="text-gray-400 text-sm">
-                  陕西省西安市雁塔区二环南路
+                  中国香港特别行政区沙田区科技大道东8号
                 </p>
               </Card>
             </div>
@@ -318,7 +318,7 @@ export default function Contact() {
               <ul className="space-y-2 text-sm text-gray-400">
                 <li>邮箱：satifuxie@gmail.com</li>
                 <li>电话：(+86)1519387647</li>
-                <li>地址：陕西省西安市雁塔区二环南路</li>
+                <li>地址：中国香港特别行政区沙田区科技大道东8号</li>
               </ul>
             </div>
           </div>
