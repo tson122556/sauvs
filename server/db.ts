@@ -1,6 +1,20 @@
 import { eq, desc, and } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users, InsertInquiry, inquiries, InsertProduct, products, InsertNews, news, InsertAppointment, appointments, aiConversations, aiMessages, aiUsageStats, InsertAIConversation, InsertAIMessage, InsertAIUsageStat } from "../drizzle/schema";
+import { 
+  InsertUser, users, 
+  InsertInquiry, inquiries, 
+  InsertProduct, products, 
+  InsertNews, news, 
+  InsertAppointment, appointments, 
+  aiConversations, aiMessages, aiUsageStats, 
+  InsertAIConversation, InsertAIMessage, InsertAIUsageStat,
+  emailVerificationTokens,
+  passwordResetTokens,
+  sessions,
+  InsertEmailVerificationToken,
+  InsertPasswordResetToken,
+  InsertSession
+} from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -18,9 +32,227 @@ export async function getDb() {
   return _db;
 }
 
+// ==================== 用户认证相关函数 ====================
+
+/**
+ * 通过邮箱创建用户
+ */
+export async function createUserByEmail(user: {
+  email: string;
+  username?: string;
+  name?: string;
+  passwordHash: string;
+}): Promise<number> {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+
+  const result = await db.insert(users).values({
+    email: user.email,
+    username: user.username,
+    name: user.name,
+    passwordHash: user.passwordHash,
+    loginMethod: "email",
+    emailVerified: 0,
+    isActive: 1,
+  });
+
+  return (result as any).insertId as number;
+}
+
+/**
+ * 通过邮箱获取用户
+ */
+export async function getUserByEmail(email: string) {
+  const db = await getDb();
+  if (!db) {
+    return undefined;
+  }
+
+  const result = await db.select().from(users).where(eq(users.email, email)).limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+/**
+ * 通过用户名获取用户
+ */
+export async function getUserByUsername(username: string) {
+  const db = await getDb();
+  if (!db) {
+    return undefined;
+  }
+
+  const result = await db.select().from(users).where(eq(users.username, username)).limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+/**
+ * 通过ID获取用户
+ */
+export async function getUserById(id: number) {
+  const db = await getDb();
+  if (!db) {
+    return undefined;
+  }
+
+  const result = await db.select().from(users).where(eq(users.id, id)).limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+/**
+ * 创建邮箱验证令牌
+ */
+export async function createEmailVerificationToken(token: InsertEmailVerificationToken) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+
+  return await db.insert(emailVerificationTokens).values(token);
+}
+
+/**
+ * 获取邮箱验证令牌
+ */
+export async function getEmailVerificationToken(token: string) {
+  const db = await getDb();
+  if (!db) {
+    return undefined;
+  }
+
+  const result = await db.select().from(emailVerificationTokens).where(eq(emailVerificationTokens.token, token)).limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+/**
+ * 标记邮箱验证令牌为已使用
+ */
+export async function markEmailVerificationTokenAsUsed(tokenId: number) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+
+  return await db.update(emailVerificationTokens).set({ used: 1 }).where(eq(emailVerificationTokens.id, tokenId));
+}
+
+/**
+ * 验证邮箱
+ */
+export async function verifyUserEmail(userId: number) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+
+  return await db.update(users).set({ emailVerified: 1 }).where(eq(users.id, userId));
+}
+
+/**
+ * 创建密码重置令牌
+ */
+export async function createPasswordResetToken(token: InsertPasswordResetToken) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+
+  return await db.insert(passwordResetTokens).values(token);
+}
+
+/**
+ * 获取密码重置令牌
+ */
+export async function getPasswordResetToken(token: string) {
+  const db = await getDb();
+  if (!db) {
+    return undefined;
+  }
+
+  const result = await db.select().from(passwordResetTokens).where(eq(passwordResetTokens.token, token)).limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+/**
+ * 标记密码重置令牌为已使用
+ */
+export async function markPasswordResetTokenAsUsed(tokenId: number) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+
+  return await db.update(passwordResetTokens).set({ used: 1 }).where(eq(passwordResetTokens.id, tokenId));
+}
+
+/**
+ * 更新用户密码
+ */
+export async function updateUserPassword(userId: number, passwordHash: string) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+
+  return await db.update(users).set({ passwordHash }).where(eq(users.id, userId));
+}
+
+/**
+ * 创建会话
+ */
+export async function createSession(session: InsertSession) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+
+  return await db.insert(sessions).values(session);
+}
+
+/**
+ * 获取会话
+ */
+export async function getSession(token: string) {
+  const db = await getDb();
+  if (!db) {
+    return undefined;
+  }
+
+  const result = await db.select().from(sessions).where(eq(sessions.token, token)).limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+/**
+ * 删除会话
+ */
+export async function deleteSession(token: string) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+
+  return await db.delete(sessions).where(eq(sessions.token, token));
+}
+
+/**
+ * 删除过期会话
+ */
+export async function deleteExpiredSessions() {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+
+  const now = new Date();
+  return await db.delete(sessions).where(eq(sessions.expiresAt, now));
+}
+
+// ==================== OAuth 用户相关函数 ====================
+
 export async function upsertUser(user: InsertUser): Promise<void> {
-  if (!user.openId) {
-    throw new Error("User openId is required for upsert");
+  if (!user.email && !user.openId) {
+    throw new Error("User email or openId is required for upsert");
   }
 
   const db = await getDb();
@@ -31,18 +263,21 @@ export async function upsertUser(user: InsertUser): Promise<void> {
 
   try {
     const values: InsertUser = {
-      openId: user.openId,
-    };
+      email: user.email || "",
+    } as any;
+    if (user.openId) {
+      values.openId = user.openId;
+    }
     const updateSet: Record<string, unknown> = {};
 
-    const textFields = ["name", "email", "loginMethod"] as const;
+    const textFields = ["name", "username", "loginMethod", "passwordHash"] as const;
     type TextField = (typeof textFields)[number];
 
     const assignNullable = (field: TextField) => {
       const value = user[field];
       if (value === undefined) return;
       const normalized = value ?? null;
-      values[field] = normalized;
+      (values as any)[field] = normalized;
       updateSet[field] = normalized;
     };
 
@@ -89,6 +324,8 @@ export async function getUserByOpenId(openId: string) {
   return result.length > 0 ? result[0] : undefined;
 }
 
+// ==================== 咨询相关函数 ====================
+
 /**
  * 客户咨询相关函数
  */
@@ -116,6 +353,8 @@ export async function updateInquiryStatus(id: number, status: "pending" | "proce
   }
   return await db.update(inquiries).set({ status }).where(eq(inquiries.id, id));
 }
+
+// ==================== 产品相关函数 ====================
 
 /**
  * 产品相关函数
@@ -157,6 +396,8 @@ export async function updateProduct(id: number, product: Partial<InsertProduct>)
   return await db.update(products).set(product).where(eq(products.id, id));
 }
 
+// ==================== 新闻相关函数 ====================
+
 /**
  * 新闻相关函数
  */
@@ -197,6 +438,8 @@ export async function updateNews(id: number, newsItem: Partial<InsertNews>) {
   return await db.update(news).set(newsItem).where(eq(news.id, id));
 }
 
+// ==================== 预约相关函数 ====================
+
 /**
  * 预约相关函数
  */
@@ -232,6 +475,8 @@ export async function updateAppointmentStatus(id: number, status: "pending" | "c
   }
   return await db.update(appointments).set({ status }).where(eq(appointments.id, id));
 }
+
+// ==================== UVS AI 对话相关函数 ====================
 
 /**
  * UVS AI 对话相关函数
@@ -278,6 +523,8 @@ export async function deleteAIConversation(id: number) {
   return await db.delete(aiConversations).where(eq(aiConversations.id, id));
 }
 
+// ==================== UVS AI 消息相关函数 ====================
+
 /**
  * UVS AI 消息相关函数
  */
@@ -305,6 +552,8 @@ export async function deleteAIMessages(conversationId: number) {
   }
   return await db.delete(aiMessages).where(eq(aiMessages.conversationId, conversationId));
 }
+
+// ==================== UVS AI 使用统计相关函数 ====================
 
 /**
  * UVS AI 使用统计相关函数

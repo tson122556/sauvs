@@ -30,11 +30,11 @@ export function registerOAuthRoutes(app: Express) {
 
       await db.upsertUser({
         openId: userInfo.openId,
-        name: userInfo.name || null,
-        email: userInfo.email ?? null,
-        loginMethod: userInfo.loginMethod ?? userInfo.platform ?? null,
+        name: userInfo.name || undefined,
+        email: userInfo.email ?? "",
+        loginMethod: (userInfo.loginMethod ?? userInfo.platform) || undefined,
         lastSignedIn: new Date(),
-      });
+      } as any);
 
       const sessionToken = await sdk.createSessionToken(userInfo.openId, {
         name: userInfo.name || "",
