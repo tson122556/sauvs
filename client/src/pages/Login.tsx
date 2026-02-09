@@ -8,6 +8,7 @@ import { useLocation } from "wouter";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { getLoginUrl } from "@/const";
+import { trpc } from "@/lib/trpc";
 
 export default function Login() {
   const { language } = useLanguage();
@@ -20,6 +21,8 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isLoading, setIsLoading] = useState(false);
+
+  const loginMutation = trpc.auth.login.useMutation();
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
@@ -45,15 +48,17 @@ export default function Login() {
 
     setIsLoading(true);
     try {
-      // 模拟登录请求
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const result = await loginMutation.mutateAsync({
+        email: formData.email,
+        password: formData.password,
+      });
 
-      // 实际应用中应该调用登录 API
-      // 这里模拟登录成功后跳转到对话页面
-      setLocation("/zh/uvs-ai-chat");
-    } catch (error) {
+      if (result.success) {
+        setLocation("/zh/uvs-ai-chat");
+      }
+    } catch (error: any) {
       setErrors({
-        submit: language === "zh" ? "登录失败，请稍后重试" : "Login failed, please try again",
+        submit: error.message || (language === "zh" ? "登录失败，请稍后重试" : "Login failed, please try again"),
       });
     } finally {
       setIsLoading(false);
@@ -73,8 +78,6 @@ export default function Login() {
       }));
     }
   };
-
-
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center p-4">

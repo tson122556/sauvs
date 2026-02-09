@@ -611,3 +611,13 @@
 - [ ] 监控各搜索引擎的收录情况（1-2周后）
 - [ ] 检查关键词排名（2-4周后）
 - [ ] 创建搜索引擎提交完整指南文档
+
+
+## 登录页面真实认证实现（2026-02-09）
+- [x] 创建用户认证数据库表（users、emailVerificationTokens、passwordResetTokens）
+- [x] 实现密码加密和验证工具
+- [x] 创建后端认证API（register、login、logout）
+- [x] 更新Login.tsx连接到真实API
+- [ ] 创建或更新Register.tsx连接到真实API
+- [ ] 实现会话管理和用户状态持久化
+- [ ] 测试登录和注册流程
