@@ -148,6 +148,32 @@ export const AI_MODELS_CONFIG: Record<string, AIModelConfig> = {
       "紫东太初在多模态处理方面具有强大的能力。",
     ],
   },
+  xunfei: {
+    id: "xunfei",
+    name: "科大讯飞",
+    displayName: "科大讯飞",
+    description: "科大讯飞的语音和文本大模型",
+    provider: "xunfei",
+    category: "china",
+    enabled: true,
+    mockResponses: [
+      "这是来自科大讯飞的回复。我在语音识别和合成方面领先，多模态交互能力强。",
+      "科大讯飞在语音处理和自然语言理解方面表现出色。",
+    ],
+  },
+  pangu: {
+    id: "pangu",
+    name: "盘古大模型",
+    displayName: "盘古大模型 (华为)",
+    description: "华为的大规模预训练模型",
+    provider: "pangu",
+    category: "china",
+    enabled: true,
+    mockResponses: [
+      "这是来自盘古大模型的回复。我为各个行业进行了优化，提供企业级的性能和安全性。",
+      "盘古大模型在企业应用和安全性方面表现优秀。",
+    ],
+  },
 
   // 学术模型
   alpaca: {

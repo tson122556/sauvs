@@ -86,6 +86,10 @@ export class AIDispatcher {
         return this.callBaidu(modelConfig, message, conversationHistory);
       case "tsinghua":
         return this.callTsinghua(modelConfig, message, conversationHistory);
+      case "xunfei":
+        return this.callXunfei(modelConfig, message, conversationHistory);
+      case "pangu":
+        return this.callPangu(modelConfig, message, conversationHistory);
       case "replicate":
         return this.callReplicate(modelConfig, message, conversationHistory);
       case "huggingface":
@@ -325,6 +329,52 @@ export class AIDispatcher {
       return getMockResponse(modelConfig.id);
     } catch (error) {
       console.error("Tsinghua API error:", error);
+      return getMockResponse(modelConfig.id);
+    }
+  }
+
+  /**
+   * 调用 iFlytek API (科大讯飞)
+   */
+  private async callXunfei(
+    modelConfig: AIModelConfig,
+    message: string,
+    conversationHistory?: Array<{ role: "user" | "assistant"; content: string }>
+  ): Promise<string> {
+    const apiKey = process.env.XUNFEI_API_KEY;
+    if (!apiKey) {
+      console.warn("XUNFEI_API_KEY not configured, using mock response");
+      return getMockResponse(modelConfig.id);
+    }
+
+    try {
+      // TODO: 实现真实的 iFlytek API 调用
+      return getMockResponse(modelConfig.id);
+    } catch (error) {
+      console.error("iFlytek API error:", error);
+      return getMockResponse(modelConfig.id);
+    }
+  }
+
+  /**
+   * 调用 Pangu API (盘古大模型)
+   */
+  private async callPangu(
+    modelConfig: AIModelConfig,
+    message: string,
+    conversationHistory?: Array<{ role: "user" | "assistant"; content: string }>
+  ): Promise<string> {
+    const apiKey = process.env.PANGU_API_KEY;
+    if (!apiKey) {
+      console.warn("PANGU_API_KEY not configured, using mock response");
+      return getMockResponse(modelConfig.id);
+    }
+
+    try {
+      // TODO: 实现真实的 Pangu API 调用
+      return getMockResponse(modelConfig.id);
+    } catch (error) {
+      console.error("Pangu API error:", error);
       return getMockResponse(modelConfig.id);
     }
   }

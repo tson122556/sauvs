@@ -118,6 +118,26 @@ const AI_MODELS: AIModel[] = [
     url: "https://www.zidongtaichu.com/",
     region: "china",
   },
+  {
+    id: "xunfei",
+    name: "iFlytek",
+    description: "iFlytek's speech and text large model",
+    feature: "Leading in speech recognition and synthesis, strong multimodal interaction capabilities",
+    icon: "🎤",
+    color: "from-blue-500 to-cyan-600",
+    url: "https://www.xfyun.cn",
+    region: "china",
+  },
+  {
+    id: "pangu",
+    name: "Pangu",
+    description: "Huawei's large-scale pre-trained model",
+    feature: "Industry-specific optimization, enterprise-grade performance and security",
+    icon: "🌐",
+    color: "from-red-500 to-orange-600",
+    url: "https://pangu.huaweicloud.com",
+    region: "china",
+  },
 
   // Academic Models
   {

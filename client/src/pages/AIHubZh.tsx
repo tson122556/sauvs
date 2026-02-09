@@ -118,6 +118,26 @@ const AI_MODELS: AIModel[] = [
     url: "https://www.zidongtaichu.com/",
     region: "china",
   },
+  {
+    id: "xunfei",
+    name: "科大讯飞",
+    description: "科大讯飞的语音和文本大模型",
+    feature: "语音识别和合成领先，多模态交互能力强",
+    icon: "🎤",
+    color: "from-blue-500 to-cyan-600",
+    url: "https://www.xfyun.cn",
+    region: "china",
+  },
+  {
+    id: "pangu",
+    name: "盘古大模型",
+    description: "华为的大规模预训练模型",
+    feature: "行业应用优化，企业级性能和安全性",
+    icon: "🌐",
+    color: "from-red-500 to-orange-600",
+    url: "https://pangu.huaweicloud.com",
+    region: "china",
+  },
 
   // Academic Models
   {
