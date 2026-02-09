@@ -19,8 +19,139 @@ import {
 } from "../db";
 import { invokeLLM } from "../_core/llm";
 import { generateMultimodalContent, detectContentType, selectOptimalModel } from "../_core/multimodalGenerator";
+import { aiDispatcher } from "../ai-dispatcher";
+import {
+  getEnabledModels,
+  getModelsByCategory,
+  getModelConfig,
+} from "../ai-models-config";
 
 export const aiChatRouter = router({
+  /**
+   * 获取所有可用的 AI 模型
+   */
+  getAvailableModels: publicProcedure.query(async () => {
+    const models = getEnabledModels();
+    return {
+      total: models.length,
+      models: models.map((model) => ({
+        id: model.id,
+        name: model.name,
+        displayName: model.displayName,
+        description: model.description,
+        category: model.category,
+      })),
+    };
+  }),
+
+  /**
+   * 按分类获取模型
+   */
+  getModelsByCategory: publicProcedure
+    .input(
+      z.enum(["international", "china", "academic"])
+    )
+    .query(async ({ input }) => {
+      const models = getModelsByCategory(input);
+      return {
+        category: input,
+        total: models.length,
+        models: models.map((model) => ({
+          id: model.id,
+          name: model.name,
+          displayName: model.displayName,
+          description: model.description,
+        })),
+      };
+    }),
+
+  /**
+   * 获取单个模型的详细信息
+   */
+  getModelDetails: publicProcedure
+    .input(z.string())
+    .query(async ({ input }) => {
+      const model = getModelConfig(input);
+      if (!model) {
+        throw new Error(`Model not found: ${input}`);
+      }
+      return {
+        id: model.id,
+        name: model.name,
+        displayName: model.displayName,
+        description: model.description,
+        provider: model.provider,
+        category: model.category,
+        enabled: model.enabled,
+      };
+    }),
+
+  /**
+   * 获取模型列表（按分类分组）
+   */
+  getModelsGrouped: publicProcedure.query(async () => {
+    const international = getModelsByCategory("international");
+    const china = getModelsByCategory("china");
+    const academic = getModelsByCategory("academic");
+
+    return {
+      international: international.map((m) => ({
+        id: m.id,
+        name: m.name,
+        displayName: m.displayName,
+      })),
+      china: china.map((m) => ({
+        id: m.id,
+        name: m.name,
+        displayName: m.displayName,
+      })),
+      academic: academic.map((m) => ({
+        id: m.id,
+        name: m.name,
+        displayName: m.displayName,
+      })),
+    };
+  }),
+
+  /**
+   * 通过调度引擎发送消息到指定模型
+   */
+  sendMessageToModel: publicProcedure
+    .input(
+      z.object({
+        modelId: z.string(),
+        message: z.string(),
+        conversationHistory: z
+          .array(
+            z.object({
+              role: z.enum(["user", "assistant"]),
+              content: z.string(),
+            })
+          )
+          .optional(),
+      })
+    )
+    .mutation(async ({ input }) => {
+      try {
+        const response = await aiDispatcher.dispatch({
+          modelId: input.modelId,
+          message: input.message,
+          conversationHistory: input.conversationHistory,
+        });
+
+        return {
+          success: true,
+          data: response,
+        };
+      } catch (error) {
+        console.error("AI Chat error:", error);
+        return {
+          success: false,
+          error: error instanceof Error ? error.message : "Unknown error",
+        };
+      }
+    }),
+
   /**
    * 生成多模态内容（文本、图片、视频等）
    */
