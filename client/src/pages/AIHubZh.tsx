@@ -115,7 +115,7 @@ const AI_MODELS: AIModel[] = [
     feature: "支持文本、图像、视频等多模态理解和生成",
     icon: "🎨",
     color: "from-purple-500 to-pink-600",
-    url: "https://www.tsinghua.edu.cn",
+    url: "https://www.zidongtaichu.com/",
     region: "china",
   },
 
