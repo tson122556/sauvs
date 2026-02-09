@@ -98,6 +98,26 @@ const AI_MODELS: AIModel[] = [
     url: "https://www.doubao.com",
     region: "china",
   },
+  {
+    id: "wenxin",
+    name: "Wenxin",
+    description: "Baidu's large language model",
+    feature: "Excellent Chinese understanding, rich knowledge base, ideal for content creation",
+    icon: "💡",
+    color: "from-red-500 to-orange-600",
+    url: "https://yiyan.baidu.com",
+    region: "china",
+  },
+  {
+    id: "zidong",
+    name: "Zidong Taichi",
+    description: "Tsinghua University's multimodal large model",
+    feature: "Supports multimodal understanding and generation of text, images, and videos",
+    icon: "🎨",
+    color: "from-purple-500 to-pink-600",
+    url: "https://www.tsinghua.edu.cn",
+    region: "china",
+  },
 
   // Academic Models
   {

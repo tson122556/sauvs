@@ -98,6 +98,26 @@ const AI_MODELS: AIModel[] = [
     url: "https://www.doubao.com",
     region: "china",
   },
+  {
+    id: "wenxin",
+    name: "文心一言",
+    description: "百度的大语言模型",
+    feature: "中文理解优秀，知识库丰富，适合内容创作",
+    icon: "💡",
+    color: "from-red-500 to-orange-600",
+    url: "https://yiyan.baidu.com",
+    region: "china",
+  },
+  {
+    id: "zidong",
+    name: "紫东太初",
+    description: "清华大学的多模态大模型",
+    feature: "支持文本、图像、视频等多模态理解和生成",
+    icon: "🎨",
+    color: "from-purple-500 to-pink-600",
+    url: "https://www.tsinghua.edu.cn",
+    region: "china",
+  },
 
   // Academic Models
   {
