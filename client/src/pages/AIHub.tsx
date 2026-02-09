@@ -99,10 +99,20 @@ const AI_MODELS: AIModel[] = [
     region: "china",
   },
   {
+    id: "xunfei",
+    name: "Xunfei Spark",
+    description: "iFlytek speech and text model",
+    feature: "Leading speech recognition and synthesis, strong multimodal interaction",
+    icon: "🔥",
+    color: "from-orange-500 to-red-600",
+    url: "https://xinghuo.xfyun.cn",
+    region: "china",
+  },
+  {
     id: "wenxin",
-    name: "Wenxin",
-    description: "Baidu's large language model",
-    feature: "Excellent Chinese understanding, rich knowledge base, ideal for content creation",
+    name: "Ernie",
+    description: "Baidu large language model",
+    feature: "Excellent Chinese understanding, rich knowledge, strong content creation",
     icon: "💡",
     color: "from-red-500 to-orange-600",
     url: "https://yiyan.baidu.com",
@@ -110,32 +120,22 @@ const AI_MODELS: AIModel[] = [
   },
   {
     id: "zidong",
-    name: "Zidong Taichi",
-    description: "Tsinghua University's multimodal large model",
-    feature: "Supports multimodal understanding and generation of text, images, and videos",
-    icon: "🎨",
-    color: "from-purple-500 to-pink-600",
-    url: "https://www.zidongtaichu.com/",
-    region: "china",
-  },
-  {
-    id: "xunfei",
-    name: "iFlytek",
-    description: "iFlytek's speech and text large model",
-    feature: "Leading in speech recognition and synthesis, strong multimodal interaction capabilities",
-    icon: "🎤",
-    color: "from-blue-500 to-cyan-600",
-    url: "https://www.xfyun.cn",
+    name: "Zidong Taichu",
+    description: "Tsinghua multimodal large model",
+    feature: "Multimodal understanding and generation of text, images, and video",
+    icon: "🌌",
+    color: "from-purple-500 to-indigo-600",
+    url: "https://www.zidongtaichu.com",
     region: "china",
   },
   {
     id: "pangu",
     name: "Pangu",
-    description: "Huawei's large-scale pre-trained model",
-    feature: "Industry-specific optimization, enterprise-grade performance and security",
+    description: "Huawei large-scale pre-trained model",
+    feature: "Industry-optimized, enterprise-grade performance and security",
     icon: "🌐",
     color: "from-red-500 to-orange-600",
-    url: "https://pangu.huaweicloud.com",
+    url: "https://www.huaweicloud.com",
     region: "china",
   },
 
@@ -173,8 +173,8 @@ const AI_MODELS: AIModel[] = [
   {
     id: "chatglm3",
     name: "ChatGLM-3",
-    description: "Tsinghua University & Zhipu AI collaborative model",
-    feature: "Advanced Chinese language understanding and powerful reasoning abilities",
+    description: "Tsinghua University and Zhipu AI collaboration",
+    feature: "Advanced Chinese language understanding and strong reasoning ability",
     icon: "🎓",
     color: "from-violet-500 to-violet-600",
     url: "https://github.com/THUDM/ChatGLM3",
@@ -238,11 +238,11 @@ export default function AIHub() {
       {/* Back Button */}
       <div className="fixed top-24 left-4 z-40">
         <Button
-          onClick={() => setLocation("/zh")}
+          onClick={() => setLocation("/en")}
           className="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded-lg flex items-center gap-2"
         >
           <ChevronLeft className="w-4 h-4" />
-          返回
+          Back
         </Button>
       </div>
 
@@ -256,7 +256,7 @@ export default function AIHub() {
             </h1>
           </div>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-            Choose your favorite AI model to start chatting. Each model has unique capabilities and advantages.
+            Choose your favorite AI model to start a conversation. Each model has unique capabilities and advantages.
           </p>
         </div>
 
@@ -291,31 +291,31 @@ export default function AIHub() {
         <div className="mb-16">
           <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-2">
             <span className="w-1 h-8 bg-gradient-to-b from-purple-500 to-pink-500" />
-            SAUVS Proprietary AI Model
+            UVS AI Proprietary Model
           </h2>
           <Card className="bg-gradient-to-br from-slate-800 via-slate-800 to-slate-900 border-purple-500/30 hover:border-purple-500/60 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/20 overflow-hidden">
             <div className="p-8">
               <div className="flex items-start justify-between mb-4">
                 <div>
-                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/TwiiMkmPRNBoNOuY.png" alt="SAUVS AI" className="w-16 h-16 mb-3" />
-                  <h3 className="text-2xl font-bold text-white mb-2">SAUVS AI</h3>
-                  <p className="text-gray-300 mb-2">SAUVS Proprietary AI Model Integration System</p>
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/TwiiMkmPRNBoNOuY.png" alt="UVS AI" className="w-16 h-16 mb-3" />
+                  <h3 className="text-2xl font-bold text-white mb-2">UVS AI</h3>
+                  <p className="text-gray-300 mb-2">UVS Proprietary AI Model Integration System</p>
                   <p className="text-purple-400 italic border-l-2 border-purple-500 pl-3">Intelligent scheduling, efficient conversations, professional analysis</p>
                 </div>
               </div>
-              <p className="text-gray-400 mb-6">Integrating the world's leading AI models, providing you with the optimal AI conversation experience through an intelligent scheduling engine.</p>
+              <p className="text-gray-400 mb-6">Integrating leading global AI models, providing optimal AI conversation experience through intelligent scheduling engine.</p>
               <div className="flex gap-4">
                 <button
                   onClick={() => window.location.href = '/en/uvs-ai'}
                   className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/50"
                 >
-                  Manage Different Models
+                  Manage Models
                 </button>
                 <button
                   onClick={() => window.location.href = '/en/uvs-ai-chat'}
                   className="flex-1 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/50"
                 >
-                  Start Chatting
+                  Start Chat
                 </button>
               </div>
             </div>
