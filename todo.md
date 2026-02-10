@@ -652,3 +652,11 @@
 - [x] 更新NewsEn.tsx中的地址为香港地址
 - [x] 更新NewsEn.tsx中的描述为与其他页面一致
 - [x] 测试并保存
+
+
+## 更新联系我们页面内容（2026-02-09）
+- [x] 更新Contact.tsx中的极紫星描述
+- [x] 更新Contact.tsx中的产品列表
+- [x] 更新Contact.tsx中的服务列表
+- [x] 更新ContactEn.tsx中的描述
+- [x] 测试并保存

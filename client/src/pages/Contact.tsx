@@ -257,7 +257,7 @@ export default function Contact() {
                 <span className="text-lg font-bold text-white">极紫星</span>
               </div>
               <p className="text-gray-400 text-sm">
-我们专注于人工智能、智能机器人、物联网与时空同步/异步航行器的前沿技术研发与集成应用
+                专注于人工智能、智能机器人、物联网技术创新、时空同步/异步航行器和时空编码/解码体的研发和应用
               </p>
             </div>
 
@@ -284,6 +284,11 @@ export default function Contact() {
                     时空同步/异步航行器
                   </a>
                 </li>
+                <li>
+                  <a href={`/${language}#products`} className="text-gray-400 hover:text-white transition">
+                    时空编码/解码体
+                  </a>
+                </li>
               </ul>
             </div>
 
@@ -308,6 +313,11 @@ export default function Contact() {
                 <li>
                   <a href={`/${language}#solutions`} className="text-gray-400 hover:text-white transition">
                     金融科技
+                  </a>
+                </li>
+                <li>
+                  <a href={`/${language}#solutions`} className="text-gray-400 hover:text-white transition">
+                    智慧金融
                   </a>
                 </li>
               </ul>

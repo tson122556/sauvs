@@ -316,7 +316,7 @@ export default function ContactEn() {
                 <span className="text-lg font-bold text-white">UVS</span>
               </div>
               <p className="text-gray-400 text-sm">
-                We focus on cutting-edge research and development of AI, intelligent robots, IoT, and space-time synchronized aircraft.
+                Focused on AI, smart robots, IoT technology innovation, spacetime synchronous/asynchronous navigation and spacetime encoding/decoding body R&D and application.
               </p>
             </div>
 
@@ -340,7 +340,12 @@ export default function ContactEn() {
                 </li>
                 <li>
                   <a href={`/${language}#products`} className="text-gray-400 hover:text-white transition">
-                    Spacetech Aircraft
+                    Spacetime Synchronous/Asynchronous Navigation
+                  </a>
+                </li>
+                <li>
+                  <a href={`/${language}#products`} className="text-gray-400 hover:text-white transition">
+                    Spacetime Encoding/Decoding Body
                   </a>
                 </li>
               </ul>
@@ -367,6 +372,11 @@ export default function ContactEn() {
                 <li>
                   <a href={`/${language}#solutions`} className="text-gray-400 hover:text-white transition">
                     FinTech Solutions
+                  </a>
+                </li>
+                <li>
+                  <a href={`/${language}#solutions`} className="text-gray-400 hover:text-white transition">
+                    Smart Finance
                   </a>
                 </li>
               </ul>
