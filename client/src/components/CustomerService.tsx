@@ -363,7 +363,7 @@ export default function CustomerService() {
               >
                 <div>
                   <h3 className="font-bold text-lg">
-                    {language === "zh" ? "AI 紫星" : "AI Zixing"}
+                    {language === "zh" ? "AI 紫星" : "AI UVS"}
                   </h3>
                   <p className="text-sm text-purple-100">
                     {language === "zh"
