@@ -18,7 +18,7 @@ describe('Email Service', () => {
       consultationType: 'AI 应用咨询',
       appointmentDate: '2026-02-15',
       appointmentTime: '14:00',
-      phone: '+86 15193876647',
+      phone: '+86 1519387647',
     };
 
     try {

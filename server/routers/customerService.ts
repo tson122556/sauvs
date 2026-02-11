@@ -37,7 +37,7 @@ export const customerServiceRouter = router({
 公司信息：
 - 公司名称：极紫星智慧科技有限公司（UVS Smart Technology）
 - 地址：中国香港特别行政区沙田区科技大道东8号
-- 电话：+86 15193876647
+- 电话：+86 1519387647
 - 邮箱：satifuxie@gmail.com
 
 主要产品：
@@ -60,7 +60,7 @@ export const customerServiceRouter = router({
 Company Information:
 - Company Name: UVS Smart Technology Co., Ltd.
 - Address: 8 Science and Technology Avenue East, Shatin District, Hong Kong SAR, China
-- Phone: +86 15193876647
+- Phone: +86 1519387647
 - Email: satifuxie@gmail.com
 
 Main Products:
@@ -145,7 +145,7 @@ Please answer user questions in a friendly and professional tone. If the user as
               合作: "我们欢迎合作伙伴。请告诉我们您的合作需求，我们会尽快与您联系。",
               技术: "我们的技术团队可以帮助您解决技术问题。请描述您遇到的具体问题。",
               地址: "我们的地址是：中国香港特别行政区沙田区科技大道东8号。",
-              电话: "您可以拨打 +86 15193876647 联系我们。",
+              电话: "您可以拨打 +86 1519387647 联系我们。",
               邮箱: "您可以发送邮件至 satifuxie@gmail.com 联系我们。",
             }
           : {
@@ -162,7 +162,7 @@ Please answer user questions in a friendly and professional tone. If the user as
                 "Our technical team can help you solve technical problems. Please describe the specific problem you encountered.",
               address:
                 "Our address is: 8 Science and Technology Avenue East, Shatin District, Hong Kong SAR, China.",
-              phone: "You can call +86 15193876647 to contact us.",
+              phone: "You can call +86 1519387647 to contact us.",
               email: "You can send an email to satifuxie@gmail.com to contact us.",
             };
 

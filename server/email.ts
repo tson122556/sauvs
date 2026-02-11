@@ -55,7 +55,7 @@ export async function sendAppointmentConfirmationEmail(data: AppointmentEmailDat
         <div style="background: #f0f4ff; padding: 15px; border-radius: 4px; margin: 20px 0;">
           <p style="margin: 0; color: #667eea; font-size: 14px;">
             <strong>联系方式：</strong><br>
-            电话：+86 15193876647<br>
+            电话：+86 1519387647<br>
             邮箱：contact@jizixing.com
           </p>
         </div>
