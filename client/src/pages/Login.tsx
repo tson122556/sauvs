@@ -2,12 +2,13 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Mail, Lock, Eye, EyeOff, ArrowRight, AlertCircle, Globe } from "lucide-react";
+import { Mail, Lock, Eye, EyeOff, ArrowRight, AlertCircle, Globe, Shield } from "lucide-react";
 import { GoogleIcon, MicrosoftIcon, AppleIcon, WeChatIcon, InstagramIcon } from "@/components/SocialIcons";
 import { useLocation } from "wouter";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { getLoginUrl } from "@/const";
+import { trpc } from "@/lib/trpc";
 import { 
   detectRegion, 
   detectRedirect, 
@@ -34,39 +35,91 @@ export default function Login() {
   const [isCheckingGeo, setIsCheckingGeo] = useState(true);
   const [redirectDetected, setRedirectDetected] = useState(false);
   const [loginMethod, setLoginMethod] = useState<'oauth' | 'local'>('oauth');
+  const [securityStatus, setSecurityStatus] = useState<'checking' | 'safe' | 'warning'>('checking');
+
+  // 从服务器端获取安全信息
+  const { data: safetyData } = trpc.secureLogin.verifyLoginPageSafety.useQuery(
+    {
+      referer: document.referrer,
+      currentUrl: typeof window !== 'undefined' ? window.location.href : '',
+    },
+    {
+      enabled: typeof window !== 'undefined',
+      retry: 1,
+    }
+  );
+
+  const { data: regionData } = trpc.secureLogin.detectRegion.useQuery(
+    {
+      userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : '',
+    },
+    {
+      enabled: typeof navigator !== 'undefined',
+      retry: 1,
+    }
+  );
 
   // 初始化：检测地域和重定向
   useEffect(() => {
     const initializeLogin = async () => {
       try {
-        // 检查登录页面是否安全
-        const isSafe = await isLoginPageSafe();
-        if (!isSafe) {
+        // 检查服务器端的安全性验证结果
+        if (safetyData && !safetyData.isSafe) {
+          console.warn('[Security] Login page safety check failed:', safetyData.message);
           setRedirectDetected(true);
+          setSecurityStatus('warning');
           preventRedirect();
+        } else if (safetyData) {
+          setSecurityStatus('safe');
+        } else {
+          // 如果服务器端检查失败，使用客户端检查
+          const isSafe = await isLoginPageSafe();
+          if (!isSafe) {
+            setRedirectDetected(true);
+            setSecurityStatus('warning');
+            preventRedirect();
+          } else {
+            setSecurityStatus('safe');
+          }
         }
 
-        // 获取地域信息
-        let geoResult = getStoredGeoResult();
-        if (!geoResult) {
-          geoResult = await detectRegion();
+        // 处理地域信息
+        if (regionData) {
+          const geoResult: GeoDetectionResult = {
+            region: regionData.region as Region,
+            confidence: 0.95,
+          };
+          
+          setGeoData(geoResult);
           storeGeoResult(geoResult);
-        }
-        setGeoData(geoResult);
+          
+          // 如果是中国大陆用户，默认使用本地登录
+          if (geoResult.region === 'mainland') {
+            setLoginMethod('local');
+          }
+        } else {
+          // 如果服务器端检查失败，使用客户端检查
+          let geoResult = getStoredGeoResult();
+          if (!geoResult) {
+            geoResult = await detectRegion();
+            storeGeoResult(geoResult);
+          }
+          setGeoData(geoResult);
 
-        // 如果是中国大陆用户，默认使用本地登录
-        if (geoResult.region === 'mainland') {
-          setLoginMethod('local');
+          // 如果是中国大陆用户，默认使用本地登录
+          if (geoResult.region === 'mainland') {
+            setLoginMethod('local');
+          }
         }
       } catch (error) {
-        console.error('初始化登录失败:', error);
+        console.error('Login initialization failed:', error);
       } finally {
         setIsCheckingGeo(false);
       }
     };
 
     initializeLogin();
-  }, []);
+  }, [safetyData, regionData]);
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
@@ -94,14 +147,8 @@ export default function Login() {
     try {
       // 模拟登录请求
       await new Promise((resolve) => setTimeout(resolve, 1500));
-
-      // 实际应用中应该调用登录 API
-      // 这里模拟登录成功后跳转到对话页面
-      setLocation("/zh/uvs-ai-chat");
-    } catch (error) {
-      setErrors({
-        submit: language === "zh" ? "登录失败，请稍后重试" : "Login failed, please try again",
-      });
+      // 实际应该调用登录 API
+      setLocation("/zh");
     } finally {
       setIsLoading(false);
     }
@@ -160,8 +207,6 @@ export default function Login() {
     );
   }
 
-
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center p-4">
       {/* 背景装饰 */}
@@ -193,34 +238,47 @@ export default function Login() {
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-4 p-4 bg-amber-500/20 border border-amber-500/50 rounded-lg flex items-start gap-3"
+            className="mb-4 p-4 bg-red-500/20 border border-red-500/50 rounded-lg flex items-start gap-3"
           >
-            <AlertCircle size={20} className="text-amber-400 flex-shrink-0 mt-0.5" />
-            <div className="text-sm text-amber-400">
+            <Shield size={20} className="text-red-400 flex-shrink-0 mt-0.5" />
+            <div className="text-sm text-red-400">
               {language === "zh"
-                ? "检测到异常重定向。我们已为您恢复安全的登录页面。"
-                : "Suspicious redirect detected. We've restored a safe login page for you."}
+                ? "⚠️ 检测到异常重定向！我们已为您恢复安全的登录页面。如果您继续遇到问题，请联系技术支持。"
+                : "⚠️ Suspicious redirect detected! We've restored a safe login page for you. If you continue to experience issues, please contact technical support."}
             </div>
           </motion.div>
         )}
 
-        {/* 地域信息 */}
+        {/* 地域信息和安全状态 */}
         {geoData && (
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-4 p-3 bg-slate-800/50 border border-purple-500/20 rounded-lg flex items-center gap-2 text-sm text-gray-400"
+            className="mb-4 space-y-2"
           >
-            <Globe size={16} className="text-purple-400" />
-            <span>
-              {language === "zh" ? "检测位置：" : "Location: "}
-              <span className="text-purple-400 font-medium">{getRegionLabel(geoData.region)}</span>
-              {geoData.confidence > 0 && (
-                <span className="text-gray-500 ml-1">
-                  ({Math.round(geoData.confidence * 100)}%)
+            {/* 地域信息 */}
+            <div className="p-3 bg-slate-800/50 border border-purple-500/20 rounded-lg flex items-center gap-2 text-sm text-gray-400">
+              <Globe size={16} className="text-purple-400" />
+              <span>
+                {language === "zh" ? "检测位置：" : "Location: "}
+                <span className="text-purple-400 font-medium">{getRegionLabel(geoData.region)}</span>
+                {geoData.confidence > 0 && (
+                  <span className="text-gray-500 ml-1">
+                    ({Math.round(geoData.confidence * 100)}%)
+                  </span>
+                )}
+              </span>
+            </div>
+            
+            {/* 安全状态 */}
+            {!redirectDetected && (
+              <div className="p-3 bg-green-500/10 border border-green-500/30 rounded-lg flex items-center gap-2 text-sm text-green-400">
+                <Shield size={16} className="text-green-400" />
+                <span>
+                  {language === "zh" ? "✓ 登录页面已验证安全" : "✓ Login page verified as secure"}
                 </span>
-              )}
-            </span>
+              </div>
+            )}
           </motion.div>
         )}
 
@@ -265,213 +323,161 @@ export default function Login() {
 
           {/* 表单 */}
           <form onSubmit={handleSubmit} className="space-y-4">
-            {/* 邮箱 */}
+            {/* 邮箱输入 */}
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">
-                {language === "zh" ? "邮箱地址" : "Email Address"}
+                {language === "zh" ? "邮箱" : "Email"}
               </label>
               <div className="relative">
-                <Mail className="absolute left-3 top-3 text-gray-500" size={18} />
+                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" size={18} />
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder={language === "zh" ? "输入邮箱" : "Enter email"}
-                  className={`w-full bg-slate-800/50 border rounded-lg pl-10 pr-4 py-2.5 text-white placeholder-gray-500 focus:outline-none transition ${
-                    errors.email
-                      ? "border-red-500 focus:border-red-500"
-                      : "border-purple-500/20 focus:border-purple-500"
-                  }`}
+                  placeholder={language === "zh" ? "输入您的邮箱" : "Enter your email"}
+                  className="w-full pl-10 pr-4 py-2.5 bg-slate-800/50 border border-purple-500/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition"
                 />
               </div>
-              {errors.email && (
-                <p className="text-red-400 text-sm mt-1">{errors.email}</p>
-              )}
+              {errors.email && <p className="text-red-400 text-sm mt-1">{errors.email}</p>}
             </div>
 
-            {/* 密码 */}
+            {/* 密码输入 */}
             <div>
-              <div className="flex items-center justify-between mb-2">
-                <label className="block text-sm font-medium text-gray-300">
-                  {language === "zh" ? "密码" : "Password"}
-                </label>
-                <button
-                  type="button"
-                  onClick={() => setLocation("/zh/forgot-password")}
-                  className="text-purple-400 hover:text-purple-300 text-sm transition"
-                >
-                  {language === "zh" ? "忘记密码？" : "Forgot password?"}
-                </button>
-              </div>
+              <label className="block text-sm font-medium text-gray-300 mb-2">
+                {language === "zh" ? "密码" : "Password"}
+              </label>
               <div className="relative">
-                <Lock className="absolute left-3 top-3 text-gray-500" size={18} />
+                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" size={18} />
                 <input
                   type={showPassword ? "text" : "password"}
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
-                  placeholder={language === "zh" ? "输入密码" : "Enter password"}
-                  className={`w-full bg-slate-800/50 border rounded-lg pl-10 pr-10 py-2.5 text-white placeholder-gray-500 focus:outline-none transition ${
-                    errors.password
-                      ? "border-red-500 focus:border-red-500"
-                      : "border-purple-500/20 focus:border-purple-500"
-                  }`}
+                  placeholder={language === "zh" ? "输入您的密码" : "Enter your password"}
+                  className="w-full pl-10 pr-10 py-2.5 bg-slate-800/50 border border-purple-500/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-3 text-gray-500 hover:text-gray-300 transition"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-300 transition"
                 >
                   {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
               </div>
-              {errors.password && (
-                <p className="text-red-400 text-sm mt-1">{errors.password}</p>
-              )}
+              {errors.password && <p className="text-red-400 text-sm mt-1">{errors.password}</p>}
             </div>
 
-            {/* 记住我 */}
-            <div className="flex items-center">
-              <input
-                type="checkbox"
-                id="rememberMe"
-                name="rememberMe"
-                checked={formData.rememberMe}
-                onChange={handleChange}
-                className="w-4 h-4 rounded border-purple-500/20 bg-slate-800/50 text-purple-600 focus:ring-purple-500 cursor-pointer"
-              />
-              <label htmlFor="rememberMe" className="ml-2 text-sm text-gray-400 cursor-pointer">
+            {/* 记住我和忘记密码 */}
+            <div className="flex items-center justify-between text-sm">
+              <label className="flex items-center gap-2 text-gray-400 hover:text-gray-300 cursor-pointer">
+                <input
+                  type="checkbox"
+                  name="rememberMe"
+                  checked={formData.rememberMe}
+                  onChange={handleChange}
+                  className="w-4 h-4 rounded border-purple-500/20 bg-slate-800/50"
+                />
                 {language === "zh" ? "记住我" : "Remember me"}
               </label>
+              <a href="#" className="text-purple-400 hover:text-purple-300 transition">
+                {language === "zh" ? "忘记密码？" : "Forgot password?"}
+              </a>
             </div>
-
-            {/* 提交错误 */}
-            {errors.submit && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="p-4 bg-red-500/20 border border-red-500/50 rounded-lg text-red-400 text-sm text-center"
-              >
-                {errors.submit}
-              </motion.div>
-            )}
 
             {/* 登录按钮 */}
             <Button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 disabled:opacity-50 py-2.5 font-medium"
+              className="w-full bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white font-medium py-2.5 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
-              {isLoading
-                ? language === "zh"
-                  ? "登录中..."
-                  : "Signing in..."
-                : language === "zh"
-                ? "登录"
-                : "Sign In"}
+              {isLoading ? (
+                <>
+                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  {language === "zh" ? "登录中..." : "Signing in..."}
+                </>
+              ) : (
+                <>
+                  {language === "zh" ? "登录" : "Sign in"}
+                  <ArrowRight size={18} />
+                </>
+              )}
             </Button>
-
-            {/* 分割线 */}
-            <div className="relative py-4">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-slate-700" />
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-slate-900/50 text-gray-500">
-                  {language === "zh" ? "或" : "Or"}
-                </span>
-              </div>
-            </div>
-
-            {/* 第三方登录 - 仅在 OAuth 模式显示 */}
-            {loginMethod === 'oauth' && (
-              <div className="space-y-2">
-                {/* Google 登录 */}
-                <Button
-                  type="button"
-                  variant="outline"
-                  className="w-full flex items-center justify-center gap-2 py-2.5"
-                >
-                  <GoogleIcon size={18} />
-                  {language === "zh" ? "使用 Google 登录" : "Sign in with Google"}
-                </Button>
-
-                {/* Microsoft 登录 */}
-                <Button
-                  type="button"
-                  variant="outline"
-                  className="w-full flex items-center justify-center gap-2 py-2.5"
-                >
-                  <MicrosoftIcon size={18} />
-                  {language === "zh" ? "使用 Microsoft 登录" : "Sign in with Microsoft"}
-                </Button>
-
-                {/* Apple 登录 */}
-                <Button
-                  type="button"
-                  variant="outline"
-                  className="w-full flex items-center justify-center gap-2 py-2.5"
-                >
-                  <AppleIcon size={18} />
-                  {language === "zh" ? "使用 Apple 登录" : "Sign in with Apple"}
-                </Button>
-
-                {/* 微信登录 - 仅在中国大陆显示 */}
-                {geoData?.region === 'mainland' && (
-                  <Button
-                    type="button"
-                    variant="outline"
-                    className="w-full flex items-center justify-center gap-2 py-2.5"
-                  >
-                    <WeChatIcon size={18} />
-                    {language === "zh" ? "使用微信登录" : "Sign in with WeChat"}
-                  </Button>
-                )}
-
-                {/* Instagram 登录 */}
-                <Button
-                  type="button"
-                  variant="outline"
-                  className="w-full flex items-center justify-center gap-2 py-2.5"
-                >
-                  <InstagramIcon size={18} />
-                  {language === "zh" ? "使用 Instagram 登录" : "Sign in with Instagram"}
-                </Button>
-              </div>
-            )}
-
-            {/* 注册链接 */}
-            <div className="text-center pt-4 border-t border-slate-700">
-              <p className="text-gray-400 text-sm">
-                {language === "zh" ? "还没有账户？" : "Don't have an account?"}{" "}
-                <button
-                  type="button"
-                  onClick={() => setLocation("/zh/register")}
-                  className="text-purple-400 hover:text-purple-300 transition font-medium"
-                >
-                  {language === "zh" ? "立即注册" : "Sign Up"}
-                </button>
-              </p>
-            </div>
           </form>
-        </Card>
 
-        {/* 底部提示 */}
-        <div className="mt-6 space-y-2 text-center text-gray-500 text-xs">
-          <p>
-            {language === "zh"
-              ? "登录即表示您同意我们的服务条款和隐私政策"
-              : "By signing in, you agree to our Terms of Service and Privacy Policy"}
-          </p>
-          {geoData?.region === 'mainland' && (
-            <p className="text-purple-400/70">
-              {language === "zh"
-                ? "✓ 为中国大陆用户优化，支持本地登录"
-                : "✓ Optimized for mainland China users with local login support"}
-            </p>
+          {/* 第三方登录 - 仅在 OAuth 模式显示 */}
+          {loginMethod === 'oauth' && (
+            <div className="space-y-2">
+              {/* Google 登录 */}
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full flex items-center justify-center gap-2 py-2.5"
+              >
+                <GoogleIcon size={18} />
+                {language === "zh" ? "使用 Google 登录" : "Sign in with Google"}
+              </Button>
+
+              {/* Microsoft 登录 */}
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full flex items-center justify-center gap-2 py-2.5"
+              >
+                <MicrosoftIcon size={18} />
+                {language === "zh" ? "使用 Microsoft 登录" : "Sign in with Microsoft"}
+              </Button>
+
+              {/* Apple 登录 */}
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full flex items-center justify-center gap-2 py-2.5"
+              >
+                <AppleIcon size={18} />
+                {language === "zh" ? "使用 Apple 登录" : "Sign in with Apple"}
+              </Button>
+
+              {/* 微信登录 - 仅在中国大陆显示 */}
+              {geoData?.region === 'mainland' && (
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="w-full flex items-center justify-center gap-2 py-2.5"
+                >
+                  <WeChatIcon size={18} />
+                  {language === "zh" ? "使用微信登录" : "Sign in with WeChat"}
+                </Button>
+              )}
+
+              {/* Instagram 登录 */}
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full flex items-center justify-center gap-2 py-2.5"
+              >
+                <InstagramIcon size={18} />
+                {language === "zh" ? "使用 Instagram 登录" : "Sign in with Instagram"}
+              </Button>
+            </div>
           )}
-        </div>
+
+          {/* 底部提示 */}
+          <div className="mt-6 space-y-2 text-center text-gray-500 text-xs">
+            <p>
+              {language === "zh"
+                ? "登录即表示您同意我们的服务条款和隐私政策"
+                : "By signing in, you agree to our Terms of Service and Privacy Policy"}
+            </p>
+            {geoData?.region === 'mainland' && (
+              <p className="text-purple-400/70">
+                {language === "zh"
+                  ? "✓ 为中国大陆用户优化，支持本地登录"
+                  : "✓ Optimized for mainland China users with local login support"}
+              </p>
+            )}
+          </div>
+        </Card>
       </motion.div>
     </div>
   );

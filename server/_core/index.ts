@@ -7,6 +7,11 @@ import { registerOAuthRoutes } from "./oauth";
 import { appRouter } from "../routers";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
+import { 
+  redirectProtectionMiddleware, 
+  loginPageProtectionMiddleware,
+  securityHeadersMiddleware 
+} from "./redirectProtection";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -33,6 +38,12 @@ async function startServer() {
   // Configure body parser with larger size limit for file uploads
   app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
+  
+  // 安全中间件：防护重定向和添加安全头部
+  app.use(securityHeadersMiddleware());
+  app.use(redirectProtectionMiddleware());
+  app.use(loginPageProtectionMiddleware());
+  
   // OAuth callback under /api/oauth/callback
   registerOAuthRoutes(app);
   // tRPC API
