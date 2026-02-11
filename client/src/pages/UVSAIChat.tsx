@@ -1,16 +1,13 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Send, Plus, Trash2, Menu, X, Settings, LogOut, Zap, Copy, Check } from "lucide-react";
+import { Send, Plus, Trash2, Menu, X, Settings, LogOut, Zap, Copy, Check, Sparkles } from "lucide-react";
 import { useLocation } from "wouter";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
-import { SuggestedQuestions, generateSuggestedQuestions } from "@/components/SuggestedQuestions";
-import { ModelCompetition, type CompetingModel } from "@/components/ModelCompetition";
-import { ModelComparison, type ModelResponse } from "@/components/ModelComparison";
-import { ModelSelectionInfo, MessageModelInfo, type ModelSelectionDetails } from "@/components/ModelSelectionInfo";
+import { useState, useRef, useEffect } from "react";
 
 interface Message {
   id?: number;
@@ -24,8 +21,6 @@ interface Message {
   metadata?: Record<string, any>;
   modelSelectionReason?: string;
   responseTime?: number;
-  alternativeResponses?: ModelResponse[];
-  selectionDetails?: ModelSelectionDetails;
 }
 
 interface Conversation {
@@ -39,86 +34,133 @@ interface Conversation {
 }
 
 const MODELS = {
-  "gpt-4": { name: "GPT-4", color: "from-green-500 to-green-600" },
-  "claude": { name: "Claude", color: "from-amber-500 to-amber-600" },
-  "grok": { name: "Grok", color: "from-purple-500 to-purple-600" },
-  "gemini": { name: "Gemini", color: "from-blue-500 to-blue-600" },
-  "kimi": { name: "Kimi", color: "from-indigo-500 to-indigo-600" },
-  "deepseek": { name: "DeepSeek", color: "from-orange-500 to-orange-600" },
+  "gpt-4": { name: "GPT-4", color: "from-green-500 to-green-600", icon: "🟢" },
+  "claude": { name: "Claude", color: "from-amber-500 to-amber-600", icon: "🟡" },
+  "grok": { name: "Grok", color: "from-purple-500 to-purple-600", icon: "🟣" },
+  "gemini": { name: "Gemini", color: "from-blue-500 to-blue-600", icon: "🔵" },
+  "kimi": { name: "Kimi", color: "from-indigo-500 to-indigo-600", icon: "🟦" },
+  "deepseek": { name: "DeepSeek", color: "from-orange-500 to-orange-600", icon: "🟠" },
 };
 
-// 优化的多模态模型选择算法
-function getOptimalModel(input: string): string {
-  // 代码和编程 - GPT-4
-  const codePatterns = [/```/, /function|class|def|const|let|var|import|export/, /=>|async|await|try|catch/i];
+// 增强的多模态模型选择算法，支持评分和权重
+function analyzeAndSelectModel(input: string): { model: string; reason: string; confidence: number; alternatives: Array<{model: string; score: number}> } {
+  const scores: Record<string, number> = {
+    "gpt-4": 0,
+    "claude": 0,
+    "grok": 0,
+    "gemini": 0,
+    "kimi": 0,
+    "deepseek": 0,
+  };
+
+  // 代码和编程 - GPT-4 (权重: 10)
+  const codePatterns = [/```/, /function|class|def|const|let|var|import|export|function/, /=>|async|await|try|catch|if|else|for|while/i, /python|javascript|java|c\+\+|typescript|rust|go|php|ruby/i];
   if (codePatterns.some((p) => p.test(input))) {
-    return "gpt-4";
+    scores["gpt-4"] += 10;
   }
 
-  // 多模态内容 - Gemini (图片、视频、设计)
+  // 多模态内容 - Gemini (权重: 9)
   const imagePatterns = [
-    /image|photo|picture|visual|diagram|chart|graph|design|ui|ux|screenshot|icon|logo/i,
-    /pixel|resolution|dpi|rgba|color|hue|saturation|brightness/i,
+    /image|photo|picture|visual|diagram|chart|graph|design|ui|ux|screenshot|icon|logo|illustration|artwork/i,
+    /pixel|resolution|dpi|rgba|color|hue|saturation|brightness|filter|effect/i,
   ];
   const videoPatterns = [
-    /video|movie|film|animation|streaming|frame|fps|codec|subtitle/i,
-    /youtube|vimeo|mp4|webm|avi|mov|mkv|edit|cut|trim|transition|effect|render/i,
+    /video|movie|film|animation|streaming|frame|fps|codec|subtitle|caption/i,
+    /youtube|vimeo|mp4|webm|avi|mov|mkv|edit|cut|trim|transition|effect|render|premiere|after effects/i,
   ];
   if (imagePatterns.some((p) => p.test(input)) || videoPatterns.some((p) => p.test(input))) {
-    return "gemini";
+    scores["gemini"] += 9;
   }
 
-  // 实时信息 - Grok
+  // 实时信息 - Grok (权重: 8)
   const realtimePatterns = [
-    /news|current|today|latest|real-time|trending|recent|breaking|update/i,
-    /weather|stock|price|market|rate|exchange|live|happening|now|this week/i,
+    /news|current|today|latest|real-time|trending|recent|breaking|update|happening|live|now/i,
+    /weather|stock|price|market|rate|exchange|crypto|bitcoin|ethereum|sports|politics|election/i,
   ];
   if (realtimePatterns.some((p) => p.test(input))) {
-    return "grok";
+    scores["grok"] += 8;
   }
 
-  // 长上下文 - Kimi
+  // 长上下文和文档分析 - Kimi (权重: 7)
   const longContextPatterns = [
-    /long|context|memory|remember|previous|history|conversation|thread/i,
-    /summarize|recap|review|reference|mention|earlier|before|book|novel|document|file|transcript/i,
+    /long|context|memory|remember|previous|history|conversation|thread|summarize|recap/i,
+    /review|reference|mention|earlier|before|book|novel|document|file|transcript|pdf|article/i,
   ];
   if (longContextPatterns.some((p) => p.test(input))) {
-    return "kimi";
+    scores["kimi"] += 7;
   }
 
-  // 推理和问题解决 - DeepSeek
+  // 推理和问题解决 - DeepSeek (权重: 8)
   const reasoningPatterns = [
-    /reason|logic|solve|problem|complex|think|debug|error|troubleshoot/i,
-    /step|process|method|approach|strategy|plan|algorithm/i,
+    /reason|logic|solve|problem|complex|think|debug|error|troubleshoot|why|how|explain/i,
+    /step|process|method|approach|strategy|plan|algorithm|proof|theorem|mathematical/i,
   ];
   if (reasoningPatterns.some((p) => p.test(input))) {
-    return "deepseek";
+    scores["deepseek"] += 8;
   }
 
-  // 数据分析 - DeepSeek
+  // 数据分析 - DeepSeek (权重: 7)
   const dataPatterns = [
-    /data|analysis|statistics|metric|trend|pattern|insight|correlation/i,
-    /table|spreadsheet|database|query|sql|aggregate|group|sort|visualization|histogram|scatter/i,
+    /data|analysis|statistics|metric|trend|pattern|insight|correlation|regression|cluster/i,
+    /table|spreadsheet|database|query|sql|aggregate|group|sort|visualization|histogram|scatter|plot/i,
   ];
   if (dataPatterns.some((p) => p.test(input))) {
-    return "deepseek";
+    scores["deepseek"] += 7;
   }
 
-  // 文本分析和学术 - Claude
+  // 文本分析和学术 - Claude (权重: 8)
   const textPatterns = [
-    /analyze|summary|document|article|research|academic|paper|essay|report/i,
-    /grammar|spelling|punctuation|style|tone|sentiment|emotion|writing/i,
-    /translate|language|linguistic|semantic/i,
+    /analyze|summary|document|article|research|academic|paper|essay|report|writing|content/i,
+    /grammar|spelling|punctuation|style|tone|sentiment|emotion|writing|prose|poetry|literature/i,
+    /translate|language|linguistic|semantic|etymology|phonetic/i,
   ];
   if (textPatterns.some((p) => p.test(input))) {
-    return "claude";
+    scores["claude"] += 8;
   }
 
-  // 默认使用 GPT-4
-  return "gpt-4";
-}
+  // 创意和故事 - Claude (权重: 7)
+  const creativePatterns = [
+    /story|fiction|creative|imagine|write|compose|poem|song|dialogue|character|plot/i,
+    /brainstorm|idea|concept|design|brand|marketing|campaign|slogan|tagline/i,
+  ];
+  if (creativePatterns.some((p) => p.test(input))) {
+    scores["claude"] += 7;
+  }
 
-import { useState, useRef, useEffect } from "react";
+  // 计算总分并排序
+  const sortedModels = Object.entries(scores)
+    .map(([model, score]) => ({ model, score }))
+    .sort((a, b) => b.score - a.score);
+
+  const topModel = sortedModels[0];
+  const maxScore = Math.max(...Object.values(scores));
+  const confidence = maxScore > 0 ? Math.min(100, (maxScore / 10) * 100) : 50;
+
+  // 确定选择原因
+  let reason = "Default model";
+  if (topModel.score > 0) {
+    if (topModel.model === "gpt-4" && scores["gpt-4"] > 0) {
+      reason = "Optimized for code and programming";
+    } else if (topModel.model === "gemini" && scores["gemini"] > 0) {
+      reason = "Best for multimodal content (images, videos)";
+    } else if (topModel.model === "grok" && scores["grok"] > 0) {
+      reason = "Real-time information specialist";
+    } else if (topModel.model === "kimi" && scores["kimi"] > 0) {
+      reason = "Long context and document analysis";
+    } else if (topModel.model === "deepseek" && scores["deepseek"] > 0) {
+      reason = "Complex reasoning and data analysis";
+    } else if (topModel.model === "claude" && scores["claude"] > 0) {
+      reason = "Text analysis and creative writing";
+    }
+  }
+
+  return {
+    model: topModel.model || "gpt-4",
+    reason,
+    confidence,
+    alternatives: sortedModels.slice(1, 3),
+  };
+}
 
 export default function UVSAIChat() {
   const { language } = useLanguage();
@@ -134,12 +176,9 @@ export default function UVSAIChat() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [suggestedQuestions, setSuggestedQuestions] = useState<string[]>([]);
-  const [selectedContentType, setSelectedContentType] = useState<"text" | "image" | "video" | "code" | "analysis" | null>(null);
-  const [showModelCompetition, setShowModelCompetition] = useState(false);
-  const [showModelComparison, setShowModelComparison] = useState(false);
-  const [competingModels, setCompetingModels] = useState<CompetingModel[]>([]);
-  const [modelResponses, setModelResponses] = useState<ModelResponse[]>([]);
-  const [selectedModelSelection, setSelectedModelSelection] = useState<ModelSelectionDetails | null>(null);
+  const [selectedModel, setSelectedModel] = useState<string>("gpt-4");
+  const [predictedModel, setPredictedModel] = useState<{model: string; reason: string; confidence: number} | null>(null);
+  const [autoSelectMode, setAutoSelectMode] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // tRPC 调用
@@ -168,20 +207,32 @@ export default function UVSAIChat() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
+  // 实时模型预测
+  useEffect(() => {
+    if (autoSelectMode && inputValue.trim()) {
+      const prediction = analyzeAndSelectModel(inputValue);
+      setPredictedModel(prediction);
+    } else {
+      setPredictedModel(null);
+    }
+  }, [inputValue, autoSelectMode]);
+
   // 创建新对话
   const handleNewConversation = async () => {
     const title = language === "zh" ? "新对话" : "New Conversation";
-    const model = "gpt-4";
-
-    setCurrentConversation({
+    const newConversation: Conversation = {
       id: Date.now(),
       title,
-      model,
+      model: "gpt-4",
       messageCount: 0,
-    });
+    };
+    setCurrentConversation(newConversation);
+    setConversations([newConversation]);
     setMessages([]);
     setInputValue("");
     setSuggestedQuestions([]);
+    setSelectedModel("gpt-4");
+    setPredictedModel(null);
   };
 
   // 发送消息
@@ -211,12 +262,14 @@ export default function UVSAIChat() {
     setMessages((prev) => [...prev, userMessage]);
     const messageContent = inputValue;
     setInputValue("");
+    setPredictedModel(null);
     setIsLoading(true);
 
     try {
-      // 使用用户选择的模型，或自动选择
-      const selectedModel = conversation.model || getOptimalModel(messageContent);
-      const updatedConversation = { ...conversation, model: selectedModel };
+      // 使用自动选择或用户手动选择的模型
+      const finalModel = autoSelectMode ? (predictedModel?.model || selectedModel) : selectedModel;
+      
+      const updatedConversation = { ...conversation, model: finalModel };
       setCurrentConversation(updatedConversation);
       setConversations((prev) => 
         prev.map((c) => c.id === conversation.id ? updatedConversation : c)
@@ -226,16 +279,16 @@ export default function UVSAIChat() {
       const response = await sendMessageMutation.mutateAsync({
         message: messageContent,
         conversationHistory: messages.map(m => ({ role: m.role, content: m.content })),
-        selectedModel: selectedModel as any,
-        autoSelectMode: !conversation.model,
+        selectedModel: finalModel as any,
+        autoSelectMode,
       });
 
-      const modelName = MODELS[selectedModel as keyof typeof MODELS]?.name || selectedModel;
+      const modelName = MODELS[finalModel as keyof typeof MODELS]?.name || finalModel;
       const assistantMessage: Message = {
         role: "assistant",
         content: response.response,
         timestamp: new Date(),
-        model: selectedModel,
+        model: finalModel,
         contentType: (response.contentType === "file" ? "text" : response.contentType) as "text" | "image" | "video" | "code" | "analysis" | undefined,
         modelSelectionReason: response.intentAnalysis?.reasoning || "Auto-selected",
       };
@@ -280,6 +333,15 @@ export default function UVSAIChat() {
     setMessages([]);
     setSuggestedQuestions([]);
   };
+
+  // 生成推荐追问（简化版）
+  function generateSuggestedQuestions(input: string, lang: "zh" | "en"): string[] {
+    if (lang === "zh") {
+      return ["能否详细解释？", "还有其他方法吗？", "如何应用到实际中？"];
+    } else {
+      return ["Can you explain in detail?", "Are there other approaches?", "How to apply in practice?"];
+    }
+  }
 
   if (!isAuthenticated) {
     return null;
@@ -407,9 +469,9 @@ export default function UVSAIChat() {
                   }`}
                 >
                   <div className="text-sm">{msg.content}</div>
-                  {msg.model && (
+                  {msg.model && msg.role === "assistant" && (
                     <div className="text-xs opacity-70 mt-2">
-                      {msg.role === "assistant" && `${MODELS[msg.model as keyof typeof MODELS]?.name || msg.model}`}
+                      {MODELS[msg.model as keyof typeof MODELS]?.icon} {MODELS[msg.model as keyof typeof MODELS]?.name || msg.model}
                     </div>
                   )}
                   {msg.role === "assistant" && (
@@ -472,8 +534,58 @@ export default function UVSAIChat() {
           </div>
         )}
 
-        {/* 输入区域 */}
-        <div className="border-t border-border p-4">
+        {/* 模型选择和输入区域 */}
+        <div className="border-t border-border p-4 space-y-3">
+          {/* 模型选择控制 */}
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setAutoSelectMode(!autoSelectMode)}
+              className={`px-3 py-1 rounded-lg text-xs font-medium transition ${
+                autoSelectMode
+                  ? "bg-purple-600 text-white"
+                  : "bg-card border border-border text-foreground"
+              }`}
+            >
+              <Sparkles className="w-3 h-3 inline mr-1" />
+              {language === "zh" ? "智能选择" : "Auto Select"}
+            </button>
+            
+            {/* 模型选择下拉 */}
+            {!autoSelectMode && (
+              <select
+                value={selectedModel}
+                onChange={(e) => setSelectedModel(e.target.value)}
+                className="px-3 py-1 rounded-lg text-xs bg-card border border-border text-foreground"
+              >
+                {Object.entries(MODELS).map(([key, model]) => (
+                  <option key={key} value={key}>{model.name}</option>
+                ))}
+              </select>
+            )}
+
+            {/* 预测模型显示 */}
+            {autoSelectMode && predictedModel && (
+              <div className="flex-1 flex items-center gap-2 px-3 py-1 rounded-lg bg-card border border-border">
+                <Sparkles className="w-3 h-3 text-yellow-500" />
+                <span className="text-xs">
+                  {language === "zh" ? "推荐: " : "Suggested: "}
+                  <strong>{MODELS[predictedModel.model as keyof typeof MODELS]?.name}</strong>
+                </span>
+                <span className="text-xs text-muted-foreground">
+                  ({Math.round(predictedModel.confidence)}%)
+                </span>
+              </div>
+            )}
+          </div>
+
+          {/* 模型选择原因提示 */}
+          {autoSelectMode && predictedModel && inputValue.trim() && (
+            <div className="text-xs text-muted-foreground px-3 py-2 rounded-lg bg-card/50 border border-border/50">
+              💡 {predictedModel.reason}
+            </div>
+          )}
+
+          {/* 输入框 */}
           <div className="flex gap-2">
             <input
               type="text"
