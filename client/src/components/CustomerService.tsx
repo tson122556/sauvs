@@ -14,10 +14,22 @@ interface Message {
   avatar?: string;
 }
 
+interface WindowSize {
+  width: number;
+  height: number;
+}
+
+const DEFAULT_SIZE: WindowSize = { width: 384, height: 384 };
+const MIN_SIZE: WindowSize = { width: 300, height: 300 };
+const MAX_SIZE: WindowSize = { width: 800, height: 600 };
+const STORAGE_KEY = "customer_service_window_size";
+
 export default function CustomerService() {
   const { language } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
+  const [windowSize, setWindowSize] = useState<WindowSize>(DEFAULT_SIZE);
+  const [isResizing, setIsResizing] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
@@ -33,9 +45,55 @@ export default function CustomerService() {
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const resizeRef = useRef<HTMLDivElement>(null);
+  const windowRef = useRef<HTMLDivElement>(null);
 
   // 调用 AI 客服 API
   const sendMessageMutation = trpc.customerService.sendMessage.useMutation();
+
+  // 从 localStorage 加载窗口大小
+  useEffect(() => {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      try {
+        const size = JSON.parse(saved);
+        setWindowSize(size);
+      } catch (e) {
+        console.error("Failed to load window size:", e);
+      }
+    }
+  }, []);
+
+  // 保存窗口大小到 localStorage
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(windowSize));
+  }, [windowSize]);
+
+  // 处理鼠标移动时的缩放
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!isResizing || !windowRef.current) return;
+
+      const rect = windowRef.current.getBoundingClientRect();
+      const newWidth = Math.max(MIN_SIZE.width, Math.min(MAX_SIZE.width, e.clientX - rect.left));
+      const newHeight = Math.max(MIN_SIZE.height, Math.min(MAX_SIZE.height, e.clientY - rect.top));
+
+      setWindowSize({ width: newWidth, height: newHeight });
+    };
+
+    const handleMouseUp = () => {
+      setIsResizing(false);
+    };
+
+    if (isResizing) {
+      document.addEventListener("mousemove", handleMouseMove);
+      document.addEventListener("mouseup", handleMouseUp);
+      return () => {
+        document.removeEventListener("mousemove", handleMouseMove);
+        document.removeEventListener("mouseup", handleMouseUp);
+      };
+    }
+  }, [isResizing]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -155,14 +213,20 @@ export default function CustomerService() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            ref={windowRef}
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="fixed bottom-8 right-8 z-50 w-96 max-w-[calc(100vw-32px)]"
+            className="fixed bottom-8 right-8 z-50"
+            style={{
+              width: `${windowSize.width}px`,
+              height: `${windowSize.height}px`,
+              cursor: isResizing ? "nwse-resize" : "default",
+            }}
           >
-            <Card className="bg-slate-900 border-purple-500/30 shadow-2xl flex flex-col h-96">
+            <Card className="bg-slate-900 border-purple-500/30 shadow-2xl flex flex-col h-full">
               {/* Header */}
-              <div className="bg-gradient-to-r from-purple-600 to-cyan-600 text-white p-4 flex items-center justify-between rounded-t-lg">
+              <div className="bg-gradient-to-r from-purple-600 to-cyan-600 text-white p-4 flex items-center justify-between rounded-t-lg flex-shrink-0">
                 <div>
                   <h3 className="font-bold text-lg">
                     {language === "zh" ? "AI 客服助手" : "AI Customer Service"}
@@ -265,7 +329,7 @@ export default function CustomerService() {
                   </div>
 
                   {/* Input */}
-                  <div className="border-t border-slate-700 p-4 flex gap-2">
+                  <div className="border-t border-slate-700 p-4 flex gap-2 flex-shrink-0">
                     <input
                       type="text"
                       value={inputValue}
@@ -294,6 +358,16 @@ export default function CustomerService() {
                   </div>
                 </>
               )}
+
+              {/* Resize Handle */}
+              <div
+                ref={resizeRef}
+                onMouseDown={() => setIsResizing(true)}
+                className="absolute bottom-0 right-0 w-6 h-6 cursor-nwse-resize hover:bg-purple-500/30 rounded-tl-lg transition"
+                title={language === "zh" ? "拖动调整窗口大小" : "Drag to resize"}
+              >
+                <div className="absolute bottom-1 right-1 w-4 h-4 border-r-2 border-b-2 border-purple-400 opacity-60" />
+              </div>
             </Card>
           </motion.div>
         )}
