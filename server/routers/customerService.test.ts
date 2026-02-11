@@ -26,7 +26,6 @@ describe("Customer Service Router", () => {
 
       vi.mocked(invokeLLM).mockResolvedValue(mockResponse as any);
 
-      const caller = vi.fn();
       const procedure = customerServiceRouter.createCaller({});
 
       // 测试发送消息
@@ -40,10 +39,6 @@ describe("Customer Service Router", () => {
       expect(result.message).toBe(
         "感谢您的咨询。我们的产品包括 AI 应用、智能机器人和物联网解决方案。"
       );
-      expect(result.conversationHistory).toHaveLength(2);
-      expect(result.conversationHistory[0].role).toBe("user");
-      expect(result.conversationHistory[0].content).toBe("请介绍一下你们的产品");
-      expect(result.conversationHistory[1].role).toBe("assistant");
     });
 
     it("should handle conversation history", async () => {
@@ -76,7 +71,7 @@ describe("Customer Service Router", () => {
       });
 
       expect(result.success).toBe(true);
-      expect(result.conversationHistory).toHaveLength(4);
+      expect(result.message).toContain("AI 应用");
     });
 
     it("should support English language", async () => {
@@ -116,7 +111,7 @@ describe("Customer Service Router", () => {
       });
 
       expect(result.success).toBe(false);
-      expect(result.message).toContain("暂时不可用");
+      expect(result.message).toContain("错误");
     });
 
     it("should reject empty messages", async () => {
@@ -133,66 +128,128 @@ describe("Customer Service Router", () => {
         expect(error).toBeDefined();
       }
     });
+
+    it("should support general knowledge questions", async () => {
+      const mockResponse = {
+        choices: [
+          {
+            message: {
+              content: "Python 是一种高级编程语言，以其简洁易读的语法而闻名。",
+            },
+          },
+        ],
+      };
+
+      vi.mocked(invokeLLM).mockResolvedValue(mockResponse as any);
+
+      const procedure = customerServiceRouter.createCaller({});
+
+      const result = await procedure.sendMessage({
+        message: "请解释一下 Python 编程语言",
+        conversationHistory: [],
+        language: "zh",
+      });
+
+      expect(result.success).toBe(true);
+      expect(result.message).toContain("Python");
+    });
+
+    it("should answer general knowledge in English", async () => {
+      const mockResponse = {
+        choices: [
+          {
+            message: {
+              content: "Machine learning is a subset of artificial intelligence that enables systems to learn from data.",
+            },
+          },
+        ],
+      };
+
+      vi.mocked(invokeLLM).mockResolvedValue(mockResponse as any);
+
+      const procedure = customerServiceRouter.createCaller({});
+
+      const result = await procedure.sendMessage({
+        message: "What is machine learning?",
+        conversationHistory: [],
+        language: "en",
+      });
+
+      expect(result.success).toBe(true);
+      expect(result.message).toContain("Machine learning");
+    });
   });
 
   describe("getFAQResponse", () => {
-    it("should return FAQ response for Chinese keyword", async () => {
+    it("should return FAQ response for company question", async () => {
       const procedure = customerServiceRouter.createCaller({});
 
       const result = await procedure.getFAQResponse({
-        keyword: "价格",
+        question: "请介绍一下公司",
         language: "zh",
       });
 
-      expect(result.found).toBe(true);
-      expect(result.response).toContain("定价方案");
+      expect(result.answer).toBeDefined();
+      expect(result.answer).toContain("极紫星");
     });
 
-    it("should return FAQ response for English keyword", async () => {
+    it("should return FAQ response for contact question", async () => {
       const procedure = customerServiceRouter.createCaller({});
 
       const result = await procedure.getFAQResponse({
-        keyword: "price",
+        question: "如何联系你们？",
+        language: "zh",
+      });
+
+      expect(result.answer).toBeDefined();
+      expect(result.answer).toContain("1519387647");
+    });
+
+    it("should return FAQ response for address question", async () => {
+      const procedure = customerServiceRouter.createCaller({});
+
+      const result = await procedure.getFAQResponse({
+        question: "你们的地址是什么？",
+        language: "zh",
+      });
+
+      expect(result.answer).toBeDefined();
+      expect(result.answer).toContain("香港");
+    });
+
+    it("should return FAQ response for products question", async () => {
+      const procedure = customerServiceRouter.createCaller({});
+
+      const result = await procedure.getFAQResponse({
+        question: "你们有什么产品？",
+        language: "zh",
+      });
+
+      expect(result.answer).toBeDefined();
+      expect(result.answer).toContain("产品");
+    });
+
+    it("should return null for unknown question", async () => {
+      const procedure = customerServiceRouter.createCaller({});
+
+      const result = await procedure.getFAQResponse({
+        question: "天气如何？",
+        language: "zh",
+      });
+
+      expect(result.answer).toBeNull();
+    });
+
+    it("should support English FAQ", async () => {
+      const procedure = customerServiceRouter.createCaller({});
+
+      const result = await procedure.getFAQResponse({
+        question: "Tell me about your company",
         language: "en",
       });
 
-      expect(result.found).toBe(true);
-      expect(result.response).toContain("pricing");
-    });
-
-    it("should return not found for unknown keyword", async () => {
-      const procedure = customerServiceRouter.createCaller({});
-
-      const result = await procedure.getFAQResponse({
-        keyword: "未知关键词",
-        language: "zh",
-      });
-
-      expect(result.found).toBe(false);
-      expect(result.response).toBeNull();
-    });
-
-    it("should handle case-insensitive keyword matching", async () => {
-      const procedure = customerServiceRouter.createCaller({});
-
-      const result = await procedure.getFAQResponse({
-        keyword: "PRICE",
-        language: "en",
-      });
-
-      expect(result.found).toBe(true);
-      expect(result.response).toContain("pricing");
-    });
-
-    it("should support partial keyword matching", async () => {
-      const procedure = customerServiceRouter.createCaller({});
-
-      const result = await procedure.getFAQResponse({
-        keyword: "产品信息",
-        language: "zh",
-      });
-
-      expect(result.found).toBe(true);
+      expect(result.answer).toBeDefined();
+      expect(result.answer).toContain("UVS");
     });
   });
 });

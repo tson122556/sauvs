@@ -717,3 +717,10 @@
 - [x] 将驱动说明改为"Powered by UVS Smart Engine"
 - [x] 将欢迎语改为"Hello! Welcome to UVS Smart Technology. I am AI VS. How can I help you?"
 - [x] 测试英文文案更新
+
+
+## 扩展 AI 智慧助手知识库范围（2026-02-11）
+- [x] 更新后端 AI 客服路由使用 GPT-4 通用知识库
+- [x] 更新前端客服组件提示词
+- [x] 测试通用知识库功能
+- [x] 验证公司问题仍能正确回答
