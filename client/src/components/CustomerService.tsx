@@ -19,6 +19,22 @@ interface WindowSize {
   height: number;
 }
 
+interface WindowPosition {
+  x: number;
+  y: number;
+}
+
+type ResizeDirection =
+  | "n"
+  | "s"
+  | "e"
+  | "w"
+  | "ne"
+  | "nw"
+  | "se"
+  | "sw"
+  | null;
+
 const DEFAULT_SIZE: WindowSize = { width: 384, height: 384 };
 const MIN_SIZE: WindowSize = { width: 300, height: 300 };
 const MAX_SIZE: WindowSize = { width: 800, height: 600 };
@@ -29,15 +45,19 @@ export default function CustomerService() {
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
   const [windowSize, setWindowSize] = useState<WindowSize>(DEFAULT_SIZE);
-  const [isResizing, setIsResizing] = useState(false);
+  const [windowPos, setWindowPos] = useState<WindowPosition>({
+    x: window.innerWidth - 400,
+    y: window.innerHeight - 450,
+  });
+  const [resizeDirection, setResizeDirection] = useState<ResizeDirection>(null);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
       type: "agent",
       content:
         language === "zh"
-          ? "您好！欢迎咨询极紫星智慧科技。我是 AI 客服助手，有什么可以帮助您的吗？"
-          : "Hello! Welcome to UVS Smart Technology. I am an AI customer service assistant. How can I help you?",
+          ? "您好！欢迎咨询极紫星智慧科技。我是 AI 紫星，有什么可以帮助您的吗？"
+          : "Hello! Welcome to UVS Smart Technology. I am AI Zixing. How can I help you?",
       timestamp: new Date(),
       avatar: "https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/uAJQYgErxzlvdMug.png",
     },
@@ -45,7 +65,6 @@ export default function CustomerService() {
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const resizeRef = useRef<HTMLDivElement>(null);
   const windowRef = useRef<HTMLDivElement>(null);
 
   // 调用 AI 客服 API
@@ -69,23 +88,51 @@ export default function CustomerService() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(windowSize));
   }, [windowSize]);
 
-  // 处理鼠标移动时的缩放
+  // 处理鼠标移动时的缩放和拖动
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      if (!isResizing || !windowRef.current) return;
+      if (!resizeDirection || !windowRef.current) return;
 
       const rect = windowRef.current.getBoundingClientRect();
-      const newWidth = Math.max(MIN_SIZE.width, Math.min(MAX_SIZE.width, e.clientX - rect.left));
-      const newHeight = Math.max(MIN_SIZE.height, Math.min(MAX_SIZE.height, e.clientY - rect.top));
+      const deltaX = e.clientX - rect.left;
+      const deltaY = e.clientY - rect.top;
+
+      let newWidth = windowSize.width;
+      let newHeight = windowSize.height;
+      let newX = windowPos.x;
+      let newY = windowPos.y;
+
+      // 处理水平方向调整
+      if (resizeDirection.includes("e")) {
+        newWidth = Math.max(MIN_SIZE.width, Math.min(MAX_SIZE.width, deltaX));
+      } else if (resizeDirection.includes("w")) {
+        const diff = rect.width - deltaX;
+        if (diff >= MIN_SIZE.width && diff <= MAX_SIZE.width) {
+          newWidth = diff;
+          newX = e.clientX;
+        }
+      }
+
+      // 处理垂直方向调整
+      if (resizeDirection.includes("s")) {
+        newHeight = Math.max(MIN_SIZE.height, Math.min(MAX_SIZE.height, deltaY));
+      } else if (resizeDirection.includes("n")) {
+        const diff = rect.height - deltaY;
+        if (diff >= MIN_SIZE.height && diff <= MAX_SIZE.height) {
+          newHeight = diff;
+          newY = e.clientY;
+        }
+      }
 
       setWindowSize({ width: newWidth, height: newHeight });
+      setWindowPos({ x: newX, y: newY });
     };
 
     const handleMouseUp = () => {
-      setIsResizing(false);
+      setResizeDirection(null);
     };
 
-    if (isResizing) {
+    if (resizeDirection) {
       document.addEventListener("mousemove", handleMouseMove);
       document.addEventListener("mouseup", handleMouseUp);
       return () => {
@@ -93,7 +140,7 @@ export default function CustomerService() {
         document.removeEventListener("mouseup", handleMouseUp);
       };
     }
-  }, [isResizing]);
+  }, [resizeDirection, windowSize, windowPos]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -182,13 +229,28 @@ export default function CustomerService() {
         type: "agent",
         content:
           language === "zh"
-            ? "您好！欢迎咨询极紫星智慧科技。我是 AI 客服助手，有什么可以帮助您的吗？"
-            : "Hello! Welcome to UVS Smart Technology. I am an AI customer service assistant. How can I help you?",
+            ? "您好！欢迎咨询极紫星智慧科技。我是 AI 紫星，有什么可以帮助您的吗？"
+            : "Hello! Welcome to UVS Smart Technology. I am AI Zixing. How can I help you?",
         timestamp: new Date(),
         avatar:
           "https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/uAJQYgErxzlvdMug.png",
       },
     ]);
+  };
+
+  const getResizeCursor = (direction: ResizeDirection): string => {
+    if (!direction) return "default";
+    const cursorMap: Record<string, string> = {
+      n: "ns-resize",
+      s: "ns-resize",
+      e: "ew-resize",
+      w: "ew-resize",
+      ne: "nesw-resize",
+      nw: "nwse-resize",
+      se: "nwse-resize",
+      sw: "nesw-resize",
+    };
+    return cursorMap[direction] || "default";
   };
 
   return (
@@ -202,7 +264,7 @@ export default function CustomerService() {
             exit={{ scale: 0, opacity: 0 }}
             onClick={() => setIsOpen(true)}
             className="fixed bottom-8 right-8 z-40 bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white rounded-full p-4 shadow-lg hover:shadow-xl transition-all duration-300"
-            title={language === "zh" ? "在线客服" : "Customer Service"}
+            title={language === "zh" ? "AI 紫星" : "AI Zixing"}
           >
             <MessageCircle className="w-6 h-6" />
           </motion.button>
@@ -217,19 +279,21 @@ export default function CustomerService() {
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="fixed bottom-8 right-8 z-50"
+            className="fixed z-50"
             style={{
               width: `${windowSize.width}px`,
               height: `${windowSize.height}px`,
-              cursor: isResizing ? "nwse-resize" : "default",
+              left: `${windowPos.x}px`,
+              top: `${windowPos.y}px`,
+              cursor: getResizeCursor(resizeDirection),
             }}
           >
-            <Card className="bg-slate-900 border-purple-500/30 shadow-2xl flex flex-col h-full">
+            <Card className="bg-slate-900 border-purple-500/30 shadow-2xl flex flex-col h-full relative">
               {/* Header */}
               <div className="bg-gradient-to-r from-purple-600 to-cyan-600 text-white p-4 flex items-center justify-between rounded-t-lg flex-shrink-0">
                 <div>
                   <h3 className="font-bold text-lg">
-                    {language === "zh" ? "AI 客服助手" : "AI Customer Service"}
+                    {language === "zh" ? "AI 紫星" : "AI Zixing"}
                   </h3>
                   <p className="text-sm text-purple-100">
                     {language === "zh"
@@ -359,15 +423,47 @@ export default function CustomerService() {
                 </>
               )}
 
-              {/* Resize Handle */}
+              {/* Resize Handles - 四边和四角 */}
+              {/* Top */}
               <div
-                ref={resizeRef}
-                onMouseDown={() => setIsResizing(true)}
-                className="absolute bottom-0 right-0 w-6 h-6 cursor-nwse-resize hover:bg-purple-500/30 rounded-tl-lg transition"
-                title={language === "zh" ? "拖动调整窗口大小" : "Drag to resize"}
-              >
-                <div className="absolute bottom-1 right-1 w-4 h-4 border-r-2 border-b-2 border-purple-400 opacity-60" />
-              </div>
+                onMouseDown={() => setResizeDirection("n")}
+                className="absolute top-0 left-0 right-0 h-1 cursor-ns-resize hover:bg-purple-500/50 transition"
+              />
+              {/* Bottom */}
+              <div
+                onMouseDown={() => setResizeDirection("s")}
+                className="absolute bottom-0 left-0 right-0 h-1 cursor-ns-resize hover:bg-purple-500/50 transition"
+              />
+              {/* Left */}
+              <div
+                onMouseDown={() => setResizeDirection("w")}
+                className="absolute top-0 bottom-0 left-0 w-1 cursor-ew-resize hover:bg-purple-500/50 transition"
+              />
+              {/* Right */}
+              <div
+                onMouseDown={() => setResizeDirection("e")}
+                className="absolute top-0 bottom-0 right-0 w-1 cursor-ew-resize hover:bg-purple-500/50 transition"
+              />
+              {/* Top-Left */}
+              <div
+                onMouseDown={() => setResizeDirection("nw")}
+                className="absolute top-0 left-0 w-2 h-2 cursor-nwse-resize hover:bg-purple-500/50 transition"
+              />
+              {/* Top-Right */}
+              <div
+                onMouseDown={() => setResizeDirection("ne")}
+                className="absolute top-0 right-0 w-2 h-2 cursor-nesw-resize hover:bg-purple-500/50 transition"
+              />
+              {/* Bottom-Left */}
+              <div
+                onMouseDown={() => setResizeDirection("sw")}
+                className="absolute bottom-0 left-0 w-2 h-2 cursor-nesw-resize hover:bg-purple-500/50 transition"
+              />
+              {/* Bottom-Right */}
+              <div
+                onMouseDown={() => setResizeDirection("se")}
+                className="absolute bottom-0 right-0 w-2 h-2 cursor-nwse-resize hover:bg-purple-500/50 transition"
+              />
             </Card>
           </motion.div>
         )}
