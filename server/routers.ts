@@ -12,6 +12,7 @@ import { uvsAIChatRouter } from "./routers/uvsAIChat";
 import { contactRouter } from "./routers/contact";
 import { stripeRouter } from "./routers/stripe";
 import { authRouter } from "./routers/auth";
+import { newsRouter } from "./routers/news";
 import { sendAppointmentConfirmationEmail } from "./email";
 
 export const appRouter = router({
@@ -24,6 +25,7 @@ export const appRouter = router({
   contact: contactRouter,
   stripe: stripeRouter,
   auth: authRouter,
+  news: newsRouter,
 
   // 咨询相关 API
   inquiries: router({
@@ -192,8 +194,10 @@ export const appRouter = router({
       }),
   }),
 
+  // 下面是新闻路由已经上面定义了
+
   // 新闻相关 API
-  news: router({
+  newsOld: router({
     // 创建新闻（仅管理员）
     create: protectedProcedure
       .input(z.object({

@@ -14,10 +14,13 @@ export default function News() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   // 获取新闻列表
-  const { data: newsData, isLoading } = trpc.news.list.useQuery({
-    limit: 20,
-    offset: 0,
+  const { data: newsData, isLoading } = trpc.news.getPublished.useQuery({
+    page: 1,
+    pageSize: 20,
+    category: selectedCategory || undefined,
   });
+
+  const newsItems = newsData?.items || [];
 
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
@@ -25,10 +28,7 @@ export default function News() {
     transition: { duration: 0.6 },
   };
 
-  const newsItems = newsData || [];
-  const filteredNews = selectedCategory
-    ? newsItems.filter((item: any) => item.category === selectedCategory)
-    : newsItems;
+  const filteredNews = newsItems;
 
   const categories = [
     { id: 'company', label: '公司动态' },
