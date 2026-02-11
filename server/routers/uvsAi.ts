@@ -151,11 +151,48 @@ function analyzeIntent(userMessage: string): {
   };
 }
 
+// 中国大陆本地模型列表
+const MAINLAND_MODELS: AIModel[] = ["qwen", "doubao", "glm", "kimi"];
+
+// 国际模型列表
+const INTERNATIONAL_MODELS: AIModel[] = ["gpt4", "claude", "gemini", "deepseek", "grok"];
+
+// 检测是否应该使用中国大陆模型
+function shouldUseMainlandModel(error: unknown): boolean {
+  if (!(error instanceof Error)) return false;
+  
+  const errorMsg = error.message.toLowerCase();
+  // 检查是否是地域限制或不可用错误
+  return (
+    errorMsg.includes("unavailable") ||
+    errorMsg.includes("region") ||
+    errorMsg.includes("country") ||
+    errorMsg.includes("access denied") ||
+    errorMsg.includes("not available in your region")
+  );
+}
+
+// 获取备选模型（当首选模型不可用时）
+function getFallbackModel(originalModel: AIModel, isMainlandRegion: boolean): AIModel {
+  // 如果是中国大陆用户且选择了国际模型，切换到中国大陆模型
+  if (isMainlandRegion && INTERNATIONAL_MODELS.includes(originalModel)) {
+    return MAINLAND_MODELS[0]; // 默认切换到通义千问
+  }
+  
+  // 如果是国际用户且选择了中国大陆模型，切换到国际模型
+  if (!isMainlandRegion && MAINLAND_MODELS.includes(originalModel)) {
+    return INTERNATIONAL_MODELS[0]; // 默认切换到 GPT-4
+  }
+  
+  return originalModel;
+}
+
 // 调用 AI 模型的统一接口
 async function callAIModel(
   model: AIModel,
   messages: Array<{ role: "user" | "assistant"; content: string }>,
-  contentType: ContentType
+  contentType: ContentType,
+  isMainlandRegion: boolean = false
 ): Promise<string> {
   // 根据内容类型调整系统提示词
   let systemPrompt = "你是一个专业的 AI 助手，提供准确、有帮助的回复。";
@@ -172,25 +209,46 @@ async function callAIModel(
     systemPrompt = "你是一个专业的文档分析助手。准确提取和分析文档内容，提供有结构的总结。";
   }
   
-  try {
-    // 所有模型都使用 invokeLLM（GPT-4），这是当前可用的实现
-    // 未来可以扩展为支持多个 AI 服务提供商
-    const response = await invokeLLM({
-      messages: [
-        { role: "system", content: systemPrompt },
-        ...messages,
-      ],
-    });
-    
-    const content = response.choices[0]?.message?.content;
-    if (typeof content === "string") {
-      return content;
+  let currentModel = model;
+  let retryCount = 0;
+  const maxRetries = 2;
+  
+  while (retryCount < maxRetries) {
+    try {
+      // 所有模型都使用 invokeLLM（GPT-4），这是当前可用的实现
+      // 未来可以扩展为支持多个 AI 服务提供商
+      const response = await invokeLLM({
+        messages: [
+          { role: "system", content: systemPrompt },
+          ...messages,
+        ],
+      });
+      
+      const content = response.choices[0]?.message?.content;
+      if (typeof content === "string") {
+        return content;
+      }
+      return "无法生成回复，请重试。";
+    } catch (error) {
+      console.error(`调用 ${currentModel} 模型失败 (尝试 ${retryCount + 1}/${maxRetries}):`, error);
+      
+      // 如果是地域限制错误，尝试切换模型
+      if (shouldUseMainlandModel(error) && retryCount < maxRetries - 1) {
+        const fallbackModel = getFallbackModel(currentModel, isMainlandRegion);
+        if (fallbackModel !== currentModel) {
+          console.log(`切换模型: ${currentModel} -> ${fallbackModel}`);
+          currentModel = fallbackModel;
+          retryCount++;
+          continue;
+        }
+      }
+      
+      // 如果所有重试都失败，抛出错误
+      throw new Error(`模型 ${MODEL_CONFIG[model].name} 调用失败: ${error instanceof Error ? error.message : '未知错误'}`);
     }
-    return "无法生成回复，请重试。";
-  } catch (error) {
-    console.error(`调用 ${model} 模型失败:`, error);
-    throw new Error(`模型 ${MODEL_CONFIG[model].name} 调用失败: ${error instanceof Error ? error.message : '未知错误'}`);
   }
+  
+  throw new Error(`模型 ${MODEL_CONFIG[model].name} 调用失败: 超过最大重试次数`);
 }
 
 export const uvsAiRouter = router({
@@ -229,12 +287,14 @@ export const uvsAiRouter = router({
           "doubao",
           "kimi",
           "glm",
+          "grok",
         ]).optional(),
         autoSelectMode: z.boolean().default(true),
+        isMainlandRegion: z.boolean().default(false),
       })
     )
     .mutation(async ({ input }) => {
-      const { message, conversationHistory, selectedModel, autoSelectMode } = input;
+      const { message, conversationHistory, selectedModel, autoSelectMode, isMainlandRegion } = input;
       
       // 分析意图
       const intentAnalysis = analyzeIntent(message);
@@ -255,8 +315,8 @@ export const uvsAiRouter = router({
         { role: "user" as const, content: message },
       ];
       
-      // 调用 AI 模型
-      const aiResponse = await callAIModel(modelToUse, messages, intentAnalysis.contentType);
+      // 调用 AI 模型（传递地域信息用于自动切换）
+      const aiResponse = await callAIModel(modelToUse, messages, intentAnalysis.contentType, isMainlandRegion);
       
       return {
         response: aiResponse,
