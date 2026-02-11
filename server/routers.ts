@@ -14,7 +14,6 @@ import { stripeRouter } from "./routers/stripe";
 import { authRouter } from "./routers/auth";
 import { newsRouter } from "./routers/news";
 import { customerServiceRouter } from "./routers/customerService";
-import { secureLoginRouter } from "./routers/secureLogin";
 import { sendAppointmentConfirmationEmail } from "./email";
 
 export const appRouter = router({
@@ -29,7 +28,6 @@ export const appRouter = router({
   auth: authRouter,
   news: newsRouter,
   customerService: customerServiceRouter,
-  secureLogin: secureLoginRouter,
 
   // 咨询相关 API
   inquiries: router({
