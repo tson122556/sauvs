@@ -280,8 +280,8 @@ describe("UVS AI Router", () => {
       expect(result).toHaveProperty("script");
       expect(result).toHaveProperty("topic");
       expect(result).toHaveProperty("duration");
-      expect(result).toHaveProperty("style");
       expect(result).toHaveProperty("timestamp");
+      expect(result).toHaveProperty("success");
       expect(typeof result.script).toBe("string");
     });
 
@@ -291,7 +291,7 @@ describe("UVS AI Router", () => {
       });
 
       expect(result.duration).toBe(60);
-      expect(result.style).toBe("professional");
+      expect(result.success).toBe(true);
     });
   });
 });

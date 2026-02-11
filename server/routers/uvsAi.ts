@@ -1,4 +1,4 @@
-import { publicProcedure, protectedProcedure, router } from "../_core/trpc";
+import { publicProcedure, router } from "../_core/trpc";
 import { z } from "zod";
 import { invokeLLM } from "../_core/llm";
 import { generateImage } from "../_core/imageGeneration";
@@ -102,25 +102,25 @@ function analyzeIntent(userMessage: string): {
   }
   
   // 图像相关
-  if (/image|picture|photo|draw|design|visual|generate|create|edit/i.test(userMessage)) {
+  if (/image|photo|picture|visual|diagram|design|ui|ux|screenshot/i.test(userMessage)) {
     return {
       contentType: "image",
-      suggestedModels: ["gemini", "gpt4", "doubao"],
-      reasoning: "检测到图像相关需求，推荐使用 Gemini 或 GPT-4",
+      suggestedModels: ["gemini", "gpt4"],
+      reasoning: "检测到图像相关问题，推荐使用 Gemini",
     };
   }
   
   // 视频相关
-  if (/video|movie|film|animation|script|scene|shot|frame/i.test(userMessage)) {
+  if (/video|movie|film|animation|streaming|frame|fps|codec/i.test(userMessage)) {
     return {
       contentType: "video",
       suggestedModels: ["gemini", "gpt4"],
-      reasoning: "检测到视频相关需求，推荐使用 Gemini",
+      reasoning: "检测到视频相关问题，推荐使用 Gemini",
     };
   }
   
   // 文件分析
-  if (/file|document|pdf|excel|analyze|extract|parse|read/i.test(userMessage)) {
+  if (/file|document|pdf|word|excel|analyze|extract|parse/i.test(userMessage)) {
     return {
       contentType: "file",
       suggestedModels: ["claude", "kimi", "gpt4"],
@@ -129,23 +129,23 @@ function analyzeIntent(userMessage: string): {
   }
   
   // 深度分析
-  if (/analyze|analysis|explain|understand|research|study|investigate/i.test(userMessage)) {
+  if (/analyze|analysis|insight|explain|understand|research|study/i.test(userMessage)) {
     return {
       contentType: "analysis",
-      suggestedModels: ["claude", "deepseek", "gpt4"],
-      reasoning: "检测到分析需求，推荐使用 Claude 或 DeepSeek",
+      suggestedModels: ["deepseek", "claude", "gpt4"],
+      reasoning: "检测到分析需求，推荐使用 DeepSeek",
     };
   }
   
-  // 默认：文本对话
+  // 默认文本对话
   return {
     contentType: "text",
-    suggestedModels: ["gpt4", "qwen", "doubao"],
-    reasoning: "通用对话，推荐使用 GPT-4 或国内模型",
+    suggestedModels: ["gpt4", "claude", "deepseek"],
+    reasoning: "使用通用模型处理文本对话",
   };
 }
 
-// 调用 AI 模型获取回复
+// 调用 AI 模型的统一接口
 async function callAIModel(
   model: AIModel,
   messages: Array<{ role: "user" | "assistant"; content: string }>,
@@ -167,6 +167,8 @@ async function callAIModel(
   }
   
   try {
+    // 所有模型都使用 invokeLLM（GPT-4），这是当前可用的实现
+    // 未来可以扩展为支持多个 AI 服务提供商
     const response = await invokeLLM({
       messages: [
         { role: "system", content: systemPrompt },
@@ -181,7 +183,7 @@ async function callAIModel(
     return "无法生成回复，请重试。";
   } catch (error) {
     console.error(`调用 ${model} 模型失败:`, error);
-    throw new Error(`模型 ${MODEL_CONFIG[model].name} 调用失败`);
+    throw new Error(`模型 ${MODEL_CONFIG[model].name} 调用失败: ${error instanceof Error ? error.message : '未知错误'}`);
   }
 }
 
@@ -299,32 +301,39 @@ export const uvsAiRouter = router({
         ],
       });
       
-      const codeContent = typeof codeResponse.choices[0]?.message?.content === "string" ? codeResponse.choices[0]?.message?.content : "";
-      
-      return {
-        code: codeContent,
-        language,
-        timestamp: Date.now(),
-      };
+      const content = codeResponse.choices[0]?.message?.content;
+      if (typeof content === "string") {
+        return {
+          success: true,
+          code: content,
+          language,
+          timestamp: Date.now(),
+        };
+      }
+      throw new Error("代码生成失败");
     }),
   
-  // 分析文件或文本
+  // 分析内容
   analyzeContent: publicProcedure
     .input(
       z.object({
         content: z.string(),
-        analysisType: z.enum(["summary", "sentiment", "entities", "keywords"]),
+        analysisType: z.enum(["sentiment", "entities", "keywords", "summary"]).optional(),
       })
     )
     .mutation(async ({ input }) => {
-      const { content, analysisType } = input;
+      const { content, analysisType = "summary" } = input;
       
-      const prompts: Record<string, string> = {
-        summary: `请总结以下内容的要点：\n${content}`,
-        sentiment: `分析以下文本的情感倾向：\n${content}`,
-        entities: `提取以下文本中的关键实体（人名、地名、组织等）：\n${content}`,
-        keywords: `提取以下文本的关键词：\n${content}`,
-      };
+      let prompt = "";
+      if (analysisType === "sentiment") {
+        prompt = `分析以下文本的情感：\n${content}\n\n请返回：1. 情感类型（正面/中立/负面）2. 置信度 3. 解释`;
+      } else if (analysisType === "entities") {
+        prompt = `从以下文本中提取命名实体：\n${content}\n\n请返回：1. 人名 2. 地名 3. 组织名 4. 其他实体`;
+      } else if (analysisType === "keywords") {
+        prompt = `从以下文本中提取关键词：\n${content}\n\n请返回：1. 前10个关键词 2. 每个关键词的重要性评分`;
+      } else {
+        prompt = `总结以下文本：\n${content}\n\n请提供简洁的摘要`;
+      }
       
       const analysisResponse = await invokeLLM({
         messages: [
@@ -332,51 +341,50 @@ export const uvsAiRouter = router({
             role: "system",
             content: "你是一个专业的文本分析助手。提供准确、结构化的分析结果。",
           },
-          { role: "user", content: prompts[analysisType] },
+          { role: "user", content: prompt },
         ],
       });
       
-      const analysisContent = typeof analysisResponse.choices[0]?.message?.content === "string" ? analysisResponse.choices[0]?.message?.content : "";
-      
-      return {
-        analysis: analysisContent,
-        analysisType,
-        timestamp: Date.now(),
-      };
+      const analysisContent = analysisResponse.choices[0]?.message?.content;
+      if (typeof analysisContent === "string") {
+        return {
+          success: true,
+          analysis: analysisContent,
+          analysisType,
+          timestamp: Date.now(),
+        };
+      }
+      throw new Error("内容分析失败");
     }),
   
   // 生成视频脚本
   generateVideoScript: publicProcedure
-    .input(
-      z.object({
-        topic: z.string(),
-        duration: z.number().optional(),
-        style: z.string().optional(),
-      })
-    )
+    .input(z.object({ topic: z.string(), duration: z.number().optional() }))
     .mutation(async ({ input }) => {
-      const { topic, duration = 60, style = "professional" } = input;
+      const { topic, duration = 60 } = input;
       
-      const prompt = `生成一个约 ${duration} 秒的 ${style} 风格的视频脚本，主题是：${topic}\n\n请包括：\n1. 场景描述\n2. 镜头建议\n3. 配音文本\n4. 音效建议`;
+      const prompt = `为以下主题生成一个 ${duration} 秒的视频脚本：\n${topic}\n\n请包括：\n1. 场景描述\n2. 旁白\n3. 视觉效果\n4. 音乐建议`;
       
       const scriptResponse = await invokeLLM({
         messages: [
           {
             role: "system",
-            content: "你是一个专业的视频制作和脚本编写专家。提供详细、专业的视频脚本。",
+            content: "你是一个专业的视频制作和脚本编写助手。提供详细的、可执行的视频脚本。",
           },
           { role: "user", content: prompt },
         ],
       });
       
-      const scriptContent = typeof scriptResponse.choices[0]?.message?.content === "string" ? scriptResponse.choices[0]?.message?.content : "";
-      
-      return {
-        script: scriptContent,
-        topic,
-        duration,
-        style,
-        timestamp: Date.now(),
-      };
+      const content = scriptResponse.choices[0]?.message?.content;
+      if (typeof content === "string") {
+        return {
+          success: true,
+          script: content,
+          topic,
+          duration,
+          timestamp: Date.now(),
+        };
+      }
+      throw new Error("视频脚本生成失败");
     }),
 });
