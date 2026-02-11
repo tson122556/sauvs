@@ -34,29 +34,33 @@ interface Conversation {
 }
 
 const MODELS = {
-  "gpt-4": { name: "GPT-4", color: "from-green-500 to-green-600", icon: "🟢" },
+  "gpt4": { name: "GPT-4", color: "from-green-500 to-green-600", icon: "🟢" },
   "claude": { name: "Claude", color: "from-amber-500 to-amber-600", icon: "🟡" },
-  "grok": { name: "Grok", color: "from-purple-500 to-purple-600", icon: "🟣" },
   "gemini": { name: "Gemini", color: "from-blue-500 to-blue-600", icon: "🔵" },
   "kimi": { name: "Kimi", color: "from-indigo-500 to-indigo-600", icon: "🟦" },
   "deepseek": { name: "DeepSeek", color: "from-orange-500 to-orange-600", icon: "🟠" },
+  "qwen": { name: "通义千问", color: "from-red-500 to-red-600", icon: "🔴" },
+  "doubao": { name: "豆包", color: "from-yellow-500 to-yellow-600", icon: "🟨" },
+  "glm": { name: "ChatGLM", color: "from-cyan-500 to-cyan-600", icon: "🟦" },
 };
 
 // 增强的多模态模型选择算法，支持评分和权重
 function analyzeAndSelectModel(input: string): { model: string; reason: string; confidence: number; alternatives: Array<{model: string; score: number}> } {
   const scores: Record<string, number> = {
-    "gpt-4": 0,
+    "gpt4": 0,
     "claude": 0,
-    "grok": 0,
     "gemini": 0,
     "kimi": 0,
     "deepseek": 0,
+    "qwen": 0,
+    "doubao": 0,
+    "glm": 0,
   };
 
   // 代码和编程 - GPT-4 (权重: 10)
   const codePatterns = [/```/, /function|class|def|const|let|var|import|export|function/, /=>|async|await|try|catch|if|else|for|while/i, /python|javascript|java|c\+\+|typescript|rust|go|php|ruby/i];
   if (codePatterns.some((p) => p.test(input))) {
-    scores["gpt-4"] += 10;
+    scores["gpt4"] += 10;
   }
 
   // 多模态内容 - Gemini (权重: 9)
@@ -223,7 +227,7 @@ export default function UVSAIChat() {
     const newConversation: Conversation = {
       id: Date.now(),
       title,
-      model: "gpt-4",
+      model: "gpt4",
       messageCount: 0,
     };
     setCurrentConversation(newConversation);
@@ -231,7 +235,7 @@ export default function UVSAIChat() {
     setMessages([]);
     setInputValue("");
     setSuggestedQuestions([]);
-    setSelectedModel("gpt-4");
+    setSelectedModel("gpt4");
     setPredictedModel(null);
   };
 
@@ -246,7 +250,7 @@ export default function UVSAIChat() {
       conversation = {
         id: Date.now(),
         title,
-        model: "gpt-4",
+        model: "gpt4",
         messageCount: 0,
       };
       setCurrentConversation(conversation);
@@ -268,6 +272,14 @@ export default function UVSAIChat() {
     try {
       // 使用自动选择或用户手动选择的模型
       const finalModel = autoSelectMode ? (predictedModel?.model || selectedModel) : selectedModel;
+      
+      // 验证模型名称
+      const validModels = ["gpt4", "claude", "gemini", "deepseek", "qwen", "doubao", "kimi", "glm"];
+      if (!validModels.includes(finalModel)) {
+        console.error(`Invalid model: ${finalModel}`);
+        setIsLoading(false);
+        return;
+      }
       
       const updatedConversation = { ...conversation, model: finalModel };
       setCurrentConversation(updatedConversation);
