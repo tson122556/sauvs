@@ -4,7 +4,7 @@ import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router, protectedProcedure } from "./_core/trpc";
 import { z } from "zod";
 import { createInquiry, getInquiries, updateInquiryStatus, createProduct, getProducts, getProductById, updateProduct, createNews, getNews, getNewsById, updateNews, createAppointment, getAppointments } from "./db";
-import { uvsAIRouter } from "./routers/uvsAI";
+import { uvsAiRouter } from "./routers/uvsAi";
 import { aiChatRouter } from "./routers/aiChat";
 import { uvsChatStreamRouter } from "./routers/uvsChatStream";
 import { modalityChatRouter } from "./routers/modalityChat";
@@ -18,7 +18,7 @@ import { sendAppointmentConfirmationEmail } from "./email";
 
 export const appRouter = router({
   system: systemRouter,
-  uvsAI: uvsAIRouter,
+  uvsAi: uvsAiRouter,
   aiChat: aiChatRouter,
   uvsChatStream: uvsChatStreamRouter,
   modalityChat: modalityChatRouter,
