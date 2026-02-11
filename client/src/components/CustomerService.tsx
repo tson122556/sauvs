@@ -367,8 +367,8 @@ export default function CustomerService() {
                   </h3>
                   <p className="text-sm text-purple-100">
                     {language === "zh"
-                      ? "由 GPT-4 驱动"
-                      : "Powered by GPT-4"}
+                      ? "由极紫星智慧引擎驱动"
+                      : "Powered by Zixing Smart Engine"}
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
