@@ -611,7 +611,7 @@ export default function About() {
               准备好与我们合作了吗？
             </h2>
             <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
-              联系我们的团队，了解如何将极致的东方智慧解决方案应用到您的业务中
+              联系我们的团队，深入探讨如何将蕴含独特智慧的解决方案巧妙融入您的业务体系，助您业务实现新突破。
             </p>
             <Button
               onClick={() => setLocation("/contact")}
