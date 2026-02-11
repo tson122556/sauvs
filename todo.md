@@ -711,3 +711,9 @@
 ## 英文 AI 客服助手名字更新（2026-02-11）
 - [x] 将英文版本从"AI Zixing"改为"AI UVS"
 - [x] 测试英文版本名字更新
+
+## 英文 AI 客服文案完整更新（2026-02-11）
+- [x] 将英文名字从"AI UVS"改为"AI VS"
+- [x] 将驱动说明改为"Powered by UVS Smart Engine"
+- [x] 将欢迎语改为"Hello! Welcome to UVS Smart Technology. I am AI VS. How can I help you?"
+- [x] 测试英文文案更新

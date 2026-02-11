@@ -60,7 +60,7 @@ export default function CustomerService() {
       content:
         language === "zh"
           ? "您好！欢迎咨询极紫星智慧科技。我是 AI 紫星，有什么可以帮助您的吗？"
-          : "Hello! Welcome to UVS Smart Technology. I am AI Zixing. How can I help you?",
+          : "Hello! Welcome to UVS Smart Technology. I am AI VS. How can I help you?",
       timestamp: new Date(),
       avatar: "https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/uAJQYgErxzlvdMug.png",
     },
@@ -363,12 +363,12 @@ export default function CustomerService() {
               >
                 <div>
                   <h3 className="font-bold text-lg">
-                    {language === "zh" ? "AI 紫星" : "AI UVS"}
+                    {language === "zh" ? "AI 紫星" : "AI VS"}
                   </h3>
                   <p className="text-sm text-purple-100">
                     {language === "zh"
                       ? "由极紫星智慧引擎驱动"
-                      : "Powered by Zixing Smart Engine"}
+                      : "Powered by UVS Smart Engine"}
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
