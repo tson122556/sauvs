@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Send, Minimize2, Maximize2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { trpc } from "@/lib/trpc";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface Message {
   id: string;
@@ -13,13 +15,17 @@ interface Message {
 }
 
 export default function CustomerService() {
+  const { language } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
       type: "agent",
-      content: "您好！欢迎咨询极紫星智慧科技。我是在线客服，有什么可以帮助您的吗？",
+      content:
+        language === "zh"
+          ? "您好！欢迎咨询极紫星智慧科技。我是 AI 客服助手，有什么可以帮助您的吗？"
+          : "Hello! Welcome to UVS Smart Technology. I am an AI customer service assistant. How can I help you?",
       timestamp: new Date(),
       avatar: "https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/uAJQYgErxzlvdMug.png",
     },
@@ -27,6 +33,9 @@ export default function CustomerService() {
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // 调用 AI 客服 API
+  const sendMessageMutation = trpc.customerService.sendMessage.useMutation();
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -51,37 +60,77 @@ export default function CustomerService() {
     setInputValue("");
     setIsLoading(true);
 
-    // Simulate agent response
-    setTimeout(() => {
-      const agentMessage: Message = {
+    try {
+      // 构建对话历史（去除 avatar 和 timestamp）
+      const conversationHistory = messages
+        .filter((msg) => msg.type !== "agent" || msg.id !== "1") // 排除初始问候
+        .map((msg) => ({
+          role: msg.type === "user" ? ("user" as const) : ("assistant" as const),
+          content: msg.content,
+        }));
+
+      // 调用 AI 客服 API
+      const response = await sendMessageMutation.mutateAsync({
+        message: inputValue,
+        conversationHistory,
+        language: language === "zh" ? "zh" : "en",
+      });
+
+      if (response.success) {
+        const agentMessage: Message = {
+          id: (Date.now() + 1).toString(),
+          type: "agent",
+          content: typeof response.message === "string" ? response.message : "",
+          timestamp: new Date(),
+          avatar:
+            "https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/uAJQYgErxzlvdMug.png",
+        };
+        setMessages((prev) => [...prev, agentMessage]);
+      } else {
+        // 显示错误消息
+        const errorMessage: Message = {
+          id: (Date.now() + 1).toString(),
+          type: "agent",
+          content: typeof response.message === "string" ? response.message : "",
+          timestamp: new Date(),
+          avatar:
+            "https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/uAJQYgErxzlvdMug.png",
+        };
+        setMessages((prev) => [...prev, errorMessage]);
+      }
+    } catch (error) {
+      console.error("Failed to send message:", error);
+      const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
         type: "agent",
-        content: generateResponse(inputValue),
+        content:
+          language === "zh"
+            ? "抱歉，服务暂时不可用。请稍后重试。"
+            : "Sorry, the service is temporarily unavailable. Please try again later.",
         timestamp: new Date(),
-        avatar: "https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/uAJQYgErxzlvdMug.png",
+        avatar:
+          "https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/uAJQYgErxzlvdMug.png",
       };
-      setMessages((prev) => [...prev, agentMessage]);
+      setMessages((prev) => [...prev, errorMessage]);
+    } finally {
       setIsLoading(false);
-    }, 1000);
+    }
   };
 
-  const generateResponse = (userInput: string): string => {
-    const responses: { [key: string]: string } = {
-      "价格": "我们提供灵活的定价方案。请访问我们的定价页面或联系销售团队了解详情。",
-      "功能": "我们的平台支持多模态 AI、智能模型选择、实时流式回答等功能。您想了解哪个功能的详情？",
-      "支持": "我们提供 24/7 的客户支持。您可以通过邮件、电话或此聊天窗口联系我们。",
-      "产品": "极紫星提供 AI 应用、智能机器人、物联网和时空同步/异步航行器等产品。您对哪个产品感兴趣？",
-      "合作": "我们欢迎合作伙伴。请告诉我们您的合作需求，我们会尽快与您联系。",
-      "技术": "我们的技术团队可以帮助您解决技术问题。请描述您遇到的问题。",
-    };
-
-    for (const [key, value] of Object.entries(responses)) {
-      if (userInput.includes(key)) {
-        return value;
-      }
-    }
-
-    return "感谢您的咨询。我已记录您的问题，我们的客服团队会尽快与您联系。如有紧急事项，请拨打我们的热线电话。";
+  const clearChat = () => {
+    setMessages([
+      {
+        id: "1",
+        type: "agent",
+        content:
+          language === "zh"
+            ? "您好！欢迎咨询极紫星智慧科技。我是 AI 客服助手，有什么可以帮助您的吗？"
+            : "Hello! Welcome to UVS Smart Technology. I am an AI customer service assistant. How can I help you?",
+        timestamp: new Date(),
+        avatar:
+          "https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/uAJQYgErxzlvdMug.png",
+      },
+    ]);
   };
 
   return (
@@ -95,6 +144,7 @@ export default function CustomerService() {
             exit={{ scale: 0, opacity: 0 }}
             onClick={() => setIsOpen(true)}
             className="fixed bottom-8 right-8 z-40 bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white rounded-full p-4 shadow-lg hover:shadow-xl transition-all duration-300"
+            title={language === "zh" ? "在线客服" : "Customer Service"}
           >
             <MessageCircle className="w-6 h-6" />
           </motion.button>
@@ -114,10 +164,23 @@ export default function CustomerService() {
               {/* Header */}
               <div className="bg-gradient-to-r from-purple-600 to-cyan-600 text-white p-4 flex items-center justify-between rounded-t-lg">
                 <div>
-                  <h3 className="font-bold text-lg">在线客服</h3>
-                  <p className="text-sm text-purple-100">我们随时准备帮助您</p>
+                  <h3 className="font-bold text-lg">
+                    {language === "zh" ? "AI 客服助手" : "AI Customer Service"}
+                  </h3>
+                  <p className="text-sm text-purple-100">
+                    {language === "zh"
+                      ? "由 GPT-4 驱动"
+                      : "Powered by GPT-4"}
+                  </p>
                 </div>
                 <div className="flex items-center gap-2">
+                  <button
+                    onClick={clearChat}
+                    className="hover:bg-white/20 p-1 rounded transition text-xs"
+                    title={language === "zh" ? "清空对话" : "Clear chat"}
+                  >
+                    {language === "zh" ? "清空" : "Clear"}
+                  </button>
                   <button
                     onClick={() => setIsMinimized(!isMinimized)}
                     className="hover:bg-white/20 p-1 rounded transition"
@@ -171,10 +234,13 @@ export default function CustomerService() {
                           >
                             <p className="text-sm">{message.content}</p>
                             <span className="text-xs opacity-70 mt-1 block">
-                              {message.timestamp.toLocaleTimeString("zh-CN", {
-                                hour: "2-digit",
-                                minute: "2-digit",
-                              })}
+                              {message.timestamp.toLocaleTimeString(
+                                language === "zh" ? "zh-CN" : "en-US",
+                                {
+                                  hour: "2-digit",
+                                  minute: "2-digit",
+                                }
+                              )}
                             </span>
                           </div>
                         </div>
@@ -209,7 +275,11 @@ export default function CustomerService() {
                           handleSendMessage();
                         }
                       }}
-                      placeholder="输入您的问题..."
+                      placeholder={
+                        language === "zh"
+                          ? "输入您的问题..."
+                          : "Type your question..."
+                      }
                       className="flex-1 bg-slate-800 text-white px-3 py-2 rounded border border-slate-600 focus:border-purple-500 outline-none transition"
                       disabled={isLoading}
                     />

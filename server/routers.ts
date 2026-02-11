@@ -13,6 +13,7 @@ import { contactRouter } from "./routers/contact";
 import { stripeRouter } from "./routers/stripe";
 import { authRouter } from "./routers/auth";
 import { newsRouter } from "./routers/news";
+import { customerServiceRouter } from "./routers/customerService";
 import { sendAppointmentConfirmationEmail } from "./email";
 
 export const appRouter = router({
@@ -26,6 +27,7 @@ export const appRouter = router({
   stripe: stripeRouter,
   auth: authRouter,
   news: newsRouter,
+  customerService: customerServiceRouter,
 
   // 咨询相关 API
   inquiries: router({
