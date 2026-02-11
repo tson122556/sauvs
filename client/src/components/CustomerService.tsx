@@ -38,7 +38,8 @@ type ResizeDirection =
 const DEFAULT_SIZE: WindowSize = { width: 384, height: 384 };
 const MIN_SIZE: WindowSize = { width: 300, height: 300 };
 const MAX_SIZE: WindowSize = { width: 800, height: 600 };
-const STORAGE_KEY = "customer_service_window_size";
+const STORAGE_KEY_SIZE = "customer_service_window_size";
+const STORAGE_KEY_POS = "customer_service_window_pos";
 
 export default function CustomerService() {
   const { language } = useLanguage();
@@ -46,10 +47,12 @@ export default function CustomerService() {
   const [isMinimized, setIsMinimized] = useState(false);
   const [windowSize, setWindowSize] = useState<WindowSize>(DEFAULT_SIZE);
   const [windowPos, setWindowPos] = useState<WindowPosition>({
-    x: window.innerWidth - 400,
-    y: window.innerHeight - 450,
+    x: typeof window !== "undefined" ? window.innerWidth - 400 : 0,
+    y: typeof window !== "undefined" ? window.innerHeight - 450 : 0,
   });
   const [resizeDirection, setResizeDirection] = useState<ResizeDirection>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
@@ -66,29 +69,74 @@ export default function CustomerService() {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const windowRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
 
   // 调用 AI 客服 API
   const sendMessageMutation = trpc.customerService.sendMessage.useMutation();
 
-  // 从 localStorage 加载窗口大小
+  // 从 localStorage 加载窗口大小和位置
   useEffect(() => {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) {
+    const savedSize = localStorage.getItem(STORAGE_KEY_SIZE);
+    if (savedSize) {
       try {
-        const size = JSON.parse(saved);
+        const size = JSON.parse(savedSize);
         setWindowSize(size);
       } catch (e) {
         console.error("Failed to load window size:", e);
+      }
+    }
+
+    const savedPos = localStorage.getItem(STORAGE_KEY_POS);
+    if (savedPos) {
+      try {
+        const pos = JSON.parse(savedPos);
+        setWindowPos(pos);
+      } catch (e) {
+        console.error("Failed to load window position:", e);
       }
     }
   }, []);
 
   // 保存窗口大小到 localStorage
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(windowSize));
+    localStorage.setItem(STORAGE_KEY_SIZE, JSON.stringify(windowSize));
   }, [windowSize]);
 
-  // 处理鼠标移动时的缩放和拖动
+  // 保存窗口位置到 localStorage
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY_POS, JSON.stringify(windowPos));
+  }, [windowPos]);
+
+  // 处理标题栏拖动
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!isDragging || !windowRef.current) return;
+
+      let newX = e.clientX - dragOffset.x;
+      let newY = e.clientY - dragOffset.y;
+
+      // 防止窗口拖出屏幕外
+      newX = Math.max(0, Math.min(newX, window.innerWidth - windowSize.width));
+      newY = Math.max(0, Math.min(newY, window.innerHeight - windowSize.height));
+
+      setWindowPos({ x: newX, y: newY });
+    };
+
+    const handleMouseUp = () => {
+      setIsDragging(false);
+    };
+
+    if (isDragging) {
+      document.addEventListener("mousemove", handleMouseMove);
+      document.addEventListener("mouseup", handleMouseUp);
+      return () => {
+        document.removeEventListener("mousemove", handleMouseMove);
+        document.removeEventListener("mouseup", handleMouseUp);
+      };
+    }
+  }, [isDragging, dragOffset, windowSize.width, windowSize.height]);
+
+  // 处理鼠标移动时的缩放
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (!resizeDirection || !windowRef.current) return;
@@ -141,6 +189,22 @@ export default function CustomerService() {
       };
     }
   }, [resizeDirection, windowSize, windowPos]);
+
+  const handleHeaderMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    // 不要在按钮上拖动
+    if ((e.target as HTMLElement).closest("button")) {
+      return;
+    }
+
+    if (headerRef.current && windowRef.current) {
+      const rect = windowRef.current.getBoundingClientRect();
+      setDragOffset({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+      });
+      setIsDragging(true);
+    }
+  };
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -285,12 +349,18 @@ export default function CustomerService() {
               height: `${windowSize.height}px`,
               left: `${windowPos.x}px`,
               top: `${windowPos.y}px`,
-              cursor: getResizeCursor(resizeDirection),
+              cursor: isDragging ? "grabbing" : getResizeCursor(resizeDirection),
             }}
           >
             <Card className="bg-slate-900 border-purple-500/30 shadow-2xl flex flex-col h-full relative">
-              {/* Header */}
-              <div className="bg-gradient-to-r from-purple-600 to-cyan-600 text-white p-4 flex items-center justify-between rounded-t-lg flex-shrink-0">
+              {/* Header - Draggable */}
+              <div
+                ref={headerRef}
+                onMouseDown={handleHeaderMouseDown}
+                className={`bg-gradient-to-r from-purple-600 to-cyan-600 text-white p-4 flex items-center justify-between rounded-t-lg flex-shrink-0 ${
+                  isDragging ? "cursor-grabbing" : "cursor-grab"
+                }`}
+              >
                 <div>
                   <h3 className="font-bold text-lg">
                     {language === "zh" ? "AI 紫星" : "AI Zixing"}
