@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UVS AI - 登录</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 400px;
+      padding: 20px;
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(168, 85, 247, 0.2);
+      border-radius: 12px;
+      padding: 40px;
+      backdrop-filter: blur(10px);
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      margin: 0 auto 15px;
+      background: linear-gradient(135deg, #a855f7 0%, #06b6d4 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+    .logo h1 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .logo p {
+      color: #9ca3af;
+      font-size: 14px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #e5e7eb;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px 12px;
+      background: rgba(30, 27, 75, 0.5);
+      border: 1px solid rgba(168, 85, 247, 0.2);
+      border-radius: 6px;
+      color: #fff;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    input[type="email"]:focus,
+    input[type="password"]:focus {
+      outline: none;
+      border-color: #a855f7;
+      background: rgba(30, 27, 75, 0.8);
+    }
+
+    .form-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    .remember-me {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .remember-me input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+
+    .forgot-password {
+      color: #a855f7;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .forgot-password:hover {
+      color: #d8b4fe;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #a855f7 0%, #06b6d4 100%);
+      border: none;
+      border-radius: 6px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(168, 85, 247, 0.3);
+    }
+
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      margin: 25px 0;
+      gap: 10px;
+      color: #6b7280;
+      font-size: 14px;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(168, 85, 247, 0.2);
+    }
+
+    .oauth-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .oauth-btn {
+      padding: 10px;
+      background: rgba(30, 27, 75, 0.5);
+      border: 1px solid rgba(168, 85, 247, 0.2);
+      border-radius: 6px;
+      color: #e5e7eb;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .oauth-btn:hover {
+      background: rgba(168, 85, 247, 0.1);
+      border-color: #a855f7;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: #9ca3af;
+      margin-top: 20px;
+    }
+
+    .footer a {
+      color: #a855f7;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .alert {
+      padding: 12px;
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      border-radius: 6px;
+      color: #fca5a5;
+      font-size: 14px;
+      margin-bottom: 20px;
+      display: none;
+    }
+
+    .alert.show {
+      display: block;
+    }
+
+    .success {
+      background: rgba(34, 197, 94, 0.1);
+      border-color: rgba(34, 197, 94, 0.3);
+      color: #86efac;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .geo-info {
+      background: rgba(168, 85, 247, 0.1);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      border-radius: 6px;
+      padding: 12px;
+      font-size: 13px;
+      color: #d8b4fe;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="logo">
+        <div class="logo-icon">极</div>
+        <h1>UVS AI</h1>
+        <p>登录您的账户</p>
+      </div>
+
+      <div class="geo-info" id="geoInfo">
+        🌍 检测位置中...
+      </div>
+
+      <div class="alert" id="alert"></div>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="email">邮箱</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            placeholder="输入您的邮箱" 
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="password">密码</label>
+          <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            placeholder="输入您的密码" 
+            required
+          >
+        </div>
+
+        <div class="form-footer">
+          <label class="remember-me">
+            <input type="checkbox" id="rememberMe" name="rememberMe">
+            <span>记住我</span>
+          </label>
+          <a href="#" class="forgot-password">忘记密码？</a>
+        </div>
+
+        <button type="submit" class="btn" id="submitBtn">
+          <span>登录</span>
+        </button>
+      </form>
+
+      <div class="divider">或</div>
+
+      <div class="oauth-buttons">
+        <button type="button" class="oauth-btn" onclick="handleOAuth('google')">
+          <span>Google</span>
+        </button>
+        <button type="button" class="oauth-btn" onclick="handleOAuth('microsoft')">
+          <span>Microsoft</span>
+        </button>
+        <button type="button" class="oauth-btn" onclick="handleOAuth('wechat')">
+          <span>微信</span>
+        </button>
+        <button type="button" class="oauth-btn" onclick="handleOAuth('apple')">
+          <span>Apple</span>
+        </button>
+      </div>
+
+      <div class="footer">
+        还没有账户？<a href="/zh/register">立即注册</a><br>
+        <a href="/zh">返回首页</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 检测用户地域
+    async function detectGeo() {
+      try {
+        const response = await fetch('https://ipapi.co/json/');
+        const data = await response.json();
+        const geoInfo = document.getElementById('geoInfo');
+        
+        if (data.country_code === 'CN') {
+          geoInfo.textContent = '✓ 中国大陆用户 - 已为您优化登录体验';
+          geoInfo.style.background = 'rgba(34, 197, 94, 0.1)';
+          geoInfo.style.borderColor = 'rgba(34, 197, 94, 0.3)';
+          geoInfo.style.color = '#86efac';
+        } else {
+          geoInfo.textContent = '✓ 国际用户 - 欢迎使用 UVS AI';
+        }
+      } catch (error) {
+        console.error('地域检测失败:', error);
+        document.getElementById('geoInfo').textContent = '✓ 欢迎使用 UVS AI';
+      }
+    }
+
+    // 处理表单提交
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const submitBtn = document.getElementById('submitBtn');
+      const alert = document.getElementById('alert');
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="spinner"></span><span>登录中...</span>';
+
+      try {
+        // 调用登录 API
+        const response = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email, password }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          alert.className = 'alert show success';
+          alert.textContent = '✓ 登录成功，正在跳转...';
+          
+          // 保存 token
+          if (data.token) {
+            localStorage.setItem('auth_token', data.token);
+          }
+
+          // 跳转到首页
+          setTimeout(() => {
+            window.location.href = '/zh';
+          }, 1500);
+        } else {
+          alert.className = 'alert show';
+          alert.textContent = data.message || '登录失败，请检查邮箱和密码';
+        }
+      } catch (error) {
+        alert.className = 'alert show';
+        alert.textContent = '登录出错，请稍后重试';
+        console.error('登录错误:', error);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<span>登录</span>';
+      }
+    });
+
+    // 处理 OAuth 登录
+    function handleOAuth(provider) {
+      alert('OAuth 登录功能即将上线，敬请期待！');
+    }
+
+    // 页面加载时检测地域
+    window.addEventListener('load', detectGeo);
+  </script>
+</body>
+</html>
