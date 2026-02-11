@@ -12,6 +12,8 @@ interface Message {
   content: string;
   timestamp: Date;
   avatar?: string;
+  contentType?: "text" | "code" | "image" | "analysis";
+  imageUrl?: string;
 }
 
 interface WindowSize {
@@ -67,12 +69,16 @@ export default function CustomerService() {
   ]);
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [contentType, setContentType] = useState<"text" | "code" | "image" | "analysis">("text");
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const windowRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
 
   // 调用 AI 客服 API
   const sendMessageMutation = trpc.customerService.sendMessage.useMutation();
+  const generateImageMutation = trpc.customerService.generateImage.useMutation();
+  const generateCodeMutation = trpc.customerService.generateCode.useMutation();
+  const analyzeContentMutation = trpc.customerService.analyzeContent.useMutation();
 
   // 从 localStorage 加载窗口大小和位置
   useEffect(() => {
@@ -223,44 +229,71 @@ export default function CustomerService() {
       type: "user",
       content: inputValue,
       timestamp: new Date(),
+      contentType: contentType,
     };
 
     setMessages((prev) => [...prev, userMessage]);
+    const messageText = inputValue;
     setInputValue("");
     setIsLoading(true);
 
     try {
-      // 构建对话历史（去除 avatar 和 timestamp）
-      const conversationHistory = messages
-        .filter((msg) => msg.type !== "agent" || msg.id !== "1") // 排除初始问候
-        .map((msg) => ({
-          role: msg.type === "user" ? ("user" as const) : ("assistant" as const),
-          content: msg.content,
-        }));
+      let response: any;
 
-      // 调用 AI 客服 API
-      const response = await sendMessageMutation.mutateAsync({
-        message: inputValue,
-        conversationHistory,
-        language: language === "zh" ? "zh" : "en",
-      });
+      if (contentType === "image") {
+        // 生成图像
+        response = await generateImageMutation.mutateAsync({
+          prompt: messageText,
+          language: language === "zh" ? "zh" : "en",
+        });
+      } else if (contentType === "code") {
+        // 生成代码
+        response = await generateCodeMutation.mutateAsync({
+          requirement: messageText,
+          language: language === "zh" ? "zh" : "en",
+          programmingLanguage: "javascript",
+        });
+      } else if (contentType === "analysis") {
+        // 深度分析
+        response = await analyzeContentMutation.mutateAsync({
+          content: messageText,
+          language: language === "zh" ? "zh" : "en",
+          analysisType: "comprehensive",
+        });
+      } else {
+        // 普通对话
+        const conversationHistory = messages
+          .filter((msg) => msg.type !== "agent" || msg.id !== "1")
+          .map((msg) => ({
+            role: msg.type === "user" ? ("user" as const) : ("assistant" as const),
+            content: msg.content,
+          }));
+
+        response = await sendMessageMutation.mutateAsync({
+          message: messageText,
+          conversationHistory,
+          language: language === "zh" ? "zh" : "en",
+          contentType: contentType,
+        });
+      }
 
       if (response.success) {
         const agentMessage: Message = {
           id: (Date.now() + 1).toString(),
           type: "agent",
-          content: typeof response.message === "string" ? response.message : "",
+          content: response.message || response.code || response.analysis || "",
           timestamp: new Date(),
           avatar:
             "https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/uAJQYgErxzlvdMug.png",
+          contentType: contentType,
+          imageUrl: response.imageUrl,
         };
         setMessages((prev) => [...prev, agentMessage]);
       } else {
-        // 显示错误消息
         const errorMessage: Message = {
           id: (Date.now() + 1).toString(),
           type: "agent",
-          content: typeof response.message === "string" ? response.message : "",
+          content: response.message || (language === "zh" ? "请求失败" : "Request failed"),
           timestamp: new Date(),
           avatar:
             "https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/uAJQYgErxzlvdMug.png",
@@ -424,13 +457,26 @@ export default function CustomerService() {
                             />
                           )}
                           <div
-                            className={`px-4 py-2 rounded-lg ${
+                            className={`px-4 py-2 rounded-lg max-w-sm ${
                               message.type === "user"
                                 ? "bg-purple-600 text-white rounded-br-none"
                                 : "bg-slate-700 text-gray-100 rounded-bl-none"
                             }`}
                           >
-                            <p className="text-sm">{message.content}</p>
+                            {message.imageUrl && (
+                              <img
+                                src={message.imageUrl}
+                                alt="Generated"
+                                className="w-full rounded mb-2 max-h-48 object-cover"
+                              />
+                            )}
+                            {message.contentType === "code" ? (
+                              <pre className="text-xs overflow-auto bg-slate-800 p-2 rounded mb-2">
+                                <code>{message.content}</code>
+                              </pre>
+                            ) : (
+                              <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                            )}
                             <span className="text-xs opacity-70 mt-1 block">
                               {message.timestamp.toLocaleTimeString(
                                 language === "zh" ? "zh-CN" : "en-US",
@@ -462,6 +508,28 @@ export default function CustomerService() {
                     <div ref={messagesEndRef} />
                   </div>
 
+                  {/* Content Type Selector */}
+                  <div className="border-t border-slate-700 p-2 flex gap-1 flex-shrink-0 flex-wrap">
+                    {[
+                      { type: "text" as const, label: language === "zh" ? "对话" : "Chat" },
+                      { type: "code" as const, label: language === "zh" ? "代码" : "Code" },
+                      { type: "image" as const, label: language === "zh" ? "图像" : "Image" },
+                      { type: "analysis" as const, label: language === "zh" ? "分析" : "Analysis" },
+                    ].map((item) => (
+                      <button
+                        key={item.type}
+                        onClick={() => setContentType(item.type)}
+                        className={`px-2 py-1 text-xs rounded transition ${
+                          contentType === item.type
+                            ? "bg-purple-600 text-white"
+                            : "bg-slate-700 text-gray-300 hover:bg-slate-600"
+                        }`}
+                      >
+                        {item.label}
+                      </button>
+                    ))}
+                  </div>
+
                   {/* Input */}
                   <div className="border-t border-slate-700 p-4 flex gap-2 flex-shrink-0">
                     <input
@@ -475,7 +543,19 @@ export default function CustomerService() {
                       }}
                       placeholder={
                         language === "zh"
-                          ? "输入您的问题..."
+                          ? contentType === "code"
+                            ? "输入代码需求..."
+                            : contentType === "image"
+                            ? "输入图像描述..."
+                            : contentType === "analysis"
+                            ? "输入分析内容..."
+                            : "输入您的问题..."
+                          : contentType === "code"
+                          ? "Enter code requirement..."
+                          : contentType === "image"
+                          ? "Enter image description..."
+                          : contentType === "analysis"
+                          ? "Enter content to analyze..."
                           : "Type your question..."
                       }
                       className="flex-1 bg-slate-800 text-white px-3 py-2 rounded border border-slate-600 focus:border-purple-500 outline-none transition"
