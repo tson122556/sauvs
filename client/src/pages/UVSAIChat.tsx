@@ -142,6 +142,9 @@ export default function UVSAIChat() {
   const [selectedModelSelection, setSelectedModelSelection] = useState<ModelSelectionDetails | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
+  // tRPC 调用
+  const sendMessageMutation = trpc.uvsAi.sendMessage.useMutation();
+
   // 检查认证
   useEffect(() => {
     if (!isAuthenticated) {
@@ -206,36 +209,51 @@ export default function UVSAIChat() {
     };
 
     setMessages((prev) => [...prev, userMessage]);
+    const messageContent = inputValue;
     setInputValue("");
     setIsLoading(true);
 
     try {
       // 使用用户选择的模型，或自动选择
-      const selectedModel = conversation.model || getOptimalModel(inputValue);
+      const selectedModel = conversation.model || getOptimalModel(messageContent);
       const updatedConversation = { ...conversation, model: selectedModel };
       setCurrentConversation(updatedConversation);
       setConversations((prev) => 
         prev.map((c) => c.id === conversation.id ? updatedConversation : c)
       );
 
-      // 模拟 AI 响应
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      // 调用后端 uvsAi 路由获取真实响应
+      const response = await sendMessageMutation.mutateAsync({
+        message: messageContent,
+        conversationHistory: messages.map(m => ({ role: m.role, content: m.content })),
+        selectedModel: selectedModel as any,
+        autoSelectMode: !conversation.model,
+      });
 
       const modelName = MODELS[selectedModel as keyof typeof MODELS]?.name || selectedModel;
       const assistantMessage: Message = {
         role: "assistant",
-        content: `这是来自 ${modelName} 的响应。\n\n您的问题:"${inputValue}"\n\n${modelName} 的回答:\n正在为您生成回答...`,
+        content: response.response,
         timestamp: new Date(),
         model: selectedModel,
+        contentType: (response.contentType === "file" ? "text" : response.contentType) as "text" | "image" | "video" | "code" | "analysis" | undefined,
+        modelSelectionReason: response.intentAnalysis?.reasoning || "Auto-selected",
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
 
       // 生成推荐追问
-      const suggestions = generateSuggestedQuestions(inputValue, (language === "zh" ? "zh" : "en") as "zh" | "en");
+      const suggestions = generateSuggestedQuestions(messageContent, (language === "zh" ? "zh" : "en") as "zh" | "en");
       setSuggestedQuestions(suggestions);
     } catch (error) {
       console.error("发送消息失败:", error);
+      // 显示错误消息
+      const errorMessage: Message = {
+        role: "assistant",
+        content: language === "zh" ? "抱歉，发送消息失败。请稍后重试。" : "Sorry, failed to send message. Please try again later.",
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, errorMessage]);
     } finally {
       setIsLoading(false);
     }
@@ -297,32 +315,33 @@ export default function UVSAIChat() {
                   className={`p-3 rounded-lg cursor-pointer transition ${
                     currentConversation?.id === conv.id
                       ? "bg-purple-600 text-white"
-                      : "bg-background hover:bg-accent"
+                      : "bg-background hover:bg-card"
                   }`}
                   onClick={() => setCurrentConversation(conv)}
                 >
                   <div className="flex items-center justify-between">
-                    <div className="flex-1 truncate">
-                      <p className="font-medium truncate">{conv.title}</p>
-                      <p className="text-xs opacity-70">{MODELS[conv.model as keyof typeof MODELS]?.name}</p>
-                    </div>
+                    <span className="text-sm font-medium truncate">{conv.title}</span>
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
                         handleDeleteConversation(conv.id);
                       }}
-                      className="p-1 hover:bg-red-600 rounded"
+                      className="text-xs opacity-0 group-hover:opacity-100"
                     >
-                      <Trash2 className="w-4 h-4" />
+                      <Trash2 className="w-3 h-3" />
                     </button>
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* 用户信息 */}
-            <div className="p-4 border-t border-border space-y-2">
-              <p className="text-sm text-muted-foreground">{user?.email}</p>
+            {/* 用户信息和登出 */}
+            <div className="p-4 border-t border-border">
+              {user && (
+                <div className="text-xs text-muted-foreground mb-3">
+                  {user.name || user.email}
+                </div>
+              )}
               <Button
                 onClick={logout}
                 variant="outline"
@@ -336,34 +355,26 @@ export default function UVSAIChat() {
         )}
       </AnimatePresence>
 
-      {/* 主聊天区域 */}
+      {/* 主对话区域 */}
       <div className="flex-1 flex flex-col">
-        {/* 顶部栏 */}
+        {/* 顶部导航栏 */}
         <div className="border-b border-border p-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <button
               onClick={() => setSidebarOpen(!sidebarOpen)}
-              className="p-2 hover:bg-accent rounded-lg"
+              className="p-2 hover:bg-card rounded-lg"
             >
               {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
-            {currentConversation && (
-              <div>
-                <h1 className="text-lg font-semibold">{currentConversation.title}</h1>
-                <p className="text-sm text-muted-foreground">
-                  {language === "zh" ? "当前模型：" : "Current Model: "}
-                  <span className={`bg-gradient-to-r ${MODELS[currentConversation.model as keyof typeof MODELS]?.color || "from-gray-500 to-gray-600"} bg-clip-text text-transparent font-bold`}>
-                    {MODELS[currentConversation.model as keyof typeof MODELS]?.name}
-                  </span>
-                </p>
-              </div>
-            )}
+            <h1 className="text-lg font-semibold">
+              {currentConversation?.title || (language === "zh" ? "新对话" : "New Conversation")}
+            </h1>
           </div>
           <div className="flex items-center gap-2">
             <LanguageSwitcher />
             <button
               onClick={handleClearMessages}
-              className="p-2 hover:bg-accent rounded-lg"
+              className="p-2 hover:bg-card rounded-lg"
               title={language === "zh" ? "清空对话" : "Clear chat"}
             >
               <Trash2 className="w-5 h-5" />
@@ -374,239 +385,103 @@ export default function UVSAIChat() {
         {/* 消息区域 */}
         <div className="flex-1 overflow-y-auto p-6 space-y-4">
           {messages.length === 0 ? (
-            <div className="flex flex-col items-center justify-center h-full text-center">
-              <Zap className="w-12 h-12 text-purple-600 mb-4" />
-              <h2 className="text-2xl font-bold mb-2">
-                {language === "zh" ? "开始对话" : "Start Chatting"}
-              </h2>
-              <p className="text-muted-foreground mb-6">
-                {language === "zh"
-                  ? "输入您的问题，AI 将自动选择最优模型为您服务"
-                  : "Type your question and AI will automatically select the best model"}
+            <div className="flex flex-col items-center justify-center h-full">
+              <Zap className="w-12 h-12 text-muted-foreground mb-4" />
+              <p className="text-muted-foreground text-center">
+                {language === "zh" ? "开始对话，让 AI 帮助你" : "Start chatting with AI"}
               </p>
             </div>
           ) : (
-            <>
-              {showModelCompetition && (
-                <ModelCompetition
-                  models={competingModels}
-                  isActive={showModelCompetition}
-                  onComplete={(winnerId) => {
-                    setShowModelCompetition(false);
-                    // 这里可以添加获胜模型的处理逻辑
-                  }}
-                />
-              )}
-
-              {showModelComparison && modelResponses.length > 0 && (
-                <ModelComparison
-                  responses={modelResponses}
-                  onSelectResponse={(modelId) => {
-                    // 选择特定模型的响应
-                    const selected = modelResponses.find(r => r.modelId === modelId);
-                    if (selected) {
-                      setMessages(prev => [...prev, {
-                        role: 'assistant',
-                        content: selected.response,
-                        model: modelId,
-                        contentType: 'text',
-                        responseTime: selected.responseTime,
-                      }]);
-                    }
-                    setShowModelComparison(false);
-                    setModelResponses([]);
-                  }}
-                  onCombineResponses={(modelIds) => {
-                    // 组合多个模型的响应
-                    const combined = modelIds
-                      .map(id => {
-                        const resp = modelResponses.find(r => r.modelId === id);
-                        return resp ? `【${resp.modelName}】\n${resp.response}` : '';
-                      })
-                      .filter(Boolean)
-                      .join('\n\n');
-                    
-                    setMessages(prev => [...prev, {
-                      role: 'assistant',
-                      content: combined,
-                      model: 'combined',
-                      contentType: 'text',
-                    }]);
-                    setShowModelComparison(false);
-                    setModelResponses([]);
-                  }}
-                />
-              )}
-
-              {selectedModelSelection && (
-                <ModelSelectionInfo
-                  selection={selectedModelSelection}
-                  showDetails={true}
-                  position="inline"
-                />
-              )}
-
-              {messages.map((msg, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+            messages.map((msg, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+              >
+                <Card
+                  className={`max-w-2xl p-4 ${
+                    msg.role === "user"
+                      ? "bg-purple-600 text-white"
+                      : "bg-card text-foreground"
+                  }`}
                 >
-                  <Card
-                    className={`max-w-2xl p-4 ${
-                      msg.role === "user"
-                        ? "bg-purple-600 text-white"
-                        : "bg-card text-foreground"
-                    }`}
-                  >
-                    <div className="flex items-start justify-between gap-2">
-                      <div className="flex-1">
-                        {msg.contentType && msg.contentType !== "text" && (
-                          <div className="mb-2">
-                            <span className="inline-block px-2 py-1 text-xs font-semibold rounded bg-gradient-to-r from-purple-500 to-cyan-500 text-white">
-                              {msg.contentType.toUpperCase()}
-                            </span>
-                          </div>
-                        )}
-                        <p className="text-sm mb-2">{msg.content}</p>
-                        {msg.contentType === "image" && msg.url && (
-                          <img
-                            src={msg.url}
-                            alt="Generated image"
-                            className="max-w-full h-auto rounded-lg mb-2 max-h-96"
-                          />
-                        )}
-                        {msg.contentType === "video" && msg.url && (
-                          <video
-                            src={msg.url}
-                            controls
-                            className="max-w-full h-auto rounded-lg mb-2 max-h-96"
-                          />
-                        )}
-                        {msg.contentType === "code" && (
-                          <pre className="bg-slate-900 text-slate-100 p-3 rounded-lg overflow-x-auto text-xs mb-2">
-                            <code>{msg.content}</code>
-                          </pre>
-                        )}
-                        {msg.model && (
-                          <>
-                            <p className="text-xs opacity-70 mt-2">
-                              {MODELS[msg.model as keyof typeof MODELS]?.name}
-                            </p>
-                            {msg.responseTime && (
-                              <MessageModelInfo
-                                modelName={MODELS[msg.model as keyof typeof MODELS]?.name || msg.model}
-                                modelColor={MODELS[msg.model as keyof typeof MODELS]?.color || "bg-gray-500"}
-                                responseTime={msg.responseTime}
-                                modality={msg.contentType as any}
-                              />
-                            )}
-                          </>
-                        )}
-                      </div>
-                      {msg.role === "assistant" && (
-                        <button
-                          onClick={() => handleCopyMessage(msg.content, `msg-${idx}`)}
-                          className="p-1 hover:bg-accent rounded flex-shrink-0"
-                        >
-                          {copiedId === `msg-${idx}` ? (
-                            <Check className="w-4 h-4" />
-                          ) : (
-                            <Copy className="w-4 h-4" />
-                          )}
-                        </button>
+                  <div className="text-sm">{msg.content}</div>
+                  {msg.model && (
+                    <div className="text-xs opacity-70 mt-2">
+                      {msg.role === "assistant" && `${MODELS[msg.model as keyof typeof MODELS]?.name || msg.model}`}
+                    </div>
+                  )}
+                  {msg.role === "assistant" && (
+                    <button
+                      onClick={() => handleCopyMessage(msg.content, `msg-${idx}`)}
+                      className="text-xs opacity-70 hover:opacity-100 mt-2 flex items-center gap-1"
+                    >
+                      {copiedId === `msg-${idx}` ? (
+                        <>
+                          <Check className="w-3 h-3" />
+                          {language === "zh" ? "已复制" : "Copied"}
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="w-3 h-3" />
+                          {language === "zh" ? "复制" : "Copy"}
+                        </>
                       )}
-                    </div>
-                  </Card>
-                </motion.div>
-              ))}
-              {isLoading && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="flex justify-start"
-                >
-                  <Card className="bg-card p-4">
-                    <div className="flex gap-2">
-                      <div className="w-2 h-2 bg-purple-600 rounded-full animate-bounce" />
-                      <div className="w-2 h-2 bg-purple-600 rounded-full animate-bounce delay-100" />
-                      <div className="w-2 h-2 bg-purple-600 rounded-full animate-bounce delay-200" />
-                    </div>
-                  </Card>
-                </motion.div>
-              )}
-              <div ref={messagesEndRef} />
-            </>
+                    </button>
+                  )}
+                </Card>
+              </motion.div>
+            ))
           )}
+          {isLoading && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="flex justify-start"
+            >
+              <Card className="bg-card p-4">
+                <div className="flex gap-2">
+                  <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" />
+                  <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" style={{ animationDelay: "0.1s" }} />
+                  <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" style={{ animationDelay: "0.2s" }} />
+                </div>
+              </Card>
+            </motion.div>
+          )}
+          <div ref={messagesEndRef} />
         </div>
 
         {/* 推荐追问 */}
-        {suggestedQuestions.length > 0 && messages.length > 0 && (
-          <SuggestedQuestions
-            questions={suggestedQuestions}
-            onSelectQuestion={(question: string) => {
-              setInputValue(question);
-            }}
-            language={language as "zh" | "en"}
-          />
+        {suggestedQuestions.length > 0 && (
+          <div className="px-4 py-2 border-t border-border">
+            <p className="text-xs text-muted-foreground mb-2">
+              {language === "zh" ? "推荐追问" : "Suggested Questions"}
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {suggestedQuestions.map((q: string, idx: number) => (
+                <button
+                  key={idx}
+                  onClick={() => setInputValue(q)}
+                  className="text-xs px-3 py-1 rounded-full bg-card hover:bg-purple-600/20 border border-border transition"
+                >
+                  {q}
+                </button>
+              ))}
+            </div>
+          </div>
         )}
 
-        {/* 模型选择 */}
-        <div className="border-t border-border px-6 py-3 bg-card/50">
-          <p className="text-xs text-muted-foreground mb-2">
-            {language === "zh" ? "选择 AI 模型：" : "Select AI Model:"}
-          </p>
-          <div className="flex gap-2 flex-wrap">
-            {Object.entries(MODELS).map(([modelId, modelInfo]) => (
-              <button
-                key={modelId}
-                onClick={() => setCurrentConversation(prev => prev ? { ...prev, model: modelId } : null)}
-                className={`px-3 py-1 text-xs rounded-full transition ${
-                  currentConversation?.model === modelId
-                    ? `bg-gradient-to-r ${modelInfo.color} text-white`
-                    : "bg-slate-700 text-slate-300 hover:bg-slate-600"
-                }`}
-              >
-                {modelInfo.name}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* 内容类型选择 */}
-        <div className="border-t border-border px-6 py-3 bg-card/50">
-          <p className="text-xs text-muted-foreground mb-2">
-            {language === "zh" ? "生成内容类型：" : "Content Type:"}
-          </p>
-          <div className="flex gap-2 flex-wrap">
-            {(["text", "image", "video", "code", "analysis"] as const).map((type) => (
-              <button
-                key={type}
-                onClick={() => setSelectedContentType(selectedContentType === type ? null : type)}
-                className={`px-3 py-1 text-xs rounded-full transition ${
-                  selectedContentType === type
-                    ? "bg-gradient-to-r from-purple-600 to-cyan-600 text-white"
-                    : "bg-slate-700 text-slate-300 hover:bg-slate-600"
-                }`}
-              >
-                {type.toUpperCase()}
-              </button>
-            ))}
-          </div>
-        </div>
-
         {/* 输入区域 */}
-        <div className="border-t border-border p-6 space-y-4">
-          <div className="flex gap-3">
+        <div className="border-t border-border p-4">
+          <div className="flex gap-2">
             <input
               type="text"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
-              placeholder={language === "zh" ? "输入您的问题..." : "Type your question..."}
-              className="flex-1 bg-background border border-border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-600"
-              disabled={isLoading}
+              placeholder={language === "zh" ? "输入消息..." : "Type a message..."}
+              className="flex-1 px-4 py-2 rounded-lg bg-card border border-border focus:outline-none focus:ring-2 focus:ring-purple-600"
             />
             <Button
               onClick={handleSendMessage}
@@ -616,11 +491,6 @@ export default function UVSAIChat() {
               <Send className="w-4 h-4" />
             </Button>
           </div>
-          <p className="text-xs text-muted-foreground text-center">
-            {language === "zh"
-              ? "💡 提示：输入不同类型的问题，AI 会自动使各最优模型为您抢答。支持生成文本、图片、视频、代码等内容"
-              : "💡 Tip: Ask different types of questions and AI will automatically have the best models compete to answer for you. Supports generating text, images, videos, code and more"}
-          </p>
         </div>
       </div>
     </div>
