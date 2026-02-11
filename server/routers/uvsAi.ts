@@ -15,7 +15,8 @@ export type AIModel =
   | "qwen" 
   | "doubao" 
   | "kimi" 
-  | "glm";
+  | "glm"
+  | "grok";
 
 // 定义对话消息类型
 export interface Message {
@@ -74,9 +75,14 @@ const MODEL_CONFIG: Record<AIModel, { name: string; description: string; capabil
     capabilities: ["text", "analysis", "file"],
   },
   glm: {
-    name: "ChatGLM-3",
-    description: "清华大学与智谱 AI 的模型，中文理解强",
+    name: "ChatGLM",
+    description: "清华大学开发的中文 AI 模型",
     capabilities: ["text", "code", "analysis"],
+  },
+  grok: {
+    name: "Grok",
+    description: "xAI 的实时信息模型，擅长获取最新资讯和实时分析",
+    capabilities: ["text", "analysis"],
   },
 };
 

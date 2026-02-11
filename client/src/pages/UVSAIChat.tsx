@@ -42,6 +42,7 @@ const MODELS = {
   "qwen": { name: "通义千问", color: "from-red-500 to-red-600", icon: "🔴" },
   "doubao": { name: "豆包", color: "from-yellow-500 to-yellow-600", icon: "🟨" },
   "glm": { name: "ChatGLM", color: "from-cyan-500 to-cyan-600", icon: "🟦" },
+  "grok": { name: "Grok", color: "from-purple-500 to-purple-600", icon: "🟣" },
 };
 
 // 增强的多模态模型选择算法，支持评分和权重
@@ -55,6 +56,7 @@ function analyzeAndSelectModel(input: string): { model: string; reason: string; 
     "qwen": 0,
     "doubao": 0,
     "glm": 0,
+    "grok": 0,
   };
 
   // 代码和编程 - GPT-4 (权重: 10)
@@ -274,7 +276,7 @@ export default function UVSAIChat() {
       const finalModel = autoSelectMode ? (predictedModel?.model || selectedModel) : selectedModel;
       
       // 验证模型名称
-      const validModels = ["gpt4", "claude", "gemini", "deepseek", "qwen", "doubao", "kimi", "glm"];
+      const validModels = ["gpt4", "claude", "gemini", "deepseek", "qwen", "doubao", "kimi", "glm", "grok"];
       if (!validModels.includes(finalModel)) {
         console.error(`Invalid model: ${finalModel}`);
         setIsLoading(false);
