@@ -12,7 +12,7 @@ interface Message {
   content: string;
   timestamp: Date;
   avatar?: string;
-  contentType?: "text" | "code" | "image" | "analysis";
+  contentType?: "text" | "code" | "image" | "video" | "analysis";
   imageUrl?: string;
 }
 
@@ -69,7 +69,7 @@ export default function CustomerService() {
   ]);
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [contentType, setContentType] = useState<"text" | "code" | "image" | "analysis">("text");
+  const [contentType, setContentType] = useState<"text" | "code" | "image" | "video" | "analysis">("text");
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const windowRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
@@ -78,6 +78,7 @@ export default function CustomerService() {
   const sendMessageMutation = trpc.customerService.sendMessage.useMutation();
   const generateImageMutation = trpc.customerService.generateImage.useMutation();
   const generateCodeMutation = trpc.customerService.generateCode.useMutation();
+  const generateVideoMutation = trpc.customerService.generateVideo.useMutation();
   const analyzeContentMutation = trpc.customerService.analyzeContent.useMutation();
 
   // 从 localStorage 加载窗口大小和位置
@@ -245,6 +246,14 @@ export default function CustomerService() {
         response = await generateImageMutation.mutateAsync({
           prompt: messageText,
           language: language === "zh" ? "zh" : "en",
+        });
+      } else if (contentType === "video") {
+        // 生成视频内容规划
+        response = await generateVideoMutation.mutateAsync({
+          concept: messageText,
+          language: language === "zh" ? "zh" : "en",
+          duration: 60,
+          style: "professional",
         });
       } else if (contentType === "code") {
         // 生成代码
@@ -514,6 +523,7 @@ export default function CustomerService() {
                       { type: "text" as const, label: language === "zh" ? "对话" : "Chat" },
                       { type: "code" as const, label: language === "zh" ? "代码" : "Code" },
                       { type: "image" as const, label: language === "zh" ? "图像" : "Image" },
+                      { type: "video" as const, label: language === "zh" ? "视频" : "Video" },
                       { type: "analysis" as const, label: language === "zh" ? "分析" : "Analysis" },
                     ].map((item) => (
                       <button
@@ -547,6 +557,8 @@ export default function CustomerService() {
                             ? "输入代码需求..."
                             : contentType === "image"
                             ? "输入图像描述..."
+                            : contentType === "video"
+                            ? "输入视频概念..."
                             : contentType === "analysis"
                             ? "输入分析内容..."
                             : "输入您的问题..."
@@ -554,6 +566,8 @@ export default function CustomerService() {
                           ? "Enter code requirement..."
                           : contentType === "image"
                           ? "Enter image description..."
+                          : contentType === "video"
+                          ? "Enter video concept..."
                           : contentType === "analysis"
                           ? "Enter content to analyze..."
                           : "Type your question..."
