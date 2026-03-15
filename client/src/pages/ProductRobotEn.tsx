@@ -129,6 +129,13 @@ export default function ProductRobotEn() {
             >
               Contact Us <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
+            <Button
+              onClick={() => setLocation("/en/demo/robot")}
+              variant="outline"
+              className="border-blue-500/50 text-blue-300 hover:bg-blue-500/10 px-8 py-3 rounded-lg font-semibold"
+            >
+              View Demo
+            </Button>
           </motion.div>
         </div>
       </motion.div>

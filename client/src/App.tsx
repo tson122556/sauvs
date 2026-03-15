@@ -21,6 +21,12 @@ import ProductRobot from "./pages/ProductRobot";
 import ProductRobotEn from "./pages/ProductRobotEn";
 import ProductIoT from "./pages/ProductIoT";
 import ProductIoTEn from "./pages/ProductIoTEn";
+import AIDemoZh from "./pages/AIDemoZh";
+import AIDemoEn from "./pages/AIDemoEn";
+import RobotDemoZh from "./pages/RobotDemoZh";
+import RobotDemoEn from "./pages/RobotDemoEn";
+import IoTDemoZh from "./pages/IoTDemoZh";
+import IoTDemoEn from "./pages/IoTDemoEn";
 import News from "./pages/News";
 import NewsEn from "./pages/NewsEn";
 import NewsDetail from "./pages/NewsDetail";
@@ -126,6 +132,14 @@ function Router() {
       <Route path="/en/product/robot" component={ProductRobotEn} />
       <Route path="/zh/product/iot" component={ProductIoT} />
       <Route path="/en/product/iot" component={ProductIoTEn} />
+      
+      {/* 产品演示页面 */}
+      <Route path="/zh/demo/ai" component={AIDemoZh} />
+      <Route path="/en/demo/ai" component={AIDemoEn} />
+      <Route path="/zh/demo/robot" component={RobotDemoZh} />
+      <Route path="/en/demo/robot" component={RobotDemoEn} />
+      <Route path="/zh/demo/iot" component={IoTDemoZh} />
+      <Route path="/en/demo/iot" component={IoTDemoEn} />
       
       {/* 支付相关页面 */}
       <Route path="/pricing" component={Pricing} />

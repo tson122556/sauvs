@@ -130,6 +130,7 @@ export default function ProductIoT() {
               立即咨询 <ArrowRight className="w-4 h-4" />
             </Button>
             <Button
+              onClick={() => setLocation("/zh/demo/iot")}
               variant="outline"
               className="border-purple-500/50 text-purple-300 hover:bg-purple-500/10 px-8 py-3 rounded-lg font-semibold"
             >

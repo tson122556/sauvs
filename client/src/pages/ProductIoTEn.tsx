@@ -128,6 +128,13 @@ export default function ProductIoTEn() {
             >
               Contact Us <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
+            <Button
+              onClick={() => setLocation("/en/demo/iot")}
+              variant="outline"
+              className="border-green-500/50 text-green-300 hover:bg-green-500/10 px-8 py-3 rounded-lg font-semibold"
+            >
+              View Demo
+            </Button>
           </motion.div>
         </div>
       </motion.div>
