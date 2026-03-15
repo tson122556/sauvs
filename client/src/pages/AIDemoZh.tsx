@@ -68,7 +68,7 @@ export default function AIDemoZh() {
               className="w-full bg-black"
               poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 675'%3E%3Crect fill='%23111827' width='1200' height='675'/%3E%3C/svg%3E"
             >
-              <source src="/webdev-static-assets/ai-demo.mp4" type="video/mp4" />
+              <source src="https://d2xsxph8kpxj0f.cloudfront.net/309965843024938099/LeH9c94nfUYwUF6G27VX4S/ai-demo_dcf845a6.mp4" type="video/mp4" />
               您的浏览器不支持视频播放
             </video>
           </motion.div>
