@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown } from 'lucide-react';
@@ -16,35 +16,9 @@ interface NewsItem {
 }
 
 export default function Navbar() {
-  const [currentPath, setLocation] = useLocation();
+  const [, setLocation] = useLocation();
   const { language, setLanguage } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
-
-  const handleNavClick = useCallback((path: string) => {
-    if (path.startsWith('#')) {
-      const sectionId = path.substring(1);
-      const homePath = `/${language}`;
-      // 如果当前不在首页，先导航到首页再滚动
-      if (currentPath !== homePath && currentPath !== `/${language}/`) {
-        setLocation(homePath);
-        // 延迟滚动等待页面加载
-        setTimeout(() => {
-          const el = document.getElementById(sectionId);
-          if (el) {
-            el.scrollIntoView({ behavior: 'smooth' });
-          }
-        }, 300);
-      } else {
-        // 已经在首页，直接滚动
-        const el = document.getElementById(sectionId);
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
-    } else {
-      setLocation(path);
-    }
-  }, [currentPath, language, setLocation]);
   const [news, setNews] = useState<NewsItem[]>([]);
   const [loadingNews, setLoadingNews] = useState(true);
 
@@ -206,7 +180,7 @@ export default function Navbar() {
             {menuItems.map((item) => (
               <button
                 key={item.path}
-                onClick={() => handleNavClick(item.path)}
+                onClick={() => setLocation(item.path)}
                 className="text-gray-300 hover:text-white transition duration-200 font-medium"
               >
                 {item.label}
@@ -308,7 +282,7 @@ export default function Navbar() {
                 <button
                   key={item.path}
                   onClick={() => {
-                    handleNavClick(item.path);
+                    setLocation(item.path);
                     setIsOpen(false);
                   }}
                   className="block w-full text-left px-4 py-2 text-gray-300 hover:text-white hover:bg-slate-700 rounded transition"
