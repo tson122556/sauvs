@@ -570,6 +570,19 @@ export default function AboutEn() {
                 <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/SAysExnOnHYrzARK.png" alt="SuperComputing Network" className="h-16 w-auto group-hover:scale-110 transition-transform" />
               </a>
             </div>
+
+            {/* Government Departments Row */}
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mt-6">
+              <a href="https://www.mfa.gov.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <img src="/manus-storage/mfa-logo_63e9aba8.png" alt="Ministry of Foreign Affairs" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              </a>
+              <a href="http://www.moe.gov.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <img src="/manus-storage/moe-logo_ec06f3fd.png" alt="Ministry of Education" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              </a>
+              <a href="http://www.sasac.gov.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <img src="/manus-storage/sasac-logo_729b701b.png" alt="SASAC" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              </a>
+            </div>
           </div>
         </div>
       </section>
