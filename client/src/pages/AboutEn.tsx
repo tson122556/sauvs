@@ -583,6 +583,41 @@ export default function AboutEn() {
                 <img src="/manus-storage/sasac-logo_729b701b.png" alt="SASAC" className="h-16 w-auto group-hover:scale-110 transition-transform" />
               </a>
             </div>
+
+            {/* Partner Universities Row */}
+            <h4 className="text-lg font-semibold text-gray-200 mt-10 mb-4 text-left">Partner Universities</h4>
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 items-center justify-center">
+              <a href="https://www.bit.edu.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <img src="/manus-storage/bit-logo_a934a6e7.svg" alt="Beijing Institute of Technology" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              </a>
+              <a href="https://www.csu.edu.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <img src="/manus-storage/csu-logo_fc69d350.png" alt="Central South University" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              </a>
+              <a href="https://www.nudt.edu.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <img src="/manus-storage/nudt-logo_987dadad.svg" alt="National University of Defense Technology" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              </a>
+              <a href="https://www.gzhmu.edu.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <img src="/manus-storage/gzhmu-logo_31ad8c3d.png" alt="Guangzhou Medical University" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              </a>
+              <a href="https://lzjtu.edu.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <img src="/manus-storage/lzjtu-logo_0a237116.png" alt="Lanzhou Jiaotong University" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              </a>
+              <a href="https://www.ouc.edu.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <img src="/manus-storage/ouc-logo_78091532.png" alt="Ocean University of China" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              </a>
+              <a href="https://www.sues.edu.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <img src="/manus-storage/sues-logo_15e63668.png" alt="Shanghai University of Engineering Science" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              </a>
+              <a href="https://www.hebau.edu.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <img src="/manus-storage/hebau-logo_409b6d80.png" alt="Hebei Agricultural University" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              </a>
+              <a href="https://www.hebau.edu.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <img src="/manus-storage/hebau2-logo_084a92ba.png" alt="Hebei Agricultural University" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              </a>
+              <a href="https://www.shutcm.edu.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <img src="/manus-storage/shutcm-logo_1c2a5200.png" alt="Shanghai University of Traditional Chinese Medicine" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              </a>
+            </div>
           </div>
         </div>
       </section>
