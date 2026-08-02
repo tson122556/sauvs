@@ -571,7 +571,7 @@ export default function AboutEn() {
               </a>
             </div>
 
-            {/* Government Departments Row */}
+            {/* Government Departments & Universities Row - 6 per row */}
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mt-6">
               <a href="https://www.mfa.gov.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
                 <img src="/manus-storage/mfa-logo_63e9aba8.png" alt="Ministry of Foreign Affairs" className="h-16 w-auto group-hover:scale-110 transition-transform" />
@@ -582,11 +582,6 @@ export default function AboutEn() {
               <a href="http://www.sasac.gov.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
                 <img src="/manus-storage/sasac-logo_729b701b.png" alt="SASAC" className="h-16 w-auto group-hover:scale-110 transition-transform" />
               </a>
-            </div>
-
-            {/* Partner Universities Row */}
-            <h4 className="text-lg font-semibold text-gray-200 mt-10 mb-4 text-left">Partner Universities</h4>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 items-center justify-center">
               <a href="https://www.bit.edu.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
                 <img src="/manus-storage/bit-logo_a934a6e7.svg" alt="Beijing Institute of Technology" className="h-16 w-auto group-hover:scale-110 transition-transform" />
               </a>
@@ -616,6 +611,15 @@ export default function AboutEn() {
               </a>
               <a href="https://www.shutcm.edu.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
                 <img src="/manus-storage/shutcm-logo_1c2a5200.png" alt="Shanghai University of Traditional Chinese Medicine" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              </a>
+              <a href="https://www.buaa.edu.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <img src="/manus-storage/buaa-logo_2bc54e6b.png" alt="Beihang University" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              </a>
+              <a href="https://www.nwnu.edu.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <img src="/manus-storage/nwnu-logo_b252e95a.png" alt="Northwest Normal University" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+              </a>
+              <a href="https://www.sdu.edu.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                <img src="/manus-storage/sdu-logo_d2b1cad0.svg" alt="Shandong University" className="h-16 w-auto group-hover:scale-110 transition-transform" />
               </a>
             </div>
           </div>
