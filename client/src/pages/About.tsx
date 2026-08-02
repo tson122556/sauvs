@@ -442,19 +442,6 @@ export default function About() {
                 </a>
               </div>
 
-              {/* Government Departments Row */}
-              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mt-6">
-                <a href="https://www.mfa.gov.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
-                  <img src="https://d2xsxph8kpxj0f.cloudfront.net/309965843024938099/LeH9c94nfUYwUF6G27VX4S/ministry-foreign-affairs-logo-MaU2cSRSQB4SdHJ6dNTnii.webp" alt="外交部" className="h-16 w-auto group-hover:scale-110 transition-transform" />
-                </a>
-                <a href="https://www.moe.gov.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
-                  <img src="https://d2xsxph8kpxj0f.cloudfront.net/309965843024938099/LeH9c94nfUYwUF6G27VX4S/ministry-education-logo-TJuwGay7caZ59Cz7JwxKrd.webp" alt="教育部" className="h-16 w-auto group-hover:scale-110 transition-transform" />
-                </a>
-                <a href="https://www.sasac.gov.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
-                  <img src="https://d2xsxph8kpxj0f.cloudfront.net/309965843024938099/LeH9c94nfUYwUF6G27VX4S/sasac-logo-XHjj4DNqbX2j9ZBCF4RXfH.webp" alt="国务院国资委" className="h-16 w-auto group-hover:scale-110 transition-transform" />
-                </a>
-              </div>
-
               {/* Fifth Row */}
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mt-6">
                 <a href="https://www.ox.ac.uk" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
@@ -585,6 +572,85 @@ export default function About() {
                 <a href="https://www.scnet.cn/home" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
                   <img src="https://files.manuscdn.com/user_upload_by_module/session_file/309965843024938099/SAysExnOnHYrzARK.png" alt="超算互联网" className="h-16 w-auto group-hover:scale-110 transition-transform" />
                 </a>
+              </div>
+
+              {/* Government Departments & Universities Row - 6 per row */}
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mt-6">
+                <a href="https://www.mfa.gov.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="/manus-storage/mfa-logo_63e9aba8.png" alt="外交部" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="http://www.moe.gov.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="/manus-storage/moe-logo_ec06f3fd.png" alt="教育部" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="http://www.sasac.gov.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="/manus-storage/sasac-logo_729b701b.png" alt="国务院国资委" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.bit.edu.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="/manus-storage/bit-logo_a934a6e7.svg" alt="北京理工大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.csu.edu.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="/manus-storage/csu-logo_fc69d350.png" alt="中南大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.nudt.edu.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="/manus-storage/nudt-logo_987dadad.svg" alt="国防科技大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.gzhmu.edu.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="/manus-storage/gzhmu-logo_31ad8c3d.png" alt="广州医科大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://lzjtu.edu.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="/manus-storage/lzjtu-logo_0a237116.png" alt="兰州交通大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.ouc.edu.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="/manus-storage/ouc-logo_78091532.png" alt="中国海洋大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.sues.edu.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="/manus-storage/sues-logo_15e63668.png" alt="上海工程技术大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.hebau.edu.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="/manus-storage/hebau-logo_409b6d80.png" alt="河北农业大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.hebau.edu.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="/manus-storage/hebau2-logo_084a92ba.png" alt="河北农业大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.shutcm.edu.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="/manus-storage/shutcm-logo_1c2a5200.png" alt="上海中医药大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.buaa.edu.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="/manus-storage/buaa-logo_2bc54e6b.png" alt="北京航空航天大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.nwnu.edu.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="/manus-storage/nwnu-logo_b252e95a.png" alt="西北师范大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.sdu.edu.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="/manus-storage/sdu-logo_d2b1cad0.svg" alt="山东大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.blackrock.com/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="/manus-storage/blackrock-logo_c3abfa75.png" alt="BlackRock 贝莱德" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://global.vanguard.com/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="/manus-storage/vanguard-logo_20f679b2.webp" alt="Vanguard 先锋领航" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.goldmansachs.com/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="/manus-storage/goldman-sachs-logo_0d5dd415.webp" alt="Goldman Sachs 高盛" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.nbu.edu.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="/manus-storage/nbu-logo_cc1d4692.png" alt="宁波大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.nankai.edu.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="/manus-storage/nankai-logo_2a2372f5.png" alt="南开大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.blackstone.com/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="/manus-storage/blackstone-logo_80f65c57.png" alt="Blackstone 黑石" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.carlyle.com/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="/manus-storage/carlyle-logo_3b0c166d.png" alt="Carlyle 凯雷" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.kkr.com/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="/manus-storage/kkr-logo_0b58d84a.png" alt="KKR" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <div className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
+                  <img src="/manus-storage/more-institutions_17989d33.png" alt="等科研院所和各种机构" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </div>
               </div>
 
 
