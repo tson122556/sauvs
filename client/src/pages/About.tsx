@@ -624,6 +624,33 @@ export default function About() {
                 <a href="https://www.sdu.edu.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
                   <img src="/manus-storage/sdu-logo_d2b1cad0.svg" alt="山东大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
                 </a>
+                <a href="https://www.blackrock.com/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="/manus-storage/blackrock-logo_c3abfa75.png" alt="BlackRock 贝莱德" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://global.vanguard.com/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="/manus-storage/vanguard-logo_20f679b2.webp" alt="Vanguard 先锋领航" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.goldmansachs.com/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="/manus-storage/goldman-sachs-logo_0d5dd415.webp" alt="Goldman Sachs 高盛" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.nbu.edu.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="/manus-storage/nbu-logo_cc1d4692.png" alt="宁波大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.nankai.edu.cn/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="/manus-storage/nankai-logo_2a2372f5.png" alt="南开大学" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.blackstone.com/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="/manus-storage/blackstone-logo_80f65c57.png" alt="Blackstone 黑石" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.carlyle.com/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="/manus-storage/carlyle-logo_3b0c166d.png" alt="Carlyle 凯雷" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.kkr.com/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
+                  <img src="/manus-storage/kkr-logo_0b58d84a.png" alt="KKR" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </a>
+                <div className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition">
+                  <img src="/manus-storage/more-institutions_17989d33.png" alt="等科研院所和各种机构" className="h-16 w-auto group-hover:scale-110 transition-transform" />
+                </div>
               </div>
 
 
