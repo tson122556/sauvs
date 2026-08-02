@@ -592,22 +592,6 @@ export default function AboutEn() {
               We look forward to collaborating with global partners to advance smart technology development and application.
             </p>
 
-            {/* Partners Logo Grid */}
-            <div className="mb-12">
-              {/* Government Departments Row */}
-              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center mt-6">
-                <a href="https://www.mfa.gov.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
-                  <img src="https://d2xsxph8kpxj0f.cloudfront.net/309965843024938099/LeH9c94nfUYwUF6G27VX4S/ministry-foreign-affairs-logo-MaU2cSRSQB4SdHJ6dNTnii.webp" alt="Ministry of Foreign Affairs" className="h-16 w-auto group-hover:scale-110 transition-transform" />
-                </a>
-                <a href="https://www.moe.gov.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
-                  <img src="https://d2xsxph8kpxj0f.cloudfront.net/309965843024938099/LeH9c94nfUYwUF6G27VX4S/ministry-education-logo-TJuwGay7caZ59Cz7JwxKrd.webp" alt="Ministry of Education" className="h-16 w-auto group-hover:scale-110 transition-transform" />
-                </a>
-                <a href="https://www.sasac.gov.cn" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center h-20 rounded-lg hover:bg-slate-700/30 transition cursor-pointer">
-                  <img src="https://d2xsxph8kpxj0f.cloudfront.net/309965843024938099/LeH9c94nfUYwUF6G27VX4S/sasac-logo-XHjj4DNqbX2j9ZBCF4RXfH.webp" alt="SASAC" className="h-16 w-auto group-hover:scale-110 transition-transform" />
-                </a>
-              </div>
-            </div>
-
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
