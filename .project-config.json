@@ -1,0 +1,50 @@
+{
+  "build_command": "pnpm run build",
+  "capabilities": [
+    "db",
+    "server",
+    "user"
+  ],
+  "dev_command": "pnpm run dev",
+  "env_vars": {
+    "DATABASE_URL": "mysql://3BPBiC4NTfsTHY2.root:LzEctR237LAWH63ZbXS3@gateway02.us-east-1.prod.aws.tidbcloud.com:4000/LeH9c94nfUYwUF6G27VX4S?ssl={\"rejectUnauthorized\":true}"
+  },
+  "experiments": [
+    "no_db_push"
+  ],
+  "git_remote": {
+    "repo_url": "s3://vida-prod-gitrepo/webdev-git/309965843024938099/LeH9c94nfUYwUF6G27VX4S",
+    "access_key_id": "ASIAZV3A2ECZMVWXGT6L",
+    "secret_access_key": "lnxChdLTuSrEoA9So8JLVRP2Mwp885eXNkCS2QmN",
+    "session_token": "IQoJb3JpZ2luX2VjEJj//////////wEaCXVzLWVhc3QtMSJHMEUCIFelY1ri7srvYf8yvnlZVbV2RGX4lLpX6Bm77FHDK+FfAiEAufB5UMcLNI5yI1XT16o5jERUwoEJ93SK5Hh44sZ2UhIq9QMIYBAEGgw2NjUzODYwOTg4NjYiDEHtRd31hH28zi+36yrSA7oonOhl/XNToLtwlm57GVq9ndHXqcG+KvJZBM9KCftJM2Mey3hj7rVvK7AYZyrRMHM7UZNINSpMCuEAyDnhoIcK0Cf6qzvHmml1zEvSUbe7zNS6bDx0ENf7UiFZsfdp1tqhi01Y1onhF9SyOkoB0CAtvqSnNpcS74j7i1SiuaqfrJfCeXbKVd7vqu+8mAiMPgWfMWuosBdPKdfsPusPQbS7hgc8jmZ23yROWW5Gx+nCubVOH/Zbwc0UbCtlii0Bd3WytHdUWOvgDRbhnjH5azY+t04qsT5hLkQtNE+1fEAbd8mmicbUCiwHP7dkoeKaOuxIMHKN1cwfYbMYLwNEUDCUfpSeCHjsnFF/8PUB3dfDfPwyqVvAjPVdnzXNbdL9xMV+2MWh+rbNSfMxYq0YGKWChY79NXBUGkZe4ULeVhnsGEuRuyK7bT1c2ziAQ5hmx1bIzOoLkW2wUjj18161GoOx4mMqLEU44sGsw8RMY+3cQfo72iv/YysfeVDT5VHErGCbuj4GFpht3oeOWvvbJUr3Y1Jqs0cObuo011peg5kDDUBe0RDFHVIO2JSR0a3euKiKYTYE/l5RUwa2dD2utUgzw64bWdhAxE2Ns0P26yB2vMswkOK61QY6nQEAwpC38L2EWi5j4luE6qPcS8YwLXDM3sAV6y2lfCaQ/LPt/91x1wxhrrDv0egqf81f+ATMZxCx+annYiHWCey1ReXdXRXRYQG8OosCBHIJsm7yhiDf16oRAd+ZWZojaikjL7p8eAPfQdXi3E71erFBpH4onH+yNxz9bJIMyOGN2T73j562SoNobI9FEm18aC2Z+x9DSbrLglxZ0Sjp",
+    "expiration": "2026-09-20T03:58:08.000Z",
+    "backend": "GIT_BACKEND_S3"
+  },
+  "name": "jizixing-website",
+  "path": "/home/ubuntu/jizixing-website",
+  "port": 3000,
+  "secrets": {
+    "BUILT_IN_FORGE_API_KEY": "PjvkCgtx4hyMgh6zTYbEeX",
+    "BUILT_IN_FORGE_API_URL": "https://forge.manus.ai",
+    "JWT_SECRET": "KfUbxzcqwrEo9TyggWtQKh",
+    "OAUTH_SERVER_URL": "https://api.manus.im",
+    "OPENAI_API_KEY": "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",
+    "OWNER_NAME": "PerKin Xie",
+    "OWNER_OPEN_ID": "848rV86gVWZQf3NMoFn589",
+    "SMTP_FROM": "satifuxie@gmail.com",
+    "SMTP_HOST": "smtp.gmail.com",
+    "SMTP_PASSWORD": "uvs@uvs",
+    "SMTP_PORT": "465",
+    "SMTP_USER": "satifuxie@gmail.com",
+    "VITE_ANALYTICS_ENDPOINT": "https://manus-analytics.com",
+    "VITE_ANALYTICS_WEBSITE_ID": "d33c47fb-6147-4a0b-a9a0-b25dd113093e",
+    "VITE_APP_ID": "LeH9c94nfUYwUF6G27VX4S",
+    "VITE_APP_LOGO": "https://files.manuscdn.com/user_upload_by_module/web_dev_logo/309965843024938099/ieyVGppsVzkMRkjk.png",
+    "VITE_APP_TITLE": "极紫星智慧科技有限公司官网",
+    "VITE_FRONTEND_FORGE_API_KEY": "Gdgh7Yp3jTfJUeEPTvWgEW",
+    "VITE_FRONTEND_FORGE_API_URL": "https://forge.manus.ai",
+    "VITE_OAUTH_PORTAL_URL": "https://manus.im"
+  },
+  "template_id": "web-db-user",
+  "test_command": "pnpm test"
+}
