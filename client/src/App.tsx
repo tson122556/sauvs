@@ -9,7 +9,7 @@ function App() {
       <ThemeProvider defaultTheme="dark">
         <TooltipProvider>
           <Toaster />
-          <div className="min-h-screen flex items-center justify-center relative" style={{ backgroundImage: 'url(/manus-storage/seagulls-sunset-bg_0609a70b.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
+          <div className="min-h-screen flex items-center justify-center relative" style={{ backgroundImage: 'url(/manus-storage/cloud-sea-sunrise-background_7a3a42b3.webp)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
             <p className="text-white text-4xl md:text-5xl font-bold text-center px-4 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
               好了，科幻是科幻，故事是故事，别混淆了。仅供参考也许就是别太当真。
             </p>
